@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- defer sorgt dafür dass das script nach dem laden des DOMS ausgeführt wird -->
+  <script src="loadProject.js" defer></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
+
+      <ul class="menu-items">
+        <li>
+          <a href="#" onclick="loadSection('karte.html'); return false;">Karte</a>
+          <!-- hier werden die untermenüpunkte dynamisch geladen-->
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="#" onclick="loadSection('InfoLK.html'); return false;">Info für LK</a></li>
+        <li><a href="#" onclick="loadSection('Kontakt.html'); return false;">Kontakt</a></li>
+      </ul>
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <!-- Container für dynamisch geladenen Inhalt -->
+  <div id="content-container"></div>
+
+  <script>
+    // funktion die die oben im menü geklickten URLS aufruft, z.B. Karte, Kontakt etc.
+    function loadSection(url) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error("Datei nicht gefunden");
+          return response.text();
+        })
+        .then(html => {
+          document.getElementById('content-container').innerHTML = html;
+
+          // Hamburger-Menü schließen (wenn offen)
+          const menuToggle = document.getElementById('menu-toggle');
+          if (menuToggle && menuToggle.checked) {
+            menuToggle.checked = false;
+          }
+        })
+        .catch(err => {
+          document.getElementById('content-container').innerHTML = "<p>Fehler beim Laden der Seite.</p>";
+          console.error("Ladefehler:", err);
+        });
+    }
+
+    // Standardbereich laden "karte.html"
+    window.addEventListener("DOMContentLoaded", () => {
+      loadSection('karte.html');
+    });
+
+  </script>
+</body>
+
+</html>
