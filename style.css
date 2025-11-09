@@ -1,4 +1,10 @@
 
+/*
+----------------------------------------------------
+OPTIMIERTER CSS CODE 
+----------------------------------------------------
+*/
+
 
 /*alle elemente gleich setzen, border box für konsistente abstandssberechnungen*/
 *,
@@ -35,22 +41,22 @@
 }
 
 #progress-container {
+  position: absolute;
+  left: 50%;            /* Mitte horizontal */
+  top: 50%;             /* Mitte vertikal */
+  transform: translate(-50%, -50%); /* exakt zentrieren */
   display: flex;
-  gap: 8px;         /* Abstand zwischen Punkten */
+  gap: 8px;
   align-items: center;
-  padding: 5px 10px;
+  height: 32px;
 }
 
-.progress-point {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #d01e33; 
-  transition: background-color 0.3s;
-}
-
-.progress-point.completed {
-  background-color: #17b854; /* Farbe für erledigte Station */
+.progress-img {
+  width: 30px;      
+  height: 30px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
 }
 
 .navbar-container input[type="checkbox"] {
@@ -190,9 +196,9 @@
   color: #117964;
 }
 
-
-
 /*style für die seiteninhalte (z.B. karte oder die einzelnen)*/
   .page-section {
     padding: 80px 20px 20px; /* Top padding to push below navbar */
   }
+
+

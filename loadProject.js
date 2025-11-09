@@ -27,7 +27,7 @@ switch (projektId) {
     case "1":
         window.urlName = "Einfluss des Menschen auf Ökosysteme";
         window.stationsCount = 6;
-        window.stations = [
+        window.stations = [ // STATIONEN NACH NUMMER SORTIERT
             { url: "EinflussMensch/Wald.html", name: "Wald", koords: "" },
             { url: "EinflussMensch/Wiese.html", name: "Wiese", koords: "" },
             { url: "EinflussMensch/Tropenhaus.html", name: "Tropenhaus", koords: "" },
@@ -77,17 +77,29 @@ function submenu(items) {
 function statusleisteSetzen() {
     // navbar als container bekommen
     const progressContainer = document.getElementById('progress-container');
+    progressContainer.innerHTML = ""; // reset
 
-    // Punkte erzeugen
+    // einzelne stationen erzeugen
     for (let i = 0; i < window.stationsCount; i++) {
-        const point = document.createElement('div');
-        point.classList.add('progress-point');
+        const img = document.createElement('img');
+        img.classList.add('progress-img');
+
+        const nummer = i + 1;
+
+        let bildPfad = `./Bilder/NavStationen${nummer}.png`;
 
         // Wenn die station abgeschlossen war als abgeschlossen markieren
         if (window.stationsComplete.includes(i)) {
-            point.classList.add('completed');
+            bildPfad = `./Bilder/NavStationenComp${nummer}.png`;
         }
 
-        progressContainer.appendChild(point);
+        img.src = bildPfad;
+        img.style.cursor = "pointer"; // macht Mauszeiger zum "klicken-zeiger"
+        img.addEventListener("click", (event) => { // legt ein event fest das klickbarkeit der bilder erlaubt
+            const station = window.stations[i];
+            loadSection(station.url); // läd entsprechende section beim klick
+        });
+
+        progressContainer.appendChild(img);
     }
 }
