@@ -1,0 +1,39 @@
+<Lehrpfad>
+    <PfadId>1</PfadId>
+    <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
+    <IconName>beispiel-icon.png</IconName>
+    <StationsCount>6</StationsCount>
+
+    <Stations>
+        <Station>
+            <Name>Wald</Name>
+            <X>100</X>
+            <Y>200</Y>
+        </Station>
+        <Station>
+            <Name>Wiese</Name>
+            <X>150</X>
+            <Y>250</Y>
+        </Station>
+        <Station>
+            <Name>Tropenhaus</Name>
+            <X>300</X>
+            <Y>400</Y>
+        </Station>
+  	<Station>
+            <Name>Bauerngarten</Name>
+            <X>100</X>
+            <Y>200</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzenterasse</Name>
+            <X>150</X>
+            <Y>250</Y>
+        </Station>
+        <Station>
+            <Name>Abschluss</Name>
+            <X>300</X>
+            <Y>400</Y>
+        </Station>
+    </Stations>
+</Lehrpfad>

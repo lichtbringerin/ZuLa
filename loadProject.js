@@ -103,3 +103,7 @@ function statusleisteSetzen() {
         progressContainer.appendChild(img);
     }
 }
+//
+function stationenSetzen() {
+    
+}
