@@ -8,6 +8,24 @@ const projektId = urlParams.get("id");
 
 // festlegen von globalen variablen
 
+let globalXML = null;
+// XML daten Laden, also die Konfiguration der Pfade
+// MUSS initial asynchron laufen, sonst gibt es später fehler wenn das xml nicht rechtzeitig lädt!!
+async function initialisierung() {
+    const res = await fetch('./LehrpfadeConfig.xml');
+    const xmlString = await res.text();
+
+    const parser = new DOMParser();
+    globalXML = parser.parseFromString(xmlString, "application/xml");
+
+   // 🔹 NUR wenn eine ID existiert
+    if (projektId) {
+        loadLehrpfad(projektId, globalXML);
+    } 
+}
+
+initialisierung();
+
 // der name der später in der URL angezeigt wird
 window.urlName = "";
 // setzt die anzahl der stationen fest (oben in der )
@@ -20,38 +38,68 @@ window.stations = [
     {}
 ];
 
+// alles was nach dem laden der xml gemacht werden muss unten in der funktion aufrufen, sonst bekommt man leere ergebnisse
+// weil die xml noch nicht eingelesen ist
+function loadLehrpfad(ID, xml) {
 
-// switch case für die einzelnen lehrpfade und deren inforamtionen
-switch (projektId) {
-    // case 1 ist der Einflüsse des Menschen auf Ökosysteme Lehrpfad
-    case "1":
-        window.urlName = "Einfluss des Menschen auf Ökosysteme";
-        window.stationsCount = 6;
-        window.stations = [ // STATIONEN NACH NUMMER SORTIERT
-            { url: "EinflussMensch/Wald.html", name: "Wald", koords: "" },
-            { url: "EinflussMensch/Wiese.html", name: "Wiese", koords: "" },
-            { url: "EinflussMensch/Tropenhaus.html", name: "Tropenhaus", koords: "" },
-            { url: "EinflussMensch/Bauerngarten.html", name: "Bauerngarten", koords: "" },
-            { url: "EinflussMensch/Nutzpflanzenterasse.html", name: "Nutzpflanzenterasse", koords: "" },
-            { url: "EinflussMensch/Abschluss.html", name: "Abschluss", koords: "" }
-        ]
+    // schauen ob xml geladen
+    if (!globalXML) {
+        throw new Error("XML noch nicht geladen");
+    }
 
-        break;
-    default:
-        // der default sollte einen fehler werfen? 
-        break;
+    // lehrpfade laden
+    const lehrpfade = [...globalXML.getElementsByTagName("Lehrpfad")];
+
+    // den lehrpfad raussuchen der mit project id übereinstimmt
+    const pfad = lehrpfade.find(p =>
+        p.getElementsByTagName("PfadId")[0].textContent === projektId
+    );
+
+    //fehlerbehandlung falls id im qr code falsch
+    if (!pfad) {
+        throw new Error("Kein Lehrpfad mit ID " + projektId);
+    }
+
+    // setzt werte
+    window.urlName = pfad.getElementsByTagName("UrlName")[0].textContent;
+    window.ordnerPath = pfad.getElementsByTagName("OrdnerPfad")[0].textContent;
+    window.stationsCount = parseInt(
+        pfad.getElementsByTagName("StationsCount")[0].textContent
+    );
+
+    // stationen auslesen
+    const stationXML = [...pfad.getElementsByTagName("Station")];
+
+    // mapping auf die window.stations struktur
+    window.stations = stationXML.map(s => ({
+        name: s.getElementsByTagName("Name")[0].textContent,
+        url: s.getElementsByTagName("Url")[0].textContent,
+        icon: s.getElementsByTagName("Icon")[0].textContent,
+        koords: {
+            x: parseInt(s.getElementsByTagName("X")[0].textContent),
+            y: parseInt(s.getElementsByTagName("Y")[0].textContent)
+        }
+    }));
+
+
+    // HIER ALLES LADEN WAS NACH DEM LADEN DER XML GEMACHT WIRD:
+
+    // setzt den titel der seite
+    document.title = window.urlName;
+
+    // baut das submenü unter der karte auf
+    submenu(window.stations);
+
+    // legt hier die anzahl der stationen in der fortschrittsanzeige oben fest
+    statusleisteSetzen();
+
+    // setzt die navigationselemente für die Stationen auf die Karte
+    // Karte ist hier noch nicht geladen, daher verlegt in Startseite.html
+    //stationenAufKarteSetzen();
+
 }
 
-// setzt den titel der seite
-document.title = window.urlName;
-
-// baut das submenü unter der karte auf
-submenu(window.stations);
-
-// legt hier die anzahl der stationen in der fortschrittsanzeige oben fest
-statusleisteSetzen();
-
-
+// setzt die einträge der stationen im submenü
 function submenu(items) {
     const submenu = document.getElementById("karte-submenu");
     submenu.innerHTML = ""; // vorher leeren, nötig bei mehreren Pfaden in der Zukunft?
@@ -64,7 +112,8 @@ function submenu(items) {
         a.textContent = item.name;
         // hier ist der URL aufruf eingebaut
         a.onclick = function () {
-            loadSection(item.url);
+            // zusammenbauen aus ordnerPfad (da liegen alle bilder etc zum jeweiligen lehrpfad) und der URL der jeweiligen station 
+            loadSection(window.ordnerPath + "/" + item.url);
             return false;
         };
         // hinzufügen an das menü unter der karte
@@ -81,29 +130,132 @@ function statusleisteSetzen() {
 
     // einzelne stationen erzeugen
     for (let i = 0; i < window.stationsCount; i++) {
+
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('progress-item');
+
         const img = document.createElement('img');
         img.classList.add('progress-img');
 
         const nummer = i + 1;
 
-        let bildPfad = `./Bilder/NavStationen${nummer}.png`;
+        let bildPfad = `${window.ordnerPath}/Bilder/NavStationen${nummer}.png`;
 
         // Wenn die station abgeschlossen war als abgeschlossen markieren
         if (window.stationsComplete.includes(i)) {
-            bildPfad = `./Bilder/NavStationenComp${nummer}.png`;
+            bildPfad = `${window.ordnerPath}/Bilder/NavStationenComp${nummer}.png`;
         }
 
         img.src = bildPfad;
         img.style.cursor = "pointer"; // macht Mauszeiger zum "klicken-zeiger"
         img.addEventListener("click", (event) => { // legt ein event fest das klickbarkeit der bilder erlaubt
             const station = window.stations[i];
-            loadSection(station.url); // läd entsprechende section beim klick
+            loadSection(window.ordnerPath + "/" + station.url); // läd entsprechende section beim klick
         });
 
-        progressContainer.appendChild(img);
+        // Nummer von der Station
+        const label = document.createElement('span');
+        label.classList.add('progress-number');
+        label.textContent = nummer;
+
+        // nummer und stationsbild
+        wrapper.appendChild(img);
+        wrapper.appendChild(label);
+        progressContainer.appendChild(wrapper);
     }
 }
-//
-function stationenSetzen() {
-    
+
+async function ladeEinleitungstext() {
+    // wenn es keinen pfad zum projekt gibt einfach zurückgehen und funktion überspringen
+    if (!window.ordnerPath) return;
+
+    const einleitungsContainer = document.getElementById("einleitung");
+    const dateiPfad = `${window.ordnerPath}/Einführungstext.html`;
+
+    try {
+        const res = await fetch(dateiPfad);
+        if (!res.ok) {
+            einleitungsContainer.innerHTML = ""; // keine Datei → leerer Bereich
+            return;
+        }
+        const html = await res.text();
+        einleitungsContainer.innerHTML = html;
+    } catch (err) {
+        console.warn("Einführungstext konnte nicht geladen werden:", err);
+        einleitungsContainer.innerHTML = "";
+    }
+}
+
+// hier werden die stationen auf der karte gesetzt
+function stationenAufKarteSetzen() {
+    // auch hier falls es keine daten gibt zurückgehen
+    if (!window.stations || window.stations.length === 0) return;
+
+    const karte = document.getElementById("karte");
+    // wenn es keine karte gibt werden keine icons gesetzt, daher hier funktion beenden
+    if (!karte) return; // ❗ KEINE KARTE → nichts tun
+    const karteImg = karte.querySelector("img");
+
+    // alte Stationsicons entfernen
+    karte.querySelectorAll(".karte-station").forEach(e => e.remove());
+
+    const karteOriginalBreite = 1850; 
+    const karteOriginalHoehe = 1459;
+
+    const scaleX = karteImg.clientWidth / karteOriginalBreite;
+    const scaleY = karteImg.clientHeight / karteOriginalHoehe;
+
+    window.stations.forEach((station, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("karte-station");
+
+        // Skalierte Position
+        wrapper.style.left = (station.koords.x * scaleX) + "px";
+        wrapper.style.top  = (station.koords.y * scaleY) + "px";
+
+        const img = document.createElement("img");
+        img.src = `${window.ordnerPath}/Bilder/NavStationen${index + 1}.png`;
+
+        const nummer = document.createElement("span");
+        nummer.classList.add("nummer");
+        nummer.textContent = index + 1;
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(nummer);
+
+        wrapper.addEventListener("click", () => {
+            loadSection(window.ordnerPath + "/" + station.url);
+        });
+
+        karte.appendChild(wrapper);
+    });
+}
+
+function ladeDefaultAnsicht() {
+
+    window.urlName = "";
+    window.ordnerPath = null;
+    window.stations = [];
+    window.stationsCount = 0;
+
+    // navigation zurücksetzen
+    document.getElementById("karte-submenu").innerHTML = "";
+    document.getElementById("progress-container").innerHTML = "";
+
+    ladeDefaultEinleitungstext();
+}
+
+async function ladeDefaultEinleitungstext() {
+    const einleitungsContainer = document.getElementById("einleitung");
+
+    try {
+        const res = await fetch("Einführungstext.html");
+        if (!res.ok) {
+            einleitungsContainer.innerHTML = "";
+            return;
+        }
+        einleitungsContainer.innerHTML = await res.text();
+    } catch {
+        einleitungsContainer.innerHTML = "";
+    }
 }

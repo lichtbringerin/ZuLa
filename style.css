@@ -1,11 +1,3 @@
-
-/*
-----------------------------------------------------
-OPTIMIERTER CSS CODE 
-----------------------------------------------------
-*/
-
-
 /*alle elemente gleich setzen, border box für konsistente abstandssberechnungen*/
 *,
 *::after,
@@ -40,6 +32,10 @@ OPTIMIERTER CSS CODE
   z-index: 12;
 }
 
+#content-container {
+  padding-top: 60px; /* Navbar-Höhe + extraplatz */
+}
+
 #progress-container {
   position: absolute;
   left: 50%;            /* Mitte horizontal */
@@ -52,11 +48,27 @@ OPTIMIERTER CSS CODE
 }
 
 .progress-img {
-  width: 30px;      
-  height: 30px;
+  width: 40px;      
+  height: 40px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
+}
+
+.progress-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 6px; /* optional */
+}
+
+.progress-number {
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    pointer-events: none; /* Klick geht durch zur Grafik */
 }
 
 .navbar-container input[type="checkbox"] {
@@ -196,9 +208,51 @@ OPTIMIERTER CSS CODE
   color: #117964;
 }
 
-/*style für die seiteninhalte (z.B. karte oder die einzelnen)*/
-  .page-section {
-    padding: 80px 20px 20px; /* Top padding to push below navbar */
-  }
+.einleitung-container {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px; /* Abstand zwischen Text und Karte */
+    font-size: 1rem;
+    line-height: 1.5;
+}
 
+
+/*style für die karte
+AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
+*/
+.karte-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.karte-bild {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.karte-station {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.karte-station img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Schwarze Nummer unten rechts */
+.karte-station .nummer {
+    position: absolute;
+    bottom: 1px;
+    right: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    pointer-events: none;
+}
 

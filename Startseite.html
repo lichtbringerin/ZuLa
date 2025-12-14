@@ -55,6 +55,20 @@
           if (menuToggle && menuToggle.checked) {
             menuToggle.checked = false;
           }
+          
+          // wird erst hier gemacht, damit die KArte Zeit hatte zu laden
+          // stationen nur dann setzen wenn auch wirklich ein lehrpfad vorliegt
+          if (projektId > 0 && url.includes("karte.html")) {
+            stationenAufKarteSetzen();
+            ladeEinleitungstext();
+          } else {
+            if (url.includes("karte.html")) {
+            //einleitungstext gibt es einen der sagt keine station ausgewählt
+            ladeDefaultAnsicht();
+            }
+          }
+
+
         })
         .catch(err => {
           document.getElementById('content-container').innerHTML = "<p>Fehler beim Laden der Seite.</p>";
@@ -66,6 +80,15 @@
     window.addEventListener("DOMContentLoaded", () => {
       loadSection('karte.html');
     });
+
+    // sorgt dafür , dass immer wenn das browserfenster geändert wird (z.B. beim zoomen) die icons neu geladen werden und somit nicht an falschen stellen auf der karte auftauchen
+    window.addEventListener("resize", () => {
+    // nur wenn die Karte gerade existiert
+      if (document.getElementById("karte")) {
+          stationenAufKarteSetzen();
+      }
+    });
+    
 
   </script>
 </body>
