@@ -1,117 +1,117 @@
-<section id="station1" class="station-container">
+<section class="station-container">
   <div class="content-wrapper">
-    <h2>Station 1, der Wald:</h2>
+
+    <h2>Station 1 – Der Wald</h2>
+
     <p>
-      Ein Wald ist nicht gleich ein Wald. 
-      Wälder kommen nicht nur auf der ganzen Welt verteilt in völlig verschiedenen Regionen vor. Sie unterscheiden sich auch stark in ihrer Ausprägung und den Pflanzen und Tieren die sich dort finden lassen. Zu den am weitesten verbreiteten Wäldern gehören Tropische Regenwälder, Tropische Trockenwälder, Subtropische Wälder bzw. Hartlaubwälder, Gemäßigte Laubwälder, Gemäßigte Nadel- und Mischwälder, Boreale Wälder (auch Taiga genannt), sowie Mangrovenwälder. Da Deutschland ganz in der gemäßigten Zone liegt, lassen sich bei uns hauptsächlich Gemäßigte Laub-, Nadel- und Mischwälder finden. Ausnahmen wie z.B. Auwälder (Wälder entlang von Flüssen und feuchten Gebieten, meist bestehend aus Erlen, Weiden und Eschen) oder Moorwälder kommen seltener vor. 
-      Wälder lassen sich aber auch noch anders einteilen:
-      In naturnahe Wälder und Forste. Ein Forst bezeichnet dabei einen von Menschen (wirtschaftlich) genutzten und verwalteten Wald. Da Bäume hier durch Menschen gepflanzt und gefällt werden, wirkt ein Forst deutlich aufgeräumter. Auch sind die meisten Bäume etwa gleichalt und es gibt wenig Totholz und Unterholz was als Nahrung oder Versteck dienen könnte. Ein Forst bietet daher weniger Arten einen Lebensraum als ein naturbelassener Wald.
-      Was denkst du, in welcher Art von Wald befindest du dich gerade?
+      Ein Wald ist nicht gleich ein Wald.
+      Wälder unterscheiden sich stark in ihrer Struktur, Nutzung und Artenvielfalt.
+      Neben naturnahen Wäldern gibt es auch Forste, die vom Menschen gezielt
+      bewirtschaftet werden.
+      <br><br>
+      Was denkst du: In welcher Art von Wald befindest du dich gerade?
     </p>
 
-    <div id="antworten-grid" class="grid-container">
-      <div class="antwort-box" data-richtig="false">Laubwald - naturbelassen</div>
-      <div class="antwort-box" data-richtig="false">Nadelwald - naturbelassen</div>
-      <div class="antwort-box" data-richtig="false">Mischwald - naturbelassen</div>
-      <div class="antwort-box" data-richtig="true">Laubwald - Forst</div>
-      <div class="antwort-box" data-richtig="false">Nadelwald - Forst</div>
-      <div class="antwort-box" data-richtig="false">Mischwald - Forst</div>
+    <!-- Antwortfelder -->
+    <div class="grid-container">
+
+      <div class="antwort-box" data-richtig="false">
+        Laubwald – naturbelassen
+      </div>
+
+      <div class="antwort-box" data-richtig="false">
+        Nadelwald – naturbelassen
+      </div>
+
+      <div class="antwort-box" data-richtig="false">
+        Mischwald – naturbelassen
+      </div>
+
+      <div class="antwort-box" data-richtig="true">
+        Laubwald – Forst
+      </div>
+
+      <div class="antwort-box" data-richtig="false">
+        Nadelwald – Forst
+      </div>
+
+      <div class="antwort-box" data-richtig="false">
+        Mischwald – Forst
+      </div>
+
     </div>
 
-    <div id="feedback" class="feedback" style="display:none;"></div>
+    <!-- Feedback -->
+    <div class="feedback" hidden></div>
 
-    <div id="vergleich-bild" class="vergleich" style="display:none;">
+    <!-- Lösung / Vergleich -->
+    <div class="vergleich" hidden>
       <p>
-        Wir befinden uns hier in einem <span id="richtiger-wald">Laubwald - Forst</span>, zu erkennen ist dies an <span id="unterschiede-vor-ort">dem gepflegten Erscheinungsbild, gleichaltrigen Bäumen und wenig Totholz</span>.
+        Wir befinden uns hier in einem <strong>Laubwald – Forst</strong>.
+        Erkennbar ist dies an gleichaltrigen Bäumen, wenig Totholz
+        und einem insgesamt gepflegten Erscheinungsbild.
       </p>
-      <p>
-        An diesem direkten Bildvergleich lässt sich leicht erkennen wie unterschiedlich ein naturbelassener Wald und ein Forst schon auf den ersten Blick wirken:
-      </p>
-      <img src="EinflussMensch/bilder/vergleich_wald.png" alt="Vergleich Wald - Forst" width="500">
+
+      <img
+        src="EinflussMensch/bilder/vergleich_wald.png"
+        alt="Vergleich naturbelassener Wald und Forst"
+        width="500"
+      >
     </div>
+
   </div>
 </section>
 
 <style>
+/* Seitenabstände + Scrollplatz */
 .content-wrapper {
   padding: 20px;
-  margin: 0 10px 50px 10px; /* Seitenabstand + Platz unten */
+  margin: 0 15px 80px;
 }
 
+/* Antwort-Raster (3 × 2) */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
-  grid-template-rows: repeat(2, auto); /* 2 Reihen */
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 20px;
 }
 
+/* Antwort-Boxen */
 .antwort-box {
   padding: 15px;
   border: 2px solid #444;
   border-radius: 8px;
   background-color: #f0f0f0;
   cursor: pointer;
-  text-align: center;
   font-weight: bold;
-  transition: background-color 0.2s, border-color 0.2s;
+  text-align: center;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .antwort-box:hover {
   background-color: #e0e0e0;
+  transform: scale(1.02);
 }
 
+/* Rückmeldung */
 .antwort-box.correct {
   background-color: #4caf50;
-  color: white;
-  border-color: #388e3c;
+  color: #fff;
 }
 
 .antwort-box.wrong {
   background-color: #f44336;
-  color: white;
-  border-color: #d32f2f;
+  color: #fff;
 }
 
 .feedback {
-  margin-top: 15px;
+  margin-top: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
-  font-size: 1.1rem;
 }
 
 .vergleich {
   margin-top: 20px;
 }
 </style>
-
-<script defer>
-document.addEventListener("click", function(e) {
-  // Prüfen, ob geklickt wurde auf eine antwort-box innerhalb einer station-container
-  if (!e.target.classList.contains("antwort-box")) return;
-
-  const box = e.target;
-  const container = box.closest(".station-container");
-  const feedback = container.querySelector("#feedback");
-  const vergleich = container.querySelector("#vergleich-bild");
-
-  // Bereits angezeigt → nichts tun
-  if (feedback.style.display === "block") return;
-
-  // Alle Boxen deaktivieren
-  container.querySelectorAll(".antwort-box").forEach(b => b.style.pointerEvents = "none");
-
-  // Feedback und Vergleichbild einblenden
-  feedback.style.display = "block";
-  vergleich.style.display = "block";
-
-  // Richtige / falsche Antwort markieren
-  if (box.dataset.richtig === "true") {
-    box.classList.add("correct");
-    feedback.textContent = "Richtig!";
-  } else {
-    box.classList.add("wrong");
-    feedback.textContent = "Nicht ganz korrekt.";
-    container.querySelector('.antwort-box[data-richtig="true"]').classList.add("correct");
-  }
-});
-</script>
