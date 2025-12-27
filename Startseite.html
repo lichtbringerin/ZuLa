@@ -21,19 +21,27 @@
         <span class="line line3"></span>
       </label>
 
+
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Zurück zur Karte
+      </button>
+
+
       <ul class="menu-items">
         <li>
-          <a href="#" onclick="loadSection('karte.html'); return false;">Karte</a>
+          <a href="#" onclick="loadSection('karte.html'); window.aktuelleStationId = null; return false;">Karte</a>
           <!-- hier werden die untermenüpunkte dynamisch geladen-->
           <ul id="karte-submenu" class="submenu"></ul>
         </li>
-        <li><a href="#" onclick="loadSection('InfoLK.html'); return false;">Info für LK</a></li>
-        <li><a href="#" onclick="loadSection('Kontakt.html'); return false;">Kontakt</a></li>
+        <li><a href="#" onclick="loadSection('InfoLK.html'); window.aktuelleStationId = null; return false;">Info für
+            LK</a></li>
+        <li><a href="#"
+            onclick="loadSection('Kontakt.html'); window.aktuelleStationId = null; return false;">Kontakt</a></li>
       </ul>
-      
+
     </div>
     <div id="progress-container"></div>
-    
+
   </nav>
 
   <!-- Container für dynamisch geladenen Inhalt -->
@@ -55,25 +63,27 @@
           if (menuToggle && menuToggle.checked) {
             menuToggle.checked = false;
           }
-          
-          // wird erst hier gemacht, damit die KArte Zeit hatte zu laden
+
+          // wird erst hier gemacht, damit die Karte Zeit hatte zu laden
           // stationen nur dann setzen wenn auch wirklich ein lehrpfad vorliegt
           if (projektId > 0 && url.includes("karte.html")) {
             stationenAufKarteSetzen();
             ladeEinleitungstext();
           } else {
             if (url.includes("karte.html")) {
-            //einleitungstext gibt es einen der sagt keine station ausgewählt
-            ladeDefaultAnsicht();
+              //einleitungstext gibt es einen der sagt keine station ausgewählt
+              ladeDefaultAnsicht();
             }
           }
 
-
+          // aktualisiert immer den Knopf am ende der seite der zur karte führt wenn man auf stationen oä ist 
+          updateKarteButton(url);
         })
         .catch(err => {
           document.getElementById('content-container').innerHTML = "<p>Fehler beim Laden der Seite.</p>";
           console.error("Ladefehler:", err);
         });
+
     }
 
     // Standardbereich laden "karte.html"
@@ -83,9 +93,9 @@
 
     // sorgt dafür , dass immer wenn das browserfenster geändert wird (z.B. beim zoomen) die icons neu geladen werden und somit nicht an falschen stellen auf der karte auftauchen
     window.addEventListener("resize", () => {
-    // nur wenn die Karte gerade existiert
+      // nur wenn die Karte gerade existiert
       if (document.getElementById("karte")) {
-          stationenAufKarteSetzen();
+        stationenAufKarteSetzen();
       }
     });
 
@@ -96,31 +106,31 @@
 
 <script>
   // dieser scriptteil ist verantwortlich für die mechanik der antwortauswahl wie bei der waldstation
-document.addEventListener("click", function (e) {
-  const box = e.target.closest(".antwort-box");
-  if (!box) return;
+  document.addEventListener("click", function (e) {
+    const box = e.target.closest(".antwort-box");
+    if (!box) return;
 
-  const station = box.closest(".station-container");
-  const feedback = station.querySelector(".feedback");
-  const vergleich = station.querySelector(".vergleich");
+    const station = box.closest(".station-container");
+    const feedback = station.querySelector(".feedback");
+    const vergleich = station.querySelector(".vergleich");
 
-  if (!feedback.hasAttribute("hidden")) return;
+    if (!feedback.hasAttribute("hidden")) return;
 
-  station.querySelectorAll(".antwort-box")
-    .forEach(b => b.style.pointerEvents = "none");
+    station.querySelectorAll(".antwort-box")
+      .forEach(b => b.style.pointerEvents = "none");
 
-  feedback.hidden = false;
-  vergleich.hidden = false;
+    feedback.hidden = false;
+    vergleich.hidden = false;
 
-  if (box.dataset.richtig === "true") {
-    box.classList.add("correct");
-    feedback.textContent = "Richtig!";
-  } else {
-    box.classList.add("wrong");
-    feedback.textContent = "Nicht ganz korrekt.";
-    station.querySelector('[data-richtig="true"]').classList.add("correct");
-  }
-});
+    if (box.dataset.richtig === "true") {
+      box.classList.add("correct");
+      feedback.textContent = "Richtig!";
+    } else {
+      box.classList.add("wrong");
+      feedback.textContent = "Nicht ganz korrekt.";
+      station.querySelector('[data-richtig="true"]').classList.add("correct");
+    }
+  });
 </script>
 
 

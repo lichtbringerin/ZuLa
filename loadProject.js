@@ -18,10 +18,10 @@ async function initialisierung() {
     const parser = new DOMParser();
     globalXML = parser.parseFromString(xmlString, "application/xml");
 
-   // 🔹 NUR wenn eine ID existiert
+    // 🔹 NUR wenn eine ID existiert
     if (projektId) {
         loadLehrpfad(projektId, globalXML);
-    } 
+    }
 }
 
 initialisierung();
@@ -37,6 +37,7 @@ window.stations = [
     {},
     {}
 ];
+window.aktuelleStationId = 0;
 
 // alles was nach dem laden der xml gemacht werden muss unten in der funktion aufrufen, sonst bekommt man leere ergebnisse
 // weil die xml noch nicht eingelesen ist
@@ -105,7 +106,7 @@ function submenu(items) {
     submenu.innerHTML = ""; // vorher leeren, nötig bei mehreren Pfaden in der Zukunft?
 
     // für jedes festgelegte item in der liste der stationen werden name und URL aufruf hinterlegt
-    items.forEach(item => {
+    items.forEach((item, index) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = "#";
@@ -114,6 +115,7 @@ function submenu(items) {
         a.onclick = function () {
             // zusammenbauen aus ordnerPfad (da liegen alle bilder etc zum jeweiligen lehrpfad) und der URL der jeweiligen station 
             loadSection(window.ordnerPath + "/" + item.url);
+            window.aktuelleStationId = index + 1;
             return false;
         };
         // hinzufügen an das menü unter der karte
@@ -121,6 +123,49 @@ function submenu(items) {
         submenu.appendChild(li);
     });
 }
+
+// Funktion für den zurück auf die karte button bzw. den station abschliessen button
+// Wird aufgerufen, nachdem eine Section geladen wird
+function updateKarteButton(url) {
+    const btn = document.getElementById("karte-button");
+
+    // Auf der Karte → Button ausblenden
+    if (url.includes("karte.html")) {
+        window.aktuelleStationId = null;
+        btn.style.display = "none";
+        return;
+    }
+
+    // Nicht auf Karte → Button anzeigen
+    btn.style.display = "block";
+
+    // Änderung des Button-Textes
+    if (window.aktuelleStationId) {
+        btn.textContent = "Station abschließen";
+    } else {
+        btn.textContent = "Zurück zur Karte";
+    }
+}
+
+// Wird beim Klick auf den Button ausgeführt
+function navigationsButtonClick() {
+
+    // Falls eine Station aktiv ist → als abgeschlossen markieren
+    if (window.aktuelleStationId) {
+        stationsComplete.push(window.aktuelleStationId - 1); // minus eins da in der statusleiste bei 0 startet aber stations IDS ab 1 starten
+        console.log("Station abgeschlossen:", window.aktuelleStationId);
+        window.aktuelleStationId = null;
+
+        // Statusleiste sofort aktualisieren
+        statusleisteSetzen();
+        // stationsicons aktualisieren
+        stationenAufKarteSetzen();
+    }
+
+    // Zurück zur Karte
+    loadSection("karte.html");
+}
+
 
 // setzt die fortschrittsanzeige
 function statusleisteSetzen() {
@@ -139,17 +184,18 @@ function statusleisteSetzen() {
 
         const nummer = i + 1;
 
-        let bildPfad = `${window.ordnerPath}/Bilder/NavStationen${nummer}.png`;
+        let bildPfad = `${window.ordnerPath}/Bilder/NavStationen.png`;
 
         // Wenn die station abgeschlossen war als abgeschlossen markieren
         if (window.stationsComplete.includes(i)) {
-            bildPfad = `${window.ordnerPath}/Bilder/NavStationenComp${nummer}.png`;
+            bildPfad = `${window.ordnerPath}/Bilder/NavStationenComp.png`;
         }
 
         img.src = bildPfad;
         img.style.cursor = "pointer"; // macht Mauszeiger zum "klicken-zeiger"
         img.addEventListener("click", (event) => { // legt ein event fest das klickbarkeit der bilder erlaubt
             const station = window.stations[i];
+            window.aktuelleStationId = i + 1;
             loadSection(window.ordnerPath + "/" + station.url); // läd entsprechende section beim klick
         });
 
@@ -199,7 +245,7 @@ function stationenAufKarteSetzen() {
     // alte Stationsicons entfernen
     karte.querySelectorAll(".karte-station").forEach(e => e.remove());
 
-    const karteOriginalBreite = 1850; 
+    const karteOriginalBreite = 1850;
     const karteOriginalHoehe = 1459;
 
     const scaleX = karteImg.clientWidth / karteOriginalBreite;
@@ -211,10 +257,14 @@ function stationenAufKarteSetzen() {
 
         // Skalierte Position
         wrapper.style.left = (station.koords.x * scaleX) + "px";
-        wrapper.style.top  = (station.koords.y * scaleY) + "px";
+        wrapper.style.top = (station.koords.y * scaleY) + "px";
 
         const img = document.createElement("img");
-        img.src = `${window.ordnerPath}/Bilder/NavStationen${index + 1}.png`;
+        img.src = `${window.ordnerPath}/Bilder/NavStationen.png`;
+
+        if (window.stationsComplete.includes(index)) {
+            img.src = `${window.ordnerPath}/Bilder/NavStationenComp.png`;
+        }
 
         const nummer = document.createElement("span");
         nummer.classList.add("nummer");
@@ -225,6 +275,7 @@ function stationenAufKarteSetzen() {
 
         wrapper.addEventListener("click", () => {
             loadSection(window.ordnerPath + "/" + station.url);
+            window.aktuelleStationId = index + 1;
         });
 
         karte.appendChild(wrapper);
