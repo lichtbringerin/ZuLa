@@ -16,7 +16,7 @@
 }
 
 /*wird die checkbox(der button des hamburgermenüs) angehackt öffnet sich das menü*/
-#menu-toggle:checked ~ .menu-items {
+#menu-toggle:checked~.menu-items {
   transform: translateX(0);
 }
 
@@ -29,26 +29,35 @@
   color: #000;
   opacity: 0.85;
   height: 50px;
-  z-index: 12;
+  z-index: 90;
 }
 
 #content-container {
-  padding-top: 60px; /* Navbar-Höhe + extraplatz */
+  padding-top: 50px;
+  /* Navbar-Höhe + extraplatz */
+}
+
+.content-wrapper {
+  padding-top: 70px;
 }
 
 #progress-container {
   position: absolute;
-  left: 50%;            /* Mitte horizontal */
-  top: 50%;             /* Mitte vertikal */
-  transform: translate(-50%, -50%); /* exakt zentrieren */
+  left: 50%;
+  /* Mitte horizontal */
+  top: 50%;
+  /* Mitte vertikal */
+  transform: translate(-50%, -50%);
+  /* exakt zentrieren */
   display: flex;
   gap: 8px;
   align-items: center;
   height: 32px;
+  z-index: 80;
 }
 
 .progress-img {
-  width: 40px;      
+  width: 40px;
   height: 40px;
   object-fit: contain;
   display: block;
@@ -56,19 +65,21 @@
 }
 
 .progress-item {
-    position: relative;
-    display: inline-block;
-    margin-right: 6px; /* optional */
+  position: relative;
+  display: inline-block;
+  margin-right: 6px;
+  /* optional */
 }
 
 .progress-number {
-    position: absolute;
-    bottom: 2px;
-    right: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
-    pointer-events: none; /* Klick geht durch zur Grafik */
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none;
+  /* Klick geht durch zur Grafik */
 }
 
 .navbar-container input[type="checkbox"] {
@@ -78,93 +89,94 @@
   width: 30px;
   top: 20px;
   left: 5px;
-  z-index: 5;
+  z-index: 90;
   opacity: 0;
 }
 
 .navbar-container .hamburger-lines {
-    display: block;
-    height: 23px;
-    width: 35px;
-    position: absolute;
-    top: 14px;
-    left: 15px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  display: block;
+  height: 23px;
+  width: 35px;
+  position: absolute;
+  top: 14px;
+  left: 15px;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .navbar-container .hamburger-lines .line {
-    display: block;
-    height: 4px;
-    width: 100%;
-    border-radius: 10px;
-    background: #333;
-  }
+.navbar-container .hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: #333;
+}
 
-  .navbar-container .hamburger-lines .line1 {
-    transform-origin: 0% 0%;
-    transition: transform 0.4s ease-in-out;
-  }
+.navbar-container .hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
 
-  .navbar-container .hamburger-lines .line2 {
-    transition: transform 0.2s ease-in-out;
-  }
+.navbar-container .hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
 
-  .navbar-container .hamburger-lines .line3 {
-    transform-origin: 0% 100%;
-    transition: transform 0.4s ease-in-out;
-  }
+.navbar-container .hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
 
-  .navbar .menu-items {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80%; 
-    padding-top: 100px;
-    background: #fff;
-    height: 100vh;
-    max-width: 300px;
-    transform: translate(-150%);
-    display: flex;
-    flex-direction: column;
-    margin-left: -40px;
-    padding-left: 50px;
-    transition: transform 0.5s ease-in-out;
-    box-shadow: 5px 0px 10px 0px #aaa;
-  }
+.navbar .menu-items {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  padding-top: 100px;
+  background: #fff;
+  z-index: 100;
+  height: 100vh;
+  max-width: 300px;
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  margin-left: -40px;
+  padding-left: 50px;
+  transition: transform 0.5s ease-in-out;
+  box-shadow: 5px 0px 10px 0px #aaa;
+}
 
-  .navbar .menu-items li {
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-    font-weight: 500;
-  }
+.navbar .menu-items li {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
 
-  .logo {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 2rem;
-  }
+.logo {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 2rem;
+}
 
-  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
-    transform: translateX(0);
-  }
+.navbar-container input[type="checkbox"]:checked~.menu-items {
+  transform: translateX(0);
+}
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
-    transform: rotate(35deg);
-  }
+.navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+  transform: rotate(35deg);
+}
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
-    transform: scaleY(0);
-  }
+.navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+  transform: scaleY(0);
+}
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
-    transform: rotate(-35deg);
-  }
+.navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+  transform: rotate(-35deg);
+}
 
-.menu-items > li {
+.menu-items>li {
   list-style: none;
   margin-left: 1.5rem;
   margin-bottom: 0.5rem;
@@ -185,7 +197,7 @@
 }
 
 /*style für das untermenü in der hamburgernav*/
-  .submenu {
+.submenu {
   list-style: none;
   padding-left: 1.5rem;
   margin-top: 1rem;
@@ -199,7 +211,8 @@
 }
 
 .menu-items .submenu a {
-  color: #666;              /* Etwas hellerer Farbton */
+  color: #666;
+  /* Etwas hellerer Farbton */
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
@@ -209,11 +222,13 @@
 }
 
 .einleitung-container {
-    width: 100%;
-    padding: 20px;
-    margin-bottom: 20px; /* Abstand zwischen Text und Karte */
-    font-size: 1rem;
-    line-height: 1.5;
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  /* Abstand zwischen Text und Karte */
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 
@@ -221,9 +236,10 @@
 AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 */
 .karte-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .karte-bild {
@@ -233,29 +249,30 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 }
 
 .karte-station {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    
-    cursor: pointer;
-    z-index: 10;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+  z-index: 10;
 }
 
 .karte-station img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* sorgt dafür, dass bilder nicht verzerrt werden sondern einfach kleiner / größer skaliert werden*/
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* sorgt dafür, dass bilder nicht verzerrt werden sondern einfach kleiner / größer skaliert werden*/
 }
 
 /* Schwarze Nummer unten rechts */
 .karte-station .nummer {
-    position: absolute;
-    bottom: 1px;
-    right: 4px;
-    font-size: 13px;
-    font-weight: bold;
-    color: black;
-    pointer-events: none;
+  position: absolute;
+  bottom: 1px;
+  right: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+  pointer-events: none;
 }
 
 /*Button für abschliessen von Stationen / zurückgelangen*/
@@ -271,7 +288,7 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
   border: none;
   cursor: pointer;
   text-align: center;
-  z-index: 9999;
+  z-index: 50;
 }
 
 .bottom-button:hover {

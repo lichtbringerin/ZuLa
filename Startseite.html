@@ -21,23 +21,18 @@
         <span class="line line3"></span>
       </label>
 
+      <ul class="menu-items">
+        <li>
+          <a href="Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="InfoLK.html">Info für LK</a></li>
+        <li><a href="Kontakt.html">Kontakt</a></li>
+      </ul>
 
       <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
         Zurück zur Karte
       </button>
-
-
-      <ul class="menu-items">
-        <li>
-          <a href="#" onclick="loadSection('karte.html'); window.aktuelleStationId = null; return false;">Karte</a>
-          <!-- hier werden die untermenüpunkte dynamisch geladen-->
-          <ul id="karte-submenu" class="submenu"></ul>
-        </li>
-        <li><a href="#" onclick="loadSection('InfoLK.html'); window.aktuelleStationId = null; return false;">Info für
-            LK</a></li>
-        <li><a href="#"
-            onclick="loadSection('Kontakt.html'); window.aktuelleStationId = null; return false;">Kontakt</a></li>
-      </ul>
 
     </div>
     <div id="progress-container"></div>
@@ -45,9 +40,38 @@
   </nav>
 
   <!-- Container für dynamisch geladenen Inhalt -->
-  <div id="content-container"></div>
+  <div id="content-container">
+    <section id="einleitung" class="einleitung-container">
+      Willkommen bei den Lehrpfäden des Botanischen Gartens Würzburgs.<br>
+      Bitte scannen Sie einen QR-Code am Eingang oder bei einer der Stationen, um einen Lehrpfad zu beginnen.
+    </section>
+    <section id="karte" class="karte-container">
+      <img src="Bilder/karte.png" class="karte-bild" alt="Karte" width="500" height="375" />
+    </section>
+
+  </div>
 
   <script>
+    //direkte Seitenlinks für Stationen
+    function openStation(url) {
+      window.location.href = url;
+    }
+
+    // Button "Station abschließen" navigiert zurück zur Karte
+    function navigationsButtonClick() {
+      window.location.href = "karte.html";
+    }
+
+    // Resize-Funktion für Karte und Elemente bleibt
+    window.addEventListener("resize", () => {
+      if (document.getElementById("karte")) {
+        stationenAufKarteSetzen();
+      }
+    });
+  </script>
+
+
+  <!--   <script>
     // funktion die die oben im menü geklickten URLS aufruft, z.B. Karte, Kontakt etc.
     function loadSection(url) {
       fetch(url)
@@ -99,12 +123,12 @@
       }
     });
 
-  </script>
+  </script> -->
 </body>
 
 
 
-<script>
+<!-- <script>
   // dieser scriptteil ist verantwortlich für die mechanik der antwortauswahl wie bei der waldstation
   document.addEventListener("click", function (e) {
     const box = e.target.closest(".antwort-box");
@@ -131,7 +155,7 @@
       station.querySelector('[data-richtig="true"]').classList.add("correct");
     }
   });
-</script>
+</script> -->
 
 
 

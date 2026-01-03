@@ -6,32 +6,50 @@
 const urlParams = new URLSearchParams(window.location.search);
 const projektId = urlParams.get("id");
 
+
 // festlegen von globalen variablen
 
 let globalXML = null;
 // XML daten Laden, also die Konfiguration der Pfade
 // MUSS initial asynchron laufen, sonst gibt es später fehler wenn das xml nicht rechtzeitig lädt!!
 async function initialisierung() {
-    const res = await fetch('./LehrpfadeConfig.xml');
+    const res = await fetch('/LehrpfadeConfig.xml');
     const xmlString = await res.text();
 
     const parser = new DOMParser();
     globalXML = parser.parseFromString(xmlString, "application/xml");
 
     // 🔹 NUR wenn eine ID existiert
-    if (projektId) {
-        loadLehrpfad(projektId, globalXML);
+    const aktiveProjektId =
+        urlParams.get("id") || localStorage.getItem("projektId");
+
+    if (!aktiveProjektId) {
+        console.warn("Kein aktiver Lehrpfad");
+        return;
     }
+    loadLehrpfad(aktiveProjektId, globalXML);
 }
 
-initialisierung();
+document.addEventListener("DOMContentLoaded", () => {
+    initialisierung();
+});
+
+//hilfefunktion die saubere Rootpaths erlaubt
+function rootPath(path) {
+    return "/" + path.replace(/^\/+/, "");
+}
 
 // der name der später in der URL angezeigt wird
 window.urlName = "";
 // setzt die anzahl der stationen fest (oben in der )
 window.stationsCount = 0;
 // anzahl der abgeschlossenen stationen
-window.stationsComplete = [];
+window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+// aktualisiert die stationsComplete variable. Nötig, sonst gehen die infos beim seitenwechsel verloren
+function updateStationsCompleteStorage() {
+    localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+}
+
 // legt die dateien, namen und koordinaten auf der karte der stationen fest
 window.stations = [
     {},
@@ -53,13 +71,17 @@ function loadLehrpfad(ID, xml) {
 
     // den lehrpfad raussuchen der mit project id übereinstimmt
     const pfad = lehrpfade.find(p =>
-        p.getElementsByTagName("PfadId")[0].textContent === projektId
+        p.getElementsByTagName("PfadId")[0].textContent === ID
     );
 
     //fehlerbehandlung falls id im qr code falsch
     if (!pfad) {
-        throw new Error("Kein Lehrpfad mit ID " + projektId);
+        console.log("Fehler: Kein Lehrpfad mit ID " + ID);
+        return;
     }
+
+    // speichert die project ID local
+    localStorage.setItem("projektId", ID);
 
     // setzt werte
     window.urlName = pfad.getElementsByTagName("UrlName")[0].textContent;
@@ -75,7 +97,6 @@ function loadLehrpfad(ID, xml) {
     window.stations = stationXML.map(s => ({
         name: s.getElementsByTagName("Name")[0].textContent,
         url: s.getElementsByTagName("Url")[0].textContent,
-        icon: s.getElementsByTagName("Icon")[0].textContent,
         koords: {
             x: parseInt(s.getElementsByTagName("X")[0].textContent),
             y: parseInt(s.getElementsByTagName("Y")[0].textContent)
@@ -95,9 +116,37 @@ function loadLehrpfad(ID, xml) {
     statusleisteSetzen();
 
     // setzt die navigationselemente für die Stationen auf die Karte
-    // Karte ist hier noch nicht geladen, daher verlegt in Startseite.html
-    //stationenAufKarteSetzen();
+    // Karte initialisieren, sobald das Kartenbild geladen ist
+    const karteImg = document.querySelector("#karte img");
 
+    if (karteImg) {
+        if (karteImg.complete) {
+            // Bild ist bereits geladen (Cache)
+            stationenAufKarteSetzen();
+        } else {
+            // Bild lädt noch
+            karteImg.addEventListener("load", () => {
+                stationenAufKarteSetzen();
+            }, { once: true });
+        }
+    }
+
+    // wenn nichts im einleitungs container steht = lehrpfad geladen, wird hier ein anderer text eingeblendet der die bedienung
+    // vom lehrpfad erklärt
+    const einleitungContainer = document.getElementById("einleitung");
+    if (einleitungContainer) {
+        einleitungContainer.innerHTML = `
+            <p>
+                Willkommen beim Lehrpfad ${window.urlName}.<br>
+                Um mit einer Station zu starten, klicke die jeweilige Station an oder scanne einen QR-Code.
+            </p>
+        `;
+    }
+
+}
+
+function loadSection(url) {
+    window.location.href = rootPath(url);
 }
 
 // setzt die einträge der stationen im submenü
@@ -109,15 +158,15 @@ function submenu(items) {
     items.forEach((item, index) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.href = "#";
+        a.href = rootPath(`${window.ordnerPath}/${item.url}`);
         a.textContent = item.name;
         // hier ist der URL aufruf eingebaut
-        a.onclick = function () {
+        /* a.onclick = function () {
             // zusammenbauen aus ordnerPfad (da liegen alle bilder etc zum jeweiligen lehrpfad) und der URL der jeweiligen station 
             loadSection(window.ordnerPath + "/" + item.url);
             window.aktuelleStationId = index + 1;
             return false;
-        };
+        }; */
         // hinzufügen an das menü unter der karte
         li.appendChild(a);
         submenu.appendChild(li);
@@ -130,8 +179,8 @@ function updateKarteButton(url) {
     const btn = document.getElementById("karte-button");
 
     // Auf der Karte → Button ausblenden
-    if (url.includes("karte.html")) {
-        window.aktuelleStationId = null;
+    if (url.includes("Startseite.html")) {
+        /*window.aktuelleStationId = null;*/
         btn.style.display = "none";
         return;
     }
@@ -140,11 +189,12 @@ function updateKarteButton(url) {
     btn.style.display = "block";
 
     // Änderung des Button-Textes
-    if (window.aktuelleStationId) {
+    if (window.aktuelleStationId && !window.stationsComplete.includes(aktuelleStationId)) {
         btn.textContent = "Station abschließen";
     } else {
         btn.textContent = "Zurück zur Karte";
     }
+    // btn.textContent = window.aktuelleStationId ? "Station abschließen" : "Zurück zur Karte"; fancy? 
 }
 
 // Wird beim Klick auf den Button ausgeführt
@@ -153,9 +203,10 @@ function navigationsButtonClick() {
     // Falls eine Station aktiv ist → als abgeschlossen markieren
     if (window.aktuelleStationId) {
         stationsComplete.push(window.aktuelleStationId - 1); // minus eins da in der statusleiste bei 0 startet aber stations IDS ab 1 starten
-        console.log("Station abgeschlossen:", window.aktuelleStationId);
         window.aktuelleStationId = null;
 
+        // Abgeschlossene Stationen lokal speichern, sonst geht die info beim seitenwechsel verloren
+        updateStationsCompleteStorage();
         // Statusleiste sofort aktualisieren
         statusleisteSetzen();
         // stationsicons aktualisieren
@@ -163,7 +214,7 @@ function navigationsButtonClick() {
     }
 
     // Zurück zur Karte
-    loadSection("karte.html");
+    window.location.href = "/Startseite.html";
 }
 
 
@@ -184,19 +235,17 @@ function statusleisteSetzen() {
 
         const nummer = i + 1;
 
-        let bildPfad = `${window.ordnerPath}/Bilder/NavStationen.png`;
-
-        // Wenn die station abgeschlossen war als abgeschlossen markieren
+        let bildPfad = `/NavStationen.png`;
         if (window.stationsComplete.includes(i)) {
-            bildPfad = `${window.ordnerPath}/Bilder/NavStationenComp.png`;
+            bildPfad = `/NavStationenComp.png`;
         }
-
         img.src = bildPfad;
+
         img.style.cursor = "pointer"; // macht Mauszeiger zum "klicken-zeiger"
         img.addEventListener("click", (event) => { // legt ein event fest das klickbarkeit der bilder erlaubt
             const station = window.stations[i];
             window.aktuelleStationId = i + 1;
-            loadSection(window.ordnerPath + "/" + station.url); // läd entsprechende section beim klick
+            loadSection(`/${window.ordnerPath}/${station.url}`); // läd entsprechende section beim klick
         });
 
         // Nummer von der Station
@@ -211,7 +260,7 @@ function statusleisteSetzen() {
     }
 }
 
-async function ladeEinleitungstext() {
+/*async function ladeEinleitungstext() {
     // wenn es keinen pfad zum projekt gibt einfach zurückgehen und funktion überspringen
     if (!window.ordnerPath) return;
 
@@ -230,7 +279,7 @@ async function ladeEinleitungstext() {
         console.warn("Einführungstext konnte nicht geladen werden:", err);
         einleitungsContainer.innerHTML = "";
     }
-}
+}*/
 
 // hier werden die stationen auf der karte gesetzt
 function stationenAufKarteSetzen() {
@@ -240,7 +289,8 @@ function stationenAufKarteSetzen() {
     const karte = document.getElementById("karte");
     // wenn es keine karte gibt werden keine icons gesetzt, daher hier funktion beenden
     if (!karte) return; // ❗ KEINE KARTE → nichts tun
-    const karteImg = karte.querySelector("img");
+    const karteImg = karte.querySelector(".karte-bild");
+    if (!karteImg || karteImg.clientWidth === 0) return;
 
     // alte Stationsicons entfernen
     karte.querySelectorAll(".karte-station").forEach(e => e.remove());
@@ -260,10 +310,9 @@ function stationenAufKarteSetzen() {
         wrapper.style.top = (station.koords.y * scaleY) + "px";
 
         const img = document.createElement("img");
-        img.src = `${window.ordnerPath}/Bilder/NavStationen.png`;
-
+        img.src = `/NavStationen.png`;;
         if (window.stationsComplete.includes(index)) {
-            img.src = `${window.ordnerPath}/Bilder/NavStationenComp.png`;
+            img.src = `/NavStationenComp.png`;
         }
 
         const nummer = document.createElement("span");
@@ -274,7 +323,7 @@ function stationenAufKarteSetzen() {
         wrapper.appendChild(nummer);
 
         wrapper.addEventListener("click", () => {
-            loadSection(window.ordnerPath + "/" + station.url);
+            loadSection(`${window.ordnerPath}/${station.url}`);
             window.aktuelleStationId = index + 1;
         });
 
@@ -282,7 +331,7 @@ function stationenAufKarteSetzen() {
     });
 }
 
-function ladeDefaultAnsicht() {
+/*function ladeDefaultAnsicht() {
 
     window.urlName = "";
     window.ordnerPath = null;
@@ -296,17 +345,16 @@ function ladeDefaultAnsicht() {
     ladeDefaultEinleitungstext();
 }
 
-async function ladeDefaultEinleitungstext() {
+function ladeDefaultEinleitungstext() {
     const einleitungsContainer = document.getElementById("einleitung");
 
-    try {
-        const res = await fetch("Einführungstext.html");
-        if (!res.ok) {
-            einleitungsContainer.innerHTML = "";
-            return;
-        }
-        einleitungsContainer.innerHTML = await res.text();
-    } catch {
-        einleitungsContainer.innerHTML = "";
-    }
-}
+    if (!einleitungsContainer) return;
+
+    // Standardtext direkt einfügen
+    einleitungsContainer.innerHTML = `
+        <section id="Einführungstext" class="page-section">
+          Willkommen bei den Lehrpfäden des Botanischen Gartens Würzburgs.<br>
+          Bitte scannen Sie einen QR-Code am Eingang oder bei einer der Stationen, um einen Lehrpfad zu beginnen.
+        </section>
+    `;
+}*/
