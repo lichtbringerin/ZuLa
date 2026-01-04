@@ -1,40 +1,136 @@
-<section class="station-container">
-  <div class="content-wrapper">
+<!DOCTYPE html>
+<html lang="de">
 
-    <h2>Station 5 – Die Nutzpflanzenterasse</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../loadProject.js" defer></script>
+</head>
 
-    <p>
-      Hier hat alles begonnen.
-      <br><br>
-      Zwar nicht die direkt hier im botanischen Garten Würzburgs, aber zumindest mit den Pflanzen die man hier sehen
-      kann. Denn vor ca. 14.000 Jahren begannen die Menschen langsam sesshaft zu werden. Ausgelöst wurde dies doch viele
-      verschiedene Faktoren. Einerseits wurde das Klima zum Ende der Eiszeit immer wärmer, wodurch Nahrung einfacher zu
-      finden war und auch mehr Pflanzen in größeren Mengen zur Verfügung standen, andererseits wurden Gruppen von
-      Menschen durch die besseren Bedingungen auch immer größer und das Umherziehen mit zunehmender Gruppengröße
-      schwerer. Im Verlauf der nächsten Jahrtauschende wurden immer mehr Entdeckungen gemacht, welche einen sesshaften
-      Lebensstiel unterstützten. So zum Beispiel die Möglichkeit Pflanzen auszusäen, wodurch diese im Folgejahr an
-      derselben Stelle wieder zu wachsen anfingen. Bis dann jedoch wirklich aktiv Ackerbau und Viehzucht betrieben
-      wurden vergingen, zumindest hier in Europa, noch ca. 5.000 Jahre.
-      <br><br>
-      Menschen „züchteten“ dann durch wahrscheinlich unbewusste Auslese langsam die ersten Vorgänger unserer heutigen
-      Nutzpflanzen heran. Dies geschah z.B. dadurch, dass spezifisch die größten Körner herausgesucht wurden, oder die
-      Pflanzen deren Ähren sich beim Reifen nicht automatisch öffneten, was das Sammeln später leichter machte.
-      Es entwickelten sich also immer mehr Pflanzen, die sehr hohe Erträge liefern konnten und deren Ausbreitung durch
-      den Menschen beeinflusst wurde. Mit der Zeit fingen die MEnschen auch an ein gewisses Verständnis dafür zu entwickeln wie Pflanzen sich vermehren und versuchten gezielt bestimmte Eigenschaften zu vererben. Außerdem wurden immer mehr und bessere Werkzeuge entwickelt.
-      <br><br>
-      mendelsche regeln
-      <br><br>
-      genetik / genmanipulation
-      <br><br>
-      welche folgen hat das für die natur?
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
 
-    </p>
-</section>
+      <ul class="menu-items">
+        <li>
+          <a href="../Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="../InfoLK.html">Info für LK</a></li>
+        <li><a href="../Kontakt.html">Kontakt</a></li>
+      </ul>
 
-<style>
-  /* Seitenabstände + Scrollplatz */
-  .content-wrapper {
-    padding: 20px;
-    margin: 0 15px 80px;
-  }
-</style>
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Station abschliessen
+      </button>
+
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <div class="content-container">
+    <div class="content-wrapper">
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+
+
+      <h2>Station 5 – Die Nutzpflanzenterasse</h2>
+
+      <p>
+        Hier hat alles begonnen.
+        <br><br>
+        Zwar nicht die direkt hier im botanischen Garten Würzburgs, aber zumindest mit den Pflanzen die man hier
+        sehen
+        kann. Denn vor ca. 14.000 Jahren begannen die Menschen langsam sesshaft zu werden. Ausgelöst wurde dies doch
+        viele
+        verschiedene Faktoren. Einerseits wurde das Klima zum Ende der Eiszeit immer wärmer, wodurch Nahrung
+        einfacher zu
+        finden war und auch mehr Pflanzen in größeren Mengen zur Verfügung standen, andererseits wurden Gruppen von
+        Menschen durch die besseren Bedingungen auch immer größer und das Umherziehen mit zunehmender Gruppengröße
+        schwerer. Im Verlauf der nächsten Jahrtauschende wurden immer mehr Entdeckungen gemacht, welche einen
+        sesshaften
+        Lebensstiel unterstützten. So zum Beispiel die Möglichkeit Pflanzen auszusäen, wodurch diese im Folgejahr an
+        derselben Stelle wieder zu wachsen anfingen. Bis dann jedoch wirklich aktiv Ackerbau und Viehzucht betrieben
+        wurden vergingen, zumindest hier in Europa, noch ca. 5.000 Jahre.
+        <br><br>
+        Menschen „züchteten“ dann durch wahrscheinlich unbewusste Auslese langsam die ersten Vorgänger unserer
+        heutigen
+        Nutzpflanzen heran. Dies geschah z.B. dadurch, dass spezifisch die größten Körner herausgesucht wurden, oder
+        die
+        Pflanzen deren Ähren sich beim Reifen nicht automatisch öffneten, was das Sammeln später leichter machte.
+        Es entwickelten sich also immer mehr Pflanzen, die sehr hohe Erträge liefern konnten und deren Ausbreitung
+        durch
+        den Menschen beeinflusst wurde. Mit der Zeit fingen die MEnschen auch an ein gewisses Verständnis dafür zu
+        entwickeln wie Pflanzen sich vermehren und versuchten gezielt bestimmte Eigenschaften zu vererben. Außerdem
+        wurden immer mehr und bessere Werkzeuge entwickelt.
+        <br><br>
+        mendelsche regeln
+        <br><br>
+        genetik / genmanipulation
+        <br><br>
+        welche folgen hat das für die natur?
+
+      </p>
+
+
+      <style>
+        /* Seitenabstände + Scrollplatz */
+        .content-wrapper {
+          padding: 70px 20px 20px;
+          margin: 0 15px 80px;
+        }
+      </style>
+
+
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+    </div>
+  </div>
+
+
+  <script>
+    // gespeicherten Fortschritt laden
+    window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+
+    document.addEventListener("lehrpfadLoaded", () => {
+      const btn = document.getElementById("karte-button");
+
+      if (!btn) return;
+      updateKarteButton(window.location.pathname);
+    })
+
+    function updateStationsCompleteStorage() {
+      localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+    }
+
+    // Station abschliessen Funktion
+    const btn = document.getElementById('karte-button');
+    btn.addEventListener('click', () => {
+      if (window.aktuelleStationId) {
+        const stationIndex = window.aktuelleStationId - 1;
+        if (!window.stationsComplete.includes(stationIndex)) {
+          window.stationsComplete.push(stationIndex);
+          updateStationsCompleteStorage();
+        }
+      }
+      window.location.href = '/Startseite.html'; // Zurück zur Karte
+    });
+
+  </script>
+</body>
+
+</html>

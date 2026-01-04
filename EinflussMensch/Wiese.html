@@ -1,50 +1,144 @@
-<section class="station-container">
-  <div class="content-wrapper">
+<!DOCTYPE html>
+<html lang="de">
 
-    <h2>Station 2 – Die Wiese</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../loadProject.js" defer></script>
+</head>
 
-    <p>
-      Das Ökosystem "Wiese" ist hier in Mitteleuropa viel enger mit dem Menschen verbunden, als man denken würde. Denn ohne menschlichen Einfluss könnten Wiesen wie wir sie kennen gar nicht lange bestehen bleiben. Wird über einige Zeit nicht gemäht oder die Wiese durch Tiere beweidet, fangen langsam immer mehr Büsche an zu wachsen, bis sich die Wiese irgendwann wieder in einen Wald zurückverwandelt hat. 
-      <br><br>
-      <br><br>
-      Grafik zu Wiese - > Wald
-      <br><br>
-      <br><br>
-      Doch wie entsteht dann erst überhaupt eine Wiese? 
-      <br><br>
-      Erst muss eine Fläche frei werden. verschiedenste Einflüsse können hierzu beitragen, so zum Beispiel durch Lawinen oder Überschwemmungen. Aber auch durch menschlichen Einfluss in Form von Rodung für die Landwirtschaft oder Holz als Rohmaterial entstehen offene Flächen. Diese offenen Flächen werden von Gräsern und Kräutern besiedelt, was eine Krautschicht bildet und somit den Grundstein für eine Wiese legt.
-      <br><br>
-      Grafik Wald zu Wiese
-      <br><br>
-      Der Mensch trägt also bedeutend dazu bei, dass wiesen entstehen, sowie diese auch erhalten werden.
-      <br><br>
-      Doch warum sollte man einer Wiese jetzt viel Beachtung schenken? Warum ein Biom schützen, für dessen Entstehung und Erhaltung der Mensch verantwortlich ist? 
-      <br><br>
-      Ganz einfach. Eine Wiese ist der artenreichste Lebensraum, den man bei uns finden kann.
-      <br><br>
-      <br><br>
-      Grafik zur Anzahl der Arten in Wiesen
-      <br><br>
-      <br><br>
-      Je nach Jahreszeit wären Beispiele für diese Arten: 
-      <br><br>
-      <br><br>
-      Tabelle
-      <br><br>
-      <br><br>
-      Nimm dir 5 Minuten Zeit und zähle einmal wie viele unterschiedliche Pflanzen und Tiere du hier finden kannst. Dafür musst du jedoch genau hinschauen, denn auf den ersten Blick wirst du wenig entdecken.
-      <br><br>
-      Bild Lupe
-      <br><br>
-      <br><br>
-      Feld zum Einfügen und Zählen
-    </p>
-</section>
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
 
-<style>
-/* Seitenabstände + Scrollplatz */
-.content-wrapper {
-  padding: 20px;
-  margin: 0 15px 80px;
-}
-</style>
+      <ul class="menu-items">
+        <li>
+          <a href="../Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="../InfoLK.html">Info für LK</a></li>
+        <li><a href="../Kontakt.html">Kontakt</a></li>
+      </ul>
+
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Station abschliessen
+      </button>
+
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <div class="content-container">
+    <div class="content-wrapper">
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+      <h2>Station 2 – Die Wiese</h2>
+
+      <p>
+        Das Ökosystem "Wiese" ist hier in Mitteleuropa viel enger mit dem Menschen verbunden, als man denken würde.
+        Denn ohne menschlichen Einfluss könnten Wiesen wie wir sie kennen gar nicht lange bestehen bleiben. Wird
+        über einige Zeit nicht gemäht oder die Wiese durch Tiere beweidet, fangen langsam immer mehr Büsche an zu
+        wachsen, bis sich die Wiese irgendwann wieder in einen Wald zurückverwandelt hat.
+        <br><br>
+        <br><br>
+        Grafik zu Wiese - > Wald
+        <br><br>
+        <br><br>
+        Doch wie entsteht dann erst überhaupt eine Wiese?
+        <br><br>
+        Erst muss eine Fläche frei werden. verschiedenste Einflüsse können hierzu beitragen, so zum Beispiel durch
+        Lawinen oder Überschwemmungen. Aber auch durch menschlichen Einfluss in Form von Rodung für die
+        Landwirtschaft oder Holz als Rohmaterial entstehen offene Flächen. Diese offenen Flächen werden von Gräsern
+        und Kräutern besiedelt, was eine Krautschicht bildet und somit den Grundstein für eine Wiese legt.
+        <br><br>
+        Grafik Wald zu Wiese
+        <br><br>
+        Der Mensch trägt also bedeutend dazu bei, dass wiesen entstehen, sowie diese auch erhalten werden.
+        <br><br>
+        Doch warum sollte man einer Wiese jetzt viel Beachtung schenken? Warum ein Biom schützen, für dessen
+        Entstehung und Erhaltung der Mensch verantwortlich ist?
+        <br><br>
+        Ganz einfach. Eine Wiese ist der artenreichste Lebensraum, den man bei uns finden kann.
+        <br><br>
+        <br><br>
+        Grafik zur Anzahl der Arten in Wiesen
+        <br><br>
+        <br><br>
+        Je nach Jahreszeit wären Beispiele für diese Arten:
+        <br><br>
+        <br><br>
+        Tabelle
+        <br><br>
+        <br><br>
+        Nimm dir 5 Minuten Zeit und zähle einmal wie viele unterschiedliche Pflanzen und Tiere du hier finden
+        kannst. Dafür musst du jedoch genau hinschauen, denn auf den ersten Blick wirst du wenig entdecken.
+        <br><br>
+        Bild Lupe
+        <br><br>
+        <br><br>
+        Feld zum Einfügen und Zählen
+      </p>
+
+
+      <style>
+        /* Seitenabstände + Scrollplatz */
+        .content-wrapper {
+          padding: 70px 20px 20px;
+          margin: 0 15px 80px;
+        }
+      </style>
+
+
+
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+    </div>
+  </div>
+
+
+  <script>
+    // gespeicherten Fortschritt laden
+    window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+
+    document.addEventListener("lehrpfadLoaded", () => {
+      const btn = document.getElementById("karte-button");
+
+      if (!btn) return;
+      updateKarteButton(window.location.pathname);
+    })
+
+    function updateStationsCompleteStorage() {
+      localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+    }
+
+    // Station abschliessen Funktion
+    const btn = document.getElementById('karte-button');
+    btn.addEventListener('click', () => {
+      if (window.aktuelleStationId) {
+        const stationIndex = window.aktuelleStationId - 1;
+        if (!window.stationsComplete.includes(stationIndex)) {
+          window.stationsComplete.push(stationIndex);
+          updateStationsCompleteStorage();
+        }
+      }
+      window.location.href = '/Startseite.html'; // Zurück zur Karte
+    });
+
+  </script>
+</body>
+
+</html>

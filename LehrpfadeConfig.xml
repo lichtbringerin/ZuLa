@@ -9,36 +9,42 @@
     <Stations>
         <Station>
             <Name>Wald</Name>
+            <Nummer>1</Nummer>
             <Url>Wald.html</Url>
             <X>1150</X>
             <Y>80</Y>
         </Station>
         <Station>
             <Name>Wiese</Name>
+            <Nummer>2</Nummer>
             <Url>Wiese.html</Url>
             <X>900</X>
             <Y>670</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzenhaus</Name>
+            <Nummer>3</Nummer>
             <Url>Nutzpflanzenhaus.html</Url>
             <X>645</X>
             <Y>440</Y>
         </Station>
   	    <Station>
             <Name>Bauerngarten</Name>
+            <Nummer>4</Nummer>
             <Url>Bauerngarten.html</Url>
             <X>535</X>
             <Y>845</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzenterasse</Name>
+            <Nummer>5</Nummer>
             <Url>Nutzpflanzenterasse.html</Url>
             <X>970</X>
             <Y>370</Y>
         </Station>
         <Station>
             <Name>Abschluss</Name>
+            <Nummer>6</Nummer>
             <Url>Abschluss.html</Url>
             <X>380</X>
             <Y>650</Y>

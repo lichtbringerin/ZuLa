@@ -402,9 +402,8 @@
   <script>
     // gespeicherten Fortschritt laden
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
-    window.aktuelleStationId = parseInt(localStorage.getItem('aktuelleStationId')) || null;
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
 
       if (!btn) return;
@@ -414,38 +413,6 @@
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
-
-    /*
-    // Fortschrittsleiste rendern
-    function statusleisteSetzen() {
-      const progressContainer = document.getElementById('progress-container');
-      progressContainer.innerHTML = "";
-
-
-      for (let i = 0; i < window.stationsCount; i++) {
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('progress-item');
-
-        const img = document.createElement('img');
-        img.classList.add('progress-img');
-        img.src = window.stationsComplete.includes(i) ? 'Bilder/NavStationenComp.png' : 'Bilder/NavStationen.png';
-        img.style.cursor = "pointer";
-
-        img.addEventListener("click", () => {
-          window.location.href = `station${i + 1}.html`;
-        });
-
-        const label = document.createElement('span');
-        label.classList.add('progress-number');
-        label.textContent = i + 1;
-
-        wrapper.appendChild(img);
-        wrapper.appendChild(label);
-        progressContainer.appendChild(wrapper);
-      }
-    }*/
-
-    /*statusleisteSetzen();*/
 
     // Station abschliessen Funktion
     const btn = document.getElementById('karte-button');
@@ -459,13 +426,6 @@
       }
       window.location.href = '/Startseite.html'; // Zurück zur Karte
     });
-
-    const url = window.location.pathname;
-    const match = url.match(/station(\d+)\.html$/);
-    if (match) {
-      window.aktuelleStationId = parseInt(match[1]);
-      localStorage.setItem('aktuelleStationId', window.aktuelleStationId);
-    }
 
   </script>
 </body>
