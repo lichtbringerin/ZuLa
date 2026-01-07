@@ -6,4 +6,7 @@ möglichkeit kontakt aufzunehmen? will den anderen pfad erwähnen
 - vergleichbild forst vs naturbelassen
 - abgabetermin verlängern (nötig für EWS?)
 - artenvielfalt auf einer Wiese tabelle?
-- welche arten spezifisch im bot garten? Mit bidlern? 
+- welche arten spezifisch im bot garten? Mit bildern? 
+- fläche vom nutzpflanzenhaus
+- alle pflanzen vom nutzpflanzenhaus prüfen, deren "sinn" hinzufügen
+- station 5 einleitung vor die getreide stellen
