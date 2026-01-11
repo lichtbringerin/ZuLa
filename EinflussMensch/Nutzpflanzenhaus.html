@@ -74,7 +74,7 @@
           <tr>
             <th>Pflanze:</th>
             <th>Wissenschaftliche Bezeichnung:</th>
-            <th>Bekannt für:</th>
+            <th>Bekannt für & Infos:</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -112,8 +112,9 @@
         <div id="timer" class="timer">00:00:00</div>
       </div>
       <br><br>
-      Eine Einheit, dargestellt als kleines Haus meint dabei die Fläche des Nutzpflanzenhausen, in dem du dich gerade
-      befindest. Seitdem du „Start“ geklickt hast, ist die Fläche des Gewächshauses je nach Rechnung so oft
+      Eine Einheit, dargestellt als kleines Haus meint dabei die Fläche des Teils des Nutzpflanzenhauses, in dem du dich gerade
+      befindest, also 108m<sup>2</sup>.
+      Seitdem du „Start“ geklickt hast, ist die Fläche des Nutzpflanzenhauses je nach Rechnung von verschiedenen Organisationen bereits so oft
       verschwunden:
       <br><br>
 
@@ -138,7 +139,7 @@
       </table>
 
 
-      <br><br>
+      <br><br> 
       Wenn du dir genaueres dazu durchlesen möchtest, wie diese Rechnungen zustande kommen oder wie du unseren
       Regenwald schützen kannst, besuche gerne die entsprechenden Seiten:
       <br><br>
@@ -290,7 +291,7 @@
           min-height: 120px;
           padding: 10px;
           border: 1px solid #ccc;
-          font-size: 1.5em;
+          font-size: 0.8em;
           vertical-align: top;
         }
 
@@ -359,18 +360,18 @@
 
         // Liste der bekannten Pflanzen + lateinische Bezeichnungen
         const pflanzenListe = [
-          { name: "Kakao", latein: "Theobroma cacao" },
-          { name: "Vanille", latein: "Vanilla planifolia" },
-          { name: "Zuckerrohr", latein: "Saccharum officinarum" },
-          { name: "Banane", latein: "Musa" },
-          { name: "Muskatnuss", latein: "Myristica fragrans" },
-          { name: "Pfeffer", latein: "Piper nigrum" },
-          { name: "Ananas", latein: "Ananas comosus" },
-          { name: "Tee", latein: "Camellia sinensis" },
-          { name: "Mango", latein: "Mangifera indica" },
-          { name: "Sternfrucht", latein: "Averrhoa carambola" },
-          { name: "Zimt", latein: "Cinnamomum verum" },
-          { name: "Cherimoya", latein: "Annona cherimola" }
+          { name: "Kakao", latein: "Theobroma cacao", info: " 'Kakao' bedeutet übersetzt 'Speise der Götter' und war früher ein Luxusgut."},
+          { name: "Vanille", latein: "Vanilla planifolia", info: "Vanille ist eine Orchidee. Außerdem muss jede Blüte einzeln per Hand bestäubt werden." },
+          { name: "Zuckerrohr", latein: "Saccharum officinarum", info: "Zuckerrohr ist ein Süßgras und wird für ca. 70% der Weltweiten Zuckerproduktion genutzt. Außerdem wird auch Bioethanol als Treibstoff aus Zuckerrohr produziert" },
+          { name: "Banane", latein: "Musa", info: "Botanisch gesehen ist die Banane eine Beere und wächst nicht an einem Baum, sondern an einer riesigen krautigen Pflanze. Da bei unseren Supermarktbananen die Samen herausgezüchtet wurden können sie nur noch vegetativ vermehrt werden und stammen fast alle von genetisch Identischen Pflanzen." },
+          { name: "Muskatnuss", latein: "Myristica fragrans", info: "Die rote Hülle der Muskatnuss heißt 'Makis' und ist ein eigenes Gewürz. "},
+          { name: "Pfeffer", latein: "Piper nigrum", info: "Im Mittelalter war Pfeffer so wertvoll wie Gold. Schwarzer, weißer und grüner PFeffer stammen von der selben Pflanze" },
+          { name: "Ananas", latein: "Ananas comosus", info: "Eine Ananas besteht aus vielen ineinander verwachsenen Beeren. Auch kann eine Pflanze immer nur eine einzelne Ananas produzieren, danach stirbt sie ab." },
+          { name: "Tee", latein: "Camellia sinensis", info: "Grüner, schwarzer und weißer Tee kommen von der selben Pflanze, werden nur anders verarbeitet. Tee ist das nach Wasser zweitmeist getrunkene Getränk der Welt." },
+          { name: "Mango", latein: "Mangifera indica", info: "" },
+          { name: "Sternfrucht", latein: "Averrhoa carambola", info: "" },
+          { name: "Zimt", latein: "Cinnamomum verum", info: "Zimt ist getrocknete Baumrinde." },
+          { name: "Cherimoya", latein: "Annona cherimola", info: "" }
         ];
 
         // Gesammelte Pflanzen, um Duplikate zu vermeiden
@@ -402,7 +403,7 @@
 
             const zeile = document.createElement('tr');
             zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
-            zeile.innerHTML = `<td>${pflanze.name}</td><td>${pflanze.latein}</td>`;
+            zeile.innerHTML = `<td>${pflanze.name}</td><td>${pflanze.latein}</td><td>${pflanze.info}</td>`;
             tabelleBody.appendChild(zeile);
           }
           updateAufloesenButton();
@@ -467,10 +468,14 @@
           let intervalle = [];
 
           // formeln noch in fusballfelder pro minute
+          // standartgröße Fußballfeld: 7.140m^2 
+          // wwf: 7.140m^2 x 30 = 214.200  durch 108 (fläche nutzpflanzenhaus) = 1.983,33
+          // rainforrest alliance: 7.140m^2 x = 40 285.600 durch 108 = 2.644,44
+          // oroverde: 7.140m^2 x = 18 128.520 durch 108 = 1.190
           const formeln = [
-            { ziel: spalteA, haeuserProMinute: 30 },
-            { ziel: spalteB, haeuserProMinute: 40 },
-            { ziel: spalteC, haeuserProMinute: 18 }
+            { ziel: spalteA, haeuserProMinute: 1983 },
+            { ziel: spalteB, haeuserProMinute: 2644 },
+            { ziel: spalteC, haeuserProMinute: 1190 }
           ];
 
           startButton.addEventListener("click", () => {
