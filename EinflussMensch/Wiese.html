@@ -84,9 +84,37 @@
       Grafik zur Anzahl der Arten in Wiesen
       <br><br>
       Je nach Jahreszeit wären Beispiele für diese Arten:
-      <br><br>
-      Tabelle
-      <br><br>
+     
+      <div class="bildergalerie">
+        <figure>
+          <img src="bilder/bildergalerie1.jpg" alt="bildergalerie1">
+          <figcaption>
+            <small>Ein Schachbrett auf der Blüte eines Rotklee.</small>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="bilder/bildergalerie2.jpg" alt="bildergalerie2">
+          <figcaption>
+            <small>Ein Gänseblümchen mit leicht pinken Blütenblättern.</small>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="bildergalerie">
+        <figure>
+          <img src="bilder/bildergalerie3.jpg" alt="bildergalerie3">
+          <figcaption>
+            <small>Eine Schwebfliege die das Aussehen einer Biene nachahmt auf einer Salbeiblüte.</small>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="bilder/bildergalerie4.jpg" alt="bildergalerie4">
+          <figcaption>
+            <small>Ein Marinkäfer auf Grashalmen.</small>
+          </figcaption>
+        </figure>
+      </div>
       Nimm dir 5 Minuten Zeit und fotografiere einmal wie viele unterschiedliche Pflanzen und Tiere du hier finden
       kannst. Dafür musst du jedoch genau hinschauen, denn auf den ersten Blick wirst du wenig entdecken.
       <br><br>
@@ -141,6 +169,27 @@
         /*sorgt dafür dass sich die bilder der aktuellen auflösung anpassen*/
         img {
           max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .bildergalerie {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin: 30px 0;
+        }
+
+        .bildergalerie figure {
+          flex: 1 1 45%;
+          /* zwei Spalten */
+          max-width: 400px;
+          /* verhindert zu große Bilder */
+          text-align: center;
+        }
+
+        .bildergalerie img {
+          width: 100%;
           height: auto;
           display: block;
         }
