@@ -48,12 +48,15 @@
       <h2>Station 5 – Der Bauerngarten</h2>
 
       <p>
-        Die Region um Würzburg herum wird häufig als Mainfranken bezeichnet, manchmal scherzhaft jedoch sogar als
-        „Weinfranken“. Wenn man sich in der Umgebung umschaut, erkennt man auch schnell weshalb. Würzburg ist von
-        Weinbergen umgeben, welche sich über die gesamte Region erstrecken. Jedoch macht der Weinbau nur etwa 2% der
-        Anbauflächen aus. Außer Wein werden noch Zuckerrüben, Mais, Winterraps, Gerste, Winterweizen und andere
+        Die Region um Würzburg wird als Mainfranken bezeichnet, manchmal scherzhaft auch als
+        „Weinfranken“. Stimmt das? Würzburg ist zwar von sehr vielen
+        Weinbergen umgeben, welche sich entlang des Mains erstrecken. Jedoch macht der Weinbau nur etwa 2% der
+        Anbauflächen aus. Außer Weintrauben werden viel mehr Zuckerrüben, Mais, Winterraps, Gerste, Winterweizen und
+        andere
         Getreide
         angebaut.
+        <br><br>
+        <u>AUFGABE:</u>Sieh dir die nachfolgende Grafik an, was bei uns auf den Feldern angebaut wird.
         <br><br>
       <figure>
         <img src="bilder/frankenanbau.png" alt="Anbau Mainfranken">
@@ -62,42 +65,73 @@
         </figcaption>
       </figure>
       <br><br>
-      Doch was genau hat das dann mit den Ökosystemen vor Ort zu tun? Ganz einfach, die Weinberge,
+      Doch was genau hat das mit den Ökosystemen vor Ort zu tun? Ganz einfach, die Weinberge,
       Felder und
       Obstwiesen wurden von Menschenhand angelegt und waren nicht immer da. Durch diese Eingriffe in unsere
       Ökosysteme
-      geht viel Lebensraum für heimische Tiere, Pflanzen und Pilze verloren.
+      geht viel Lebensraum für heimische Tiere, Pflanzen oder Pilze verloren.
       <br><br>
-      Viele Pflanzen können auf den Feldern nicht wachsen oder werden mit Herbiziden gezielt bekämpft, viele
+      Viele Pflanzenarten können auf den Feldern nicht wachsen oder werden mit Herbiziden gezielt bekämpft, viele
       Insekten
-      verlieren damit ihre Nahrungsquellen oder werden durch Insektizide bekämpft, da sie als Schädlinge die
+      verlieren damit ihre Nahrungsquellen oder werden durch Insektizide getötet, da sie als Schädlinge die
       Ernten
       gefährden.
       <br><br>
-      Der Anbau findet fast immer in einer sogenannten Monokultur statt, das heißt, es wird auf einer sehr großen
+      Der Anbau findet fast immer in sogenannten Monokulturen statt. Das heißt, es wird auf einer sehr großen
       Fläche
-      nur eine einzige Nutzpflanze angebaut. Damit sind sie entsprechend auch viel anfälliger für Schädlinge und
+      nur eine einzige Nutzpflanze angebaut. Dadurch sind sie allerdings viel anfälliger für Schädlinge und
       es
       müssen mehr Pestizide genutzt werden. Auch muss der Boden, welchem Jahr für Jahr die Nährstoffe entzogen
       werden
       immer wieder gedüngt werden. Durch das Düngen und die Pestizide gelangen viele verschiedene Chemikalien in
       die
-      Umwelt, welche teils auch sehr schädlich für die umliegende Tier- und Pflanzenwelt sein können.
+      Umwelt, welche sehr schädlich für die beeinflusste Tier- und Pflanzenwelt - und uns Menschen - sein können.
       <br><br>
-      Da wir gerade auch beim Thema Monokulturen sind, schau dir folgende Karte an:
+      <u>AUFGABE:</u>Schau dir folgende Bildergalerie an. Du kannst stattdessen
+      auch die Google-Maps Karte nutzen, wenn du mit den Google-Maps Nutzungsbedingungen einverstanden bist:
       <br><br>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d118933.1862191036!2d-2.7205565743239988!3d36.76878628622164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2ses!4v1767623323147!5m2!1sen!2ses"
-        width=100% height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <br><br>
-      Was denkst du siehst du hier?
+
+      <div class="map-wrapper">
+
+        <!-- Schalter -->
+        <div class="map-toggle">
+          <button id="btnBild" class="toggle-btn active">Bilder</button>
+          <button id="btnKarte" class="toggle-btn">Karte</button>
+        </div>
+        <br><br>
+        <br><br>
+        <br><br>
+
+        <!-- Bild -->
+        <figure id="mapFigure" class="gallery-wrapper">
+          <div class="gallery">
+            <img src="bilder/almeria_satellit1.png" alt="Gewächshäuser Almeria 1">
+            <img src="bilder/almeria_satellit2.png" alt="Gewächshäuser Almeria 2">
+            <img src="bilder/almeria_satellit3.png" alt="Gewächshäuser Almeria 3">
+          </div>
+          <figcaption>
+            <small>Quelle: © Google Maps, Screenshot</small>
+          </figcaption>
+
+        </figure>
+
+        <!-- Google Maps -->
+        <iframe id="mapIframe"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d118933.1862191036!2d-2.7205565743239988!3d36.76878628622164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2ses!4v1767623323147!5m2!1sen!2ses"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+      </div>
+      <br>
+      Was siehst du hier? Die weißen Bereiche sehen aus wie schneebedeckt.
       Wenn du an Gewächshäuser gedacht hast, liegst du richtig. Zu sehen sind die riesigen Flächen voller Gewächshäuser
-      in Almeria, Spanien. Hier werden unser Obst und unser Gemüse produziert. Dafür müssen jedoch enorme Mengen Grundwasser nach oben
-      gepumpt
-      werden. Außerdem gehen riesige Flächen vor Ort verloren. Nötig ist dies damit wir unser Obst und Gemüse zu
-      jeder
-      möglichen Saison essen können, auch wenn es bei uns eigentlich noch gar nicht reif wäre.
+      in Spanien, nahe der Stadt Almeria. Hier wird ein Großteil unseres Obstes und Gemüse produziert. Dafür gehen
+      riesige Flächen vor Ort verloren.
+      Außerdem werden enorme Mengen Grundwasser benötigt.
+      Nötig ist dies damit wir unser Obst und Gemüse ganzjährig und möglichst billig essen können.
+      Für die Ökosysteme und die Menschen in Spanien ist das ein großes Problem: Der massenhafte Anbau für billiges Obst
+      und Gemüse führt dort zur Austrocknung der Landschaft, zur Vergiftung des Trinkwassers und zur Zerstörung vieler
+      Ökosysteme.
       <br><br>
       Willst du unserer Umwelt etwas Gutes tun? Dann lauten die Stichworte:
       <br><br>
@@ -105,9 +139,15 @@
       <h2>Regional & Saisonal</h2>
       <br><br>
       <br><br>
-      Kaufst du so ein bzw. kochst du mit Obst und Gemüse aus der Region und zu der jeweiligen Saison kannst du
-      sowohl
-      Lebensräume bei uns, als auch im Ausland schützen.
+      <u>AUFGABE:</u>AUFGABE: Schau Dir mal diesen (stark vereinfachten) Saisonkalender an. Welches Gemüse und
+      Obst ist jetzt in diesem Monat bei uns regional verfügbar?
+      <br><br>
+      Es lohnt sich, mit solch einem Saisonkalender seine Obst- und Gemüseeinkäufe zu planen. Durch den regionalen
+      Einkauf und Beachtung der saisonalen Verfügbarkeit bei uns...
+      <br><br>
+      schützt du Ökosysteme bei uns – und auch in teilweise sehr weit entfernten Regionen auf unserer Erde.
+      
+
       </p>
       <!-- SAISONKALENDER EINBINDEN?? -->
 
@@ -117,9 +157,95 @@
           padding: 70px 20px 20px;
           margin: 0 15px 80px;
         }
-        
+
+        .gallery-wrapper {
+          display: block;
+        }
+
+        .gallery {
+          display: flex;
+          overflow: auto;
+          scroll-snap-type: x mandatory;
+          gap: 12px;
+          border-radius: 12px;
+        }
+
+        .map-wrapper {
+          position: relative;
+          max-width: 900px;
+          margin: 40px auto;
+        }
+
+        /* Bild & Map */
+        .map-wrapper img,
+        .map-wrapper iframe {
+          width: 100%;
+          height: 450px;
+          border-radius: 12px;
+          border: none;
+        }
+
+        /* iframe anfangs verstecken */
+        #mapIframe {
+          display: none;
+        }
+
+        /* Kippschalter */
+        .map-toggle {
+          position: absolute;
+          top: 12px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          border-radius: 30px;
+          z-index: 10;
+        }
+
+        .toggle-btn {
+          padding: 15px 30px;
+          font-size: 1.3em;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          transition: transform 0.1s, background-color 0.2s;
+        }
+
+        .toggle-btn:hover {
+          background-color: #45a049;
+          transform: scale(1.05);
+        }
+
+        /* aktive Seite eingedrückt */
+        .toggle-btn.active {
+          background: rgb(255, 255, 255);
+          color: black;
+          box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
       </style>
 
+      <script>
+        const btnBild = document.getElementById("btnBild");
+        const btnKarte = document.getElementById("btnKarte");
+        const mapFigure = document.getElementById("mapFigure");
+        const mapIframe = document.getElementById("mapIframe");
+
+        btnBild.addEventListener("click", () => {
+          mapFigure.style.display = "block";
+          mapIframe.style.display = "none";
+          btnBild.classList.add("active");
+          btnKarte.classList.remove("active");
+        });
+
+        btnKarte.addEventListener("click", () => {
+          mapFigure.style.display = "none";
+          mapIframe.style.display = "block";
+          btnKarte.classList.add("active");
+          btnBild.classList.remove("active");
+        });
+      </script>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
