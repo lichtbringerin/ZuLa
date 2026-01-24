@@ -86,6 +86,7 @@ function loadLehrpfad(ID, xml) {
     // setzt werte
     window.urlName = pfad.getElementsByTagName("UrlName")[0].textContent;
     window.ordnerPath = pfad.getElementsByTagName("OrdnerPfad")[0].textContent;
+    window.iconName = pfad.getElementsByTagName("IconName")[0].textContent;
     window.stationsCount = parseInt(
         pfad.getElementsByTagName("StationsCount")[0].textContent
     );
@@ -109,6 +110,9 @@ function loadLehrpfad(ID, xml) {
 
     // setzt den titel der seite
     document.title = window.urlName;
+    // setzt webseitenicon
+    setFavicon(window.iconName);
+
 
     // baut das submenü unter der karte auf
     submenu(window.stations);
@@ -332,4 +336,13 @@ function setAktuelleStationFromXML() {
     }
 
     console.warn("Keine Station im XML gefunden für:", fileName);
+}
+
+function setFavicon(iconName) {
+    if (!iconName) return;
+
+    const favicon = document.getElementById("favicon");
+    if (!favicon) return;
+
+    favicon.href = `/${iconName}`;
 }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lehrpfade - Botanischer Garten Würzburg</title>
   <link rel="stylesheet" href="../style.css">
+  <link id="favicon" rel="icon" type="image/png">
   <script src="../loadProject.js" defer></script>
 </head>
 
@@ -21,6 +22,7 @@
       </label>
 
       <ul class="menu-items">
+        <li><a href="../QRCODE.html">Pfadauswahl</a></li>
         <li>
           <a href="../Startseite.html">Karte</a>
           <ul id="karte-submenu" class="submenu"></ul>
@@ -56,13 +58,15 @@
         Doch weshalb sollten wir Interesse an einem so weit entfernten Ort haben?
         Hier im Gewächshaus mit den Nutzpflanzen sind einige Gründe zu finden, aber kannst du sie alle aufzählen?
         <tipp>
-          Tipp: Es handelt sich um Pflanzen und deren Produkte, die wir daraus gewinnen.
+          Tipp: Es handelt sich um Pflanzen die man hier ausgestellt finden kann.
         </tipp>
         <br><br>
-        <u>AUFGABE:</u>
+        <strong>Aufgabe:</strong>
         Schreibe die Namen der Pflanzen die du kennst (oder deren Wissenschaftliche Namen) in die nachfolgende Tabelle.
         Dann erhälst du weitere Informationen zu diesen Pflanzen.
         Die Namen der Pflanzen findest du auch auf den Etiketten. Die Wege musst du dafür nicht verlassen.
+        Beachte jedoch, dass nur die 20 bekanntesten und verbreitetsten Pflanzen in der Aufgabe und somit auch der
+        Tabelle abgefragt werden.
         <br>
       </p>
       <div class="pflanzen-container">
@@ -111,7 +115,7 @@
       Nur in seltenen
       Fällen werden diese Pflanzenprodukte nachhaltig produziert.
       <br><br>
-      <u>AUFGABE:</u>
+      <strong>Aufgabe:</strong>
       Damit du dir etwas besser vorstellen kannst, wie schnell der Regenwald auf unserem Planeten verschwindet ist
       hier eine Rechnung. Drücke einfach den Knopf zum Starten und du kannst live mitverfolgen wie viel Fläche
       verloren geht.
@@ -253,8 +257,8 @@
         .pflanzen-tabelle {
           margin: 20px auto;
           border-collapse: collapse;
-          width: 80%;
-          max-width: 500px;
+          width: 95%;
+          max-width: 1100px;
           text-align: center;
         }
 
@@ -266,8 +270,28 @@
 
         .pflanzen-tabelle td {
           padding: 10px;
+          font-size: 0.95em;
+          line-height: 1.4;
         }
 
+        /* die spaltengröße kann hier eingestellt werden */
+        .pflanzen-tabelle th:nth-child(1),
+        .pflanzen-tabelle td:nth-child(1) {
+          width: 18%;
+          /* Pflanze */
+        }
+
+        .pflanzen-tabelle th:nth-child(2),
+        .pflanzen-tabelle td:nth-child(2) {
+          width: 22%;
+          /* Wissenschaftlich */
+        }
+
+        .pflanzen-tabelle th:nth-child(3),
+        .pflanzen-tabelle td:nth-child(3) {
+          width: 60%;
+          /* Infos – bewusst breit */
+        }
 
         /*häuser zählung button und tabelle*/
         .zaehler-container {
@@ -380,29 +404,106 @@
 
         // Liste der bekannten Pflanzen + lateinische Bezeichnungen
         const pflanzenListe = [
-          { name: "Kakao", latein: "Theobroma cacao", info: " 'Kakao' bedeutet übersetzt 'Speise der Götter' und war früher ein Luxusgut." },
-          { name: "Vanille", latein: "Vanilla planifolia", info: "Vanille ist eine Orchidee. Außerdem muss jede Blüte einzeln per Hand bestäubt werden." },
-          { name: "Zuckerrohr", latein: "Saccharum officinarum", info: "Zuckerrohr ist ein Süßgras und wird für ca. 70% der Weltweiten Zuckerproduktion genutzt. Außerdem wird auch Bioethanol als Treibstoff aus Zuckerrohr produziert" },
-          { name: "Banane", latein: "Musa nana", info: "Botanisch gesehen ist die Banane eine Beere und wächst nicht an einem Baum, sondern an einer riesigen krautigen Pflanze. Da bei unseren Supermarktbananen die Samen herausgezüchtet wurden können sie nur noch vegetativ vermehrt werden und stammen fast alle von genetisch Identischen Pflanzen." },
-          { name: "Muskatnuss", latein: "Myristica fragrans", info: "Die rote Hülle der Muskatnuss heißt 'Makis' und ist ein eigenes Gewürz. " },
-          { name: "Pfeffer", latein: "Piper nigrum", info: "Im Mittelalter war Pfeffer so wertvoll wie Gold. Schwarzer, weißer und grüner PFeffer stammen von der selben Pflanze" },
-          { name: "Ananas", latein: "Ananas comosus", info: "Eine Ananas besteht aus vielen ineinander verwachsenen Beeren. Auch kann eine Pflanze immer nur eine einzelne Ananas produzieren, danach stirbt sie ab." },
-          { name: "Tee", latein: "Camellia sinensis", info: "Grüner, schwarzer und weißer Tee kommen von der selben Pflanze, werden nur anders verarbeitet. Tee ist das nach Wasser zweitmeist getrunkene Getränk der Welt." },
-          { name: "Mango", latein: "Mangifera indica", info: "" },
-          { name: "Sternfrucht", latein: "Averrhoa carambola", info: "" },
-          { name: "Zimt", latein: "Cinnamomum zeylanicum", info: "Zimt ist getrocknete Baumrinde." },
-          { name: "Cherimoya", latein: "Annona cherimola", info: "" }
-          { name: "Baumwolle", latein: "Gossypium hirsutum", info: "" },
-          { name: "Chillies", latein: "Capsicum frutescens", info: "" },
-          { name: "Teestrauch", latein: "Camellia sinensis", info: "" },
-          { name: "Parakautschukbaum", latein: "Hevea brasiliensis", info: "" },
-          { name: "Kaffee", latein: "Coffee liberica", info: "" },
-          { name: "Kokospalme", latein: "Cocos nucifera", info: "" },
-          { name: "Baumwolle", latein: "Gossypium hirsutum", info: "" },
-          { name: "Passionsfrucht", latein: "Passioflora edulis", info: "" },
-          { name: "Tamarinde", latein: "Tamarindus indica", info: "" },
-          { name: "Cashew", latein: "Anacardium occidentale", info: "" },
-          { name: "Mango", latein: "Mangifera indica", info: "" },
+          {
+            name: "Kakao",
+            latein: "Theobroma cacao",
+            info: "Kakao ist die Grundlage für Schokolade, eines der beliebtesten Süßwarenprodukte in Deutschland. Ursprünglich stammt er aus Mittelamerika, heute wird Kakao vor allem in Westafrika angebaut."
+          },
+          {
+            name: "Vanille",
+            latein: "Vanilla planifolia",
+            info: "Vanille ist eines der wichtigsten Aromen in deutschen Haushalten, z.B. für Gebäck und Desserts. Sie stammt ursprünglich aus Mexiko und wird heute vor allem auf Madagaskar angebaut."
+          },
+          {
+            name: "Zuckerrohr",
+            latein: "Saccharum officinarum",
+            info: "Zuckerrohr liefert einen Großteil des weltweit genutzten Zuckers, der auch in Deutschland verwendet wird. Es stammt aus Südostasien und wird heute vor allem in Brasilien und Indien angebaut."
+          },
+          {
+            name: "Banane",
+            latein: "Musa nana",
+            info: "Die Banane ist eine der meistgegessenen Früchte in Deutschland. Sie stammt ursprünglich aus Südostasien und wird heute vor allem in Mittel- und Südamerika angebaut."
+          },
+          {
+            name: "Muskatnuss",
+            latein: "Myristica fragrans",
+            info: "Muskatnuss ist ein wichtiges Gewürz in der deutschen Küche, z.B. für Kartoffelgerichte. Sie stammt von den indonesischen Molukken und wird heute in tropischen Regionen weltweit angebaut."
+          },
+          {
+            name: "Pfeffer",
+            latein: "Piper nigrum",
+            info: "Pfeffer ist eines der wichtigsten Gewürze in Deutschland. Ursprünglich stammt er aus Indien, heute wird er vor allem in Südostasien angebaut."
+          },
+          {
+            name: "Ananas",
+            latein: "Ananas comosus",
+            info: "Ananas ist eine beliebte Importfrucht in Deutschland. Sie stammt ursprünglich aus Südamerika und wird heute vor allem in Costa Rica und anderen tropischen Ländern angebaut."
+          },
+          {
+            name: "Tee",
+            latein: "Camellia sinensis",
+            info: "Tee ist eines der meistgetrunkenen Getränke in Deutschland. Die Teepflanze stammt aus China und Indien und wird heute in vielen subtropischen und tropischen Regionen angebaut."
+          },
+          {
+            name: "Mango",
+            latein: "Mangifera indica",
+            info: "Mangos sind in Deutschland eine sehr beliebte tropische Frucht. Sie stammen ursprünglich aus Indien und werden heute in vielen tropischen Ländern angebaut."
+          },
+          {
+            name: "Sternfrucht",
+            latein: "Averrhoa carambola",
+            info: "Die Sternfrucht wird in Deutschland vor allem als exotische Frucht genutzt. Sie stammt aus Südostasien und wird heute in tropischen Regionen angebaut."
+          },
+          {
+            name: "Zimt",
+            latein: "Cinnamomum zeylanicum",
+            info: "Zimt ist ein traditionelles Gewürz in Deutschland, besonders in der Weihnachtszeit. Er stammt ursprünglich aus Sri Lanka und wird heute in tropischen Regionen angebaut."
+          },
+          {
+            name: "Cherimoya",
+            latein: "Annona cherimola",
+            info: "Cherimoya ist eine exotische Frucht, die in Deutschland zunehmend bekannter wird. Sie stammt aus den Anden Südamerikas und wird heute in warmen Regionen angebaut."
+          },
+          {
+            name: "Baumwolle",
+            latein: "Gossypium hirsutum",
+            info: "Baumwolle ist einer der wichtigsten Rohstoffe für Kleidung in Deutschland. Sie stammt ursprünglich aus Mittelamerika und wird heute weltweit in warmen Regionen angebaut."
+          },
+          {
+            name: "Chili",
+            latein: "Capsicum frutescens",
+            info: "Chilis werden in Deutschland als Gewürz und Lebensmittel verwendet. Sie stammen ursprünglich aus Mittel- und Südamerika und werden heute weltweit angebaut."
+          },
+          {
+            name: "Parakautschukbaum",
+            latein: "Hevea brasiliensis",
+            info: "Aus dem Parakautschukbaum wird Naturkautschuk gewonnen, der z.B. für Autoreifen genutzt wird. Er stammt aus dem Amazonasgebiet und wird heute vor allem in Südostasien angebaut."
+          },
+          {
+            name: "Kaffee",
+            latein: "Coffea liberica",
+            info: "Kaffee ist eines der beliebtesten Getränke in Deutschland. Die Kaffeepflanze stammt ursprünglich aus Afrika und wird heute in tropischen Regionen weltweit angebaut."
+          },
+          {
+            name: "Kokospalme",
+            latein: "Cocos nucifera",
+            info: "Die Kokospalme liefert Produkte wie Kokosöl und Kokosmilch, die auch in Deutschland genutzt werden. Sie stammt aus tropischen Küstenregionen und wird heute weltweit angebaut."
+          },
+          {
+            name: "Passionsfrucht",
+            latein: "Passiflora edulis",
+            info: "Passionsfrüchte werden in Deutschland vor allem für Säfte und Desserts genutzt. Sie stammen ursprünglich aus Südamerika und werden heute in tropischen Regionen angebaut."
+          },
+          {
+            name: "Tamarinde",
+            latein: "Tamarindus indica",
+            info: "Tamarinde wird in Deutschland vor allem in Soßen und internationalen Gerichten verwendet. Sie stammt ursprünglich aus Afrika und wird heute in vielen tropischen Ländern angebaut."
+          },
+          {
+            name: "Cashew",
+            latein: "Anacardium occidentale",
+            info: "Cashewnüsse sind ein beliebter Snack in Deutschland. Der Cashewbaum stammt ursprünglich aus Brasilien und wird heute vor allem in Indien und Vietnam angebaut."
+          }
         ];
 
         // Gesammelte Pflanzen, um Duplikate zu vermeiden
@@ -463,7 +564,7 @@
             if (!gefundenePflanzen.includes(element.name)) {
               const zeile = document.createElement('tr');
               zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
-              zeile.innerHTML = `<td>${element.name}</td><td>${element.latein}</td>`;
+              zeile.innerHTML = `<td>${element.name}</td><td>${element.latein}</td><td>${element.info}</td>`;
               tabelleBody.appendChild(zeile);
               gefundenePflanzen.push(element.name);
             }

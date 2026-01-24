@@ -3,7 +3,7 @@
     <PfadId>1</PfadId>
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
-    <IconName>beispiel-icon.png</IconName>
+    <IconName>EinflussMensch.png</IconName>
     <StationsCount>6</StationsCount>
 
     <Stations>
@@ -15,18 +15,18 @@
             <Y>120</Y>
         </Station>
         <Station>
-            <Name>Nutzpflanzenterasse</Name>
+            <Name>Wiese</Name>
             <Nummer>2</Nummer>
-            <Url>Nutzpflanzenterasse.html</Url>
-            <X>1025</X>
-            <Y>360</Y>
+            <Url>Wiese.html</Url>
+            <X>1050</X>
+            <Y>260</Y>
         </Station>
         <Station>
-            <Name>Wiese</Name>
+            <Name>Nutzpflanzenterrasse</Name>
             <Nummer>3</Nummer>
-            <Url>Wiese.html</Url>
-            <X>920</X>
-            <Y>670</Y>
+            <Url>Nutzpflanzenterrasse.html</Url>
+            <X>1005</X>
+            <Y>490</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzenhaus</Name>

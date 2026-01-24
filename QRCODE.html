@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Botanischer Garten Würzburg – Lehrpfade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f6f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 10px;
+        }
+
+        .info-text {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        /* Lehrpfad-Kacheln */
+        .lehrpfade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .lehrpfad-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 20px;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .lehrpfad-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+        }
+
+        .lehrpfad-card img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .lehrpfad-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .lehrpfad-stationen {
+            font-size: 0.95em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Herzlich willkommen im Botanischen Garten Würzburg</h1>
+    <p class="info-text">
+        Nutzen sie die digitalen Führungen für ihren Rundgang
+    </p>
+
+    <div id="lehrpfade" class="lehrpfade-grid">
+        <!-- Lehrpfade werden hier dynamisch eingefügt -->
+    </div>
+</div>
+
+<script>
+    async function ladeLehrpfade() {
+        try {
+            const response = await fetch("LehrpfadeConfig.xml");
+            const xmlText = await response.text();
+
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlText, "application/xml");
+
+            const lehrpfade = Array.from(xml.getElementsByTagName("Lehrpfad"));
+
+            // Nach PfadId sortieren
+            lehrpfade.sort((a, b) => {
+                const idA = parseInt(a.getElementsByTagName("PfadId")[0].textContent, 10);
+                const idB = parseInt(b.getElementsByTagName("PfadId")[0].textContent, 10);
+                return idA - idB;
+            });
+
+            const container = document.getElementById("lehrpfade");
+
+            lehrpfade.forEach(pfad => {
+                const pfadId = pfad.getElementsByTagName("PfadId")[0].textContent;
+                const name = pfad.getElementsByTagName("UrlName")[0].textContent;
+                const icon = pfad.getElementsByTagName("IconName")[0].textContent;
+                const stationen = pfad.getElementsByTagName("StationsCount")[0].textContent;
+
+                const card = document.createElement("div");
+                card.className = "lehrpfad-card";
+                card.addEventListener("click", () => {
+                    window.location.href = `Startseite.html?id=${pfadId}`;
+                });
+
+                card.innerHTML = `
+                    <img src="${icon}" alt="${name}">
+                    <div class="lehrpfad-title">${name}</div>
+                    <div class="lehrpfad-stationen">
+                        ${stationen} Stationen
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+        } catch (error) {
+            console.error("Fehler beim Laden der Lehrpfade:", error);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", ladeLehrpfade);
+</script>
+
+</body>
+</html>
