@@ -139,13 +139,16 @@ function loadLehrpfad(ID, xml) {
     // wenn nichts im einleitungs container steht = lehrpfad geladen, wird hier ein anderer text eingeblendet der die bedienung
     // vom lehrpfad erklärt
     const einleitungContainer = document.getElementById("einleitung");
-    if (einleitungContainer) {
-        einleitungContainer.innerHTML = `
-            <p>
-                Willkommen beim Lehrpfad ${window.urlName}.<br>
-                Um mit einer Station zu starten, klicke die jeweilige Station an oder scanne einen QR-Code.
-            </p>
-        `;
+    if (pfad) {
+
+        einleitungContainer.innerHTML =
+            `<h2>` + window.urlName + `</h2>` +
+            ` Aktuell befindest du dich auf der Startseite. Das Programm auf deinem Smartphone leitet dich durch den Lehrpfad. Begib
+            dich zu einer der Stationen. Diese findest du als Symbole auf der nachfolgenden Karte, in der Navigation oben, oder du
+            scannst den QR-Code vor Ort. Die Reihenfolge der Stationen ist flexibel, das heißt, du kannst mit jeder Station
+            beginnen:
+            <br>Viel Spaß.`
+            ;
     }
 
     setAktuelleStationFromXML();

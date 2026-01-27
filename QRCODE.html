@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>Botanischer Garten Würzburg – Lehrpfade</title>
@@ -63,77 +64,125 @@
             font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 8px;
+            text-align: left;
+            margin-left: 8px;
         }
 
         .lehrpfad-stationen {
             font-size: 0.95em;
             color: #555;
         }
+
+        .lehrpfad-header {
+            margin-bottom: 12px;
+        }
+
+        .lehrpfad-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .lehrpfad-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 90px;
+        }
+
+        .lehrpfad-left img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 6px;
+        }
+
+        .lehrpfad-text {
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.4;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Herzlich willkommen im Botanischen Garten Würzburg</h1>
-    <p class="info-text">
-        Nutzen sie die digitalen Führungen für ihren Rundgang
-    </p>
+    <div class="container">
+        <h1>Herzlich willkommen im Botanischen Garten Würzburg</h1>
+        <p class="info-text">
+            Nutzen sie die digitalen Führungen für ihren Rundgang
+        </p>
 
-    <div id="lehrpfade" class="lehrpfade-grid">
-        <!-- Lehrpfade werden hier dynamisch eingefügt -->
+        <div id="lehrpfade" class="lehrpfade-grid">
+            <!-- Lehrpfade werden hier dynamisch eingefügt -->
+        </div>
     </div>
-</div>
 
-<script>
-    async function ladeLehrpfade() {
-        try {
-            const response = await fetch("LehrpfadeConfig.xml");
-            const xmlText = await response.text();
+    <script>
+        async function ladeLehrpfade() {
+            try {
+                const response = await fetch("LehrpfadeConfig.xml");
+                const xmlText = await response.text();
 
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(xmlText, "application/xml");
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(xmlText, "application/xml");
 
-            const lehrpfade = Array.from(xml.getElementsByTagName("Lehrpfad"));
+                const lehrpfade = Array.from(xml.getElementsByTagName("Lehrpfad"));
 
-            // Nach PfadId sortieren
-            lehrpfade.sort((a, b) => {
-                const idA = parseInt(a.getElementsByTagName("PfadId")[0].textContent, 10);
-                const idB = parseInt(b.getElementsByTagName("PfadId")[0].textContent, 10);
-                return idA - idB;
-            });
-
-            const container = document.getElementById("lehrpfade");
-
-            lehrpfade.forEach(pfad => {
-                const pfadId = pfad.getElementsByTagName("PfadId")[0].textContent;
-                const name = pfad.getElementsByTagName("UrlName")[0].textContent;
-                const icon = pfad.getElementsByTagName("IconName")[0].textContent;
-                const stationen = pfad.getElementsByTagName("StationsCount")[0].textContent;
-
-                const card = document.createElement("div");
-                card.className = "lehrpfad-card";
-                card.addEventListener("click", () => {
-                    window.location.href = `Startseite.html?id=${pfadId}`;
+                // Nach PfadId sortieren
+                lehrpfade.sort((a, b) => {
+                    const idA = parseInt(a.getElementsByTagName("PfadId")[0].textContent, 10);
+                    const idB = parseInt(b.getElementsByTagName("PfadId")[0].textContent, 10);
+                    return idA - idB;
                 });
 
-                card.innerHTML = `
-                    <img src="${icon}" alt="${name}">
-                    <div class="lehrpfad-title">${name}</div>
-                    <div class="lehrpfad-stationen">
-                        ${stationen} Stationen
+                const container = document.getElementById("lehrpfade");
+
+                lehrpfade.forEach(pfad => {
+                    const pfadId = pfad.getElementsByTagName("PfadId")[0].textContent;
+                    const name = pfad.getElementsByTagName("UrlName")[0].textContent;
+                    const icon = pfad.getElementsByTagName("IconName")[0].textContent;
+                    const stationen = pfad.getElementsByTagName("StationsCount")[0].textContent;
+                    const einfuehrungNode = pfad.getElementsByTagName("Einfuehrungstext")[0];
+                    const einfuehrung = einfuehrungNode ? einfuehrungNode.textContent : ""; // Falls kein Text enthalten ist bleibt er leer? oder default text
+
+                    const card = document.createElement("div");
+                    card.className = "lehrpfad-card";
+                    card.addEventListener("click", () => {
+                        window.location.href = `Startseite.html?id=${pfadId}`;
+                    });
+
+                    card.innerHTML = `
+                    <div class="lehrpfad-header">
+                        <div class="lehrpfad-title">${name}</div>
+                        </div>
+
+                        <div class="lehrpfad-content">
+                            <div class="lehrpfad-left">
+                            <img src="${icon}" alt="${name}">
+                            <div class="lehrpfad-stationen">
+                                ${stationen} Stationen
+                            </div>
+                        </div>
+
+                        <div class="lehrpfad-text">
+                            ${einfuehrung}
+                        </div>
                     </div>
-                `;
+                    `;
 
-                container.appendChild(card);
-            });
+                    container.appendChild(card);
+                });
 
-        } catch (error) {
-            console.error("Fehler beim Laden der Lehrpfade:", error);
+            } catch (error) {
+                console.error("Fehler beim Laden der Lehrpfade:", error);
+            }
         }
-    }
 
-    document.addEventListener("DOMContentLoaded", ladeLehrpfade);
-</script>
+        document.addEventListener("DOMContentLoaded", ladeLehrpfade);
+    </script>
 
 </body>
+
 </html>

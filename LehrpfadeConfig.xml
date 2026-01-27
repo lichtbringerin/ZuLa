@@ -4,6 +4,11 @@
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
+    <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
+  Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, Lokal aber auch
+  Global.
+  Dabei kannst du lernen, auf welche Weise wir in die Natur eingreifen und welche positiven, aber auch negativen
+  Auswirkungen dies hat.</Einfuehrungstext>
     <StationsCount>6</StationsCount>
 
     <Stations>
