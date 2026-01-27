@@ -5,10 +5,63 @@
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
     <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
-  Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, Lokal aber auch
-  Global.
-  Dabei kannst du lernen, auf welche Weise wir in die Natur eingreifen und welche positiven, aber auch negativen
-  Auswirkungen dies hat.</Einfuehrungstext>
+    Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, Lokal aber auch
+    Global.
+    Dabei kannst du lernen, auf welche Weise wir in die Natur eingreifen und welche positiven, aber auch negativen
+    Auswirkungen dies hat. Die Stationen kannst du in beliebiger Reihenfolge bearbeiten. Außerdem gibt es alle Texte der Stationen auch in Audioform auf den Seiten der Stationen.</Einfuehrungstext>
+    <StationsCount>6</StationsCount>
+
+    <Stations>
+        <Station>
+            <Name>Wald</Name>
+            <Nummer>1</Nummer>
+            <Url>Wald.html</Url>
+            <X>1111</X>
+            <Y>120</Y>
+        </Station>
+        <Station>
+            <Name>Wiese</Name>
+            <Nummer>2</Nummer>
+            <Url>Wiese.html</Url>
+            <X>1050</X>
+            <Y>260</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzenterrasse</Name>
+            <Nummer>3</Nummer>
+            <Url>Nutzpflanzenterrasse.html</Url>
+            <X>1005</X>
+            <Y>490</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzenhaus</Name>
+            <Nummer>4</Nummer>
+            <Url>Nutzpflanzenhaus.html</Url>
+            <X>680</X>
+            <Y>425</Y>
+        </Station>
+  	    <Station>
+            <Name>Bauerngarten</Name>
+            <Nummer>5</Nummer>
+            <Url>Bauerngarten.html</Url>
+            <X>555</X>
+            <Y>805</Y>
+        </Station>
+        <Station>
+            <Name>Nachhaltigkeit &amp; ICH</Name>
+            <Nummer>6</Nummer>
+            <Url>NachhaltigkeitundICH.html</Url>
+            <X>390</X>
+            <Y>600</Y>
+        </Station>
+    </Stations>
+</Lehrpfad>
+<Lehrpfad>
+    <PfadId>2</PfadId>
+    <UrlName>Audioguide durch den Botanischen Garten</UrlName>
+    <OrdnerPfad>AudioBG</OrdnerPfad>
+    <IconName>AudioBG.png</IconName>
+    <Einfuehrungstext>Platzhaltertext Audioguide</Einfuehrungstext>
     <StationsCount>6</StationsCount>
 
     <Stations>

@@ -73,9 +73,10 @@
 
 .progress-number {
   position: absolute;
-  bottom: 2px;
-  right: 4px;
-  font-size: 14px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
   font-weight: bold;
   color: black;
   pointer-events: none;
@@ -267,9 +268,9 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 /* Schwarze Nummer unten rechts */
 .karte-station .nummer {
   position: absolute;
-  bottom: 1px;
-  right: 4px;
-  font-size: 13px;
+  top: 10%;
+  left: 38%;
+  font-size: 20px;
   font-weight: bold;
   color: black;
   pointer-events: none;

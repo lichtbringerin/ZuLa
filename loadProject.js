@@ -144,9 +144,8 @@ function loadLehrpfad(ID, xml) {
         einleitungContainer.innerHTML =
             `<h2>` + window.urlName + `</h2>` +
             ` Aktuell befindest du dich auf der Startseite. Das Programm auf deinem Smartphone leitet dich durch den Lehrpfad. Begib
-            dich zu einer der Stationen. Diese findest du als Symbole auf der nachfolgenden Karte, in der Navigation oben, oder du
-            scannst den QR-Code vor Ort. Die Reihenfolge der Stationen ist flexibel, das heißt, du kannst mit jeder Station
-            beginnen:
+            dich zur ersten Station. Diese findest du als Symbole auf der nachfolgenden Karte, und in der Navigation oben. Vor Ort kannst du die Station über die Navigation auswählen oder du
+            scannst den QR-Code vor Ort.
             <br>Viel Spaß.`
             ;
     }
@@ -174,6 +173,14 @@ function submenu(items) {
         li.appendChild(a);
         submenu.appendChild(li);
     });
+    if (localStorage.getItem("projektId") == 1) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = rootPath(`${window.ordnerPath}/InfoLK.html`);
+        a.textContent = "Infos für Lehrkräfte";
+        li.appendChild(a);
+        submenu.appendChild(li);
+    }
 }
 
 // Funktion für den zurück auf die karte button bzw. den station abschliessen button
