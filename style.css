@@ -33,7 +33,7 @@
 }
 
 #content-container {
-  padding-top: 50px;
+  padding-top: 20px;
   /* Navbar-Höhe + extraplatz */
 }
 
@@ -43,7 +43,7 @@
 
 #progress-container {
   position: absolute;
-  left: 80px;
+  left: 60px;
   /* Abstand vom Hamburger */
   right: 20px;
   /* rechter Rand */
