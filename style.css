@@ -43,26 +43,22 @@
 
 #progress-container {
   position: absolute;
-  left: 60px;
-  /* Abstand vom Hamburger */
-  right: 20px;
-  /* rechter Rand */
-  /* Mitte horizontal */
-  top: 50%;
-  /* Mitte vertikal */
-  transform: translateY(-50% -50%);
-  /* exakt zentrieren */
+  top: 5px;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 40px;
   z-index: 80;
+  left: 0;
+  right: 0; 
 
+  padding-left: 30px;        /* Platz für Hamburger */
+  padding-right: 20px;
   /*wenn mehr stationen dann scrollbar*/
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
 
-  padding: 0 4px;
   gap: 4px;
 
   /* Smooth Scroll auf Mobile */
