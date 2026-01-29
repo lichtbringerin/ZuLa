@@ -50,7 +50,7 @@
   /* Mitte horizontal */
   top: 50%;
   /* Mitte vertikal */
-  transform: translateY(-50%);
+  transform: translateY(-50% -50%);
   /* exakt zentrieren */
   display: flex;
   align-items: center;
