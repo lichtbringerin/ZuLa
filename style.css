@@ -64,6 +64,7 @@
   /* Smooth Scroll auf Mobile */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+
 }
 
 /*das und das nächste machen die sccrollbar etwas weniger herausstechend*/
