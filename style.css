@@ -38,29 +38,32 @@
 }
 
 .content-wrapper {
-  padding-top: 70px;
+  padding-top: 10px;
 }
 
 #progress-container {
   position: absolute;
-  left: 70px;                 /* Abstand vom Hamburger */
-  right: 20px;                /* rechter Rand */
+  left: 80px;
+  /* Abstand vom Hamburger */
+  right: 20px;
+  /* rechter Rand */
   /* Mitte horizontal */
   top: 50%;
   /* Mitte vertikal */
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   /* exakt zentrieren */
   display: flex;
-  gap: 8px;
   align-items: center;
-  height: 32px;
+  height: 40px;
   z-index: 80;
-  
+
   /*wenn mehr stationen dann scrollbar*/
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 8px 0;
   white-space: nowrap;
+
+  padding: 0 4px;
+  gap: 4px;
 
   /* Smooth Scroll auf Mobile */
   -webkit-overflow-scrolling: touch;
@@ -73,7 +76,7 @@
 }
 
 #progress-container::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
 
@@ -89,8 +92,6 @@
   flex: 0 0 auto;
   position: relative;
   display: inline-block;
-  margin-right: 6px;
-  /* optional */
 }
 
 .progress-number {
