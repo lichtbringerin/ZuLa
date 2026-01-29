@@ -61,8 +61,10 @@
     <UrlName>Audioguide durch den Botanischen Garten</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <IconName>AudioBG.png</IconName>
-    <Einfuehrungstext>Platzhaltertext Audioguide</Einfuehrungstext>
-    <StationsCount>6</StationsCount>
+    <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
+
+ </Einfuehrungstext>
+    <StationsCount>31</StationsCount>
 
     <Stations>
         <Station>
