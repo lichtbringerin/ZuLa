@@ -57,6 +57,50 @@ window.stations = [
 ];
 window.aktuelleStationId = 0;
 
+// hier wird die "station abschliessen" button logic geprüft / gesetzt
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("karte-button");
+  if (!btn) return;
+
+  const isMobile = window.innerWidth <= 768;
+
+  function isStationCompleted() {
+    return window.stationsComplete.includes(window.aktuelleStationId);
+  }
+
+  function updateButtonVisibility() {
+    if (!isMobile) {
+      btn.style.display = "block";
+      return;
+    }
+
+    // Wenn Station abgeschlossen → immer sichtbar
+    if (isStationCompleted()) {
+      btn.style.display = "block";
+      btn.textContent = "Zurück zur Karte";
+      return;
+    }
+
+    // Scroll-Check (ganz unten?)
+    const scrollBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 5;
+
+    btn.style.display = scrollBottom ? "block" : "none";
+  }
+
+  // Initial prüfen
+  updateButtonVisibility();
+
+  // Bei Scroll prüfen
+  window.addEventListener("scroll", updateButtonVisibility);
+
+  // Bei Resize (z.B. Handy drehen)
+  window.addEventListener("resize", updateButtonVisibility);
+});
+
+
+
 // alles was nach dem laden der xml gemacht werden muss unten in der funktion aufrufen, sonst bekommt man leere ergebnisse
 // weil die xml noch nicht eingelesen ist
 function loadLehrpfad(ID, xml) {
@@ -195,7 +239,7 @@ function updateKarteButton(url) {
     }
 
     // Nicht auf Karte → Button anzeigen
-    btn.style.display = "block";
+    btn.style.display = "none";
 
     // Änderung des Button-Textes
     if (window.aktuelleStationId && !window.stationsComplete.includes(aktuelleStationId)) {
@@ -356,3 +400,4 @@ function setFavicon(iconName) {
 
     favicon.href = `/${iconName}`;
 }
+

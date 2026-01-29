@@ -70,7 +70,7 @@
       </p>
       <div class="pflanzen-container">
         <input type="text" id="pflanzen-input" class="pflanzen-input"
-          placeholder="Gib hier Namen oder wissenschaftliche Bezeichnung ein:">
+          placeholder="Namen hier eingeben:">
         <br><br>
         <button id="pflanze-hinzufuegen" class="pflanzen-button">
           Pflanze hinzufügen
@@ -253,19 +253,20 @@
         .pflanzen-tabelle {
           margin: 20px auto;
           border-collapse: collapse;
-          width: 95%;
+          width: 100%;
           max-width: 1100px;
           text-align: center;
+          table-layout: fixed;
         }
 
         .pflanzen-tabelle th {
           background-color: #4CAF50;
           color: white;
-          padding: 10px;
+          padding: 5px;
         }
 
         .pflanzen-tabelle td {
-          padding: 10px;
+          padding: 5px;
           font-size: 0.95em;
           line-height: 1.4;
         }
@@ -273,19 +274,19 @@
         /* die spaltengröße kann hier eingestellt werden */
         .pflanzen-tabelle th:nth-child(1),
         .pflanzen-tabelle td:nth-child(1) {
-          width: 18%;
+          width: 15%;
           /* Pflanze */
         }
 
         .pflanzen-tabelle th:nth-child(2),
         .pflanzen-tabelle td:nth-child(2) {
-          width: 22%;
+          width: 20%;
           /* Wissenschaftlich */
         }
 
         .pflanzen-tabelle th:nth-child(3),
         .pflanzen-tabelle td:nth-child(3) {
-          width: 60%;
+          width: 65%;
           /* Infos – bewusst breit */
         }
 
@@ -369,6 +370,7 @@
           justify-content: center;
           gap: 30px;
           margin: 40px 0;
+          flex-wrap: wrap; /*wenn zu wenig platz dann untereinander*/
         }
 
         .app-links img {

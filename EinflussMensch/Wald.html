@@ -61,7 +61,7 @@
         Mangrovenwälder an den tropischen Küsten.
         <br><br>
         <b>Aufgabe: Schau Dir dazu die Karte mit den verschiedenen Vegetationszonen der Erde an! In
-        welcher Vegetationszone leben wir eigentlich?</b>
+          welcher Vegetationszone leben wir eigentlich?</b>
       </p>
       <img src="/EinflussMensch/bilder/Weltkarte.jpg" class="karte-Bäume" alt="Baumkarte" width="500" height="375" />
       <p>
@@ -133,11 +133,12 @@
       </small>
       <br><br>
       <p>
-        Deutschland liegt komplett in der gemäßigten Klimazone mit sommergrünen Laubmischwäldern. Bei uns gibt es hauptsächlich gemäßigte sommergrüne
+        Deutschland liegt komplett in der gemäßigten Klimazone mit sommergrünen Laubmischwäldern. Bei uns gibt es
+        hauptsächlich gemäßigte sommergrüne
         Laubmischwälder.
         Die Buche ist dabei die häufigste Baumart.
-        
-        <figure class="Wald">
+
+      <figure class="Wald">
         <img src="/EinflussMensch/bilder/Buchenwald.jpg" alt="Buche" width="500">
         </a>
         <small>
@@ -145,8 +146,8 @@
         </small>
       </figure>
       <br><br>
-        An speziellen Sonderstandorten gibt es besondere Wälder. Schau dir dazu die nachfolgenden Bilder an.: 
-        <br><br>
+      An speziellen Sonderstandorten gibt es besondere Wälder. Schau dir dazu die nachfolgenden Bilder an.:
+      <br><br>
       <figure class="Wald">
         <img src="/EinflussMensch/bilder/Bergwald.jpg" alt="Wald 1" width="500">
         </a>
@@ -187,7 +188,8 @@
       Arten als Lebensraum verglichen mit einem naturbelassenen Wald.
       Im extremen Fall bestehen Forste nur aus einer einzigen Baumart. Diese werden dann Monokulturen genannt.
       <br><br>
-      <b>Aufgabe: Was denkst du, in welcher Art von Wald befindest du dich gerade hier im Wald des Botanischen Gartens?</b>
+      <b>Aufgabe: Was denkst du, in welcher Art von Wald befindest du dich gerade hier im Wald des Botanischen
+        Gartens?</b>
       </p>
 
       <!-- Antwortfelder -->
@@ -266,7 +268,7 @@
       <p>
         <br><br>
         <b>Aufgabe: Was unterscheidet einen Forst und einen Naturwald voneinander?
-        Ordne die nachfolgenden Punkte den beiden Waldformen zu:</b>
+          Ordne die nachfolgenden Punkte den beiden Waldformen zu:</b>
         <br>
       </p>
 
@@ -301,21 +303,23 @@
       <div>
         <br><br>
         <b>Aufgabe: Nachdem du die verschiedenen Eigenschaften zugeordnet hast, schau dir
-        die Bilder oben aus der ersten Aufgabe noch einmal an. Welche Aspekte weisen auf einen Forst, welche auf einen
-        natürlichen „Urwald“ hin?</b> 
+          die Bilder oben aus der ersten Aufgabe noch einmal an. Welche Aspekte weisen auf einen Forst, welche auf einen
+          natürlichen „Urwald“ hin?</b>
         <br>
         <br>
         Eine nachhaltige Nutzung und der Schutz von möglichst naturnahen Wäldern (auch
         vor dem Klimawandel) ist für uns Menschen auch in der Zukunft überlebenswichtig.
         Vermieden werden sollten auf jeden
         Fall Monokulturen, da sie anfällig gegenüber Schädlingen und Veränderungen des Klimas sind.
-        Beispiel hierfür ist der Harz. Seit 2018 starben in den dortigen Fichtenforsten riesige Flächen durch Trockenheit
+        Beispiel hierfür ist der Harz. Seit 2018 starben in den dortigen Fichtenforsten riesige Flächen durch
+        Trockenheit
         und Borkenkäferbefall ab. Siehe dazu das nachfolgende Foto an.
         <figure class="vergleich">
           <img src="/EinflussMensch/bilder/MonokulturWaldBesch.jpg" alt="Monokultur" width="500">
           </a>
           <small>
-            <figcaption>Dieser in Monokultur angelegte Forst wurde durch die Trockenheit und den Borkenkäferbefall so geschwächt, dass die Bäume einen Sturm nicht
+            <figcaption>Dieser in Monokultur angelegte Forst wurde durch die Trockenheit und den Borkenkäferbefall so
+              geschwächt, dass die Bäume einen Sturm nicht
               überstanden haben.</figcaption>
           </small>
         </figure>
@@ -329,10 +333,10 @@
           margin: 0 15px 80px;
         }
 
-        /* Antwort-Raster (3 × 2) */
+        /* Antwort-Raster (3 × 2) aber untereinander wenn kein platz*/
         .grid-container {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 15px;
           margin-top: 20px;
         }
@@ -421,6 +425,14 @@
 
         .drop-wrong {
           background: #ff7d7d !important;
+        }
+
+
+        /*bilder an bildschirm anpassen*/
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
         }
       </style>
       <script>

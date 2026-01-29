@@ -186,7 +186,8 @@
         .map-wrapper img,
         .map-wrapper iframe {
           width: 100%;
-          height: 450px;
+          aspect-ratio: 1 / 1; 
+          object-fit: cover;  
           border-radius: 12px;
           border: none;
         }
@@ -194,6 +195,7 @@
         /* iframe anfangs verstecken */
         #mapIframe {
           display: none;
+          min-height: 300px;
         }
 
         /* Kippschalter */

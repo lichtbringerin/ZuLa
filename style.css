@@ -23,7 +23,7 @@
 /*navigationsleiste oben fixieren & style, z.b. liegt über anderem inhalt, hat schatten*/
 .navbar {
   box-shadow: 0px 5px 10px 0px #aaa;
-  position: fixed;
+  position: relative;
   width: 100%;
   background: #fff;
   color: #000;
@@ -43,7 +43,8 @@
 
 #progress-container {
   position: absolute;
-  left: 50%;
+  left: 70px;                 /* Abstand vom Hamburger */
+  right: 20px;                /* rechter Rand */
   /* Mitte horizontal */
   top: 50%;
   /* Mitte vertikal */
@@ -54,6 +55,26 @@
   align-items: center;
   height: 32px;
   z-index: 80;
+  
+  /*wenn mehr stationen dann scrollbar*/
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+  white-space: nowrap;
+
+  /* Smooth Scroll auf Mobile */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/*das und das nächste machen die sccrollbar etwas weniger herausstechend*/
+#progress-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+#progress-container::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
 }
 
 .progress-img {
@@ -65,6 +86,7 @@
 }
 
 .progress-item {
+  flex: 0 0 auto;
   position: relative;
   display: inline-block;
   margin-right: 6px;
