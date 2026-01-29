@@ -69,6 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateButtonVisibility() {
+    if (!window.aktuelleStationId) {
+        btn.style.display = "none";
+        return;
+    }
+    
     if (!isMobile) {
       btn.style.display = "block";
       return;
@@ -87,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.scrollHeight - 5;
 
     btn.style.display = scrollBottom ? "block" : "none";
+    btn.textContent = "Station abschließen";
   }
 
   // Initial prüfen
@@ -251,21 +257,22 @@ function updateKarteButton(url) {
 
 // Wird beim Klick auf den Button ausgeführt
 function navigationsButtonClick() {
-
-    // Falls eine Station aktiv ist → als abgeschlossen markieren
     if (window.aktuelleStationId) {
-        stationsComplete.push(window.aktuelleStationId); // minus eins da in der statusleiste bei 0 startet aber stations IDS ab 1 starten
-        window.aktuelleStationId = null;
+        const nummer = window.aktuelleStationId;
 
-        // Abgeschlossene Stationen lokal speichern, sonst geht die info beim seitenwechsel verloren
-        updateStationsCompleteStorage();
-        // Statusleiste sofort aktualisieren
-        statusleisteSetzen();
-        // stationsicons aktualisieren
-        stationenAufKarteSetzen();
+        // Station nur hinzufügen, wenn sie noch nicht abgeschlossen ist
+        if (!window.stationsComplete.includes(nummer)) {
+            window.stationsComplete.push(nummer);
+            updateStationsCompleteStorage();
+        }
     }
 
-    // Zurück zur Karte
+    // Statusleiste & Karte sofort aktualisieren
+    statusleisteSetzen();
+    stationenAufKarteSetzen();
+
+    // Aktuelle Station zurücksetzen und zur Karte
+    window.aktuelleStationId = null;
     window.location.href = "/Startseite.html";
 }
 
