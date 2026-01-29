@@ -226,10 +226,17 @@ function submenu(items) {
     if (localStorage.getItem("projektId") == 1) {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.href = rootPath(`${window.ordnerPath}/InfoLK.html`);
-        a.textContent = "Infos für Lehrkräfte";
+        a.href = rootPath(`${window.ordnerPath}/Glossar.html`);
+        a.textContent = "Glossar";
         li.appendChild(a);
         submenu.appendChild(li);
+
+        const li2 = document.createElement("li");
+        const a2 = document.createElement("a");
+        a2.href = rootPath(`${window.ordnerPath}/InfoLK.html`);
+        a2.textContent = "Infos für Lehrkräfte";
+        li2.appendChild(a2);
+        submenu.appendChild(li2);
     }
 }
 
