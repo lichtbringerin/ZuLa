@@ -1,3 +1,8 @@
+/*Schriftart setzen*/
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+
 /*alle elemente gleich setzen, border box für konsistente abstandssberechnungen*/
 *,
 *::after,

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <title>Botanischer Garten Würzburg – Lehrpfade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,7 +36,8 @@
         /* Lehrpfad-Kacheln */
         .lehrpfade-grid {
             display: grid;
-            grid-template-columns: 1fr;   /* NUR EINE SPALTE */
+            grid-template-columns: 1fr;
+            /* NUR EINE SPALTE */
             gap: 25px;
         }
 
@@ -111,7 +113,7 @@
     <div class="container">
         <h1>Herzlich willkommen im Botanischen Garten der Universität Würzburg</h1>
         <p class="info-text">
-            Nutzen sie die digitalen Führungen für ihren Rundgang.
+            Nutzen sie die digitalen Führungen für ihren Rundgang durch den Garten.
         </p>
 
         <div id="lehrpfade" class="lehrpfade-grid">
@@ -156,7 +158,7 @@
                     card.innerHTML = `
                     <div class="lehrpfad-header">
                         <div class="lehrpfad-title">${name}</div>
-                        </div>
+                    </div>
 
                         <div class="lehrpfad-content">
                             <div class="lehrpfad-left">
