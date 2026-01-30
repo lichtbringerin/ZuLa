@@ -483,11 +483,11 @@
           /* Text erst nach Flip sichtbar */
           opacity: 0;
           pointer-events: none;
-          transition: opacity 0.25s ease; /* text wird erst langsam sichtbar*/
+          transition: opacity 0.25s ease;
+          /* text wird erst langsam sichtbar*/
         }
 
-        /* Text erst nach Flip sichtbar */
-        .karte.flipped .back {
+        .karte.zoomed .back {
           opacity: 1;
           pointer-events: auto;
         }
@@ -548,6 +548,19 @@
           pointer-events: auto;
         }
 
+        /* Platzhalter-Optik am ursprünglichen Kartenplatz */
+        .karte.placeholder {
+          background: rgba(76, 175, 80, 0.25);
+          /* grün-transparent */
+          border: 2px dashed rgba(76, 175, 80, 0.8);
+          border-radius: 12px;
+        }
+
+        /* Inhalt der Platzhalter-Karte ausblenden */
+        .karte.placeholder .karte-inner {
+          opacity: 0;
+        }
+
         /* Mobile: normaler Text kleiner (damit auch ohne Zoom nichts ausläuft) */
         @media (max-width: 600px) {
           .back {
@@ -578,10 +591,16 @@
 
         function closeActiveCard() {
           if (!activeCard) return;
-          activeCard.classList.remove("flipped", "zoomed");
-          activeCard = null;
+          activeCard.classList.remove("zoomed");
           backdrop.classList.remove("show");
-          document.body.style.overflow = ""; // Scroll wieder erlauben
+          document.body.style.overflow = "";
+
+          const cardToClose = activeCard;
+          activeCard = null;
+
+          setTimeout(() => {
+            cardToClose.classList.remove("flipped");
+          }, 0); // sofort flip zurück starten
         }
 
         function flip(el) {
