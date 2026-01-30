@@ -62,17 +62,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("karte-button");
     if (!btn) return;
 
-    function isOnMapPage() {
-        return window.location.pathname.endsWith("Startseite.html");
+    function getFileName() {
+        const p = window.location.pathname;
+        const last = p.split("/").pop();
+        return (last || "").toLowerCase();
     }
 
-    // Prüft: ist die aktuelle Seite eine Stationsseite des aktiven Lehrpfads?
-    function getStationNumberIfStationPage() {
-        const fileName = window.location.pathname.split("/").pop();
-        if (!fileName) return null;
+    function isOnMapPage() {
+        const path = window.location.pathname.toLowerCase();
+        return (
+            path === "/" ||
+            path.endsWith("/index.html") ||
+            path.endsWith("/startseite") ||
+            path.endsWith("/startseite.html")
+        );
+    }
 
-        // window.stations ist erst nach loadLehrpfad() zuverlässig gefüllt
-        const idx = (window.stations || []).findIndex(s => s.url === fileName);
+    function stationsLoaded() {
+        return Array.isArray(window.stations) && window.stations.length > 0;
+    }
+
+    function getStationNumberIfStationPage() {
+        if (!stationsLoaded()) return null;
+
+        const fileName = getFileName();
+        const idx = window.stations.findIndex(s => (s.url || "").toLowerCase() === fileName);
         return idx >= 0 ? (idx + 1) : null;
     }
 
@@ -81,70 +95,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function isAtScrollBottom() {
-        return (
-            window.innerHeight + window.scrollY >=
-            document.documentElement.scrollHeight - 50
-        );
+        const sc = document.scrollingElement || document.documentElement;
+
+        const scrollTop = sc.scrollTop;
+        const viewportH = window.innerHeight;
+        const fullH = sc.scrollHeight;
+
+        return (viewportH + scrollTop) >= (fullH - 50);
     }
 
     function updateButton() {
-        // 1) Karte: niemals Button
         if (isOnMapPage()) {
+            btn.style.display = "none";
+            return;
+        }
+
+        if (!stationsLoaded()) {
             btn.style.display = "none";
             return;
         }
 
         const stationNr = getStationNumberIfStationPage();
 
-        // 2) Stationsseite
         if (stationNr != null) {
-            window.aktuelleStationId = stationNr; // sauber setzen
+            window.aktuelleStationId = stationNr;
 
             if (isStationCompleted(stationNr)) {
                 btn.style.display = "block";
                 btn.textContent = "Zurück zur Karte";
             } else {
-                // erscheint erst unten
                 btn.style.display = isAtScrollBottom() ? "block" : "none";
                 btn.textContent = "Station abschließen";
             }
             return;
         }
 
-        // 3) Alle anderen Seiten (Glossar / InfoLK / Kontakt / etc.)
-        // -> immer zurück zur Karte, nichts abschließbar
+        // jede andere Seite: immer zurück
         window.aktuelleStationId = null;
         btn.style.display = "block";
         btn.textContent = "Zurück zur Karte";
     }
 
-    // Klick: nur Station abschließen, wenn wirklich Stationsseite + nicht abgeschlossen
     btn.addEventListener("click", () => {
+        // Wenn stations noch nicht geladen sind, einfach zurück
+        if (!stationsLoaded()) {
+            window.location.href = "/Startseite.html";
+            return;
+        }
+
         const stationNr = getStationNumberIfStationPage();
 
+        // Nur auf Stationsseiten abschließen
         if (stationNr != null && !isStationCompleted(stationNr)) {
             window.stationsComplete.push(stationNr);
             updateStationsCompleteStorage();
 
-            // UI sofort aktualisieren
             statusleisteSetzen();
             stationenAufKarteSetzen();
         }
 
-        // immer zurück zur Karte
         window.aktuelleStationId = null;
         window.location.href = "/Startseite.html";
     });
 
-    // Initial + bei Scroll/Resize
     updateButton();
-    window.addEventListener("scroll", updateButton);
+    window.addEventListener("scroll", updateButton, { passive: true });
     window.addEventListener("resize", updateButton);
 
-    // Wichtig: nach dem XML/Lehrpfad-Laden nochmal prüfen,
-    // weil window.stations erst dann gefüllt ist
+    // Nach XML/Lehrpfad-Laden neu (Stations-Erkennung)
     document.addEventListener("lehrpfadLoaded", updateButton);
 });
+
 
 
 

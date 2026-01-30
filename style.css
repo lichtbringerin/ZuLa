@@ -309,7 +309,8 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
   border: none;
   cursor: pointer;
   text-align: center;
-  z-index: 50;
+  z-index: 999999;
+  touch-action: manipulation;
 }
 
 .bottom-button:hover {
