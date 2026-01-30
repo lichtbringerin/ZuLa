@@ -479,6 +479,17 @@
           text-align: center;
           font-size: 0.7rem;
           line-height: 1.2;
+
+          /* Text erst nach Flip sichtbar */
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.25s ease; /* text wird erst langsam sichtbar*/
+        }
+
+        /* Text erst nach Flip sichtbar */
+        .karte.flipped .back {
+          opacity: 1;
+          pointer-events: auto;
         }
 
         /* responsive Anpassung */
