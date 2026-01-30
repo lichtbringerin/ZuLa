@@ -55,55 +55,95 @@ window.stations = [
     {},
     {}
 ];
-window.aktuelleStationId = 0;
+window.aktuelleStationId = null;
 
 // hier wird die "station abschliessen" button logic geprüft / gesetzt
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("karte-button");
     if (!btn) return;
 
-    const isMobile = window.innerWidth <= 768;
-
-    function isStationCompleted() {
-        if (!window.aktuelleStationId) return false;
-        return window.stationsComplete.includes(window.aktuelleStationId);
+    function isOnMapPage() {
+        return window.location.pathname.endsWith("Startseite.html");
     }
 
-    function updateButtonVisibility() {
-        if (!window.aktuelleStationId) {
+    // Prüft: ist die aktuelle Seite eine Stationsseite des aktiven Lehrpfads?
+    function getStationNumberIfStationPage() {
+        const fileName = window.location.pathname.split("/").pop();
+        if (!fileName) return null;
+
+        // window.stations ist erst nach loadLehrpfad() zuverlässig gefüllt
+        const idx = (window.stations || []).findIndex(s => s.url === fileName);
+        return idx >= 0 ? (idx + 1) : null;
+    }
+
+    function isStationCompleted(nummer) {
+        return window.stationsComplete.includes(nummer);
+    }
+
+    function isAtScrollBottom() {
+        return (
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 50
+        );
+    }
+
+    function updateButton() {
+        // 1) Karte: niemals Button
+        if (isOnMapPage()) {
             btn.style.display = "none";
             return;
         }
 
-        if (!isMobile) {
-            btn.style.display = "block";
+        const stationNr = getStationNumberIfStationPage();
+
+        // 2) Stationsseite
+        if (stationNr != null) {
+            window.aktuelleStationId = stationNr; // sauber setzen
+
+            if (isStationCompleted(stationNr)) {
+                btn.style.display = "block";
+                btn.textContent = "Zurück zur Karte";
+            } else {
+                // erscheint erst unten
+                btn.style.display = isAtScrollBottom() ? "block" : "none";
+                btn.textContent = "Station abschließen";
+            }
             return;
         }
 
-        // Wenn Station abgeschlossen → immer sichtbar
-        if (isStationCompleted()) {
-            btn.style.display = "block";
-            btn.textContent = "Zurück zur Karte";
-            return;
-        }
-
-        // Scroll-Check (ganz unten?)
-        const scrollBottom =
-            window.innerHeight + window.pageYOffset >=
-            document.body.offsetHeight - 20;
-
-        btn.style.display = scrollBottom ? "block" : "none";
-        btn.textContent = "Station abschließen";
+        // 3) Alle anderen Seiten (Glossar / InfoLK / Kontakt / etc.)
+        // -> immer zurück zur Karte, nichts abschließbar
+        window.aktuelleStationId = null;
+        btn.style.display = "block";
+        btn.textContent = "Zurück zur Karte";
     }
 
-    // Initial prüfen
-    updateButtonVisibility();
+    // Klick: nur Station abschließen, wenn wirklich Stationsseite + nicht abgeschlossen
+    btn.addEventListener("click", () => {
+        const stationNr = getStationNumberIfStationPage();
 
-    // Bei Scroll prüfen
-    window.addEventListener("scroll", updateButtonVisibility);
+        if (stationNr != null && !isStationCompleted(stationNr)) {
+            window.stationsComplete.push(stationNr);
+            updateStationsCompleteStorage();
 
-    // Bei Resize (z.B. Handy drehen)
-    window.addEventListener("resize", updateButtonVisibility);
+            // UI sofort aktualisieren
+            statusleisteSetzen();
+            stationenAufKarteSetzen();
+        }
+
+        // immer zurück zur Karte
+        window.aktuelleStationId = null;
+        window.location.href = "/Startseite.html";
+    });
+
+    // Initial + bei Scroll/Resize
+    updateButton();
+    window.addEventListener("scroll", updateButton);
+    window.addEventListener("resize", updateButton);
+
+    // Wichtig: nach dem XML/Lehrpfad-Laden nochmal prüfen,
+    // weil window.stations erst dann gefüllt ist
+    document.addEventListener("lehrpfadLoaded", updateButton);
 });
 
 
