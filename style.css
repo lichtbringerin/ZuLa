@@ -49,27 +49,36 @@ body {
 #progress-container {
   position: absolute;
   top: 5px;
+  height: 40px;
+  z-index: 80;
+
+  /* WICHTIG: Platz links für Hamburger + rechts optional fürs Layout */
+  left: 70px;
+  /* <- genug Abstand zum Hamburger */
+  right: 16px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  /* scrollbar etwas dezenter */
+  scrollbar-width: thin;
+  
+}
+
+#progress-inner {
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  z-index: 80;
-  left: 0;
-  right: 0; 
-
-  padding-left: 30px;        /* Platz für Hamburger */
-  padding-right: 20px;
-  /*wenn mehr stationen dann scrollbar*/
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-
+  /* <- zentriert wenn genug Platz */
   gap: 4px;
 
-  /* Smooth Scroll auf Mobile */
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-
+  width: max-content;
+  /* <- nimmt so viel Platz wie nötig */
+  min-width: 100%;
+  /* <- wenn wenig Marker: füllt Breite -> zentriert */
+  margin: 0 auto;
 }
 
 /*das und das nächste machen die sccrollbar etwas weniger herausstechend*/

@@ -360,11 +360,18 @@ function navigationsButtonClick() {
 function statusleisteSetzen() {
     // navbar als container bekommen
     const progressContainer = document.getElementById('progress-container');
-    progressContainer.innerHTML = ""; // reset
+    if (!progressContainer) return;
+    // inneren wrapper sicherstellen
+    let inner = document.getElementById("progress-inner");
+    if (!inner) {
+        inner = document.createElement("div");
+        inner.id = "progress-inner";
+        progressContainer.appendChild(inner);
+    }
 
+    inner.innerHTML = ""; // reset
     // einzelne stationen erzeugen
     for (let i = 0; i < window.stationsCount; i++) {
-
         const wrapper = document.createElement('div');
         wrapper.classList.add('progress-item');
 
@@ -379,22 +386,21 @@ function statusleisteSetzen() {
         }
         img.src = bildPfad;
 
-        img.style.cursor = "pointer"; // macht Mauszeiger zum "klicken-zeiger"
-        img.addEventListener("click", (event) => { // legt ein event fest das klickbarkeit der bilder erlaubt
+        img.style.cursor = "pointer";
+        img.addEventListener("click", () => {
             const station = window.stations[i];
             window.aktuelleStationId = i + 1;
-            loadSection(`/${window.ordnerPath}/${station.url}`); // läd entsprechende section beim klick
+            loadSection(`/${window.ordnerPath}/${station.url}`);
         });
 
-        // Nummer von der Station
         const label = document.createElement('span');
         label.classList.add('progress-number');
         label.textContent = nummer;
 
-        // nummer und stationsbild
         wrapper.appendChild(img);
         wrapper.appendChild(label);
-        progressContainer.appendChild(wrapper);
+
+        inner.appendChild(wrapper);
     }
 }
 
