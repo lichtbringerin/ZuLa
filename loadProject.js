@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("karte-button");
     if (!btn) return;
 
+    let hasUserScrolled = false;
+
     function getFileName() {
         const p = window.location.pathname;
         const last = p.split("/").pop();
@@ -86,7 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!stationsLoaded()) return null;
 
         const fileName = getFileName();
-        const idx = window.stations.findIndex(s => (s.url || "").toLowerCase() === fileName);
+        const idx = window.stations.findIndex(
+            s => (s.url || "").toLowerCase() === fileName
+        );
         return idx >= 0 ? (idx + 1) : null;
     }
 
@@ -96,20 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function isAtScrollBottom() {
         const sc = document.scrollingElement || document.documentElement;
-
         const scrollTop = sc.scrollTop;
         const viewportH = window.innerHeight;
         const fullH = sc.scrollHeight;
-
         return (viewportH + scrollTop) >= (fullH - 50);
     }
 
     function updateButton() {
+        // 1) Karte: nie Button
         if (isOnMapPage()) {
             btn.style.display = "none";
             return;
         }
 
+        // 2) Solange Stationsdaten nicht da sind: nichts anzeigen (kein Flicker)
         if (!stationsLoaded()) {
             btn.style.display = "none";
             return;
@@ -117,27 +121,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const stationNr = getStationNumberIfStationPage();
 
+        // 3) Stationsseite
         if (stationNr != null) {
             window.aktuelleStationId = stationNr;
 
             if (isStationCompleted(stationNr)) {
                 btn.style.display = "block";
                 btn.textContent = "Zurück zur Karte";
+                return;
+            }
+
+            // nicht abgeschlossen -> nur nach Scroll + unten
+            btn.textContent = "Station abschließen";
+            if (!hasUserScrolled) {
+                btn.style.display = "none";
             } else {
                 btn.style.display = isAtScrollBottom() ? "block" : "none";
-                btn.textContent = "Station abschließen";
             }
             return;
         }
 
-        // jede andere Seite: immer zurück
+        // 4) Alle anderen Seiten: immer zurück
         window.aktuelleStationId = null;
         btn.style.display = "block";
         btn.textContent = "Zurück zur Karte";
     }
 
+    // Klick-Handler: EINMAL registrieren (nicht in updateButton!)
     btn.addEventListener("click", () => {
-        // Wenn stations noch nicht geladen sind, einfach zurück
         if (!stationsLoaded()) {
             window.location.href = "/Startseite.html";
             return;
@@ -145,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const stationNr = getStationNumberIfStationPage();
 
-        // Nur auf Stationsseiten abschließen
+        // Nur Stationsseiten abschließen
         if (stationNr != null && !isStationCompleted(stationNr)) {
             window.stationsComplete.push(stationNr);
             updateStationsCompleteStorage();
@@ -158,12 +169,21 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/Startseite.html";
     });
 
-    updateButton();
-    window.addEventListener("scroll", updateButton, { passive: true });
+    // Events: EINMAL registrieren
+    window.addEventListener("scroll", () => {
+        hasUserScrolled = true;
+        updateButton();
+    }, { passive: true });
+
     window.addEventListener("resize", updateButton);
 
-    // Nach XML/Lehrpfad-Laden neu (Stations-Erkennung)
-    document.addEventListener("lehrpfadLoaded", updateButton);
+    document.addEventListener("lehrpfadLoaded", () => {
+        hasUserScrolled = false; // Reset pro Stations-/Pfad-Ladezyklus
+        updateButton();
+    });
+
+    // Initial
+    updateButton();
 });
 
 
