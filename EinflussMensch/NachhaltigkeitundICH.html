@@ -191,7 +191,8 @@
 
         Der <strong>Earth Overshoot Day</strong>, auch Erdüberlastungstag oder Welterschöpfungstag genannt, definiert
         den Tag, an dem
-        weltweit alle nachwachsenden Ressourcen, die die Ökosysteme unserer Erde innerhalb eines Jahres herstellen können,
+        weltweit alle nachwachsenden Ressourcen, die die Ökosysteme unserer Erde innerhalb eines Jahres herstellen
+        können,
         aufgebraucht sind. (Definition nach der Deutschen Welthungerhilfe e. V.)
         <br><br>
         Liegt dieser Tag vor dem 31.12. eines Jahres, so verbraucht die Menschheit in diesem Jahr mehr Ressourcen,
@@ -405,6 +406,7 @@
           aspect-ratio: 1 / 1;
           perspective: 800px;
           cursor: pointer;
+          touch-action: manipulation;
         }
 
         /*hand in der mitte*/
@@ -489,11 +491,117 @@
             width: 60%;
           }
         }
+
+        /* karte herauszoomen */
+        .back p {
+          margin: 0;
+          padding: 0;
+          overflow-wrap: anywhere;
+        }
+
+        /* Zoom-Overlay Zustand */
+        .karte.zoomed {
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(1.15);
+          z-index: 9999;
+          width: min(90vw, 420px);
+          aspect-ratio: 1 / 1;
+        }
+
+        .karte.zoomed .karte-inner {
+          transition: transform 0.6s;
+        }
+
+        /* Rückseite im Zoom lesbar machen */
+        .karte.zoomed .back {
+          font-size: 0.95rem;
+          line-height: 1.35;
+          padding: 14px;
+        }
+
+        /* Hintergrund abdunkeln */
+        .flip-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.45);
+          z-index: 9998;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s;
+        }
+
+        .flip-backdrop.show {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        /* Mobile: normaler Text kleiner (damit auch ohne Zoom nichts ausläuft) */
+        @media (max-width: 600px) {
+          .back {
+            font-size: 0.55rem;
+            /* kleiner als vorher 0.7rem */
+            line-height: 1.15;
+          }
+
+          .karte.zoomed {
+            transform: translate(-50%, -50%) scale(1.0);
+            /* auf Handy reicht das meist */
+            width: min(92vw, 380px);
+          }
+
+          .karte.zoomed .back {
+            font-size: 0.9rem;
+            line-height: 1.35;
+          }
+        }
       </style>
       <script>
-        function flip(el) {
-          el.classList.toggle("flipped");
+        let activeCard = null;
+
+        // Backdrop einmalig erzeugen
+        const backdrop = document.createElement("div");
+        backdrop.className = "flip-backdrop";
+        document.body.appendChild(backdrop);
+
+        function closeActiveCard() {
+          if (!activeCard) return;
+          activeCard.classList.remove("flipped", "zoomed");
+          activeCard = null;
+          backdrop.classList.remove("show");
+          document.body.style.overflow = ""; // Scroll wieder erlauben
         }
+
+        function flip(el) {
+          // Wenn gleiche Karte offen ist → schließen
+          if (activeCard === el) {
+            closeActiveCard();
+            return;
+          }
+
+          // Wenn andere Karte offen ist → erst schließen
+          if (activeCard && activeCard !== el) {
+            closeActiveCard();
+          }
+
+          activeCard = el;
+
+          // Zoom + Flip an
+          el.classList.add("zoomed", "flipped");
+          backdrop.classList.add("show");
+
+          // Hintergrund scrollen sperren (optional, aber angenehmer)
+          document.body.style.overflow = "hidden";
+        }
+
+        // Klick auf Hintergrund schließt Karte
+        backdrop.addEventListener("click", closeActiveCard);
+
+        // ESC schließt (Desktop)
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeActiveCard();
+        });
       </script>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
