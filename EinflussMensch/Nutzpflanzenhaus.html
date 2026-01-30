@@ -69,8 +69,7 @@
         <br>
       </p>
       <div class="pflanzen-container">
-        <input type="text" id="pflanzen-input" class="pflanzen-input"
-          placeholder="Namen hier eingeben:">
+        <input type="text" id="pflanzen-input" class="pflanzen-input" placeholder="Namen hier eingeben:">
         <br><br>
         <button id="pflanze-hinzufuegen" class="pflanzen-button">
           Pflanze hinzufügen
@@ -80,9 +79,9 @@
       <table id="pflanzen-tabelle" class="pflanzen-tabelle">
         <thead>
           <tr>
-            <th>Pflanze:</th>
-            <th>Wissenschaftliche Bezeichnung:</th>
-            <th>Bekannt für & Infos:</th>
+            <th class="col-name">Pflanze:</th>
+            <th class="col-latein">Wissenschaftliche Bezeichnung:</th>
+            <th class="col-info">Bekannt für & Infos:</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -132,7 +131,8 @@
         <div id="timer" class="timer">00:00:00</div>
       </div>
       <br><br>
-      Eine Einheit, dargestellt als kleines Haus, meint dabei die Fläche des Teils des Nutzpflanzenhauses, in dem du dich
+      Eine Einheit, dargestellt als kleines Haus, meint dabei die Fläche des Teils des Nutzpflanzenhauses, in dem du
+      dich
       gerade
       befindest, also 108m<sup>2</sup>.
       Seitdem du „Start“ geklickt hast, ist die Fläche dieses Gewächshauses nach Rechnung des WWF so oft verschwunden:
@@ -289,6 +289,41 @@
           /* Infos – bewusst breit */
         }
 
+        /* Latein unter Name ist standardmäßig versteckt (Desktop) */
+        .name-la {
+          display: none;
+          font-style: italic;
+          color: #2f5e2f;
+          margin-top: 2px;
+          font-size: 0.9em;
+        }
+
+        /* Mobile: Spalte "Wissenschaftlich" ausblenden + Latein unter Name anzeigen */
+        @media (max-width: 700px) {
+
+          /* zweite Spalte komplett ausblenden */
+          .pflanzen-tabelle th.col-latein,
+          .pflanzen-tabelle td.col-latein {
+            display: none;
+          }
+
+          /* Header-Text der ersten Spalte anpassen (optional) */
+          .pflanzen-tabelle th.col-name::after {
+            content: " & Wiss. Name";
+          }
+
+          /* Latein unter Name sichtbar */
+          .name-la {
+            display: block;
+          }
+
+          /* etwas kompakter auf Mobile */
+          .pflanzen-tabelle td {
+            font-size: 0.9em;
+            line-height: 1.25;
+          }
+        }
+
         /*häuser zählung button und tabelle*/
         .zaehler-container {
           text-align: center;
@@ -369,7 +404,8 @@
           justify-content: center;
           gap: 30px;
           margin: 40px 0;
-          flex-wrap: wrap; /*wenn zu wenig platz dann untereinander*/
+          flex-wrap: wrap;
+          /*wenn zu wenig platz dann untereinander*/
         }
 
         .app-links img {
@@ -532,7 +568,16 @@
 
             const zeile = document.createElement('tr');
             zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
-            zeile.innerHTML = `<td>${pflanze.name}</td><td>${pflanze.latein}</td><td>${pflanze.info}</td>`;
+            zeile.innerHTML = `
+              <td class="col-name">
+                <div class="name-wrap">
+                  <div class="name-de">${pflanze.name}</div>
+                  <div class="name-la">${pflanze.latein}</div>
+                </div>
+              </td>
+              <td class="col-latein">${pflanze.latein}</td>
+              <td class="col-info">${pflanze.info}</td>
+              `;
             tabelleBody.appendChild(zeile);
           }
           updateAufloesenButton();
@@ -561,13 +606,26 @@
             if (!gefundenePflanzen.includes(element.name)) {
               const zeile = document.createElement('tr');
               zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
-              zeile.innerHTML = `<td>${element.name}</td><td>${element.latein}</td><td>${element.info}</td>`;
+
+              zeile.innerHTML = `
+        <td class="col-name">
+          <div class="name-wrap">
+            <div class="name-de">${element.name}</div>
+            <div class="name-la">${element.latein}</div>
+          </div>
+        </td>
+        <td class="col-latein">${element.latein}</td>
+        <td class="col-info">${element.info}</td>
+      `;
+
               tabelleBody.appendChild(zeile);
               gefundenePflanzen.push(element.name);
             }
           });
+
           updateAufloesenButton();
         }
+
 
 
         // Optional: Enter-Taste zum Hinzufügen
