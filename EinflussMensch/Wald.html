@@ -432,26 +432,39 @@
 
         /*tabelle auf mobile anders formatieren*/
         @media (max-width: 768px) {
+
           .drag-container {
             flex-direction: column;
-            gap: 15px;
+            align-items: stretch;
+          }
+
+          /* Antwortfelder (Dropzones) zuerst */
+          #forst {
+            order: 1;
+          }
+
+          #naturwald {
+            order: 2;
+          }
+
+          /* Draggable Antworten darunter */
+          #startArea {
+            order: 3;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+          }
+
+          /* Boxen mobilfreundlicher */
+          .draggable {
+            width: 90%;
+            max-width: 350px;
           }
 
           .dropzone {
             width: 100%;
             min-height: 180px;
-          }
-
-          #startArea {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-
-          .draggable {
-            width: 100%;
-            max-width: 320px;
-            font-size: 15px;
           }
         }
 

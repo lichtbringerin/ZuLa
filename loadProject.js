@@ -59,50 +59,51 @@ window.aktuelleStationId = 0;
 
 // hier wird die "station abschliessen" button logic geprüft / gesetzt
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("karte-button");
-  if (!btn) return;
+    const btn = document.getElementById("karte-button");
+    if (!btn) return;
 
-  const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 768;
 
-  function isStationCompleted() {
-    return window.stationsComplete.includes(window.aktuelleStationId);
-  }
-
-  function updateButtonVisibility() {
-    if (!window.aktuelleStationId) {
-        btn.style.display = "none";
-        return;
-    }
-    
-    if (!isMobile) {
-      btn.style.display = "block";
-      return;
+    function isStationCompleted() {
+        if (!window.aktuelleStationId) return false;
+        return window.stationsComplete.includes(window.aktuelleStationId);
     }
 
-    // Wenn Station abgeschlossen → immer sichtbar
-    if (isStationCompleted()) {
-      btn.style.display = "block";
-      btn.textContent = "Zurück zur Karte";
-      return;
+    function updateButtonVisibility() {
+        if (!window.aktuelleStationId) {
+            btn.style.display = "none";
+            return;
+        }
+
+        if (!isMobile) {
+            btn.style.display = "block";
+            return;
+        }
+
+        // Wenn Station abgeschlossen → immer sichtbar
+        if (isStationCompleted()) {
+            btn.style.display = "block";
+            btn.textContent = "Zurück zur Karte";
+            return;
+        }
+
+        // Scroll-Check (ganz unten?)
+        const scrollBottom =
+            window.innerHeight + window.pageYOffset >=
+            document.body.offsetHeight - 20;
+
+        btn.style.display = scrollBottom ? "block" : "none";
+        btn.textContent = "Station abschließen";
     }
 
-    // Scroll-Check (ganz unten?)
-    const scrollBottom =
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 5;
+    // Initial prüfen
+    updateButtonVisibility();
 
-    btn.style.display = scrollBottom ? "block" : "none";
-    btn.textContent = "Station abschließen";
-  }
+    // Bei Scroll prüfen
+    window.addEventListener("scroll", updateButtonVisibility);
 
-  // Initial prüfen
-  updateButtonVisibility();
-
-  // Bei Scroll prüfen
-  window.addEventListener("scroll", updateButtonVisibility);
-
-  // Bei Resize (z.B. Handy drehen)
-  window.addEventListener("resize", updateButtonVisibility);
+    // Bei Resize (z.B. Handy drehen)
+    window.addEventListener("resize", updateButtonVisibility);
 });
 
 
@@ -249,16 +250,6 @@ function updateKarteButton(url) {
     if (url.includes("Startseite.html")) {
         btn.style.display = "none";
         return;
-    }
-
-    // Nicht auf Karte → Button anzeigen
-    btn.style.display = "none";
-
-    // Änderung des Button-Textes
-    if (window.aktuelleStationId && !window.stationsComplete.includes(aktuelleStationId)) {
-        btn.textContent = "Station abschließen";
-    } else {
-        btn.textContent = "Zurück zur Karte";
     }
 }
 
