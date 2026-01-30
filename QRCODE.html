@@ -104,11 +104,82 @@
             font-size: 0.95em;
             color: #444;
             line-height: 1.4;
+            position: relative;
+            /* nötig für Overlay */
+            max-height: 7em;
+            /* ca. 5 Zeilen: 5 * 1.4em = 7em */
+            overflow: hidden;
+        }
+
+        /* Wenn aufgeklappt */
+        .lehrpfad-text.expanded {
+            max-height: none;
+            overflow: visible;
+        }
+
+        /* "… weiterlesen" Overlay */
+        .read-more {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            padding-top: 1.2em;
+            /* sorgt dafür, dass es auf halber 5. Zeile wirkt */
+            text-align: left;
+
+            /* Verlauf, damit es aussieht wie abgeschnitten */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 60%);
+        }
+
+        .read-more button {
+            border: none;
+            background: none;
+            color: #117964;
+            font-weight: 600;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .read-more button:hover {
+            text-decoration: underline;
+        }
+
+        /* Container fix oben rechts */
+        .logo-container {
+            position: fixed;
+            /* bleibt sichtbar */
+            top: 0;
+            right: 0;
+            padding: 10px;
+            /* Abstand zum Rand */
+            z-index: 1000;
+            /* über Inhalt */
+            pointer-events: none;
+            /* klickt nicht im Weg */
+        }
+
+        /* Logo skalieren */
+        .logo-bild {
+            width: 140px;
+            /* Desktop-Größe */
+            height: auto;
+            display: block;
+        }
+
+        /* Mobile: kleineres Logo */
+        @media (max-width: 600px) {
+            .logo-bild {
+                width: 100px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <section id="logo" class="logo-container">
+        <img src="Bilder/BGLogo.png" class="logo-bild" alt="Logo" />
+    </section>
 
     <div class="container">
         <h1>Herzlich willkommen im Botanischen Garten der Universität Würzburg</h1>
@@ -168,13 +239,41 @@
                             </div>
                         </div>
 
-                        <div class="lehrpfad-text">
+                        <div class="lehrpfad-text" data-fulltext="${encodeURIComponent(einfuehrung)}">
                             ${einfuehrung}
+                            <div class="read-more" hidden>
+                                <button type="button" class="read-more-btn">… weiterlesen</button>
+                            </div>
                         </div>
                     </div>
                     `;
 
                     container.appendChild(card);
+                    // "… weiterlesen" Logik pro Karte
+                    const textEl = card.querySelector(".lehrpfad-text");
+                    const moreWrap = card.querySelector(".read-more");
+                    const moreBtn = card.querySelector(".read-more-btn");
+
+                    function needsClamp(el) {
+                        // nur anzeigen, wenn wirklich abgeschnitten wird
+                        return el.scrollHeight > el.clientHeight + 2;
+                    }
+
+                    // erst nach dem Einfügen in DOM messen (sonst manchmal 0)
+                    requestAnimationFrame(() => {
+                        if (needsClamp(textEl)) {
+                            moreWrap.hidden = false;
+                        }
+                    });
+
+                    moreBtn.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        e.stopPropagation(); // verhindert das Öffnen des Lehrpfads beim Klick!
+
+                        textEl.classList.add("expanded");
+                        moreWrap.hidden = true;
+                    });
+
                 });
 
             } catch (error) {

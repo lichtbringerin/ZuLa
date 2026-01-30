@@ -68,15 +68,16 @@
       <br><br>
       Doch was genau hat das mit den Ökosystemen vor Ort zu tun? Ganz einfach, die Weinberge,
       Felder und
-      Obstwiesen wurden von Menschenhand angelegt und waren nicht immer da. 
+      Obstwiesen wurden von Menschenhand angelegt und waren nicht immer da.
       <br><br>
-      Die ursprünglich dort vorkommenden Pflanzenarten können auf den Feldern nicht wachsen oder werden mit Herbiziden gezielt bekämpft. Viele
+      Die ursprünglich dort vorkommenden Pflanzenarten können auf den Feldern nicht wachsen oder werden mit Herbiziden
+      gezielt bekämpft. Viele
       Insekten
       verlieren damit ihre Nahrungsquellen oder werden durch Insektizide getötet, da sie als Schädlinge die
       Ernten
       gefährden.
       <br><br>
-      Der Anbau findet fast immer in sogenannten Monokulturen statt. Das heißt, es wird 
+      Der Anbau findet fast immer in sogenannten Monokulturen statt. Das heißt, es wird
       nur eine einzige Nutzpflanze angebaut. Dadurch sind sie noch anfälliger für Schädlinge und
       es
       müssen noch mehr Pestizide ausgebracht werden. Auch muss der Boden, dem die Nährstoffe entzogen
@@ -85,10 +86,11 @@
       die
       Umwelt, die sehr schädlich für die beeinflusste Tier- und Pflanzenwelt - und uns Menschen - sein können.
       <br><br>
-      Durch diese Eingriffe in unsere Ökosysteme für die Produktion unserer Nahrungspflanzen geht viel Lebensraum für heimische Tiere, Pflanzen oder Pilze verloren. Weltweit.
+      Durch diese Eingriffe in unsere Ökosysteme für die Produktion unserer Nahrungspflanzen geht viel Lebensraum für
+      heimische Tiere, Pflanzen oder Pilze verloren. Weltweit.
       <br><br>
       <b>Aufgabe: Schau dir folgende Bildergalerie an. Du kannst stattdessen
-      auch die Google-Maps Karte nutzen, wenn du mit den Google-Maps Nutzungsbedingungen einverstanden bist:</b>
+        auch die Google-Maps Karte nutzen, wenn du mit den Google-Maps Nutzungsbedingungen einverstanden bist:</b>
       <br><br>
 
       <div class="map-wrapper">
@@ -129,7 +131,7 @@
       riesige Flächen vor Ort verloren.
       Außerdem werden enorme Mengen Grundwasser benötigt.
       Nötig ist dies, damit wir unser Obst und Gemüse ganzjährig und möglichst billig essen können.
-      Für die Ökosysteme und die Menschen in Spanien ist das ein großes Problem: Der massenhafte Anbau 
+      Für die Ökosysteme und die Menschen in Spanien ist das ein großes Problem: Der massenhafte Anbau
       führt dort zur Austrocknung der Landschaft, zur Vergiftung des Trinkwassers und zur Zerstörung vieler
       Ökosysteme.
       <br><br>
@@ -140,10 +142,75 @@
       <br><br>
       <br><br>
       <b>Aufgabe: Schau dir diesen (stark vereinfachten) Saisonkalender an. Welches Gemüse und
-      Obst sind jetzt in diesem Monat bei uns regional verfügbar?</b>
+        Obst sind jetzt in diesem Monat bei uns regional verfügbar?</b>
       <br><br>
-      <figure>
-        <img src="bilder/saisonkalender.png" alt="Kalender">
+      <figure class="season-figure">
+        <div class="season-grid" id="seasonGrid" aria-label="Saisonkalender interaktiv">
+
+          <!-- Frühling (oben links) -->
+          <div class="season-quadrant tl" role="button" tabindex="0" data-season="fruehling" aria-label="Frühling">
+            <div class="season-inner">
+              <div class="season-front"></div>
+              <div class="season-back">
+                <div class="season-back-content">
+                  <h3>Frühling</h3>
+                  <p>Im Frühling beginnt die Ernte der ersten frischen Gemüsesorten. Blattspinat und Radieschen wachsen
+                    schon früh im Jahr, gefolgt von der Spargelsaison. Gegen Ende des Frühlings reifen die ersten
+                    Erdbeeren und leiten in den Sommer über.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sommer (oben rechts) -->
+          <div class="season-quadrant tr" role="button" tabindex="0" data-season="sommer" aria-label="Sommer">
+            <div class="season-inner">
+              <div class="season-front"></div>
+              <div class="season-back">
+                <div class="season-back-content">
+                  <h3>Sommer</h3>
+                  <p>Im Sommer ist das Angebot an regionalem Obst und Gemüse besonders groß. Kirschen gehören zu den
+                    typischen Sommerfrüchten, während Paprika und Tomaten nun voll ausreifen. Auch Melonen werden in
+                    warmen Regionen Deutschlands angebaut und geerntet.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Winter (unten links) -->
+          <div class="season-quadrant bl" role="button" tabindex="0" data-season="Winter" aria-label="Winter">
+            <div class="season-inner">
+              <div class="season-front"></div>
+              <div class="season-back">
+                <div class="season-back-content">
+                  <h3>Winter</h3>
+                  <p>Im Winter gibt es vor allem gut lagerfähige Lebensmittel aus der Region. Dazu zählen Wurzelgemüse
+                    wie Karotten und Steckrüben, aber auch Rosenkohl und winterliches Blattgemüse wie Grünkohl,
+                    Feldsalat oder Winterspinat. Zusätzlich stehen eingelagerte Äpfel aus der Herbsternte zur Verfügung.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Herbst (unten rechts) -->
+          <div class="season-quadrant br" role="button" tabindex="0" data-season="Herbst" aria-label="Herbst">
+            <div class="season-inner">
+              <div class="season-front"></div>
+              <div class="season-back">
+                <div class="season-back-content">
+                  <h3>Herbst</h3>
+                  <p>Der Herbst ist die Zeit der großen Ernte. Kürbisse prägen diese Jahreszeit ebenso wie
+                    Äpfeln, Birnen, Pflaumen oder anderes Streuobst. In den Weinregionen beginnt außerdem die Weinlese,
+                    bei der Trauben
+                    geerntet werden.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <figcaption>
           <small>Image generated by Gemini, an AI from Google.</small>
         </figcaption>
@@ -152,10 +219,9 @@
       Es lohnt sich, mit solch einem Saisonkalender seine Obst- und Gemüseeinkäufe zu planen. Durch den regionalen
       Einkauf und Beachtung der saisonalen Verfügbarkeit bei uns
       schützt du Ökosysteme vor Ort - und auch in teilweise sehr weit entfernten Regionen auf unserer Erde.
-      
+
 
       </p>
-      <!-- SAISONKALENDER EINBINDEN?? -->
 
       <style>
         /* Seitenabstände + Scrollplatz */
@@ -186,8 +252,8 @@
         .map-wrapper img,
         .map-wrapper iframe {
           width: 100%;
-          aspect-ratio: 1 / 1; 
-          object-fit: cover;  
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
           border-radius: 12px;
           border: none;
         }
@@ -233,6 +299,109 @@
           box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25);
         }
 
+        .season-figure {
+          max-width: 700px;
+          margin: 24px auto;
+        }
+
+        .season-grid {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+
+        /* jede Hälfte ist eine Flipcard */
+        .season-quadrant {
+          position: relative;
+          perspective: 900px;
+          cursor: pointer;
+          touch-action: manipulation;
+        }
+
+        .season-inner {
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.6s;
+        }
+
+        .season-quadrant.flipped .season-inner {
+          transform: rotateY(180deg);
+        }
+
+        .season-front,
+        .season-back {
+          position: absolute;
+          inset: 0;
+          backface-visibility: hidden;
+        }
+
+        /* FRONT: Bildausschnitt */
+        .season-front {
+          background-image: url("bilder/saisonkalender.png");
+          background-repeat: no-repeat;
+          background-size: 200% 200%;
+          /* wichtig: 4 Quadranten aus einem Bild */
+        }
+
+        /* BACK: Text */
+        .season-back {
+          transform: rotateY(180deg);
+          background: #117964;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+        }
+
+        .season-back-content {
+          text-align: center;
+        }
+
+        .season-back-content h3 {
+          margin: 0 0 6px;
+          font-size: 1.05rem;
+        }
+
+        .season-back-content p {
+          margin: 0;
+          font-size: 0.9rem;
+          line-height: 1.35;
+        }
+
+        /* Bildausschnitt je Quadrant */
+        .season-quadrant.tl .season-front {
+          background-position: 0% 0%;
+        }
+
+        .season-quadrant.tr .season-front {
+          background-position: 100% 0%;
+        }
+
+        .season-quadrant.bl .season-front {
+          background-position: 0% 100%;
+        }
+
+        .season-quadrant.br .season-front {
+          background-position: 100% 100%;
+        }
+
+        /* optional: dünne Trennlinien genau in der Mitte */
+        .season-quadrant.tl,
+        .season-quadrant.tr {
+          border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .season-quadrant.tl,
+        .season-quadrant.bl {
+          border-right: 2px solid rgba(255, 255, 255, 0.35);
+        }
+
         /*sorgt dafür dass sich die bilder der aktuellen auflösung anpassen*/
         img {
           max-width: 100%;
@@ -260,6 +429,21 @@
           btnKarte.classList.add("active");
           btnBild.classList.remove("active");
         });
+
+        document.querySelectorAll(".season-quadrant").forEach(q => {
+          q.addEventListener("click", () => {
+            q.classList.toggle("flipped");
+          });
+
+          // optional: Tastatur (Enter/Space)
+          q.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              q.classList.toggle("flipped");
+            }
+          });
+        });
+
       </script>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
