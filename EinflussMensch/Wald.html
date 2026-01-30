@@ -386,6 +386,9 @@
           gap: 20px;
           font-family: sans-serif;
           margin: 20px 0;
+
+          max-width: 100%;
+          overflow-x: hidden;
         }
 
         .dropzone {
@@ -425,6 +428,31 @@
 
         .drop-wrong {
           background: #ff7d7d !important;
+        }
+
+        /*tabelle auf mobile anders formatieren*/
+        @media (max-width: 768px) {
+          .drag-container {
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .dropzone {
+            width: 100%;
+            min-height: 180px;
+          }
+
+          #startArea {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          .draggable {
+            width: 100%;
+            max-width: 320px;
+            font-size: 15px;
+          }
         }
 
 
