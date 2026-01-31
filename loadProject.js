@@ -322,6 +322,13 @@ function submenu(items) {
     }
 }
 
+// Sorgt dafür, dass der hintergrund (Stationsseiten) stehen bleibt solange menü offen sit und gescrollt wird
+const menuToggle = document.getElementById("menu-toggle");
+
+menuToggle.addEventListener("change", () => {
+  document.body.style.overflow = menuToggle.checked ? "hidden" : "";
+});
+
 // Funktion für den zurück auf die karte button bzw. den station abschliessen button
 // Wird aufgerufen, nachdem eine Section geladen wird
 function updateKarteButton(url) {
