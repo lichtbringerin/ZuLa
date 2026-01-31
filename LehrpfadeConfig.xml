@@ -68,219 +68,121 @@
 
     <Stations>
         <Station>
-            <Name>Wald</Name>
+            <Name>Eingang</Name>
             <Nummer>1</Nummer>
-            <Url>Wald.html</Url>
+            <Url>Eingang.html</Url>
             <X>1111</X>
             <Y>120</Y>
         </Station>
         <Station>
-            <Name>Wiese</Name>
+            <Name>Tertiärwald</Name>
             <Nummer>2</Nummer>
-            <Url>Wiese.html</Url>
+            <Url>Tertiaerwald.html</Url>
             <X>1050</X>
             <Y>260</Y>
         </Station>
         <Station>
-            <Name>Nutzpflanzenterrasse</Name>
+            <Name>Bauerngarten</Name>
             <Nummer>3</Nummer>
-            <Url>Nutzpflanzenterrasse.html</Url>
+            <Url>Bauerngarten.html</Url>
             <X>1005</X>
             <Y>490</Y>
         </Station>
         <Station>
-            <Name>Nutzpflanzenhaus</Name>
+            <Name>Arzneipflanzen</Name>
             <Nummer>4</Nummer>
-            <Url>Nutzpflanzenhaus.html</Url>
+            <Url>Arzneipflanzen.html</Url>
             <X>680</X>
             <Y>425</Y>
         </Station>
   	    <Station>
-            <Name>Bauerngarten</Name>
+            <Name>Mediterranhaus</Name>
             <Nummer>5</Nummer>
-            <Url>Bauerngarten.html</Url>
+            <Url>Mediterranhaus.html</Url>
             <X>555</X>
             <Y>805</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Bienen</Name>
             <Nummer>6</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Bienen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Prärie</Name>
             <Nummer>7</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Praerie.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Sieboldpflanzen</Name>
             <Nummer>8</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Sieboldpflanzen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Tropenhaus</Name>
             <Nummer>9</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Tropenhaus.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Karnivore Pflanzen</Name>
             <Nummer>10</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>KarnivorePflanzen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Nutzpflanzen</Name>
             <Nummer>11</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Nutzpflanzen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Alpinpflanzen</Name>
             <Nummer>12</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Alpinpflanzen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Waldgesellschaften</Name>
             <Nummer>13</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Waldgesellschaften.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Mediterrane Felsheide</Name>
             <Nummer>14</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>MediterraneFelsheide.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Sandmagerrasen</Name>
             <Nummer>15</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Sandmagerrasen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Trockenrasen</Name>
             <Nummer>16</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Trockenrasen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
         <Station>
-            <Name>Abschluss</Name>
+            <Name>Peonienterrassen</Name>
             <Nummer>17</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>18</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>19</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>20</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>21</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>22</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>23</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>24</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>25</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>26</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>27</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>28</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>29</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>30</Nummer>
-            <Url>Abschluss.html</Url>
-            <X>390</X>
-            <Y>600</Y>
-        </Station>
-        <Station>
-            <Name>Abschluss</Name>
-            <Nummer>31</Nummer>
-            <Url>Abschluss.html</Url>
+            <Url>Peonienterrassen.html</Url>
             <X>390</X>
             <Y>600</Y>
         </Station>
