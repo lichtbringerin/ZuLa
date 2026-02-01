@@ -402,6 +402,23 @@
           border-right: 2px solid rgba(255, 255, 255, 0.35);
         }
 
+        /*auf kleineren geräten soll die schrift kleiner und enger zusammen sein*/
+        @media (max-width: 700px) {
+          .season-back {
+            padding: 8px;
+          }
+
+          .season-back-content h3 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+          }
+
+          .season-back-content p {
+            font-size: 0.78rem;
+            line-height: 1.2;
+          }
+        }
+
         /*sorgt dafür dass sich die bilder der aktuellen auflösung anpassen*/
         img {
           max-width: 100%;

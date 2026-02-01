@@ -71,120 +71,120 @@
             <Name>Eingang</Name>
             <Nummer>1</Nummer>
             <Url>Eingang.html</Url>
-            <X>1111</X>
-            <Y>120</Y>
+            <X>670</X>
+            <Y>890</Y>
         </Station>
         <Station>
             <Name>Tertiärwald</Name>
             <Nummer>2</Nummer>
             <Url>Tertiaerwald.html</Url>
-            <X>1050</X>
-            <Y>260</Y>
+            <X>490</X>
+            <Y>880</Y>
         </Station>
         <Station>
             <Name>Bauerngarten</Name>
             <Nummer>3</Nummer>
             <Url>Bauerngarten.html</Url>
-            <X>1005</X>
-            <Y>490</Y>
+            <X>555</X>
+            <Y>800</Y>
         </Station>
         <Station>
             <Name>Arzneipflanzen</Name>
             <Nummer>4</Nummer>
             <Url>Arzneipflanzen.html</Url>
-            <X>680</X>
-            <Y>425</Y>
+            <X>555</X>
+            <Y>660</Y>
         </Station>
   	    <Station>
             <Name>Mediterranhaus</Name>
             <Nummer>5</Nummer>
             <Url>Mediterranhaus.html</Url>
-            <X>555</X>
-            <Y>805</Y>
+            <X>490</X>
+            <Y>710</Y>
         </Station>
         <Station>
             <Name>Bienen</Name>
             <Nummer>6</Nummer>
             <Url>Bienen.html</Url>
-            <X>390</X>
+            <X>440</X>
             <Y>600</Y>
         </Station>
         <Station>
             <Name>Prärie</Name>
             <Nummer>7</Nummer>
             <Url>Praerie.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>720</X>
+            <Y>810</Y>
         </Station>
         <Station>
             <Name>Sieboldpflanzen</Name>
             <Nummer>8</Nummer>
             <Url>Sieboldpflanzen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>575</X>
+            <Y>450</Y>
         </Station>
         <Station>
             <Name>Tropenhaus</Name>
             <Nummer>9</Nummer>
             <Url>Tropenhaus.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>680</X>
+            <Y>490</Y>
         </Station>
         <Station>
             <Name>Karnivore Pflanzen</Name>
             <Nummer>10</Nummer>
             <Url>KarnivorePflanzen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>740</X>
+            <Y>550</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzen</Name>
             <Nummer>11</Nummer>
             <Url>Nutzpflanzen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>1015</X>
+            <Y>495</Y>
         </Station>
         <Station>
             <Name>Alpinpflanzen</Name>
             <Nummer>12</Nummer>
             <Url>Alpinpflanzen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>915</X>
+            <Y>210</Y>
         </Station>
         <Station>
             <Name>Waldgesellschaften</Name>
             <Nummer>13</Nummer>
             <Url>Waldgesellschaften.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>1060</X>
+            <Y>180</Y>
         </Station>
         <Station>
             <Name>Mediterrane Felsheide</Name>
             <Nummer>14</Nummer>
             <Url>MediterraneFelsheide.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>1075</X>
+            <Y>640</Y>
         </Station>
         <Station>
             <Name>Sandmagerrasen</Name>
             <Nummer>15</Nummer>
             <Url>Sandmagerrasen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>1195</X>
+            <Y>745</Y>
         </Station>
         <Station>
             <Name>Trockenrasen</Name>
             <Nummer>16</Nummer>
             <Url>Trockenrasen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>1130</X>
+            <Y>745</Y>
         </Station>
         <Station>
             <Name>Peonienterrassen</Name>
             <Nummer>17</Nummer>
             <Url>Peonienterrassen.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>900</X>
+            <Y>765</Y>
         </Station>
     </Stations>
 </Lehrpfad>

@@ -203,6 +203,7 @@ body {
   font-size: 1.3rem;
   font-weight: 500;
 }
+
 /*Scrollbar in der Hamburger Navi etwas dezenter*/
 .navbar .menu-items::-webkit-scrollbar {
   width: 6px;
@@ -212,10 +213,12 @@ body {
   background: rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 }
+
 /*nur in firefox nötig, same as above*/
 .navbar .menu-items {
   scrollbar-width: thin;
 }
+
 /*NUR NAVBAR SCROLL, hintergrund bleibt stehen*/
 body.menu-open {
   overflow: hidden;
@@ -335,8 +338,9 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 /* Schwarze Nummer unten rechts */
 .karte-station .nummer {
   position: absolute;
-  top: 10%;
-  left: 38%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 20px;
   font-weight: bold;
   color: black;
