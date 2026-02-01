@@ -51,10 +51,7 @@ function updateStationsCompleteStorage() {
 }
 
 // legt die dateien, namen und koordinaten auf der karte der stationen fest
-window.stations = [
-    {},
-    {}
-];
+window.stations = [];
 window.aktuelleStationId = null;
 
 // hier wird die "station abschliessen" button logic geprüft / gesetzt
@@ -81,7 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function stationsLoaded() {
-        return Array.isArray(window.stations) && window.stations.length > 0;
+        return Array.isArray(window.stations)
+            && window.stations.length > 0
+            && window.stations.every(s => typeof s.url === "string" && s.url.length > 0);
     }
 
     function getStationNumberIfStationPage() {
@@ -131,8 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // nicht abgeschlossen -> nur nach Scroll + unten
             btn.textContent = "Station abschließen";
+
+            // Wenn die Seite gar nicht scrollbar ist, sind wir "unten"
+            const sc = document.scrollingElement || document.documentElement;
+            const isScrollable = sc.scrollHeight > (window.innerHeight + 5);
+
+            if (!isScrollable) {
+                btn.style.display = "block";
+                return;
+            }
+
+            // sonst erst nach runterscrollen anzeigen
             if (!hasUserScrolled) {
                 btn.style.display = "none";
             } else {
@@ -326,7 +335,7 @@ function submenu(items) {
 const menuToggle = document.getElementById("menu-toggle");
 
 menuToggle.addEventListener("change", () => {
-  document.body.style.overflow = menuToggle.checked ? "hidden" : "";
+    document.body.style.overflow = menuToggle.checked ? "hidden" : "";
 });
 
 // Funktion für den zurück auf die karte button bzw. den station abschliessen button

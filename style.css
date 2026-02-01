@@ -33,7 +33,7 @@ body {
   background: #fff;
   color: #000;
   opacity: 0.85;
-  height: 50px;
+  height: 60px;
   z-index: 90;
 }
 
@@ -48,9 +48,10 @@ body {
 
 #progress-container {
   position: absolute;
-  top: 5px;
-  height: 40px;
+  top: 8px;
+  height: 50px;
   z-index: 80;
+  padding-bottom: 12px;
 
   /* WICHTIG: Platz links für Hamburger + rechts optional fürs Layout */
   left: 70px;
