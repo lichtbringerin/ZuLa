@@ -187,12 +187,18 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", updateButton);
 
     document.addEventListener("lehrpfadLoaded", () => {
-        hasUserScrolled = false; // Reset pro Stations-/Pfad-Ladezyklus
+        hasUserScrolled = false;
         updateButton();
     });
 
     // Initial
     updateButton();
+
+    // Nach dem kompletten Laden (Bilder/Fonts/Layout) nochmal bewerten
+    window.addEventListener("load", updateButton);
+    // falls sich bildgrößen ändern etc nochmal button aktualisieren
+    const ro = new ResizeObserver(() => updateButton());
+    ro.observe(document.body);
 });
 
 
@@ -280,7 +286,7 @@ function loadLehrpfad(ID, xml) {
     // wenn nichts im einleitungs container steht = lehrpfad geladen, wird hier ein anderer text eingeblendet der die bedienung
     // vom lehrpfad erklärt
     const einleitungContainer = document.getElementById("einleitung");
-    if (pfad) {
+    if (einleitungContainer && window.location.pathname.toLowerCase().includes("startseite")) {
 
         einleitungContainer.innerHTML =
             `<h2>` + window.urlName + `</h2>` +
