@@ -17,43 +17,43 @@
             <Name>Wald</Name>
             <Nummer>1</Nummer>
             <Url>Wald.html</Url>
-            <X>1111</X>
-            <Y>120</Y>
+            <X>1121</X>
+            <Y>130</Y>
         </Station>
         <Station>
             <Name>Wiese</Name>
             <Nummer>2</Nummer>
             <Url>Wiese.html</Url>
-            <X>1050</X>
-            <Y>260</Y>
+            <X>1060</X>
+            <Y>270</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzenterrasse</Name>
             <Nummer>3</Nummer>
             <Url>Nutzpflanzenterrasse.html</Url>
-            <X>1005</X>
-            <Y>490</Y>
+            <X>1015</X>
+            <Y>500</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzenhaus</Name>
             <Nummer>4</Nummer>
             <Url>Nutzpflanzenhaus.html</Url>
-            <X>680</X>
-            <Y>425</Y>
+            <X>690</X>
+            <Y>435</Y>
         </Station>
   	    <Station>
             <Name>Bauerngarten</Name>
             <Nummer>5</Nummer>
             <Url>Bauerngarten.html</Url>
-            <X>555</X>
-            <Y>805</Y>
+            <X>565</X>
+            <Y>815</Y>
         </Station>
         <Station>
             <Name>Nachhaltigkeit &amp; ICH</Name>
             <Nummer>6</Nummer>
             <Url>NachhaltigkeitundICH.html</Url>
-            <X>390</X>
-            <Y>600</Y>
+            <X>400</X>
+            <Y>610</Y>
         </Station>
     </Stations>
 </Lehrpfad>
@@ -73,120 +73,120 @@
             <Name>Eingang</Name>
             <Nummer>1</Nummer>
             <Url>Eingang.html</Url>
-            <X>670</X>
-            <Y>890</Y>
+            <X>680</X>
+            <Y>900</Y>
         </Station>
         <Station>
             <Name>Tertiärwald</Name>
             <Nummer>2</Nummer>
             <Url>Tertiaerwald.html</Url>
-            <X>490</X>
-            <Y>880</Y>
+            <X>500</X>
+            <Y>890</Y>
         </Station>
         <Station>
             <Name>Bauerngarten</Name>
             <Nummer>3</Nummer>
             <Url>Bauerngarten.html</Url>
-            <X>555</X>
-            <Y>800</Y>
+            <X>565</X>
+            <Y>810</Y>
         </Station>
         <Station>
             <Name>Arzneipflanzen</Name>
             <Nummer>4</Nummer>
             <Url>Arzneipflanzen.html</Url>
-            <X>555</X>
-            <Y>660</Y>
+            <X>565</X>
+            <Y>670</Y>
         </Station>
   	    <Station>
             <Name>Mediterranhaus</Name>
             <Nummer>5</Nummer>
             <Url>Mediterranhaus.html</Url>
-            <X>490</X>
-            <Y>710</Y>
+            <X>500</X>
+            <Y>720</Y>
         </Station>
         <Station>
             <Name>Bienen</Name>
             <Nummer>6</Nummer>
             <Url>Bienen.html</Url>
-            <X>440</X>
-            <Y>600</Y>
+            <X>450</X>
+            <Y>610</Y>
         </Station>
         <Station>
             <Name>Prärie</Name>
             <Nummer>7</Nummer>
             <Url>Praerie.html</Url>
-            <X>720</X>
-            <Y>810</Y>
+            <X>730</X>
+            <Y>820</Y>
         </Station>
         <Station>
             <Name>Sieboldpflanzen</Name>
             <Nummer>8</Nummer>
             <Url>Sieboldpflanzen.html</Url>
-            <X>575</X>
-            <Y>450</Y>
+            <X>585</X>
+            <Y>460</Y>
         </Station>
         <Station>
             <Name>Tropenhaus</Name>
             <Nummer>9</Nummer>
             <Url>Tropenhaus.html</Url>
-            <X>680</X>
-            <Y>490</Y>
+            <X>690</X>
+            <Y>500</Y>
         </Station>
         <Station>
             <Name>Karnivore Pflanzen</Name>
             <Nummer>10</Nummer>
             <Url>KarnivorePflanzen.html</Url>
-            <X>740</X>
-            <Y>550</Y>
+            <X>750</X>
+            <Y>560</Y>
         </Station>
         <Station>
             <Name>Nutzpflanzen</Name>
             <Nummer>11</Nummer>
             <Url>Nutzpflanzen.html</Url>
-            <X>1015</X>
-            <Y>495</Y>
+            <X>1025</X>
+            <Y>505</Y>
         </Station>
         <Station>
             <Name>Alpinpflanzen</Name>
             <Nummer>12</Nummer>
             <Url>Alpinpflanzen.html</Url>
-            <X>915</X>
-            <Y>210</Y>
+            <X>925</X>
+            <Y>220</Y>
         </Station>
         <Station>
             <Name>Waldgesellschaften</Name>
             <Nummer>13</Nummer>
             <Url>Waldgesellschaften.html</Url>
-            <X>1060</X>
-            <Y>180</Y>
+            <X>1070</X>
+            <Y>190</Y>
         </Station>
         <Station>
             <Name>Mediterrane Felsheide</Name>
             <Nummer>14</Nummer>
             <Url>MediterraneFelsheide.html</Url>
-            <X>1075</X>
-            <Y>640</Y>
+            <X>1085</X>
+            <Y>650</Y>
         </Station>
         <Station>
             <Name>Sandmagerrasen</Name>
             <Nummer>15</Nummer>
             <Url>Sandmagerrasen.html</Url>
-            <X>1195</X>
-            <Y>745</Y>
+            <X>1205</X>
+            <Y>755</Y>
         </Station>
         <Station>
             <Name>Trockenrasen</Name>
             <Nummer>16</Nummer>
             <Url>Trockenrasen.html</Url>
-            <X>1130</X>
-            <Y>745</Y>
+            <X>1140</X>
+            <Y>755</Y>
         </Station>
         <Station>
             <Name>Peonienterrassen</Name>
             <Nummer>17</Nummer>
             <Url>Peonienterrassen.html</Url>
-            <X>900</X>
-            <Y>765</Y>
+            <X>910</X>
+            <Y>775</Y>
         </Station>
     </Stations>
 </Lehrpfad>

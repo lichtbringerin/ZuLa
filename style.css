@@ -322,8 +322,8 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 
 .karte-station {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 
   cursor: pointer;
   z-index: 10;
@@ -342,7 +342,7 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
   color: black;
   pointer-events: none;
