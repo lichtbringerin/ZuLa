@@ -19,7 +19,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
@@ -68,6 +68,13 @@
             margin-bottom: 8px;
             text-align: left;
             margin-left: 8px;
+        }
+
+        .lehrpfad-autor {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 6px;
         }
 
         .lehrpfad-stationen {
@@ -182,7 +189,7 @@
     </section>
 
     <div class="container">
-        <h1>Herzlich willkommen im Botanischen Garten der Universität Würzburg</h1>
+        <h2>Herzlich willkommen im Botanischen Garten der Universität Würzburg</h2>
         <p class="info-text">
             Nutzen sie die digitalen Führungen für ihren Rundgang durch den Garten.
         </p>
@@ -217,6 +224,7 @@
                     const name = pfad.getElementsByTagName("UrlName")[0].textContent;
                     const icon = pfad.getElementsByTagName("IconName")[0].textContent;
                     const stationen = pfad.getElementsByTagName("StationsCount")[0].textContent;
+                    const autor = pfad.getElementsByTagName("Autor")[0].textContent;
                     const einfuehrungNode = pfad.getElementsByTagName("Einfuehrungstext")[0];
                     const einfuehrung = einfuehrungNode ? einfuehrungNode.textContent : ""; // Falls kein Text enthalten ist bleibt er leer? oder default text
 
@@ -239,10 +247,14 @@
                             </div>
                         </div>
 
-                        <div class="lehrpfad-text" data-fulltext="${encodeURIComponent(einfuehrung)}">
-                            ${einfuehrung}
-                            <div class="read-more" hidden>
-                                <button type="button" class="read-more-btn">… weiterlesen</button>
+                        <div>
+                            <div class="lehrpfad-autor">${autor}</div>
+
+                                <div class="lehrpfad-text" data-fulltext="${encodeURIComponent(einfuehrung)}">
+                                    ${einfuehrung}
+                                <div class="read-more" hidden>
+                                    <button type="button" class="read-more-btn">… weiterlesen</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
+    <Autor>Ein studentisches Projekt von Lucia Ludwig</Autor>
     <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
     Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, lokal aber auch
     global.
@@ -61,6 +62,7 @@
     <UrlName>Audioguide durch den Botanischen Garten</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <IconName>AudioBG.jpg</IconName>
+    <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
     <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
 
  </Einfuehrungstext>
