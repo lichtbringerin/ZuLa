@@ -59,14 +59,147 @@
 </Lehrpfad>
 <Lehrpfad>
     <PfadId>2</PfadId>
-    <UrlName>Audioguide durch den Botanischen Garten</UrlName>
+    <UrlName>Audioguide durch das Freiland des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <IconName>AudioBG.jpg</IconName>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
     <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
 
  </Einfuehrungstext>
-    <StationsCount>31</StationsCount>
+    <StationsCount>17</StationsCount>
+
+    <Stations>
+        <Station>
+            <Name>Eingang</Name>
+            <Nummer>1</Nummer>
+            <Url>Eingang.html</Url>
+            <X>680</X>
+            <Y>900</Y>
+        </Station>
+        <Station>
+            <Name>Tertiärwald</Name>
+            <Nummer>2</Nummer>
+            <Url>Tertiaerwald.html</Url>
+            <X>500</X>
+            <Y>890</Y>
+        </Station>
+        <Station>
+            <Name>Bauerngarten</Name>
+            <Nummer>3</Nummer>
+            <Url>Bauerngarten.html</Url>
+            <X>565</X>
+            <Y>810</Y>
+        </Station>
+        <Station>
+            <Name>Arzneipflanzen</Name>
+            <Nummer>4</Nummer>
+            <Url>Arzneipflanzen.html</Url>
+            <X>565</X>
+            <Y>670</Y>
+        </Station>
+  	    <Station>
+            <Name>Mediterranhaus</Name>
+            <Nummer>5</Nummer>
+            <Url>Mediterranhaus.html</Url>
+            <X>500</X>
+            <Y>720</Y>
+        </Station>
+        <Station>
+            <Name>Bienen</Name>
+            <Nummer>6</Nummer>
+            <Url>Bienen.html</Url>
+            <X>450</X>
+            <Y>610</Y>
+        </Station>
+        <Station>
+            <Name>Prärie</Name>
+            <Nummer>7</Nummer>
+            <Url>Praerie.html</Url>
+            <X>730</X>
+            <Y>820</Y>
+        </Station>
+        <Station>
+            <Name>Sieboldpflanzen</Name>
+            <Nummer>8</Nummer>
+            <Url>Sieboldpflanzen.html</Url>
+            <X>585</X>
+            <Y>460</Y>
+        </Station>
+        <Station>
+            <Name>Tropenhaus</Name>
+            <Nummer>9</Nummer>
+            <Url>Tropenhaus.html</Url>
+            <X>690</X>
+            <Y>500</Y>
+        </Station>
+        <Station>
+            <Name>Karnivore Pflanzen</Name>
+            <Nummer>10</Nummer>
+            <Url>KarnivorePflanzen.html</Url>
+            <X>750</X>
+            <Y>560</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzen</Name>
+            <Nummer>11</Nummer>
+            <Url>Nutzpflanzen.html</Url>
+            <X>1025</X>
+            <Y>505</Y>
+        </Station>
+        <Station>
+            <Name>Alpinpflanzen</Name>
+            <Nummer>12</Nummer>
+            <Url>Alpinpflanzen.html</Url>
+            <X>925</X>
+            <Y>220</Y>
+        </Station>
+        <Station>
+            <Name>Waldgesellschaften</Name>
+            <Nummer>13</Nummer>
+            <Url>Waldgesellschaften.html</Url>
+            <X>1070</X>
+            <Y>190</Y>
+        </Station>
+        <Station>
+            <Name>Mediterrane Felsheide</Name>
+            <Nummer>14</Nummer>
+            <Url>MediterraneFelsheide.html</Url>
+            <X>1085</X>
+            <Y>650</Y>
+        </Station>
+        <Station>
+            <Name>Sandmagerrasen</Name>
+            <Nummer>15</Nummer>
+            <Url>Sandmagerrasen.html</Url>
+            <X>1205</X>
+            <Y>755</Y>
+        </Station>
+        <Station>
+            <Name>Trockenrasen</Name>
+            <Nummer>16</Nummer>
+            <Url>Trockenrasen.html</Url>
+            <X>1140</X>
+            <Y>755</Y>
+        </Station>
+        <Station>
+            <Name>Peonienterrassen</Name>
+            <Nummer>17</Nummer>
+            <Url>Peonienterrassen.html</Url>
+            <X>910</X>
+            <Y>775</Y>
+        </Station>
+    </Stations>
+</Lehrpfad>
+<Lehrpfad>
+    <PfadId>3</PfadId>
+    <UrlName>Audioguide durch das Tropenhaus des Botanischen Gartens</UrlName>
+    <OrdnerPfad>AudioBGTropen</OrdnerPfad>
+    <IconName>AudioBG.jpg</IconName>
+    <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
+    <Einfuehrungstext>
+    dieser Audioguide ist noch in Arbeit, wir bitten um Geduld.
+ </Einfuehrungstext>
+    <StationsCount>17</StationsCount>
 
     <Stations>
         <Station>
