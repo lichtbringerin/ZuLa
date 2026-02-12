@@ -50,16 +50,62 @@
       <h2>Station 4 – Das Nutzpflanzenhaus</h2>
 
       <rot>
-      <p>
-        Spricht man vom Einfluss des Menschen auf Ökosysteme, denken viele als erstes an den tropischen Regenwald.
-        Besonders
-        dessen großflächige Abholzung ist mittlerweile ein globales Problem.
+        <p>
+          Spricht man vom Einfluss des Menschen auf Ökosysteme, denken viele als erstes an den tropischen Regenwald.
+          Besonders
+          dessen <b>großflächige Abholzung</b> ist ein globales Problem.
+          <br><br>
+          Doch weshalb muss uns - hier in Würzburg - die großflächige Zerstörung des tropischen Regenwaldes
+          interessieren, obwohl er soweit von uns entfernt vorkommt?
+
+          <br><br>
+          <b>Aufgabe:
+            Wie viel Regenwald verschwindet eigentlich jetzt gerade?<br>
+            Damit du dir das besser vorstellen kannst,
+            ist
+            hier eine verständliche Darstellung. Drücke einfach den Knopf zum Starten oder Stoppen und du kannst
+            mitverfolgen, wie viel Fläche zeitgleich
+            verloren geht. Eine Einheit, dargestellt als kleines Haus (🏠), entspricht dabei der Fläche des Teils des
+            Nutzpflanzenhauses, in dem du
+            dich
+            gerade
+            befindest, also 108m<sup>2</sup>. </b>
+          <br>
+          <br>
+        <div class="zaehler-container">
+          <button id="start-haus-zaehler" class="start-button">
+            Start
+          </button>
+        </div>
+        <div class="timer-container">
+          <div class="timer-label">Zeit seit Start</div>
+          <div id="timer" class="timer">00:00:00</div>
+        </div>
         <br><br>
-        Doch weshalb interessiert uns ein Wald an einem so weit entfernten Ort?
-        Hier im Gewächshaus mit den Nutzpflanzen findest du einige Gründe dafür.
-        <tipp>
-          Tipp: Es handelt sich um Pflanzen, die man hier ausgestellt finden kann.
-        </tipp>
+
+        Seitdem du „Start“ geklickt hast, ist die Fläche dieses Gewächshauses nach Rechnung des WWF so oft verschwunden:
+        <br><br>
+
+        <table class="haus-table">
+          <thead>
+            <tr>
+              <th>WWF<br>
+                Stand: 11.07.2025</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="spalte-a"></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </rot>
+      <gruen>
+        <b>Warum wird eigentlich permanent so viel Regenwald zerstört?</b><br>
+
+        Hier im Gewächshaus mit den Nutzpflanzen findest du einige Gründe dafür ausgestellt.
+
         <br><br>
         <b>Aufgabe:
           Schreibe die Namen der Pflanzen, die du kennst (oder deren wissenschaftliche Namen) in die nachfolgende
@@ -68,144 +114,111 @@
           Die Namen der Pflanzen findest du auf den Etiketten. Die Wege musst du dafür nicht verlassen.
           In der Tabelle bekommst du Informationen zu den 20 bekanntesten und verbreitetsten Pflanzen.</b>
         <br>
-      </p>
-      <div class="pflanzen-container">
-        <input type="text" id="pflanzen-input" class="pflanzen-input" placeholder="Namen hier eingeben:">
+        </p>
+        <div class="pflanzen-container">
+          <input type="text" id="pflanzen-input" class="pflanzen-input" placeholder="Namen hier eingeben:">
+          <br><br>
+          <button id="pflanze-hinzufuegen" class="pflanzen-button">
+            Pflanze hinzufügen
+          </button>
+        </div>
+
+        <table id="pflanzen-tabelle" class="pflanzen-tabelle">
+          <thead>
+            <tr>
+              <th class="col-name">Pflanze:</th>
+              <th class="col-latein">Wissenschaftliche Bezeichnung:</th>
+              <th class="col-info">Bekannt für & Infos:</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="aufloesen-container">
+          <button id="restliche-aufloesen" class="pflanzen-button">
+            Restliche 0 auflösen
+          </button>
+        </div>
+        <br>
+        Durch viele Expeditionen in den Tropen kamen seit Jahrhunderten immer neue pflanzliche Lebensmittel oder auch
+        deren Produkte zu
+        uns nach Europa. Um den
+        ständig größer werdenden Ressourcenbedarf zu decken, sowie neue Luxusgüter in unsere Länder zu bringen, kam es
+        zur
+        <b>Kolonialisierung</b>
+        vieler Länder in diesen tropischen Regionen. Die Ausbeutung dieser Länder ging bis hin zum Handel mit
+        Menschen als Sklaven
+        und zum Völkermord.
         <br><br>
-        <button id="pflanze-hinzufuegen" class="pflanzen-button">
-          Pflanze hinzufügen
-        </button>
-      </div>
+        Sowohl die Kolonialisierung, als auch der Sklavenhandel sind offiziell beendet, ihre
+        Auswirkungen sind jedoch bis heute spürbar. Auch viele Ökosysteme weltweit haben sich durch diesen massiven
+        menschlichen
+        Eingriff verändert. Besonders in den tropischen Regenwäldern, welche immer noch
+        großflächig
+        gerodet werden, um Platz für <b>Plantagen</b> zu machen, kann man dies sehen. Fast alle Lebensmittel bzw. Güter,
+        die du hier im
+        Nutzpflanzenhaus findest, werden heutzutage aus Plantagen
+        gewonnen. Das sind <b>großflächige Monokulturen</b> mit hohem Einsatz von <b>Pestiziden</b>. Das heißt, es wird
+        auf
+        einer sehr großen Fläche nur eine einzige Nutzpflanze angebaut. Auch die Arbeitsbedingungen der
+        dortigen Bevölkerung sind meistens sehr schlecht.
+        Nur in seltenen
+        Fällen werden diese Pflanzenprodukte nachhaltig produziert.
 
-      <table id="pflanzen-tabelle" class="pflanzen-tabelle">
-        <thead>
-          <tr>
-            <th class="col-name">Pflanze:</th>
-            <th class="col-latein">Wissenschaftliche Bezeichnung:</th>
-            <th class="col-info">Bekannt für & Infos:</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <div class="aufloesen-container">
-        <button id="restliche-aufloesen" class="pflanzen-button">
-          Restliche 0 auflösen
-        </button>
-      </div>
-      <br><br>
-      Durch viele Expeditionen in den Tropen kamen seit Jahrhunderten immer neue pflanzliche Lebensmittel oder auch
-      deren Produkte zu
-      uns nach Europa. Viele davon stammen aus tropischen oder subtropischen Regionen der ganzen Welt. Um den
-      ständig größer werdenden Ressourcenbedarf zu decken, sowie neue Luxusgüter in unsere Länder zu bringen, kam es zur
-      <b>Kolonialisierung</b>
-      vieler Länder in diesen tropischen Regionen. Die Ausbeutung dieser Länder ging bis hin zum Handel mit
-      Menschen als Sklaven
-      und zum Völkermord.
-      <br><br>
-      Sowohl die Kolonialisierung, als auch der Sklavenhandel sind offiziell beendet, ihre
-      Auswirkungen sind jedoch bis heute spürbar. Auch viele Ökosysteme weltweit haben sich durch diesen massiven
-      menschlichen
-      Eingriff verändert. Besonders gut sehen kann man dies in den tropischen Regenwäldern, welche immer noch
-      großflächig
-      gerodet werden, um Platz für <b>Plantagen</b> zu machen. Fast alle Lebensmittel bzw. Güter, die du hier im
-      Nutzpflanzenhaus findest, werden heutzutage aus Plantagen
-      gewonnen. Das sind <b>großflächige Monokulturen</b> mit hohem Einsatz von <b>Pestiziden</b>. Das heißt, es wird
-      auf
-      einer sehr großen Fläche nur eine einzige Nutzpflanze angebaut. Auch die Arbeitsbedingungen der
-      dortigen Bevölkerung sind meistens sehr schlecht.
-      Nur in seltenen
-      Fällen werden diese Pflanzenprodukte nachhaltig produziert.
-      <br><br>
-      <b>Aufgabe:
-        Damit du dir etwas besser vorstellen kannst, wie schnell der Regenwald auf unserem Planeten verschwindet, ist
-        hier eine verständliche Darstellung. Drücke einfach den Knopf zum Starten oder Stoppen und du kannst
-        mitverfolgen, wie viel Fläche zeitgleich
-        verloren geht. Eine Einheit, dargestellt als kleines Haus (🏠), meint dabei die Fläche des Teils des
-        Nutzpflanzenhauses, in dem du
-        dich
-        gerade
-        befindest, also 108m<sup>2</sup>. </b>
-      <br>
-      <br><br>
-      <div class="zaehler-container">
-        <button id="start-haus-zaehler" class="start-button">
-          Start
-        </button>
-      </div>
-      <div class="timer-container">
-        <div class="timer-label">Zeit seit Start</div>
-        <div id="timer" class="timer">00:00:00</div>
-      </div>
-      <br><br>
+      </gruen>
+      <rot>
+        Durch die <b>großflächigen Abholzungen</b> der Regenwälder gehen sehr viele Pflanzen- und Tierarten verloren.
+        Selbst
+        unser
+        Klima hier in Mitteleuropa wird durch den Verlust dieses Ökosystems beeinflusst. Der Schutz der Regenwälder
+        sollte
+        uns sehr wichtig sein. Denn unser Leben hier hat weltweite Auswirkungen und zugleich ist unser Leben abhängig
+        von einem globalen stabilen System. So verwenden wir z.B. in unserem Alltag eine große Vielfalt an Nutzpflanzen aus diesen Regionen.
 
-      Seitdem du „Start“ geklickt hast, ist die Fläche dieses Gewächshauses nach Rechnung des WWF so oft verschwunden:
-      <br><br>
-
-      <table class="haus-table">
-        <thead>
-          <tr>
-            <th>WWF<br>
-              Stand: 11.07.2025</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="spalte-a"></td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <br><br>
-      Durch die <b>großflächigen Abholzungen</b> der Regenwälder gehen sehr viele Pflanzen- und Tierarten verloren.
-      Selbst
-      unser
-      Klima hier in Mitteleuropa wird durch den Verlust dieses Ökosystems beeinflusst. Der Schutz der Regenwälder sollte
-      uns sehr wichtig sein. Denn unser Leben hier hat globale Auswirkungen und zugleich ist unser Leben abhängig
-      von einem globalen stabilen System.
-      Wenn du dir Genaueres dazu durchlesen möchtest, wie die Rechnung oben zustande kommt oder wie du den
-      Regenwald schützen kannst, besuche gerne die Internetseite des WWF dazu. Du kannst dich außerdem auf den Webseiten
-      von anderen Naturschutzverbänden zum Thema Abholzung und Schutz des Regenwaldes informieren:
       </rot>
       <gruen>
-      <br><br>
-      <div class="app-links">
-        <figure class="app-item">
-          <a href="https://www.wwf.de/themen-projekte/waelder/den-regenwald-vom-teller-bekommen" target="_blank">
-            <img src="bilder/wwf.png" alt="wwf">
-          </a>
-          <small>
-            <figcaption>https://www.wwf.de/themen-projekte/waelder/den-regenwald-vom-teller-bekommen</figcaption>
-          </small>
-        </figure>
+        Wenn du dir Genaueres dazu durchlesen möchtest, wie die Rechnung oben zustande kommt oder wie du den
+        Regenwald schützen kannst, besuche gerne die Internetseite des WWF dazu. Du kannst dich außerdem auf den
+        Webseiten
+        von anderen Naturschutzverbänden zum Thema Abholzung und Schutz des Regenwaldes informieren:
 
-        <figure class="app-item">
-          <a href="https://www.rainforest-alliance.org/de/alltaegliche-handlungen/9-fakten-uber-den-regenwald-die-jeder-kennen-sollte/"
-            target="_blank">
-            <img src="bilder/Rainforest-Alliance.png" alt="Rainforest Alliance">
-          </a>
-          <small>
-            <figcaption>
-              https://www.rainforest-alliance.org/de/alltaegliche-handlungen/9-fakten-uber-den-regenwald-die-jeder-kennen-sollte/
-            </figcaption>
-          </small>
-        </figure>
+        <br><br>
+        <div class="app-links">
+          <figure class="app-item">
+            <a href="https://www.wwf.de/themen-projekte/waelder/den-regenwald-vom-teller-bekommen" target="_blank">
+              <img src="bilder/wwf.png" alt="wwf">
+            </a>
+            <small>
+              <figcaption>https://www.wwf.de/themen-projekte/waelder/den-regenwald-vom-teller-bekommen</figcaption>
+            </small>
+          </figure>
 
-        <figure class="app-item">
-          <a href="https://www.regenwald-schuetzen.org/regenwald-wissen/faszination-regenwald/zahlen-zum-regenwald"
-            target="_blank">
-            <img src="bilder/oroverde.png" alt="oroverde">
-          </a>
-          <small>
-            <figcaption>https://www.regenwald-schuetzen.org/regenwald-wissen/faszination-regenwald/zahlen-zum-regenwald
-            </figcaption>
-          </small>
-        </figure>
+          <figure class="app-item">
+            <a href="https://www.rainforest-alliance.org/de/alltaegliche-handlungen/9-fakten-uber-den-regenwald-die-jeder-kennen-sollte/"
+              target="_blank">
+              <img src="bilder/Rainforest-Alliance.png" alt="Rainforest Alliance">
+            </a>
+            <small>
+              <figcaption>
+                https://www.rainforest-alliance.org/de/alltaegliche-handlungen/9-fakten-uber-den-regenwald-die-jeder-kennen-sollte/
+              </figcaption>
+            </small>
+          </figure>
 
-      </div>
-      </p>
+          <figure class="app-item">
+            <a href="https://www.regenwald-schuetzen.org/regenwald-wissen/faszination-regenwald/zahlen-zum-regenwald"
+              target="_blank">
+              <img src="bilder/oroverde.png" alt="oroverde">
+            </a>
+            <small>
+              <figcaption>
+                https://www.regenwald-schuetzen.org/regenwald-wissen/faszination-regenwald/zahlen-zum-regenwald
+              </figcaption>
+            </small>
+          </figure>
+
+        </div>
+        </p>
       </gruen>
-
 
       <style>
         /* Seitenabstände + Scrollplatz */
