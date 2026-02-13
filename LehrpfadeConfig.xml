@@ -4,7 +4,7 @@
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
-    <Karte>bilder\karte.png</Karte>
+    <Karte>Bilder\karte.png</Karte>
     <Autor>Ein studentisches Projekt von Lucia Ludwig</Autor>
     <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
     Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, lokal aber auch
@@ -63,7 +63,7 @@
     <UrlName>Audioguide durch das Freiland des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <IconName>AudioBG.jpg</IconName>
-    <Karte>bilder\karte.png</Karte>
+    <Karte>Bilder\karte.png</Karte>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
     <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
 
@@ -197,7 +197,7 @@
     <UrlName>Audioguide durch das Tropenhaus des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBGTropen</OrdnerPfad>
     <IconName>AudioBG.jpg</IconName>
-    <Karte>bilder\karte.png</Karte>
+    <Karte>Bilder\karte.png</Karte>
     <Autor></Autor>
     <Einfuehrungstext>
     Dieser Audioguide ist noch in Arbeit, wir bitten um Geduld.
