@@ -48,6 +48,14 @@
 
       <h2>Station 6 – Nachhaltigkeit und ICH</h2>
       <gruen>
+
+        <div class="audio-row">
+          <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio1">
+            🔊
+          </button>
+          <audio id="audio1" src="bilder/Station6_1.m4a" preload="none"></audio>
+        </div>
+
         <p>
           In diesem Lehrpfad werden Beispiele vorgestellt, wie der Mensch in Ökosysteme
           eingreift und diese verändert.
@@ -273,6 +281,13 @@
         </div>
       </gruen>
       <rot>
+
+        <div class="audio-row">
+          <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio2">
+            🔊
+          </button>
+          <audio id="audio2" src="bilder/Station6_2.m4a" preload="none"></audio>
+        </div>
         <p>
           Bei den <strong>Planetary Boundaries (Planetare Belastbarkeitsgrenzen)</strong> handelt es sich nicht um
           Ziele,
@@ -326,14 +341,21 @@
         </p>
         <br>
         <!-- target blank öffnet link in neuem tab -->
-        <h2><a target="_blank"
-            href="https://www.bundesumweltministerium.de/themen/nachhaltigkeit/integriertes-umweltprogramm-2030/planetare-belastbarkeitsgrenzen">Planetary
-            Boundaries</a>
-        </h2>
+        <a target="_blank"
+          href="https://www.bundesumweltministerium.de/themen/nachhaltigkeit/integriertes-umweltprogramm-2030/planetare-belastbarkeitsgrenzen">Planetary
+          Boundaries</a>
+
         <br>
 
       </rot>
       <rot>
+
+        <div class="audio-row">
+          <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio3">
+            🔊
+          </button>
+          <audio id="audio3" src="bilder/Station6_3.m4a" preload="none"></audio>
+        </div>
         <p>
 
           Der <strong>Earth Overshoot Day</strong>, auch Erdüberlastungstag oder Welterschöpfungstag genannt, definiert
@@ -366,17 +388,24 @@
         </div>
         <br><br>
         <p>Um dich weiter darüber zu informieren kannst du folgende Webseiten nutzen:</p><br><br>
-        <h2><a target="_blank" href="https://overshoot.footprintnetwork.org">Earth Overshoot Day Infoseite (auf
-            Englisch)</a>
-        </h2>
+        <a target="_blank" href="https://overshoot.footprintnetwork.org">Earth Overshoot Day Infoseite (auf
+          Englisch)</a>
+
         <br><br>
-        <h2><a target="_blank" href="https://de.wikipedia.org/wiki/Erdüberlastungstag"> Erdüberlastungstag auf Wikipedia
-            (Auf Deutsch)</a>
-        </h2>
+        <a target="_blank" href="https://de.wikipedia.org/wiki/Erdüberlastungstag"> Erdüberlastungstag auf Wikipedia
+          (Auf Deutsch)</a>
+
         <br><br>
       </rot>
 
       <gruen>
+        <div class="audio-row">
+          <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio4">
+            🔊
+          </button>
+          <audio id="audio4" src="bilder/Station6_4.m4a" preload="none"></audio>
+        </div>
+
         <p>
           <b>Doch was bedeutet das für dich und mich?</b><br><br> Auf den ersten Blick
           wirken diese Grenzen und Ziele
@@ -541,7 +570,6 @@
         }
 
         .fazit-box {
-          margin: 25px 0;
           padding: 16px 18px;
 
           border: 2px solid #222;
@@ -975,6 +1003,35 @@
             line-height: 1.35;
           }
         }
+
+        .audio-row {
+          display: flex;
+          justify-content: flex-end;
+          /* rechts */
+          align-items: center;
+          margin: 6px 0 10px;
+          /* Abstand zum Text */
+        }
+
+        .audio-btn {
+          border: 2px solid #222;
+          background: transparent;
+          border-radius: 10px;
+          padding: 6px 10px;
+          cursor: pointer;
+          font-size: 18px;
+          line-height: 1;
+        }
+
+        .audio-btn:hover {
+          transform: scale(1.03);
+        }
+
+        .audio-btn.is-playing {
+          background: #222;
+          /* sehr dezent, aber sichtbar */
+          color: #fff;
+        }
       </style>
       <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -1180,6 +1237,55 @@
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closeActiveCard();
         });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const buttons = document.querySelectorAll(".audio-btn");
+
+          function stopAllExcept(exceptAudio) {
+            document.querySelectorAll("audio").forEach(a => {
+              if (a !== exceptAudio) {
+                a.pause();
+                a.currentTime = 0;
+              }
+            });
+            document.querySelectorAll(".audio-btn").forEach(b => b.classList.remove("is-playing"));
+          }
+
+          buttons.forEach(btn => {
+            const audioId = btn.dataset.audio;
+            const audio = document.getElementById(audioId);
+            if (!audio) return;
+
+            btn.addEventListener("click", () => {
+              if (audio.paused) {
+                stopAllExcept(audio);
+                audio.play().then(() => {
+                  btn.classList.add("is-playing");
+                }).catch(() => {
+                });
+              } else {
+                audio.pause();
+                btn.classList.remove("is-playing");
+              }
+            });
+
+            // wenn Audio zu Ende: Button zurücksetzen
+            audio.addEventListener("ended", () => {
+              btn.classList.remove("is-playing");
+              audio.currentTime = 0;
+            });
+
+            audio.addEventListener("pause", () => {
+              btn.classList.remove("is-playing");
+            });
+
+            audio.addEventListener("play", () => {
+              btn.classList.add("is-playing");
+            });
+          });
+        });
+
       </script>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->

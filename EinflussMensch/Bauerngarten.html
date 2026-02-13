@@ -110,10 +110,15 @@
 
           <!-- Bild -->
           <figure id="mapFigure" class="gallery-wrapper">
-            <div class="gallery">
-              <img src="bilder/almeria_satellit1.png" alt="Gewächshäuser Almeria 1">
-              <img src="bilder/almeria_satellit2.png" alt="Gewächshäuser Almeria 2">
-              <img src="bilder/almeria_satellit3.png" alt="Gewächshäuser Almeria 3">
+            <div class="gallery-hint">
+              <div class="gallery" aria-label="Bildergalerie – wischen möglich">
+                <img src="bilder/almeria_satellit1.png" alt="Gewächshäuser Almeria 1">
+                <img src="bilder/almeria_satellit2.png" alt="Gewächshäuser Almeria 2">
+                <img src="bilder/almeria_satellit3.png" alt="Gewächshäuser Almeria 3">
+              </div>
+
+              <div class="swipe-arrow left" aria-hidden="true">‹</div>
+              <div class="swipe-arrow right" aria-hidden="true">›</div>
             </div>
             <figcaption>
               <small>Quelle: © Google Maps, Screenshot</small>
@@ -270,7 +275,6 @@
         }
 
         .fazit-box {
-          margin: 25px 0;
           padding: 16px 18px;
 
           border: 2px solid #222;
@@ -284,12 +288,79 @@
           display: block;
         }
 
+        .gallery-hint {
+          position: relative;
+        }
+
+        /* Galerie: */
         .gallery {
           display: flex;
-          overflow: auto;
+          overflow-x: auto;
+          overflow-y: hidden;
           scroll-snap-type: x mandatory;
-          gap: 12px;
+
+
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: thin;
+          /* Firefox */
+        }
+
+        /*Scrollbar hübscher (Chromium/Webkit) */
+        .gallery::-webkit-scrollbar {
+          height: 10px;
+        }
+
+        .gallery::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.25);
+          border-radius: 999px;
+        }
+
+        /* Bilder: nicht 100% Breite */
+        .gallery img {
+          flex: 0 0 86%;
+          scroll-snap-align: center;
           border-radius: 12px;
+          user-select: none;
+          -webkit-user-drag: none;
+        }
+
+        /* Pfeile als Hinweis */
+        .swipe-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 34px;
+          height: 34px;
+          border-radius: 999px;
+          border: 2px solid rgba(0, 0, 0, 0.6);
+          background: rgba(255, 255, 255, 0.75);
+
+          display: grid;
+          place-items: center;
+
+          font-size: 22px;
+          font-weight: 700;
+          pointer-events: none;
+          /* nur Hinweis, keine klick funktion */
+        }
+
+        .swipe-arrow.left {
+          left: 8px;
+        }
+
+        .swipe-arrow.right {
+          right: 8px;
+        }
+
+        /* Auf sehr kleinen Screens etwas mehr Platz */
+        @media (max-width: 600px) {
+          .gallery img {
+            flex-basis: 92%;
+          }
+
+          .gallery {
+            padding: 0 40px;
+          }
         }
 
         .map-wrapper {

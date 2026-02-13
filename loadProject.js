@@ -234,6 +234,7 @@ function loadLehrpfad(ID, xml) {
     window.urlName = pfad.getElementsByTagName("UrlName")[0].textContent;
     window.ordnerPath = pfad.getElementsByTagName("OrdnerPfad")[0].textContent;
     window.iconName = pfad.getElementsByTagName("IconName")[0].textContent;
+    window.kartePath = pfad.getElementsByTagName("Karte")[0].textContent;
     window.stationsCount = parseInt(
         pfad.getElementsByTagName("StationsCount")[0].textContent
     );
@@ -271,17 +272,27 @@ function loadLehrpfad(ID, xml) {
     // Karte initialisieren, sobald das Kartenbild geladen ist
     const karteImg = document.querySelector("#karte img");
 
-    if (karteImg) {
-        if (karteImg.complete) {
-            // Bild ist bereits geladen (Cache)
+    if (karteImg && window.location.pathname.toLowerCase().includes("startseite")) {
+        const imgPath = rootPath(window.kartePath); 
+        karteImg.src = imgPath;
+
+        // Nach dem Laden die Stationen setzen (damit Maße stimmen)
+        karteImg.addEventListener("load", () => {
             stationenAufKarteSetzen();
-        } else {
-            // Bild lädt noch
-            karteImg.addEventListener("load", () => {
-                stationenAufKarteSetzen();
-            }, { once: true });
+        }, { once: true });
+
+        // Falls es aus dem Cache sofort schon fertig ist:
+        if (karteImg.complete) {
+            stationenAufKarteSetzen();
+        }
+    } else {
+        // Auf anderen Seiten: falls irgendwo eine Karte existiert, wie bisher
+        if (karteImg) {
+            if (karteImg.complete) stationenAufKarteSetzen();
+            else karteImg.addEventListener("load", stationenAufKarteSetzen, { once: true });
         }
     }
+  
 
     // wenn nichts im einleitungs container steht = lehrpfad geladen, wird hier ein anderer text eingeblendet der die bedienung
     // vom lehrpfad erklärt
