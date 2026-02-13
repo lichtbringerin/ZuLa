@@ -59,7 +59,8 @@
           Getreide
           angebaut.
           <br><br>
-          <b>Aufgabe: Sieh dir die nachfolgende Grafik an, was bei uns auf den Feldern angebaut wird.</b>
+          <b>Aufgabe: Sieh dir die nachfolgende Grafik an, was bei uns auf den Feldern angebaut wird. Wie viel Getreide
+            wird bei uns angebaut?</b>
           <br><br>
         <figure>
           <img src="bilder/frankenanbau.png" alt="Anbau Mainfranken">
@@ -67,6 +68,19 @@
             <small>Daten vom AELF Würzburg</small>
           </figcaption>
         </figure>
+        <div class="mcq" id="getreide-quiz"
+          data-correct-text="Richtig! In Mainfranken werden hauptsächlich verschiedene Getreidesorten, wie z.B. Winterweizen, Gerste und Mais, aber auch andere Getreide angebaut. Zusammen sind das ca. 76% der Anbauflächen!"
+          data-wrong-text="Falsch, zu Getreide zählen Winterweizen, Gerste, andere Getreide, aber auch Mais. Zusammen kommen diese auf 76% ">
+
+          <div class="mcq-grid">
+            <button type="button" class="mcq-option" data-correct="false">88%</button>
+            <button type="button" class="mcq-option" data-correct="true">76%</button>
+            <button type="button" class="mcq-option" data-correct="false">83%</button>
+            <button type="button" class="mcq-option" data-correct="false">66%</button>
+          </div>
+
+          <div class="mcq-feedback" hidden></div>
+        </div>
         <br><br>
         Doch was genau hat das mit den Ökosystemen vor Ort zu tun? Ganz einfach, die Weinberge,
         Felder und
@@ -273,6 +287,58 @@
           background: rgba(244, 67, 54, 0.2);
           /* sehr dezentes Rot */
         }
+
+        /* --- Multiple-Choice Quiz (4 Boxen) --- */
+        .mcq {
+          margin: 14px 0 24px;
+        }
+
+        .mcq-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(140px, 1fr));
+          gap: 12px;
+          margin-top: 10px;
+        }
+
+        .mcq-option {
+          border: 2px solid #444;
+          border-radius: 10px;
+          padding: 14px 12px;
+          background: #f0f0f0;
+          font-weight: 700;
+          cursor: pointer;
+          text-align: center;
+          transition: transform 0.1s, background-color 0.2s;
+        }
+
+        .mcq-option:hover {
+          transform: scale(1.01);
+        }
+
+        .mcq-option.correct {
+          background: #4caf50;
+          border-color: #4caf50;
+          color: #fff;
+        }
+
+        .mcq-option.wrong {
+          background: #f44336;
+          border-color: #f44336;
+          color: #fff;
+        }
+
+        .mcq-feedback {
+          margin-top: 12px;
+          font-size: 1.1rem;
+          font-weight: 800;
+        }
+
+        @media (max-width: 520px) {
+          .mcq-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
 
         .fazit-box {
           padding: 16px 18px;
@@ -548,6 +614,44 @@
       </style>
 
       <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const quiz = document.getElementById("getreide-quiz");
+          if (!quiz) return;
+
+          const options = Array.from(quiz.querySelectorAll(".mcq-option"));
+          const feedback = quiz.querySelector(".mcq-feedback");
+
+          const correctText = quiz.dataset.correctText || "Richtig!";
+          const wrongText = quiz.dataset.wrongText || "Falsch.";
+
+          options.forEach(btn => {
+            btn.addEventListener("click", () => {
+              // schon beantwortet -> nichts mehr machen
+              if (!feedback.hidden) return;
+
+              // alle Buttons sperren
+              options.forEach(b => b.disabled = true);
+
+              const isCorrect = btn.dataset.correct === "true";
+
+              // Klick-Button einfärben
+              btn.classList.add(isCorrect ? "correct" : "wrong");
+
+              // richtige wird markiert
+              if (!isCorrect) {
+                const rightBtn = options.find(b => b.dataset.correct === "true");
+                if (rightBtn) rightBtn.classList.add("correct");
+              }
+
+              feedback.hidden = false;
+              feedback.textContent = isCorrect ? correctText : wrongText;
+            });
+          });
+        });
+
+
+
         const btnBild = document.getElementById("btnBild");
         const btnKarte = document.getElementById("btnKarte");
         const mapFigure = document.getElementById("mapFigure");
