@@ -706,6 +706,19 @@
           border-radius: 12px;
         }
 
+        @media (max-width: 600px) {
+          .pb-options {
+            grid-template-columns: 1fr;
+            /* statt 3 nebeneinander untereinander auf kleinen bildschirmen*/
+          }
+
+          .pb-option {
+            width: 100%;
+            font-size: 1rem;
+            padding: 12px 12px;
+          }
+        }
+
         /* Antwort-Buttons */
         .pb-option {
           border: none;
