@@ -50,12 +50,13 @@
 
       <gruen>
         <p>
-          Wälder gehören zu den artenreichsten Ökosystemen unserer Erde. Geprägt werden sie vom jeweilig vorherschenden Klima. Deshalb
+          Wälder gehören zu den artenreichsten Ökosystemen unserer Erde. Geprägt werden sie vom jeweilig vorherrschenden
+          Klima. Deshalb
           unterscheidet man <b>Vegetationszonen</b> in den entsprechenden <b>Klimazonen</b>. Die Wälder der
           verschiedenen Vegetationszonen unterscheiden sich deutlich in ihrer Ausprägung und den Pflanzen und Tieren,
           die in
-          ihnen leben. So z.B.
-          tropische immergrüne, Regenwälder, mediterrane Hartlaubwälder oder boreale Wälder (auch Taiga
+          ihnen leben. So gibt es beispielsweise
+          tropisch-immergrüne Regenwälder, mediterrane Hartlaubwälder oder boreale Wälder (auch Taiga
           genannt).
           <br><br>
           <b>Aufgabe: Schau dir die Karte mit den verschiedenen Vegetationszonen der Erde an! In
@@ -138,7 +139,8 @@
           <br><br>
           <b>Wald ist nicht gleich Wald.</b>
           <br><br>
-          An <b>speziellen Sonderstandorten</b>(azonale Vegetation) gibt es besondere Wälder. Schau dir dazu die nachfolgenden Bilder an:
+          An <b>speziellen Sonderstandorten</b>(azonale Vegetation) gibt es besondere Wälder. Schau dir dazu die
+          nachfolgenden Bilder an:
           <br><br>
         <figure class="Wald">
           <img src="/EinflussMensch/bilder/Bergwald.jpg" alt="Wald 1" width="500">
@@ -169,9 +171,10 @@
         <br>
         <p>
           Wälder lassen sich aber auch entsprechend des <b>menschlichen Einflusses</b> einteilen:
-          In <b>natürliche Wälder (Naturwälder)</b> und wirtschaftlich genutzte und dadurch menschlich beeinflusste
-          <b>Forste</b>.
-          Aber Forste können sehr unterschiedlich intensiv genutzt werden. Deshalb gibt es fließende Übergänge von Forst und Naturwäldern.
+          In <b>natürliche Wälder (sogenannte Naturwälder)</b> sowie in Wälder, die der wirtschaftlichen Nutzung des
+          Menschen unterliegen (sogenannte <b>Forste)</b>.
+          Aber Forste können sehr unterschiedlich intensiv genutzt werden. Deshalb gibt es fließende Übergänge von Forst
+          und Naturwald.
 
           <br><br>
           <b>Aufgabe: Was denkst du, in welcher Art von Wald befindest du dich gerade hier im Botanischen
@@ -291,12 +294,13 @@
           <br>
           Ein Forst ist meist deutlich "aufgeräumter". Das heißt, Bäume werden häufig durch Menschen
           gepflanzt und gefällt. Dadurch wird die Artenzusammensetzung beeinflusst.
-          Auch sind die Bäume etwa gleichalt und dadurch mehr oder weniger gleich hoch. Es gibt wenig Totholz und
+          Auch sind die Bäume etwa gleich alt und dadurch, mehr oder weniger, gleich hoch. Es gibt wenig Totholz und
           Unterholz,
           welches als Nahrung
-          oder Versteck für Tiere dienen könnte. Ein intensiv bewirtschafteter Forst als Ökosystem dient daher weniger
-          Arten als Lebensraum verglichen mit einem naturbelassenen Wald.
-          Im extremen Fall bestehen Forste nur aus einer einzigen Baumart. Diese werden dann <b>Monokulturen</b> genannt.
+          oder Versteck für Tiere dienen könnte. Ein intensiv bewirtschafteter Forst dient daher weniger Arten
+          als Lebensraum als es, vergleichsweise, ein naturbelassener Wald tut.
+          Im extremen Fall bestehen Forste nur aus einer einzigen Baumart. Diese werden dann <b>Monokulturen</b>
+          genannt.
 
           <br><br>
           <b>Aufgabe: Nachdem du die verschiedenen Eigenschaften zugeordnet hast, schau dir
@@ -319,7 +323,7 @@
               Fall Monokulturen, da sie anfällig gegenüber Schädlingen und Veränderungen des Klimas sind.</b><br>
             Beispiel hierfür ist der Harz. Seit 2018 starben in den dortigen Fichtenforsten riesige Flächen durch
             Trockenheit,
-            Borkenkäferbefall sowie Stürme ab. Siehe dazu das nachfolgende Foto an.
+            Borkenkäferbefall sowie Stürme ab. Siehe dir dazu das nachfolgende Foto an.
           </div>
           <figure class="vergleich">
             <img src="/EinflussMensch/bilder/MonokulturWaldBesch.jpg" alt="Monokultur" width="500">
@@ -371,13 +375,25 @@
 
 
         .legend-item {
+          display: inline-block;
           cursor: pointer;
           color: #117964;
-          font-weight: 600;
+          font-weight: 700;
+          background: #e8f7f1;
+          padding: 4px 8px;
+          border-radius: 6px;
+          border: 1px solid #117964;
+          transition: all 0.2s ease;
         }
 
         .legend-item:hover {
-          text-decoration: none;
+          background: #117964;
+          color: white;
+          transform: scale(1.03);
+        }
+
+        .legend-item:active {
+          transform: scale(0.98);
         }
 
         .legend-feedback {
@@ -562,7 +578,7 @@
           // Inhalt (immer gleich – nur Status ändert sich)
           const infoText = `
             <div class="text">
-              Deutschland liegt komplett in der gemäßigten Klimazone mit sommergrünen Laubmischwäldern. Bei uns gibt es hauptsächlich gemäßigte sommergrüne Laubmischwälder. Die Buche ist dabei die häufigste Baumart.
+              Deutschland liegt in der gemäßigten Klimazone mit sommergrünen Laubmischwäldern. Hier uns gibt es also hauptsächlich gemäßigte sommergrüne Laubmischwälder. Die Buche ist dabei die häufigste Baumart.
             </div>
             <figure>
               <img src="/EinflussMensch/bilder/Buchenwald.jpg" alt="Buche" width="500">
