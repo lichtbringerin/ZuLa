@@ -352,7 +352,7 @@ function submenu(items) {
 const menuToggle = document.getElementById("menu-toggle");
 
 menuToggle.addEventListener("change", () => {
-    document.body.style.overflow = menuToggle.checked ? "hidden" : "";
+    document.body.classList.toggle("menu-open", menuToggle.checked);
 });
 
 // Funktion für den zurück auf die karte button bzw. den station abschliessen button

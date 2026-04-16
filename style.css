@@ -169,29 +169,22 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-
   width: 80%;
   max-width: 300px;
-
   background: #fff;
   z-index: 100;
-
   transform: translateX(-150%);
   transition: transform 0.5s ease-in-out;
-
   padding-top: 100px;
   padding-left: 50px;
   padding-right: 20px;
   padding-bottom: 20px;
-
   display: flex;
   flex-direction: column;
-
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-
   box-shadow: 5px 0px 10px 0px #aaa;
 }
 
