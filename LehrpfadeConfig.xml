@@ -7,11 +7,17 @@
     <Karte>Bilder\karte.png</Karte>
     <Dauer>ca. 2 Stunden</Dauer>
     <Autor>Ein studentisches Projekt von Lucia Ludwig</Autor>
-    <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
-    Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, lokal aber auch
-    global.
-    Dabei kannst du lernen, auf welche Weise wir in die Natur eingreifen und welche positiven, aber auch negativen
-    Auswirkungen dies hat. Die Stationen kannst du in beliebiger Reihenfolge bearbeiten. Außerdem gibt es alle Texte der Stationen auch in Audioform auf den Seiten der Stationen.</Einfuehrungstext>
+    <Einfuehrungstext>Willkommen beim digitalen Lehrpfad „Einfluss des Menschen auf Ökosysteme“.
+
+Mit diesem Lehrpfad möchten wir dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst – sowohl lokal als auch global.
+
+Du kannst dabei lernen, auf welche Weise wir in die Natur eingreifen und welche positiven, aber auch negativen Auswirkungen dies hat. Die Stationen kannst du in beliebiger Reihenfolge bearbeiten. Außerdem stehen dir alle Texte der Stationen auch in Audioform zur Verfügung.
+
+Der Lehrpfad richtet sich an die achte Klasse am Gymnasium und basiert auf dem Lernbereich 6 „Ökosysteme unter dem Einfluss des Menschen“<a href="/EinflussMensch/InfoLK.html"
+   title="Infos für Lehrkräfte"
+   style="display:inline-block; margin-left:0; width:14px; height:14px; line-height:14px; text-align:center; font-size:12px; font-weight:bold; color:#117964; background:transparent; border:1.5px solid #117964; border-radius:50%; text-decoration:none; vertical-align:baseline;">
+i</a>,
+kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <StationsCount>6</StationsCount>
 
     <Stations>
