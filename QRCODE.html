@@ -82,6 +82,12 @@
             color: #555;
         }
 
+        .lehrpfad-dauer {
+            font-size: 0.75em;
+            color: #555;
+            margin-top: 4px;
+        }
+
         .lehrpfad-header {
             margin-bottom: 12px;
         }
@@ -224,6 +230,8 @@
                     const name = pfad.getElementsByTagName("UrlName")[0].textContent;
                     const icon = pfad.getElementsByTagName("IconName")[0].textContent;
                     const stationen = pfad.getElementsByTagName("StationsCount")[0].textContent;
+                    const dauerNode = pfad.getElementsByTagName("Dauer")[0];
+                    const dauer = dauerNode ? dauerNode.textContent : "";
                     const autor = pfad.getElementsByTagName("Autor")[0].textContent;
                     const einfuehrungNode = pfad.getElementsByTagName("Einfuehrungstext")[0];
                     const einfuehrung = einfuehrungNode ? einfuehrungNode.textContent : ""; // Falls kein Text enthalten ist bleibt er leer? oder default text
@@ -244,6 +252,9 @@
                             <img src="${icon}" alt="${name}">
                             <div class="lehrpfad-stationen">
                                 ${stationen} Stationen
+                            </div>
+                            <div class="lehrpfad-dauer">
+                                ${dauer}
                             </div>
                         </div>
 

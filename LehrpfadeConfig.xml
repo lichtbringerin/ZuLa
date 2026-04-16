@@ -5,6 +5,7 @@
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
     <Karte>Bilder\karte.png</Karte>
+    <Dauer>ca. 2 Stunden</Dauer>
     <Autor>Ein studentisches Projekt von Lucia Ludwig</Autor>
     <Einfuehrungstext>Willkommen beim digitalen Lehrpfad "Einfluss des Menschen auf Ökosysteme".
     Mit dem Lehrpfad möchten wir Dir zeigen, wie der Mensch die Ökosysteme um sich herum beeinflusst, lokal aber auch
@@ -62,6 +63,7 @@
     <PfadId>2</PfadId>
     <UrlName>Audioguide durch das Freiland des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
+    <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
     <Karte>Bilder\karte.png</Karte>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
@@ -196,6 +198,7 @@
     <PfadId>3</PfadId>
     <UrlName>Audioguide durch das Tropenhaus des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBGTropen</OrdnerPfad>
+    <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
     <Karte>Bilder\karte.png</Karte>
     <Autor></Autor>

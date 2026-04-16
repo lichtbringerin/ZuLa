@@ -83,7 +83,8 @@
         </div>
         <br><br>
 
-        Seitdem du „Start“ geklickt hast, ist die Fläche dieses Gewächshauses, nach Rechnung des WWF, so oft verschwunden:
+        Seitdem du „Start“ geklickt hast, ist die Fläche dieses Gewächshauses, nach Rechnung des WWF, so oft
+        verschwunden:
         <br><br>
 
         <table class="haus-table">
@@ -112,9 +113,9 @@
           Tabelle.
           Dann bekommst du weitere Informationen zu diesen Pflanzen.
           Die Namen der Pflanzen findest du auf den Etiketten. Die Wege musst du dafür nicht verlassen.
-          In der Tabelle bekommst du Informationen zu den 20 bekanntesten und verbreitetsten Pflanzen.</b>
+          In der Tabelle bekommst du Informationen zu den 20 bekanntesten und auffälligsten Pflanzen.</b>
+        Manche Pflanzen lassen sich erst im zweiten Gewächshaus finden.
         <br>
-        </p>
         <div class="pflanzen-container">
           <input type="text" id="pflanzen-input" class="pflanzen-input" placeholder="Namen hier eingeben:">
           <br><br>
@@ -168,14 +169,11 @@
       <rot>
 
         <div class="fazit-box">
-          Durch die <b>großflächigen Abholzungen</b> der Regenwälder gehen permanent Pflanzen- und Tierarten verloren.
-          Selbst
-          unser
-          Klima hier in Mitteleuropa, wird durch den Verlust dieses Ökosystems beeinflusst. Der Schutz der Regenwälder
-          sollte
-          uns sehr wichtig sein. Denn unser Leben hier in Deutschland hat weltweite Auswirkungen und zugleich ist unser Leben abhängig
-          von einem globalen stabilen System. So verwenden wir z.B. in unserem Alltag eine große Vielfalt an
-          Nutzpflanzen aus diesen Regionen.
+          Durch die <b>großflächige Abholzung</b> der Regenwälder gehen täglich unzählige Pflanzen- und Tierarten
+          unwiederbringlich verloren. Die Folgen betreffen längst auch unser Klima in Mitteleuropa. Der Schutz der
+          Regenwälder ist daher dringend notwendig. Unser Leben in Deutschland beeinflusst Ökosysteme weltweit – und
+          gleichzeitig sind wir auf deren Stabilität angewiesen. Viele unserer Alltagsprodukte stammen direkt aus diesen
+          Regionen.
         </div>
       </rot>
       <gruen>
@@ -324,7 +322,8 @@
           padding: 5px;
           font-size: 0.95em;
           line-height: 1.4;
-          border-bottom: 1px solid #333;   /* Linie zwischen den Pflanzen */
+          border-bottom: 1px solid #333;
+          /* Linie zwischen den Pflanzen */
         }
 
         /* die spaltengröße kann hier eingestellt werden */
@@ -497,104 +496,209 @@
           {
             name: "Kakao",
             latein: "Theobroma cacao",
-            info: "Kakao ist die Grundlage für Schokolade, eines der beliebtesten Süßwarenprodukte in Deutschland. Ursprünglich stammt er aus Mittelamerika, heute wird Kakao vor allem in Westafrika angebaut."
+            info: "Aus Kakao entsteht Schokolade – der Name bedeutet sogar „Speise der Götter“. Ursprünglich Mittelamerika, heute v.a. Westafrika.",
+            andereNamen: ["Kakaobaum", "Kakaopflanze", "Theobroma", "cacao", "Malvengewächse", "Malvaceae", "kakau", "kakoa", "kakao pflanze"]
           },
           {
             name: "Vanille",
             latein: "Vanilla planifolia",
-            info: "Vanille ist eines der wichtigsten Aromen in deutschen Haushalten, z.B. für Gebäck und Desserts. Sie stammt ursprünglich aus Mexiko und wird heute vor allem auf Madagaskar angebaut."
+            info: "Echte Vanille ist eines der teuersten Gewürze der Welt, weil jede Blüte per Hand bestäubt wird. Ursprung Mexiko, heute v.a. Madagaskar.",
+            andereNamen: ["Vanilleorchidee", "Gewürzvanille", "Vanilla", "planifolia", "Orchideen", "Orchidaceae", "vanilie", "vanillie", "vanille pflanze"]
           },
           {
             name: "Zuckerrohr",
             latein: "Saccharum officinarum",
-            info: "Zuckerrohr liefert einen Großteil des weltweit genutzten Zuckers, der auch in Deutschland verwendet wird. Es stammt aus Südostasien und wird heute vor allem in Brasilien und Indien angebaut."
+            info: "Zuckerrohr wächst extrem schnell – bis zu 5 cm pro Tag! Ursprung Südostasien, heute v.a. Brasilien & Indien.",
+            andereNamen: ["Rohrzucker", "Zuckerrohrpflanze", "Saccharum", "officinarum", "Süßgräser", "Poaceae", "zuckerohr", "zuckerrohr pflanze", "zuckerrohrpflanze"]
           },
           {
             name: "Banane",
             latein: "Musa nana",
-            info: "Die Banane ist das zweitmeist gegessene Obst in Deutschland. Sie stammt ursprünglich aus Südostasien und wird heute vor allem in Mittel- und Südamerika angebaut."
+            info: "Bananen sind botanisch gesehen eigentlich Beeren und wachsen an riesigen Stauden – nicht an echten Bäumen. Ursprung Südostasien, heute weltweit tropisch.",
+            andereNamen: ["Bananenpflanze", "Bananenpalme", "Musa", "nana", "Musaceae", "bananenbaum", "bananenstaude", "bananne", "musa spp"]
           },
           {
             name: "Muskatnuss",
             latein: "Myristica fragrans",
-            info: "Muskatnuss ist ein wichtiges Gewürz in der deutschen Küche, z.B. für Kartoffelgerichte. Sie stammt von den indonesischen Molukken und wird heute in tropischen Regionen weltweit angebaut."
+            info: "Muskat war früher so wertvoll, dass Kriege darum geführt wurden. Ursprung Molukken (Indonesien), heute Tropen.",
+            andereNamen: ["Muskat", "Muskatbaum", "Myristica", "fragrans", "Myristicaceae", "muskatnus", "muskatnussbaum"]
           },
           {
             name: "Pfeffer",
             latein: "Piper nigrum",
-            info: "Pfeffer ist eines der wichtigsten Gewürze in Deutschland. Ursprünglich stammt er aus Indien, heute wird er vor allem in Südostasien angebaut."
+            info: "Pfeffer wurde im Mittelalter mit Gold aufgewogen – daher der Name „Pfeffersack“. Ursprung Indien, heute Südostasien.",
+            andereNamen: ["Schwarzer Pfeffer", "Pfefferpflanze", "Piper", "nigrum", "Piperaceae", "pfefer", "schwarzerpfeffer"]
           },
           {
             name: "Ananas",
             latein: "Ananas comosus",
-            info: "Ananas ist eine beliebte Importfrucht in Deutschland. Sie stammt ursprünglich aus Südamerika und wird heute vor allem in Costa Rica und anderen tropischen Ländern angebaut."
+            info: "Eine Ananas besteht aus vielen zusammengewachsenen Einzelbeeren. Ursprung Südamerika, heute v.a. Costa Rica.",
+            andereNamen: ["Ananaspflanze", "Bromeliaceae", "ananas pflanze", "annanas", "ananass"]
           },
           {
             name: "Tee",
             latein: "Camellia sinensis",
-            info: "Tee ist eines der meistgetrunkenen Getränke in Deutschland. Die Teepflanze stammt aus China und Indien und wird heute in vielen subtropischen und tropischen Regionen angebaut."
+            info: "Alle echten Tees (schwarz, grün, weiß) stammen von derselben Pflanze – nur die Verarbeitung ist unterschiedlich. Ursprung China/Indien.",
+            andereNamen: ["Teepflanze", "Teestrauch", "Camellia", "sinensis", "Theaceae", "teh"]
           },
           {
             name: "Mango",
             latein: "Mangifera indica",
-            info: "Mangos sind in Deutschland eine sehr beliebte tropische Frucht. Sie stammen ursprünglich aus Indien und werden heute in vielen tropischen Ländern angebaut."
+            info: "Mangos gelten in Indien als „Frucht der Götter“ und haben über 300 Sorten. Ursprung Indien, heute Tropen.",
+            andereNamen: ["Mangobaum", "Mangifera", "indica", "Anacardiaceae", "manggo"]
           },
           {
             name: "Sternfrucht",
             latein: "Averrhoa carambola",
-            info: "Die Sternfrucht wird in Deutschland vor allem als Dekoration in Salaten oder Cocktails genutzt. Sie stammt aus Südostasien und wird heute in tropischen Regionen angebaut."
+            info: "Schneidet man sie auf, entstehen perfekte Sterne – daher der Name. Ursprung Südostasien.",
+            andereNamen: ["Karambole", "Carambola", "Oxalidaceae", "carambolla"]
           },
           {
             name: "Zimt",
             latein: "Cinnamomum zeylanicum",
-            info: "Zimt ist besonders als Gewürz bekannt, vor allem in der Weihnachtszeit. Er stammt ursprünglich aus Sri Lanka und wird heute in tropischen Regionen angebaut."
+            info: "Zimt ist eigentlich die getrocknete Rinde eines Baumes. Ursprung Sri Lanka, heute Tropen.",
+            andereNamen: ["Zimtbaum", "Cinnamomum", "Lauraceae", "zimmt"]
           },
           {
             name: "Cherimoya",
             latein: "Annona cherimola",
-            info: "Cherimoya ist eine exotische Frucht, die in Deutschland langsam bekannter wird. Sie stammt aus den Anden Südamerikas und wird heute in warmen Regionen angebaut."
+            info: "Sie wird auch oft als „köstlichste Frucht der Welt“ bezeichnet. Ursprung Anden (Südamerika).",
+            andereNamen: ["Chirimoya", "Rahmapfel", "Annona", "Annonaceae", "cherimjoa"]
           },
           {
             name: "Baumwolle",
             latein: "Gossypium hirsutum",
-            info: "Baumwolle wurde besonders zur Zeit der Industrialisierung nach Deutschland importiert. Heute ist die Nachfrage etwas gesunken. Sie stammt ursprünglich aus Mittelamerika und wird heute weltweit in warmen Regionen angebaut."
+            info: "Baumwollfasern sind eigentlich die Schutzhaare der Samen – daraus wird Kleidung hergestellt. Ursprung Amerika, heute weltweit.",
+            andereNamen: ["Baumwollpflanze", "Cotton", "Gossypium", "Malvaceae", "baumwollee"]
           },
           {
             name: "Chili",
             latein: "Capsicum frutescens",
-            info: "Chilis werden in Deutschland hauptsächlich gemahlen als Gewürz verwendet. Sie stammen ursprünglich aus Mittel- und Südamerika und werden heute weltweit angebaut."
+            info: "Die Schärfe von Chili wird in „Scoville“ gemessen – manche Sorten sind tausendfach schärfer als Paprika. Ursprung Amerika.",
+            andereNamen: ["Chilipflanze", "Peperoni", "Capsicum", "Solanaceae", "chilli"]
           },
           {
             name: "Parakautschukbaum",
             latein: "Hevea brasiliensis",
-            info: "Aus dem Parakautschukbaum wird Naturkautschuk gewonnen, der z.B. für Autoreifen genutzt wird. Er stammt aus dem Amazonasgebiet und wird heute vor allem in Südostasien angebaut."
+            info: "Aus seinem Milchsaft wird Gummi gewonnen – ohne ihn gäbe es keine Autoreifen. Ursprung Amazonas, heute Südostasien.",
+            andereNamen: ["Kautschukbaum", "Gummibaum", "Hevea", "Euphorbiaceae"]
           },
           {
             name: "Kaffee",
             latein: "Coffea liberica",
-            info: "Kaffee ist eines der beliebtesten Getränke in Deutschland. Im Durchschnitt trinken Deutsche 163 Liter pro Jahr. Die Kaffeepflanze stammt ursprünglich aus Afrika und wird heute in tropischen Regionen weltweit angebaut."
+            info: "Kaffee wirkt wegen Koffein anregend – ursprünglich entdeckten Hirten die Wirkung bei Ziegen. Ursprung Afrika.",
+            andereNamen: ["Kaffeepflanze", "Coffea", "Rubiaceae", "kafee"]
           },
           {
             name: "Kokospalme",
             latein: "Cocos nucifera",
-            info: "Die Kokospalme liefert Produkte wie Kokosöl und Kokosmilch. Diese finden Anwendung in Küche, aber auch anderen Produkten wie z.B. Shampoos oder Cremes. Sie stammt aus tropischen Küstenregionen und wird heute weltweit angebaut."
+            info: "Kokosnüsse können im Meer treiben und so neue Inseln besiedeln. Daher kommen sie an tropischen Küsten weltweit vor.",
+            andereNamen: ["Kokos", "Kokosnuss", "Arecaceae", "kokuspalme"]
           },
           {
             name: "Passionsfrucht",
             latein: "Passiflora edulis",
-            info: "Passionsfrüchte werden in Deutschland vor allem für Säfte und Desserts genutzt. Sie stammen ursprünglich aus Südamerika und werden heute in tropischen Regionen angebaut."
+            info: "Die Pflanze enthält natürliche Stoffe, die beruhigend wirken und sogar in manchen pflanzlichen Schlafmitteln genutzt werden. Ursprung Südamerika.",
+            andereNamen: ["Maracuja", "Passionsblume", "Passiflora", "Passifloraceae"]
           },
           {
-            name: "Tamarinde",
-            latein: "Tamarindus indica",
-            info: "Tamarinde wird in Deutschland vor allem in Soßen und internationalen Gerichten verwendet. Sie stammt ursprünglich aus Afrika und wird heute in vielen tropischen Ländern angebaut."
+            name: "Reis",
+            latein: "Oryza sativa",
+            info: "Reis ernährt über die Hälfte der Weltbevölkerung – oft wächst er auf überfluteten Feldern.",
+            andereNamen: ["Reispflanze", "Oryza", "Poaceae", "reiß"]
           },
           {
             name: "Cashew",
             latein: "Anacardium occidentale",
-            info: "Cashewnüsse sind ein beliebter Snack in Deutschland. Der Cashewbaum stammt ursprünglich aus Brasilien und wird heute vor allem in Indien und Vietnam angebaut."
+            info: "Die Cashewnuss wächst außen an einer Frucht – und ist roh giftig! Ursprung Brasilien.",
+            andereNamen: ["Cashewbaum", "Anacardium", "Anacardiaceae", "caschew"]
           }
         ];
+
+
+        /*
+        QUELLEN (verlässlich + direkt verlinkt):
+        
+        KAKAO
+        https://www.britannica.com/plant/cacao
+        https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:320783-2/general-information
+        
+        VANILLE
+        https://en.wikipedia.org/wiki/Vanilla
+        https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:262578-2
+        
+        ZUCKERROHR
+        https://en.wikipedia.org/wiki/Sugarcane
+        https://powo.science.kew.org/results?q=Saccharum%20officinarum
+        
+        BANANE
+        https://en.wikipedia.org/wiki/Banana
+        https://powo.science.kew.org/results?q=Musa
+        
+        MUSKATNUSS
+        https://www.britannica.com/plant/nutmeg
+        https://powo.science.kew.org/results?q=Myristica%20fragrans
+        
+        PFEFFER
+        https://www.britannica.com/plant/black-pepper
+        https://powo.science.kew.org/results?q=Piper%20nigrum
+        
+        ANANAS
+        https://www.britannica.com/plant/pineapple
+        https://powo.science.kew.org/results?q=Ananas%20comosus
+        
+        TEE
+        https://www.britannica.com/plant/tea-plant
+        https://powo.science.kew.org/results?q=Camellia%20sinensis
+        
+        MANGO
+        https://www.britannica.com/plant/mango-fruit-and-tree
+        https://powo.science.kew.org/results?q=Mangifera%20indica
+        
+        STERNFRUCHT
+        https://www.britannica.com/plant/star-fruit
+        https://powo.science.kew.org/results?q=Averrhoa%20carambola
+        
+        ZIMT
+        https://www.britannica.com/plant/cinnamon
+        https://powo.science.kew.org/results?q=Cinnamomum%20zeylanicum
+        
+        CHERIMOYA
+        https://www.britannica.com/plant/cherimoya
+        https://powo.science.kew.org/results?q=Annona%20cherimola
+        
+        BAUMWOLLE
+        https://www.britannica.com/plant/cotton-plant
+        https://powo.science.kew.org/results?q=Gossypium%20hirsutum
+        
+        CHILI
+        https://www.britannica.com/plant/chili-pepper
+        https://powo.science.kew.org/results?q=Capsicum%20frutescens
+        
+        KAUTSCHUKBAUM
+        https://www.britannica.com/plant/rubber-tree
+        https://powo.science.kew.org/results?q=Hevea%20brasiliensis
+        
+        KAFFEE
+        https://www.britannica.com/plant/coffee-plant
+        https://powo.science.kew.org/results?q=Coffea
+        
+        KOKOSPALME
+        https://www.britannica.com/plant/coconut-palm
+        https://powo.science.kew.org/results?q=Cocos%20nucifera
+        
+        PASSIONSFRUCHT
+        https://pmc.ncbi.nlm.nih.gov/articles/PMC11026993/
+        https://www.mdpi.com/2813-2998/4/1/11
+        
+        REIS
+        https://www.britannica.com/plant/rice
+        https://powo.science.kew.org/results?q=Oryza%20sativa
+        
+        CASHEW
+        https://www.britannica.com/plant/cashew
+        https://powo.science.kew.org/results?q=Anacardium%20occidentale
+        */
 
         // Gesammelte Pflanzen, um Duplikate zu vermeiden
         const gefundenePflanzen = [];
@@ -611,41 +715,49 @@
 
         updateAufloesenButton();
 
+
         function pflanzeHinzufuegen() {
           const eingabe = input.value.trim().toLowerCase();
           if (!eingabe) return;
 
-          // Prüfen, ob die Eingabe einer Pflanze entspricht
-          const pflanze = pflanzenListe.find(p =>
-            p.name.toLowerCase() === eingabe || p.latein.toLowerCase() === eingabe
-          );
+          const pflanze = pflanzenListe.find(p => {
+            const nameMatch = p.name.toLowerCase() === eingabe;
+            const lateinMatch = p.latein.toLowerCase() === eingabe;
+
+            const andereNamenListe = p.andereNamen
+              ? p.andereNamen.map(name => name.toLowerCase())
+              : [];
+
+            const andererNameMatch = andereNamenListe.includes(eingabe);
+
+            return nameMatch || lateinMatch || andererNameMatch;
+          });
 
           if (pflanze && !gefundenePflanzen.includes(pflanze.name)) {
             gefundenePflanzen.push(pflanze.name);
 
             const zeile = document.createElement('tr');
-            zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
+            zeile.style.backgroundColor = '#c8f7c5';
+
             zeile.innerHTML = `
-              <td class="col-name">
-                <div class="name-wrap">
-                  <div class="name-de">${pflanze.name}</div>
-                  <div class="name-la">${pflanze.latein}</div>
-                </div>
-              </td>
-              <td class="col-latein">${pflanze.latein}</td>
-              <td class="col-info">${pflanze.info}</td>
-              `;
+      <td class="col-name">
+        <div class="name-wrap">
+          <div class="name-de">${pflanze.name}</div>
+          <div class="name-la">${pflanze.latein}</div>
+        </div>
+      </td>
+      <td class="col-latein">${pflanze.latein}</td>
+      <td class="col-info">${pflanze.info}</td>
+    `;
+
             tabelleBody.appendChild(zeile);
           }
+
           updateAufloesenButton();
 
           input.value = '';
           input.focus();
         }
-
-        button.addEventListener('click', pflanzeHinzufuegen);
-        aufloesenButton.addEventListener('click', alleAufloesen);
-
 
         function updateAufloesenButton() {
           const rest = pflanzenListe.length - gefundenePflanzen.length;
@@ -662,7 +774,7 @@
           pflanzenListe.forEach(element => {
             if (!gefundenePflanzen.includes(element.name)) {
               const zeile = document.createElement('tr');
-              zeile.style.backgroundColor = '#c8f7c5'; // hellgrün
+              zeile.style.backgroundColor = '#c8f7c5';
 
               zeile.innerHTML = `
         <td class="col-name">
@@ -683,8 +795,6 @@
           updateAufloesenButton();
         }
 
-
-
         // Optional: Enter-Taste zum Hinzufügen
         input.addEventListener('keypress', (e) => {
           if (e.key === 'Enter') {
@@ -692,6 +802,10 @@
             e.preventDefault();
           }
         });
+
+
+        button.addEventListener('click', pflanzeHinzufuegen);
+        aufloesenButton.addEventListener('click', alleAufloesen);
 
         // skript für verlust / häuser 
 

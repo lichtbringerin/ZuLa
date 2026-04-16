@@ -167,34 +167,30 @@ body {
 .navbar .menu-items {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
 
   width: 80%;
   max-width: 300px;
-  height: 100vh;
 
   background: #fff;
   z-index: 100;
 
-  /* EIN-/AUSFAHREN */
   transform: translateX(-150%);
   transition: transform 0.5s ease-in-out;
 
-  /* LAYOUT */
   padding-top: 100px;
-  /* Platz für Logo / Header */
   padding-left: 50px;
   padding-right: 20px;
+  padding-bottom: 20px;
 
   display: flex;
   flex-direction: column;
 
   overflow-y: auto;
-  /* vertikal scrollbar */
   overscroll-behavior: contain;
-
-  /* Mobile Scroll-Gefühl */
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 
   box-shadow: 5px 0px 10px 0px #aaa;
 }
