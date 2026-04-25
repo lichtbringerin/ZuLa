@@ -51,35 +51,35 @@
 
       <rot>
         <p>
-          <div class="audio-row">
+        <div class="audio-row">
           <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio1">
             🔊
           </button>
           <audio id="audio1" src="bilder/haus1.mp3" preload="none"></audio>
         </div>
-          Spricht man vom Einfluss des Menschen auf Ökosysteme, denken viele als erstes an den tropischen Regenwald.
-          Besonders
-          dessen <b>großflächige Abholzung</b> <a href="/EinflussMensch/Glossar.html" title="Glossar"
-            style="display:inline-block; margin-left:0; width:14px; height:14px; line-height:14px; text-align:center; font-size:12px; font-weight:bold; color:#117964; background:transparent; border:1.5px solid #117964; border-radius:50%; text-decoration:none; vertical-align:baseline;">
-            i</a> ist ein globales Problem.
-          <br><br>
-          Doch weshalb muss uns - hier in Würzburg - die Zerstörung des tropischen Regenwaldes
-          interessieren, obwohl er so weit von uns entfernt vorkommt?
+        Spricht man vom Einfluss des Menschen auf Ökosysteme, denken viele als erstes an den tropischen Regenwald.
+        Besonders
+        dessen <b>großflächige Abholzung</b> <a href="/EinflussMensch/Glossar.html" title="Glossar"
+          style="display:inline-block; margin-left:0; width:14px; height:14px; line-height:14px; text-align:center; font-size:12px; font-weight:bold; color:#117964; background:transparent; border:1.5px solid #117964; border-radius:50%; text-decoration:none; vertical-align:baseline;">
+          i</a> ist ein globales Problem.
+        <br><br>
+        Doch weshalb muss uns - hier in Würzburg - die Zerstörung des tropischen Regenwaldes
+        interessieren, obwohl er so weit von uns entfernt vorkommt?
 
-          <br><br>
-          <b>Aufgabe:
-            Wie viel Regenwald verschwindet eigentlich jetzt gerade?<br></b>
-          Damit du dir das besser vorstellen kannst,
-          ist
-          hier eine verständliche Darstellung. Drücke einfach den Knopf zum Starten oder Stoppen und du kannst
-          mitverfolgen, wie viel Fläche zeitgleich
-          verloren geht. Eine Einheit, dargestellt als kleines Haus (🏠), entspricht dabei der Fläche des Teils des
-          Nutzpflanzenhauses, in dem du
-          dich
-          gerade
-          befindest, also 108m<sup>2</sup>.
-          <br>
-          <br>
+        <br><br>
+        <b>Aufgabe:
+          Wie viel Regenwald verschwindet eigentlich jetzt gerade?<br></b>
+        Damit du dir das besser vorstellen kannst,
+        ist
+        hier eine verständliche Darstellung. Drücke einfach den Knopf zum Starten oder Stoppen und du kannst
+        mitverfolgen, wie viel Fläche zeitgleich
+        verloren geht. Eine Einheit, dargestellt als kleines Haus (🏠), entspricht dabei der Fläche des Teils des
+        Nutzpflanzenhauses, in dem du
+        dich
+        gerade
+        befindest, also 108m<sup>2</sup>.
+        <br>
+        <br>
         <div class="zaehler-container">
           <button id="start-haus-zaehler" class="start-button">
             Start
@@ -141,7 +141,7 @@
         <table id="pflanzen-tabelle" class="pflanzen-tabelle">
           <thead>
             <tr>
-              <th class="col-name">Pflanze:</th>
+              <th class="col-name">Pflanze & Wissenschaftliche Bezeichnung:</th>
               <th class="col-latein">Wissenschaftliche Bezeichnung:</th>
               <th class="col-info">Bekannt für & Infos:</th>
             </tr>
@@ -160,7 +160,7 @@
           </button>
           <audio id="audio3" src="bilder/haus3.mp3" preload="none"></audio>
         </div>
-    
+
         Durch viele Expeditionen in den Tropen kamen seit Jahrhunderten immer neue pflanzliche Lebensmittel oder auch
         deren Produkte zu
         uns nach Europa. Um den
@@ -194,16 +194,24 @@
         Nur in seltenen
         Fällen werden diese Pflanzenprodukte nachhaltig produziert.
 
+        <figure class="video-container">
+          <video controls muted width="100%">
+            <source src="bilder/Ölpalmen.mp4" type="video/mp4">
+            Dein Browser unterstützt das Video nicht.
+          </video>
+          <figcaption><small>Eine riesige Ölpalmenplantage in Monokultur.</small></figcaption>
+        </figure>
+
       </gruen>
       <rot>
 
         <div class="fazit-box">
           <div class="audio-row">
-          <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio4">
-            🔊
-          </button>
-          <audio id="audio4" src="bilder/haus4.mp3" preload="none"></audio>
-        </div>
+            <button class="audio-btn" type="button" aria-label="Audio abspielen" data-audio="audio4">
+              🔊
+            </button>
+            <audio id="audio4" src="bilder/haus4.mp3" preload="none"></audio>
+          </div>
           Durch die <b>großflächige Abholzung</b> <a href="/EinflussMensch/Glossar.html" title="Glossar"
             style="display:inline-block; margin-left:0; width:14px; height:14px; line-height:14px; text-align:center; font-size:12px; font-weight:bold; color:#117964; background:transparent; border:1.5px solid #117964; border-radius:50%; text-decoration:none; vertical-align:baseline;">
             i</a> der Regenwälder gehen täglich unzählige Pflanzen- und Tierarten
@@ -400,10 +408,7 @@
             display: none;
           }
 
-          /* Header-Text der ersten Spalte anpassen (optional) */
-          .pflanzen-tabelle th.col-name::after {
-            content: " & Wiss. Name";
-          }
+
 
           /* Latein unter Name sichtbar */
           .name-la {
@@ -551,6 +556,15 @@
           /* sehr dezent, aber sichtbar */
           color: #fff;
         }
+
+        .pflanzen-bild {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 6px;
+          display: block;
+          margin: 0 auto 5px;
+        }
       </style>
 
 
@@ -563,12 +577,14 @@
             name: "Kakao",
             latein: "Theobroma cacao",
             info: "Aus Kakao entsteht Schokolade – der Name bedeutet „Speise der Götter“. Ursprünglich aus Mittelamerika, heute wird er in Westafrika angebaut.",
+            bild: "bilder/Kakao1.jpg",
             andereNamen: ["Kakaobaum", "Kakaopflanze", "Theobroma", "cacao", "Malvengewächse", "Malvaceae", "kakau", "kakoa", "kakao pflanze"]
           },
           {
             name: "Vanille",
             latein: "Vanilla planifolia",
             info: "Echte Vanille ist eines der teuersten Gewürze der Welt, weil jede Blüte per Hand bestäubt wird. Ursprung Mexiko, heute vor allem auf Madagaskar.",
+            bild: "bilder/Vanilla.JPG",
             andereNamen: ["Vanilleorchidee", "Gewürzvanille", "Vanilla", "planifolia", "Orchideen", "Orchidaceae", "vanilie", "vanillie", "vanille pflanze"]
           },
           {
@@ -581,6 +597,7 @@
             name: "Banane",
             latein: "Musa nana",
             info: "Bananen sind botanisch gesehen eigentlich Beeren und wachsen an riesigen Stauden – nicht an echten Bäumen. Ursprung Südostasien, heute in tropischen Regionen weltweit.",
+            bild: "bilder/Musa × paradisiaca a.JPG",
             andereNamen: ["Bananenpflanze", "Bananenpalme", "Musa", "nana", "Musaceae", "bananenbaum", "bananenstaude", "bananne", "musa spp"]
           },
           {
@@ -599,12 +616,14 @@
             name: "Ananas",
             latein: "Ananas comosus",
             info: "Eine Ananas besteht aus vielen zusammengewachsenen Einzelbeeren. Ursprung Südamerika, heute vor allem in Costa Rica.",
+            bild: "bilder/Ananas.JPG",
             andereNamen: ["Ananaspflanze", "Bromeliaceae", "ananas pflanze", "annanas", "ananass"]
           },
           {
             name: "Tee",
             latein: "Camellia sinensis",
             info: "Alle echten Tees (schwarz, grün, weiß) stammen von derselben Pflanze – nur die Verarbeitung ist unterschiedlich. Ursprung in China/Indien. Heute weltweit angebaut",
+            bild: "bilder/Camellia_sinensis.JPG",
             andereNamen: ["Teepflanze", "Teestrauch", "Camellia", "sinensis", "Theaceae", "teh"]
           },
           {
@@ -635,6 +654,7 @@
             name: "Baumwolle",
             latein: "Gossypium hirsutum",
             info: "Baumwollfasern sind eigentlich die Schutzhaare der Samen – daraus wird Kleidung hergestellt. Ursprung Amerika, heute weltweit.",
+            bild: "bilder/Baumwolle.JPG",
             andereNamen: ["Baumwollpflanze", "Cotton", "Gossypium", "Malvaceae", "baumwollee"]
           },
           {
@@ -647,18 +667,23 @@
             name: "Parakautschukbaum",
             latein: "Hevea brasiliensis",
             info: "Aus seinem Milchsaft wird Gummi gewonnen – ohne ihn gäbe es keine Autoreifen. Ursprung im Amazonas, heute in ganz Südostasien.",
+            
+            bild: "bilder/Kautschuk.JPG",
             andereNamen: ["Kautschukbaum", "Gummibaum", "Hevea", "Euphorbiaceae"]
           },
           {
             name: "Kaffee",
             latein: "Coffea liberica",
             info: "Kaffee wirkt wegen Koffein anregend – ursprünglich entdeckten Hirten die Wirkung bei Ziegen. Ursprung Afrika. Heute um den Äquator herum weltweit",
+        
+            bild: "bilder/Kaffee1.jpg",
             andereNamen: ["Kaffeepflanze", "Coffea", "Rubiaceae", "kafee"]
           },
           {
             name: "Kokospalme",
             latein: "Cocos nucifera",
             info: "Kokosnüsse können im Meer treiben und so neue Inseln besiedeln. Daher kommen sie an tropischen Küsten weltweit vor.",
+            bild: "bilder/Kokos2.JPG",
             andereNamen: ["Kokos", "Kokosnuss", "Arecaceae", "kokuspalme"]
           },
           {
@@ -677,6 +702,7 @@
             name: "Cashew",
             latein: "Anacardium occidentale",
             info: "Die Cashewnuss wächst außen an einer Frucht – und ist roh giftig! Ursprung Brasilien. Heute weltweit angebaut.",
+            bild: "bilder/cashew.jpeg",
             andereNamen: ["Cashewbaum", "Anacardium", "Anacardiaceae", "caschew"]
           }
         ];
@@ -805,16 +831,21 @@
             const zeile = document.createElement('tr');
             zeile.style.backgroundColor = '#c8f7c5';
 
+            const bildHTML = pflanze.bild
+              ? `<img src="${pflanze.bild}" class="pflanzen-bild">`
+              : "";
+
             zeile.innerHTML = `
-      <td class="col-name">
-        <div class="name-wrap">
-          <div class="name-de">${pflanze.name}</div>
-          <div class="name-la">${pflanze.latein}</div>
-        </div>
-      </td>
-      <td class="col-latein">${pflanze.latein}</td>
-      <td class="col-info">${pflanze.info}</td>
-    `;
+            <td class="col-name">
+              <div class="name-wrap">
+                ${bildHTML}
+              <div class="name-de">${pflanze.name}</div>
+              <div class="name-la">${pflanze.latein}</div>
+              </div>
+            </td>
+            <td class="col-latein">${pflanze.latein}</td>
+            <td class="col-info">${pflanze.info}</td>
+            `;
 
             tabelleBody.appendChild(zeile);
           }
@@ -842,16 +873,21 @@
               const zeile = document.createElement('tr');
               zeile.style.backgroundColor = '#c8f7c5';
 
+              const bildHTML = element.bild
+                ? `<img src="${element.bild}" class="pflanzen-bild">`
+                : "";
+
               zeile.innerHTML = `
-        <td class="col-name">
-          <div class="name-wrap">
-            <div class="name-de">${element.name}</div>
-            <div class="name-la">${element.latein}</div>
-          </div>
-        </td>
-        <td class="col-latein">${element.latein}</td>
-        <td class="col-info">${element.info}</td>
-      `;
+  <td class="col-name">
+    <div class="name-wrap">
+      ${bildHTML}
+      <div class="name-de">${element.name}</div>
+      <div class="name-la">${element.latein}</div>
+    </div>
+  </td>
+  <td class="col-latein">${element.latein}</td>
+  <td class="col-info">${element.info}</td>
+`;
 
               tabelleBody.appendChild(zeile);
               gefundenePflanzen.push(element.name);

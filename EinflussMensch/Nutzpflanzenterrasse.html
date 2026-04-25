@@ -193,6 +193,16 @@
           <div class="mcq-feedback" hidden></div>
         </div>
 
+        <div class="galerie">
+            <h3 class="galerie-title">Die Nutzpflanzenterrasse zur Hochsaison:</h3>
+          <div class="galerie-track">
+            <img src="bilder/nutzpflanzengalerie1.jpg" alt="Bild 1">
+            <img src="bilder/nutzpflanzengalerie2.jpg" alt="Bild 2">
+            <img src="bilder/nutzpflanzengalerie3.jpg" alt="Bild 3">
+            <img src="bilder/nutzpflanzengalerie4.jpg" alt="Bild 4">
+          </div>
+        </div>
+
 
       </rot>
       <rot>
@@ -392,6 +402,38 @@
           /* sehr dezent, aber sichtbar */
           color: #fff;
         }
+
+        .galerie {
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+
+          margin: 20px 0;
+        }
+
+        .galerie-track {
+          display: flex;
+          gap: 10px;
+        }
+
+        .galerie img {
+          flex: 0 0 100%;
+          scroll-snap-align: center;
+
+          border-radius: 12px;
+        }
+
+        .galerie-title {
+          text-align: center;
+          font-size: 1.6em;
+          font-weight: bold;
+          margin: 30px 0 15px;
+
+          color: #2f5e2f;
+
+          position: relative;
+        }
+
       </style>
 
       <script>
