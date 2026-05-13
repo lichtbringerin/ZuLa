@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="../style.css">
+  <link id="favicon" rel="icon" type="image/png">
+  <script src="../loadProject.js" defer></script>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
+
+      <ul class="menu-items">
+        <li><a href="../QRCODE.html">Startseite</a></li>
+        <li>
+          <a href="../Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="../Kontakt.html">Kontakt</a></li>
+      </ul>
+
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Station abschließen
+      </button>
+
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <div class="content-container">
+    <div class="content-wrapper">
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+      <h2 class="station-title">Station 6 – Palaeotropics</h2>
+
+      <section class="station-content">
+        <div class="station-audio">
+          <audio controls preload="none">
+            <source src="Dateien/6_Palaeotropics.mp3" type="audio/mpeg">
+            Dein Browser unterstützt das Audio-Element nicht.
+          </audio>
+        </div>
+
+        <div class="station-transcript">
+          <h3 class="transcript-title">Textversion</h3>
+
+          Mit dieser Station verändert sich unsere Umgebung deutlich.
+          Nach den feuchten humiden Tropen gelangen Sie nun in die trockenen ariden Regionen der Tropen, in die
+          sogenannte Paläotropis, also nach Afrika und Madagaskar.
+          Hier herrscht ein extremes Klima, denn Niederschläge sind selten und unregelmäßig. Oft fallen weniger als 250
+          Millimeter im Jahr. Gleichzeitig ist die Sonneneinstrahlung sehr stark. Tagsüber können die Temperaturen stark
+          ansteigen auf bis zu 50 Grad, während sie nachts deutlich abfallen, bis zu Frosttemperaturen.
+          Diese Trockenheit hängt eng mit den Klimaprozessen am Äquator zusammen. Dort steigt warme, feuchte Luft auf,
+          kühlt ab und sorgt für die hohen Niederschläge im Regenwald. Die nun trockene Luft bewegt sich nach Süden und
+          Norden in Richtung der Wendekreise, sinkt dort wieder ab und erwärmt sich dabei stark. Dadurch entstehen
+          stabile Hochdruckgebiete mit trockenen Klimazonen, in denen kaum Niederschlag fällt.
+          Pflanzen stehen hier also vor der Herausforderung, mit sehr wenig Wasser auszukommen. Dafür haben sich im
+          Laufe der Evolution verschiedene Strategien entwickelt.
+          Einige Pflanzen versuchen, Trockenperioden zu vermeiden. Sie keimen nur nach seltenen Regenfällen, wachsen
+          schnell, blühen und bilden Samen, bevor es wieder trocken wird. Die meiste Zeit überdauern sie als Samen oder
+          in unterirdischen Speicherorganen. Solche sieht man hier im Gewächshaus kaum, denn die Pflanzen, die Sie hier
+          sehen, gehören überwiegend zu den sogenannten Xerophyten. Sie ertragen und tolerieren die Trockenheit und
+          bleiben auch während langer Dürreperioden oberirdisch erhalten.
+          Um Wasser zu sparen, entwickelten viele dieser Pflanzen Angepasstheiten. Dazu gehören kleine oder stark
+          reduzierte Blätter, dicke Wachsschichten oder eine dichte Behaarung, die die Verdunstung verringern. In
+          manchen Fällen sind die Blätter auch zu Dornen umgebildet.
+          Eine weitere Strategie ist die Speicherung von Wasser. Sogenannte Sukkulenten lagern Wasser in ihren
+          fleischigen Blättern, Stämmen oder Wurzeln ein und können so längere Trockenperioden überstehen.
+          Vielleicht fällt Ihnen auf, dass einige Pflanzen hier an Kakteen erinnern. Aber: Kakteen kommen ursprünglich
+          nicht aus Afrika. Tatsächlich handelt es sich hier um andere Pflanzenfamilien, zum Beispiel die
+          Wolfsmilchgewächse. Diese sehen mit ihren sukkulenten Sprossachsen den Kakteen zwar ähnlich, sind aber nicht
+          näher mit ihnen verwandt.
+          Achten Sie bei Ihrem Rundgang auf diese unterschiedlichen Angepasstheiten, denn sie zeigen, wie vielfältig die
+          Strategien der Pflanzen sind, um unter extrem trockenen Bedingungen zu überleben.
+
+
+        </div>
+      </section>
+
+
+      <style>
+        /* Abstand zwischen Navbar und Überschrift */
+        .station-title {
+          margin-top: 30px;
+          margin-bottom: 20px;
+          padding: 0 16px;
+        }
+
+        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
+        .station-content {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 16px;
+          /* links/rechts Luft */
+        }
+
+        /* Audio-Block */
+        .station-audio {
+          margin: 10px 0 18px;
+        }
+
+        .station-audio audio {
+          width: 100%;
+          display: block;
+        }
+
+        /* Textversion */
+        .station-transcript {
+          background: #f4f6f5;
+          border-radius: 12px;
+          padding: 14px 16px;
+          /* innen Luft */
+        }
+
+        .transcript-title {
+          margin: 0 0 10px;
+          font-size: 1.05rem;
+        }
+
+        .station-transcript p {
+          margin: 0 0 10px;
+          line-height: 1.5;
+        }
+
+        .station-transcript p:last-child {
+          margin-bottom: 0;
+        }
+
+        /* Mobile Feinschliff */
+        @media (max-width: 700px) {
+          .station-title {
+            margin-top: 30px;
+          }
+
+          .station-content {
+            padding: 0 14px;
+          }
+
+          .station-transcript {
+            padding: 12px 14px;
+          }
+        }
+      </style>
+
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+    </div>
+  </div>
+
+
+  <script>
+    // gespeicherten Fortschritt laden
+    window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+
+    document.addEventListener("lehrpfadLoaded", () => {
+      const btn = document.getElementById("karte-button");
+
+      if (!btn) return;
+      updateKarteButton(window.location.pathname);
+    })
+
+    function updateStationsCompleteStorage() {
+      localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+    }
+
+    // Station abschliessen Funktion
+    const btn = document.getElementById('karte-button');
+    btn.addEventListener('click', () => {
+      if (window.aktuelleStationId) {
+        const stationIndex = window.aktuelleStationId - 1;
+        if (!window.stationsComplete.includes(stationIndex)) {
+          window.stationsComplete.push(stationIndex);
+          updateStationsCompleteStorage();
+        }
+      }
+      window.location.href = '/Startseite.html'; // Zurück zur Karte
+    });
+
+  </script>
+</body>
+
+</html>

@@ -238,6 +238,16 @@ function loadLehrpfad(ID, xml) {
     window.stationsCount = parseInt(
         pfad.getElementsByTagName("StationsCount")[0].textContent
     );
+    const sprachIcon =
+        pfad.getElementsByTagName("SprachIcon")[0]?.textContent || "";
+
+    if (sprachIcon.toLowerCase().includes("deutsch")) {
+        window.sprache = "de";
+    } else if (sprachIcon.toLowerCase().includes("englisch")) {
+        window.sprache = "en";
+    } else {
+        window.sprache = "de"; // fallback
+    }
 
     // stationen auslesen
     const stationXML = [...pfad.getElementsByTagName("Station")];
@@ -273,7 +283,7 @@ function loadLehrpfad(ID, xml) {
     const karteImg = document.querySelector("#karte img");
 
     if (karteImg && window.location.pathname.toLowerCase().includes("startseite")) {
-        const imgPath = rootPath(window.kartePath); 
+        const imgPath = rootPath(window.kartePath);
         karteImg.src = imgPath;
 
         // Nach dem Laden die Stationen setzen (damit Maße stimmen)
@@ -292,20 +302,30 @@ function loadLehrpfad(ID, xml) {
             else karteImg.addEventListener("load", stationenAufKarteSetzen, { once: true });
         }
     }
-  
+
 
     // wenn nichts im einleitungs container steht = lehrpfad geladen, wird hier ein anderer text eingeblendet der die bedienung
     // vom lehrpfad erklärt
     const einleitungContainer = document.getElementById("einleitung");
     if (einleitungContainer && window.location.pathname.toLowerCase().includes("startseite")) {
 
-        einleitungContainer.innerHTML =
-            `<h2>` + window.urlName + `</h2>` +
-            ` Aktuell befindest du dich auf der Startseite. Das Programm auf deinem Smartphone leitet dich durch den Lehrpfad. Begib
-            dich zur ersten Station. Diese findest du als Symbole auf der nachfolgenden Karte, und in der Navigation oben. Vor Ort kannst du die Station über die Navigation auswählen oder du
-            scannst den QR-Code vor Ort.
-            <br>Viel Spaß.`
-            ;
+        if (window.sprache === "de") {
+            einleitungContainer.innerHTML =
+            `<h2>` + window.urlName + `</h2>` + `<h3>Startseite:</h3>` +
+            ` Aktuell befindest Du dich auf der Startseite. Das Programm auf deinem Smartphone zeigt Dir die Lage der verschiedenen Stationen des Audioguides. Diese findest Du als Symbole auf der nachfolgenden Karte und in der Navigation oben. Die Reihenfolge der Stationen kannst Du selbst wählen. Vor Ort kannst Du die Station über die Navigation auswählen oder Du scannst den QR-Code am Schild in der Station. 
+            <br>Viel Spaß auf Deinem Rundgang!
+            `;
+        }
+
+         if (window.sprache === "en") {
+            einleitungContainer.innerHTML =
+            `<h2>` + window.urlName + `</h2>`+ `<h3>Home Page:</h3>` +
+            ` You are currently on the starting page. This programme on your smartphone shows you the locations of the various audio guide stops. These are marked as icons on the map below and in the navigation bar at the top. You can choose the order of the stops yourself. Once you’re there, you can select the stop using the navigation bar or scan the QR-code on site. 
+            <br>Enjoy your tour!
+            `;
+        }
+
+        
     }
 
     setAktuelleStationFromXML();

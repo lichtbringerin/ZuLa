@@ -4,6 +4,7 @@
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
     <IconName>EinflussMensch.png</IconName>
+    <SprachIcon>Bilder\deutsch.jpg</SprachIcon>
     <Karte>Bilder\karte.png</Karte>
     <Dauer>ca. 2 Stunden</Dauer>
     <Autor>Ein studentisches Projekt von Lucia Ludwig</Autor>
@@ -18,7 +19,7 @@ Der Lehrpfad richtet sich an die achte Klasse am Gymnasium und basiert auf dem L
    style="display:inline-block; margin-left:0; width:14px; height:14px; line-height:14px; text-align:center; font-size:12px; font-weight:bold; color:#117964; background:transparent; border:1.5px solid #117964; border-radius:50%; text-decoration:none; vertical-align:baseline;">
 i</a>,
 kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
-    <StationsCount>6</StationsCount>
+    <StationsCount>6 Stationen</StationsCount>
 
     <Stations>
         <Station>
@@ -71,12 +72,13 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
+    <SprachIcon>Bilder\deutsch.jpg</SprachIcon>
     <Karte>Bilder\karte.png</Karte>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
     <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
 
  </Einfuehrungstext>
-    <StationsCount>17</StationsCount>
+    <StationsCount>17 Stationen</StationsCount>
 
     <Stations>
         <Station>
@@ -202,137 +204,312 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
 </Lehrpfad>
 <Lehrpfad>
     <PfadId>3</PfadId>
-    <UrlName>Audioguide durch das Tropenhaus des Botanischen Gartens</UrlName>
-    <OrdnerPfad>AudioBGTropen</OrdnerPfad>
+    <UrlName>Audio guide to the open-air section of the Botanical Gardens (english)</UrlName>
+    <OrdnerPfad>AudioBG_ENG</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
+    <SprachIcon>Bilder\englisch.png</SprachIcon>
     <Karte>Bilder\karte.png</Karte>
-    <Autor></Autor>
-    <Einfuehrungstext>
-    Dieser Audioguide ist noch in Arbeit, wir bitten um Geduld.
+    <Autor>A student project by Patricia Rose</Autor>
+    <Einfuehrungstext>The audio guide provides a wealth of information about the various sections of the Botanical Gardens as you explore them at your own pace.
  </Einfuehrungstext>
-    <StationsCount>10</StationsCount>
+    <StationsCount>17 Stations</StationsCount>
 
     <Stations>
         <Station>
-            <Name>Eingang</Name>
+            <Name>Entrance</Name>
             <Nummer>1</Nummer>
             <Url>Eingang.html</Url>
             <X>680</X>
             <Y>900</Y>
         </Station>
         <Station>
-            <Name>Tertiärwald</Name>
+            <Name>Tertiary Forest</Name>
             <Nummer>2</Nummer>
             <Url>Tertiaerwald.html</Url>
             <X>500</X>
             <Y>890</Y>
         </Station>
         <Station>
-            <Name>Bauerngarten</Name>
+            <Name>Cottage Garden</Name>
             <Nummer>3</Nummer>
             <Url>Bauerngarten.html</Url>
             <X>565</X>
             <Y>810</Y>
         </Station>
         <Station>
-            <Name>Arzneipflanzen</Name>
+            <Name>Medicinal Garden</Name>
             <Nummer>4</Nummer>
             <Url>Arzneipflanzen.html</Url>
             <X>565</X>
             <Y>670</Y>
         </Station>
   	    <Station>
-            <Name>Mediterranhaus</Name>
+            <Name>Mediterranean House</Name>
             <Nummer>5</Nummer>
             <Url>Mediterranhaus.html</Url>
             <X>500</X>
             <Y>720</Y>
         </Station>
         <Station>
-            <Name>Bienen</Name>
+            <Name>Bees</Name>
             <Nummer>6</Nummer>
             <Url>Bienen.html</Url>
             <X>450</X>
             <Y>610</Y>
         </Station>
         <Station>
-            <Name>Prärie</Name>
+            <Name>Praeries</Name>
             <Nummer>7</Nummer>
             <Url>Praerie.html</Url>
             <X>730</X>
             <Y>820</Y>
         </Station>
         <Station>
-            <Name>Sieboldpflanzen</Name>
+            <Name>Siebold</Name>
             <Nummer>8</Nummer>
             <Url>Sieboldpflanzen.html</Url>
             <X>585</X>
             <Y>460</Y>
         </Station>
         <Station>
-            <Name>Tropenhaus</Name>
+            <Name>Tropical Greenhouses</Name>
             <Nummer>9</Nummer>
             <Url>Tropenhaus.html</Url>
             <X>690</X>
             <Y>500</Y>
         </Station>
         <Station>
-            <Name>Karnivore Pflanzen</Name>
+            <Name>Carnivorous Plants</Name>
             <Nummer>10</Nummer>
             <Url>KarnivorePflanzen.html</Url>
             <X>750</X>
             <Y>560</Y>
         </Station>
         <Station>
-            <Name>Nutzpflanzen</Name>
+            <Name>Native Crops</Name>
             <Nummer>11</Nummer>
             <Url>Nutzpflanzen.html</Url>
             <X>1025</X>
             <Y>505</Y>
         </Station>
         <Station>
-            <Name>Alpinpflanzen</Name>
+            <Name>Alpine House</Name>
             <Nummer>12</Nummer>
             <Url>Alpinpflanzen.html</Url>
             <X>925</X>
             <Y>220</Y>
         </Station>
         <Station>
-            <Name>Waldgesellschaften</Name>
+            <Name>Forests</Name>
             <Nummer>13</Nummer>
             <Url>Waldgesellschaften.html</Url>
             <X>1070</X>
             <Y>190</Y>
         </Station>
         <Station>
-            <Name>Mediterrane Felsheide</Name>
+            <Name>Mediterranean Rocky Heathlands</Name>
             <Nummer>14</Nummer>
             <Url>MediterraneFelsheide.html</Url>
             <X>1085</X>
             <Y>650</Y>
         </Station>
         <Station>
-            <Name>Sandmagerrasen</Name>
+            <Name>Sand Grasslands</Name>
             <Nummer>15</Nummer>
             <Url>Sandmagerrasen.html</Url>
             <X>1205</X>
             <Y>755</Y>
         </Station>
         <Station>
-            <Name>Trockenrasen</Name>
+            <Name>Dry Grasslands</Name>
             <Nummer>16</Nummer>
             <Url>Trockenrasen.html</Url>
             <X>1140</X>
             <Y>755</Y>
         </Station>
         <Station>
-            <Name>Peonienterrassen</Name>
+            <Name>Peonies</Name>
             <Nummer>17</Nummer>
             <Url>Peonienterrassen.html</Url>
             <X>910</X>
             <Y>775</Y>
         </Station>
     </Stations>
+</Lehrpfad>
+<Lehrpfad>
+    <PfadId>4</PfadId>
+    <UrlName>Audioguide durch das Tropenschauhaus</UrlName>
+    <OrdnerPfad>AudioBGTropen</OrdnerPfad>
+    <Dauer>...</Dauer>
+    <IconName>AudioTropenhausLogo.png</IconName>
+    <SprachIcon>Bilder\deutsch.jpg</SprachIcon>
+    <Karte>Bilder\KarteTropenhausDE.png</Karte>
+    <Autor>Ein studentisches Projekt von Pia Gsänger und Patricia Rose</Autor>
+    <Einfuehrungstext>
+    Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang durch das Tropenhaus des Botanischen Gartens vielfältige Informationen zu den einzelnen Gewächshausbereichen.
+ </Einfuehrungstext>
+    <StationsCount>10 Stationen</StationsCount>
+
+    <Stations>
+        <Station>
+            <Name>Eingang</Name>
+            <Nummer>1</Nummer>
+            <Url>Eingang.html</Url>
+            <X>580</X>
+            <Y>1035</Y>
+        </Station>
+        <Station>
+            <Name>Tieflandregenwald</Name>
+            <Nummer>2</Nummer>
+            <Url>Tieflandregenwald.html</Url>
+            <X>620</X>
+            <Y>900</Y>
+        </Station>
+        <Station>
+            <Name>Mangroven</Name>
+            <Nummer>3</Nummer>
+            <Url>Mangroven.html</Url>
+            <X>750</X>
+            <Y>930</Y>
+        </Station>
+        <Station>
+            <Name>Epiphytenstamm</Name>
+            <Nummer>4</Nummer>
+            <Url>Epiphytenstamm.html</Url>
+            <X>950</X>
+            <Y>950</Y>
+        </Station>
+  	    <Station>
+            <Name>Bergnebelwald</Name>
+            <Nummer>5</Nummer>
+            <Url>Bergnebelwald.html</Url>
+            <X>1100</X>
+            <Y>1000</Y>
+        </Station>
+        <Station>
+            <Name>Paläotropis</Name>
+            <Nummer>6</Nummer>
+            <Url>Paläotropis.html</Url>
+            <X>1300</X>
+            <Y>730</Y>
+        </Station>
+        <Station>
+            <Name>Neotropis</Name>
+            <Nummer>7</Nummer>
+            <Url>Neotropis.html</Url>
+            <X>1300</X>
+            <Y>380</Y>
+        </Station>
+        <Station>
+            <Name>Blütengang</Name>
+            <Nummer>8</Nummer>
+            <Url>Blütengang.html</Url>
+            <X>1150</X>
+            <Y>125</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzen 1</Name>
+            <Nummer>9</Nummer>
+            <Url>Nutzpflanzen 1.html</Url>
+            <X>430</X>
+            <Y>190</Y>
+        </Station>
+        <Station>
+            <Name>Nutzpflanzen 2</Name>
+            <Nummer>10</Nummer>
+            <Url>Nutzpflanzen 2.html</Url>
+            <X>450</X>
+            <Y>540</Y>
+        </Station>
+    </Stations>
+</Lehrpfad>
+<Lehrpfad>
+    <PfadId>5</PfadId>
+    <UrlName>Audio guide through the tropical glasshouse (english)</UrlName>
+    <OrdnerPfad>AudioBGTropen_ENG</OrdnerPfad>
+    <Dauer>...</Dauer>
+    <IconName>AudioTropenhausLogo.png</IconName>
+    <SprachIcon>Bilder\englisch.png</SprachIcon>
+    <Karte>Bilder\KarteTropenhausENG.PNG</Karte>
+    <Autor>A student project by Pia Gsänger and Patricia Rose</Autor>
+    <Einfuehrungstext>
+    This audio guide provides a lot of information about the different sections of the greenhouse while you explore the Botanical Garden’s Tropical Glasshouse for yourself.
+ </Einfuehrungstext>
+    <StationsCount>10 Stations</StationsCount>
+
+    <Stations>
+        <Station>
+            <Name>Entrance Tropical Glasshouse</Name>
+            <Nummer>1</Nummer>
+            <Url>Eingang.html</Url>
+            <X>535</X>
+            <Y>1035</Y>
+        </Station>
+        <Station>
+            <Name>Lowland Rainforest</Name>
+            <Nummer>2</Nummer>
+            <Url>Tieflandregenwald.html</Url>
+            <X>580</X>
+            <Y>900</Y>
+        </Station>
+        <Station>
+            <Name>Mangroves</Name>
+            <Nummer>3</Nummer>
+            <Url>Mangroven.html</Url>
+            <X>710</X>
+            <Y>930</Y>
+        </Station>
+        <Station>
+            <Name>Epiphytes</Name>
+            <Nummer>4</Nummer>
+            <Url>Epiphytenstamm.html</Url>
+            <X>920</X>
+            <Y>950</Y>
+        </Station>
+  	    <Station>
+            <Name>Mountain Cloud Forrest</Name>
+            <Nummer>5</Nummer>
+            <Url>Bergnebelwald.html</Url>
+            <X>1060</X>
+            <Y>1000</Y>
+        </Station>
+        <Station>
+            <Name>Palaeotropics</Name>
+            <Nummer>6</Nummer>
+            <Url>Paläotropis.html</Url>
+            <X>1280</X>
+            <Y>730</Y>
+        </Station>
+        <Station>
+            <Name>Neotropics</Name>
+            <Nummer>7</Nummer>
+            <Url>Neotropis.html</Url>
+            <X>1260</X>
+            <Y>320</Y>
+        </Station>
+        <Station>
+            <Name>Flower Gallery</Name>
+            <Nummer>8</Nummer>
+            <Url>Blütengang.html</Url>
+            <X>1150</X>
+            <Y>80</Y>
+        </Station>
+        <Station>
+            <Name>Crop Plants 1</Name>
+            <Nummer>9</Nummer>
+            <Url>Nutzpflanzen 1.html</Url>
+            <X>410</X>
+            <Y>190</Y>
+        </Station>
+        <Station>
+            <Name>Crop Plants 2</Name>
+            <Nummer>10</Nummer>
+            <Url>Nutzpflanzen 2.html</Url>
+            <X>410</X>
+            <Y>540</Y>
+        </Station>
+    </Stations>
+    
 </Lehrpfad>
 </Lehrpfade>

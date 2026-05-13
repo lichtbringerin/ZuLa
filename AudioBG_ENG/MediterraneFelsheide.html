@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="../style.css">
+  <link id="favicon" rel="icon" type="image/png">
+  <script src="../loadProject.js" defer></script>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
+
+      <ul class="menu-items">
+        <li><a href="../QRCODE.html">Startseite</a></li>
+        <li>
+          <a href="../Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="../Kontakt.html">Kontakt</a></li>
+      </ul>
+
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Station abschließen
+      </button>
+
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <div class="content-container">
+    <div class="content-wrapper">
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+      <h2 class="station-title">Station 14 – Mediterranean Rocky Heathlands</h2>
+
+      <section class="station-content">
+        <div class="station-audio">
+          <audio controls preload="none">
+            <source src="Dateien/14_Mediterranean Rocky Heathlands .mp3" type="audio/mpeg">
+            Dein Browser unterstützt das Audio-Element nicht.
+          </audio>
+        </div>
+
+        <div class="station-transcript">
+          <h3 class="transcript-title">Textversion</h3>
+
+          Diese Station begleitet Sie auf dem Weg durch eine besondere Vegetationsform wie sie im Mittelmeergebiet von
+          Portugal bis Kleinasien häufig vorkommt, die mediterrane Felsheide.
+          Bitte beachten Sie, dass durch die Mitte der Abteilung ein schmaler Weg führt, der nicht barrierefrei ist.
+          Das Klima in Würzburg mit seinen heißen, trockenen Sommern und vergleichsweise milden Wintern macht es
+          möglich, diese Pflanzengesellschaft im Freiland zu zeigen, was in Deutschland ansonsten eine Seltenheit ist.
+          Ursprünglich gab es im Mittelmeergebiet wie bei uns in Mitteleuropa auch dichte hohe Wälder, vor allem mit
+          Steineichen. Aufgrund der intensiven Nutzung durch die Menschen, die bis hin zur Antike reicht, wurden diese
+          Wälder ständig gerodet und übernutzt. Auch häufige Feuerereignisse durch die Trockenheit im Sommer trugen dazu
+          bei. Es entstanden Ersatzpflanzengesellschaften.
+          Die Felsheiden oder Dornpolsterheiden, wie sie hier nachgebildet sind, sind eine solche Pflanzengesellschaft,
+          die sich durch Übernutzung der ursprünglichen Wälder im gesamten Mittelmeergebiet gebildet haben. Die Pflanzen
+          sind an extreme Bedingungen wie direkte Sonne, lange Trockenheit, nährstoffarme Böden und dazu oft steinigen
+          Untergrund angepasst.
+          Viele Arten überleben diese Umstände durch das Entwickeln von stacheligen Dornpolstern. Diese schützen nicht
+          nur vor Fressfeinden wie z.B. Ziegen oder Schafen, sondern helfen auch, die Verdunstung zu minimieren und den
+          Boden unter der Pflanze zu beschatten.
+          Wenn Sie möchten, legen Sie vorsichtig die Hand auf eines dieser Dornpolster. Sie spüren, wie fest, kompakt
+          und widerstandsfähig diese Pflanzen aufgebaut sind. Wegen dieser Wehrhaftigkeit, passt die Bezeichnung
+          Dornpolster sehr gut. Die mediterrane Felsheide ist ein Beispiel dafür, wie durch die Evolution bestimmte
+          Formen und Überlebensstrategien bei Pflanzen gefördert wurden, die wiederum an extreme Standorte angepasst
+          sind. Ein kleines Stück Mittelmeervegetation mitten in Würzburg.
+          Weitere Pflanzen der mediterranen Regionen finden Sie im Mediterranhaus und im Innenhof des Tropenschauhauses.
+
+        </div>
+      </section>
+
+
+      <style>
+        /* Abstand zwischen Navbar und Überschrift */
+        .station-title {
+          margin-top: 30px;
+          margin-bottom: 20px;
+          padding: 0 16px;
+        }
+
+        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
+        .station-content {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 16px;
+          /* links/rechts Luft */
+        }
+
+        /* Audio-Block */
+        .station-audio {
+          margin: 10px 0 18px;
+        }
+
+        .station-audio audio {
+          width: 100%;
+          display: block;
+        }
+
+        /* Textversion */
+        .station-transcript {
+          background: #f4f6f5;
+          border-radius: 12px;
+          padding: 14px 16px;
+          /* innen Luft */
+        }
+
+        .transcript-title {
+          margin: 0 0 10px;
+          font-size: 1.05rem;
+        }
+
+        .station-transcript p {
+          margin: 0 0 10px;
+          line-height: 1.5;
+        }
+
+        .station-transcript p:last-child {
+          margin-bottom: 0;
+        }
+
+        /* Mobile Feinschliff */
+        @media (max-width: 700px) {
+          .station-title {
+            margin-top: 30px;
+          }
+
+          .station-content {
+            padding: 0 14px;
+          }
+
+          .station-transcript {
+            padding: 12px 14px;
+          }
+        }
+      </style>
+
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+    </div>
+  </div>
+
+
+  <script>
+    // gespeicherten Fortschritt laden
+    window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+
+    document.addEventListener("lehrpfadLoaded", () => {
+      const btn = document.getElementById("karte-button");
+
+      if (!btn) return;
+      updateKarteButton(window.location.pathname);
+    })
+
+    function updateStationsCompleteStorage() {
+      localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+    }
+
+    // Station abschliessen Funktion
+    const btn = document.getElementById('karte-button');
+    btn.addEventListener('click', () => {
+      if (window.aktuelleStationId) {
+        const stationIndex = window.aktuelleStationId - 1;
+        if (!window.stationsComplete.includes(stationIndex)) {
+          window.stationsComplete.push(stationIndex);
+          updateStationsCompleteStorage();
+        }
+      }
+      window.location.href = '/Startseite.html'; // Zurück zur Karte
+    });
+
+  </script>
+</body>
+
+</html>

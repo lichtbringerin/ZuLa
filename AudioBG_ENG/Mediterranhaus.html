@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <link rel="stylesheet" href="../style.css">
+  <link id="favicon" rel="icon" type="image/png">
+  <script src="../loadProject.js" defer></script>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="navbar-container container">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </label>
+
+      <ul class="menu-items">
+        <li><a href="../QRCODE.html">Startseite</a></li>
+        <li>
+          <a href="../Startseite.html">Karte</a>
+          <ul id="karte-submenu" class="submenu"></ul>
+        </li>
+        <li><a href="../Kontakt.html">Kontakt</a></li>
+      </ul>
+
+      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
+        Station abschließen
+      </button>
+
+    </div>
+    <div id="progress-container"></div>
+  </nav>
+
+  <div class="content-container">
+    <div class="content-wrapper">
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+
+      <h2 class="station-title">Station 5 – Mediterranean House</h2>
+
+      <section class="station-content">
+        <div class="station-audio">
+          <audio controls preload="none">
+            <source src="Dateien/5_Mediterranean House better.mp3" type="audio/mpeg">
+            Dein Browser unterstützt das Audio-Element nicht.
+          </audio>
+        </div>
+
+        <div class="station-transcript">
+          <h3 class="transcript-title">Textversion</h3>
+
+          Das Mediterranhaus ist ein Abschnitt auf ihrer Reise, der Sie in eine der artenreichsten Klimazonen der Welt
+          begleitet. Typisch für diese Regionen sind lange heiße und trockene Sommer aber auch niederschlagsreiche
+          Winter. Deshalb heißt es auch Winterregenklima.
+          Um hier zu überleben, müssen Pflanzen teilweise mehrere Monate mit sehr wenig Wasser auskommen können – gerade
+          im Sommer, wenn es besonders heiß wird. Mediterranes Klima gibt es aber nicht nur rund ums Mittelmeer.
+          Ähnliche Bedingungen herrschen auch in Kalifornien, in Teilen Chiles, Südafrikas und im südwestlichen
+          Australien, überall zwischen dem 30. und 40. Breitengrad. In all diesen Regionen haben sich Pflanzentypen mit
+          vergleichbarem ähnlichem Aussehen entwickelt. Dies nennt man konvergente Evolution. Wie sehen dann typische
+          Pflanzen der mediterranen Regionen eigentlich aus?
+          Charakteristisch für diese Lebensräume sind immergrüne Hartlaubgewächse. Das bedeutet Pflanzen mit kleinen,
+          oft ledrigen Blättern oder nadelartigen Strukturen. Viele Blätter sind stark behaart, oftmals eingerollt oder
+          glänzend. All diese Angepasstheiten dienen dazu, Wasserverlust zu verringern und Schutz vor Fressfeinden zu
+          bieten.
+          Achten Sie bei Ihrem Rundgang also besonders auf die Blätter der Pflanzen
+
+        </div>
+      </section>
+
+
+      <style>
+        /* Abstand zwischen Navbar und Überschrift */
+        .station-title {
+          margin-top: 30px;
+          margin-bottom: 20px;
+          padding: 0 16px;
+        }
+
+        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
+        .station-content {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 16px;
+          /* links/rechts Luft */
+        }
+
+        /* Audio-Block */
+        .station-audio {
+          margin: 10px 0 18px;
+        }
+
+        .station-audio audio {
+          width: 100%;
+          display: block;
+        }
+
+        /* Textversion */
+        .station-transcript {
+          background: #f4f6f5;
+          border-radius: 12px;
+          padding: 14px 16px;
+          /* innen Luft */
+        }
+
+        .transcript-title {
+          margin: 0 0 10px;
+          font-size: 1.05rem;
+        }
+
+        .station-transcript p {
+          margin: 0 0 10px;
+          line-height: 1.5;
+        }
+
+        .station-transcript p:last-child {
+          margin-bottom: 0;
+        }
+
+        /* Mobile Feinschliff */
+        @media (max-width: 700px) {
+          .station-title {
+            margin-top: 30px;
+          }
+
+          .station-content {
+            padding: 0 14px;
+          }
+
+          .station-transcript {
+            padding: 12px 14px;
+          }
+        }
+      </style>
+
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- ----------------------------------------------------------------------------------------------------------------- -->
+      <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
+    </div>
+  </div>
+
+
+  <script>
+    // gespeicherten Fortschritt laden
+    window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
+
+    document.addEventListener("lehrpfadLoaded", () => {
+      const btn = document.getElementById("karte-button");
+
+      if (!btn) return;
+      updateKarteButton(window.location.pathname);
+    })
+
+    function updateStationsCompleteStorage() {
+      localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
+    }
+
+    // Station abschliessen Funktion
+    const btn = document.getElementById('karte-button');
+    btn.addEventListener('click', () => {
+      if (window.aktuelleStationId) {
+        const stationIndex = window.aktuelleStationId - 1;
+        if (!window.stationsComplete.includes(stationIndex)) {
+          window.stationsComplete.push(stationIndex);
+          updateStationsCompleteStorage();
+        }
+      }
+      window.location.href = '/Startseite.html'; // Zurück zur Karte
+    });
+
+  </script>
+</body>
+
+</html>

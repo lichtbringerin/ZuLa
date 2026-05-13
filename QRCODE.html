@@ -180,14 +180,30 @@
             display: block;
         }
 
+        /*Sprache flaggen:*/
+        .lehrpfad-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .flaggen-icon {
+            width: 30px !important;
+            height: auto !important;
+
+            margin-top: -6px;
+            margin-right: -4px;
+
+            flex-shrink: 0;
+        }
+
         /* Mobile: kleineres Logo */
         @media (max-width: 600px) {
             .logo-bild {
                 width: 100px;
             }
         }
-
-        
     </style>
 </head>
 
@@ -235,6 +251,8 @@
                     const dauerNode = pfad.getElementsByTagName("Dauer")[0];
                     const dauer = dauerNode ? dauerNode.textContent : "";
                     const autor = pfad.getElementsByTagName("Autor")[0].textContent;
+                    const sprachIconNode = pfad.getElementsByTagName("SprachIcon")[0];
+                    const sprachIcon = sprachIconNode ? sprachIconNode.textContent : "";
                     const einfuehrungNode = pfad.getElementsByTagName("Einfuehrungstext")[0];
                     const einfuehrung = einfuehrungNode ? einfuehrungNode.innerHTML : ""; // Falls kein Text enthalten ist bleibt er leer? oder default text
 
@@ -247,13 +265,20 @@
                     card.innerHTML = `
                     <div class="lehrpfad-header">
                         <div class="lehrpfad-title">${name}</div>
+
+                        ${sprachIcon
+                            ? `<img class="flaggen-icon"
+                            src="${sprachIcon}"
+                            alt="Sprache">`
+                            : ""
+                        }
                     </div>
 
                         <div class="lehrpfad-content">
                             <div class="lehrpfad-left">
                             <img src="${icon}" alt="${name}">
                             <div class="lehrpfad-stationen">
-                                ${stationen} Stationen
+                                ${stationen}
                             </div>
                             <div class="lehrpfad-dauer">
                                 ${dauer}
