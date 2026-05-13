@@ -72,7 +72,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
-    <SprachIcon>Bilder\deutsch.jpg</SprachIcon>
+    <SprachIcon>Bilder\Deutsch.jpg</SprachIcon>
     <Karte>Bilder\karte.png</Karte>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
     <Einfuehrungstext>Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang im Botanischen Garten vielfältige Informationen zu den einzelnen Abteilungen.
@@ -208,7 +208,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <OrdnerPfad>AudioBG_ENG</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioBG.jpg</IconName>
-    <SprachIcon>Bilder\englisch.png</SprachIcon>
+    <SprachIcon>Bilder\Englisch.png</SprachIcon>
     <Karte>Bilder\karte.png</Karte>
     <Autor>A student project by Patricia Rose</Autor>
     <Einfuehrungstext>The audio guide provides a wealth of information about the various sections of the Botanical Gardens as you explore them at your own pace.
@@ -343,8 +343,8 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <OrdnerPfad>AudioBGTropen</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioTropenhausLogo.png</IconName>
-    <SprachIcon>Bilder\deutsch.jpg</SprachIcon>
-    <Karte>Bilder\KarteTropenhausDE.png</Karte>
+    <SprachIcon>Bilder\Deutsch.jpg</SprachIcon>
+    <Karte>Bilder\KarteTropenhausDE.PNG</Karte>
     <Autor>Ein studentisches Projekt von Pia Gsänger und Patricia Rose</Autor>
     <Einfuehrungstext>
     Der Audioguide vermittelt Ihnen bei einem selbständigen Rundgang durch das Tropenhaus des Botanischen Gartens vielfältige Informationen zu den einzelnen Gewächshausbereichen.
@@ -430,7 +430,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <OrdnerPfad>AudioBGTropen_ENG</OrdnerPfad>
     <Dauer>...</Dauer>
     <IconName>AudioTropenhausLogo.png</IconName>
-    <SprachIcon>Bilder\englisch.png</SprachIcon>
+    <SprachIcon>Bilder\Englisch.png</SprachIcon>
     <Karte>Bilder\KarteTropenhausENG.PNG</Karte>
     <Autor>A student project by Pia Gsänger and Patricia Rose</Autor>
     <Einfuehrungstext>
