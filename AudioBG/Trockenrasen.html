@@ -50,102 +50,42 @@
       <section class="station-content">
         <div class="station-audio">
           <audio controls preload="none">
-            <source src="Dateien/Trockenrasen.wav" type="audio/mpeg">
+            <source src="Dateien/Trockenrasen.wav" type="audio/wav">
             Dein Browser unterstützt das Audio-Element nicht.
           </audio>
         </div>
 
         <div class="station-transcript">
           <h3 class="transcript-title">Textversion</h3>
-
-          Halbtrockenrasen sind ein Beispiel für eine Kulturlandschaft mit einer engen Verbindung zwischen Natur und
-          menschlicher Nutzung.
-          Diese offenen, blumenreichen Wiesen entstanden über Jahrhunderte durch extensive Beweidung mit Schafen und
-          Ziegen. Vor allem entstanden sie auf kalkreichen, trockenen und sonnigen Hängen. Sie zeigen eine hohe
-          Biodiversität, weswegen man oft weit über 100 Pflanzenarten auf engstem Raum finden kann. Gerade hier bei uns
-          im Maintal sind solche Halbtrockenrasen nicht selten.
-          Charakteristisch ist die große Strukturvielfalt. Niedrige Kräuter, Grasinseln, kleine Gehölze, alles
-          nebeneinander. Ein typischer Vertreter des Halbtrockenrasens ist zum Beispiel die Aufrechte Trespe.
-          In einem Halbtrockenrasen finden nicht nur Pflanzen, sondern auch viele Insekten und Kleintiere geeignete
-          Lebensräume. Auf dem Halbtrockenrasen wachsen auch heimische Orchideen, wie zum Beispiel die sogenannte
-          Bocksriemenzunge. Diese können Sie hier im Sommer auch finden.
-          Ohne Pflege würden Halbtrockenrasen jedoch schnell verbuschen und letztendlich würde wieder ein Wald
-          entstehen. Regelmäßige Mahd oder Beweidung wie auch beim Trockenrasen und Sandmagerrasen sorgen dafür, dass
-          diese besondere Form der Kulturlandschaft erhalten bleibt. Früher gab es hierfür Schafherden, heutzutage wird
-          vor allem gemäht.
-          Unweit von dieser Abteilung finden sie den Mainfränkischen Trockenrasen, den es natürlicherweise nördlich von
-          Würzburg gibt. Dieser ist anders als der Halbtrockenrasen keine Kulturlandschaft, sondern eine
-          Naturlandschaft. Es ist keine Pflege für den Erhalt notwendig. Man geht davon aus, dass sich durch die
-          extremen Bedingungen an diesem Standort in der letzten Eiszeit kein Wald entwickelt hat.
-
+          <p>
+            Halbtrockenrasen sind ein Beispiel für eine Kulturlandschaft mit einer engen Verbindung zwischen Natur und
+            menschlicher Nutzung.
+            Diese offenen, blumenreichen Wiesen entstanden über Jahrhunderte durch extensive Beweidung mit Schafen und
+            Ziegen. Vor allem entstanden sie auf kalkreichen, trockenen und sonnigen Hängen. Sie zeigen eine hohe
+            Biodiversität, weswegen man oft weit über 100 Pflanzenarten auf engstem Raum finden kann. Gerade hier bei
+            uns
+            im Maintal sind solche Halbtrockenrasen nicht selten.
+            Charakteristisch ist die große Strukturvielfalt. Niedrige Kräuter, Grasinseln, kleine Gehölze, alles
+            nebeneinander. Ein typischer Vertreter des Halbtrockenrasens ist zum Beispiel die Aufrechte Trespe.
+            In einem Halbtrockenrasen finden nicht nur Pflanzen, sondern auch viele Insekten und Kleintiere geeignete
+            Lebensräume. Auf dem Halbtrockenrasen wachsen auch heimische Orchideen, wie zum Beispiel die sogenannte
+            Bocksriemenzunge. Diese können Sie hier im Sommer auch finden.
+            Ohne Pflege würden Halbtrockenrasen jedoch schnell verbuschen und letztendlich würde wieder ein Wald
+            entstehen. Regelmäßige Mahd oder Beweidung wie auch beim Trockenrasen und Sandmagerrasen sorgen dafür, dass
+            diese besondere Form der Kulturlandschaft erhalten bleibt. Früher gab es hierfür Schafherden, heutzutage
+            wird
+            vor allem gemäht.
+            Unweit von dieser Abteilung finden sie den Mainfränkischen Trockenrasen, den es natürlicherweise nördlich
+            von
+            Würzburg gibt. Dieser ist anders als der Halbtrockenrasen keine Kulturlandschaft, sondern eine
+            Naturlandschaft. Es ist keine Pflege für den Erhalt notwendig. Man geht davon aus, dass sich durch die
+            extremen Bedingungen an diesem Standort in der letzten Eiszeit kein Wald entwickelt hat.
+          </p>
 
         </div>
       </section>
 
 
-      <style>
-        /* Abstand zwischen Navbar und Überschrift */
-        .station-title {
-          margin-top: 30px;
-          margin-bottom: 20px;
-          padding: 0 16px;
-        }
-
-        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
-        .station-content {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 16px;
-          /* links/rechts Luft */
-        }
-
-        /* Audio-Block */
-        .station-audio {
-          margin: 10px 0 18px;
-        }
-
-        .station-audio audio {
-          width: 100%;
-          display: block;
-        }
-
-        /* Textversion */
-        .station-transcript {
-          background: #f4f6f5;
-          border-radius: 12px;
-          padding: 14px 16px;
-          /* innen Luft */
-        }
-
-        .transcript-title {
-          margin: 0 0 10px;
-          font-size: 1.05rem;
-        }
-
-        .station-transcript p {
-          margin: 0 0 10px;
-          line-height: 1.5;
-        }
-
-        .station-transcript p:last-child {
-          margin-bottom: 0;
-        }
-
-        /* Mobile Feinschliff */
-        @media (max-width: 700px) {
-          .station-title {
-            margin-top: 30px;
-          }
-
-          .station-content {
-            padding: 0 14px;
-          }
-
-          .station-transcript {
-            padding: 12px 14px;
-          }
-        }
-      </style>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -156,33 +96,62 @@
 
 
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * STATIONS-STEUERUNG UND FORTSCHRITTS-HANDLING
+     * 
+     * Hinweis: Dieses Skript interagiert eng mit `../loadProject.js`.
+     * Globale Variablen wie `window.stationsComplete` oder `window.aktuelleStationId`
+     * werden von `loadProject.js` beim Parsen der XML-Konfiguration bereitgestellt.
+     */
+
+    // 1. Bereits gespeicherten Fortschritt (abgeschlossene Stationen) aus dem LocalStorage auslesen.
+    // Falls noch keine Daten vorhanden sind, wird ein leeres Array als Fallback gewählt.
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    /**
+     * Event: 'lehrpfadLoaded'
+     * Wird von loadProject.js abgefeuert, sobald die LehrpfadeConfig.xml vollständig geladen 
+     * und das Stationen-Mapping im Speicher aufgebaut wurde.
+     */
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
-
       if (!btn) return;
-      updateKarteButton(window.location.pathname);
-    })
 
+      // Aktualisiert Sichtbarkeit und Text des Aktions-Buttons ("Station abschließen" / "Zurück zur Karte")
+      // Die Funktion updateKarteButton() stammt aus loadProject.js.
+      updateKarteButton(window.location.pathname);
+    });
+
+    /**
+     * Speichert den aktuellen Stand der abgeschlossenen Stationen dauerhaft im Browser-Cache.
+     */
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    /**
+     * Klick-Event-Handler für den Aktions-Button unten ('karte-button').
+     * Verarbeitet den Abschluss der aktuellen Station und leitet zur Übersichtskarte zurück.
+     */
     const btn = document.getElementById('karte-button');
-    btn.addEventListener('click', () => {
-      if (window.aktuelleStationId) {
-        const stationIndex = window.aktuelleStationId - 1;
-        if (!window.stationsComplete.includes(stationIndex)) {
-          window.stationsComplete.push(stationIndex);
-          updateStationsCompleteStorage();
-        }
-      }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Prüfen, ob eine gültige Station geladen wurde (ID wurde in loadProject.js aus XML gesetzt)
+        if (window.aktuelleStationId) {
+          // 0-basierter Index für das Fortschritts-Array berechnen
+          const stationIndex = window.aktuelleStationId - 1;
 
+          // Station als abgeschlossen markieren, sofern sie es noch nicht war
+          if (!window.stationsComplete.includes(stationIndex)) {
+            window.stationsComplete.push(stationIndex);
+            updateStationsCompleteStorage();
+          }
+        }
+
+        // Nach dem Speichern des Fortschritts den Nutzer zurück zur interaktiven Karte leiten
+        window.location.href = '/Startseite.html';
+      });
+    }
   </script>
 </body>
 

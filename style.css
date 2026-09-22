@@ -357,3 +357,67 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
 .bottom-button:hover {
   background: #0c5a49;
 }
+
+/* =================================================
+   STATIONS-LAYOUT VON AUDIOSTATIONEN & AUDIO-PLAYER
+   ================================================= */
+
+/* Abstand zwischen Navbar und Überschrift */
+.station-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 0 16px;
+}
+
+/* Gemeinsamer Inhaltsblock mit Seitenabstand */
+.station-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Audio-Block */
+.station-audio {
+  margin: 10px 0 18px;
+}
+
+.station-audio audio {
+  width: 100%;
+  display: block;
+}
+
+/* Textversion */
+.station-transcript {
+  background: #f4f6f5;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.transcript-title {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.station-transcript p {
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.station-transcript p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mobile Feinschliff (Bei Bildschirmen unter 700px breite) */
+@media (max-width: 700px) {
+  .station-title {
+    margin-top: 30px;
+  }
+
+  .station-content {
+    padding: 0 14px;
+  }
+
+  .station-transcript {
+    padding: 12px 14px;
+  }
+}
