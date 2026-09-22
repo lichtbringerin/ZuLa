@@ -57,108 +57,46 @@
 
         <div class="station-transcript">
           <h3 class="transcript-title">Textversion</h3>
-
-          At this station, our surroundings change significantly.
-          After the humid tropics, you now enter the dry, arid regions of the tropics, the so-called
-          Paleotropics—that is, Africa and Madagascar.
-          The climate here is extreme, as rainfall is rare and irregular. Often, less than 250
-          millimeters falls per year. At the same time, solar radiation is very intense. During the
-          day, temperatures can rise sharply to as high as 50 degrees, while at night they drop
-          significantly, even to freezing temperatures.
-          This aridity is closely linked to climatic processes at the equator. There, warm, humid
-          air rises, cools, and drives the heavy rainfall in the rainforest. The now-dry air moves
-          south and north toward the tropics, where it sinks again and heats up significantly.
-          This creates stable high-pressure systems with dry climatic zones where rainfall is
-          scarce.
-          Plants here therefore face the challenge of getting by with very little water. Various
-          strategies have developed over the course of evolution to cope with this.
-          Some plants try to avoid dry periods. They germinate only after rare rains, grow
-          quickly, flower, and produce seeds before it becomes dry again. Most of the time, they
-          survive as seeds or in underground storage organs. You hardly see such plants here
-          in the greenhouse, because the plants you see here mostly belong to the so-called
-          xerophytes. They endure and tolerate the dryness and remain above ground even
-          during long periods of drought.
-          To conserve water, many of these plants have developed adaptations. These include
-          small or greatly reduced leaves, thick waxy coatings, or dense hairiness that reduces
-          evaporation. In some cases, the leaves have even transformed into thorns.
-          Another strategy is water storage. So-called succulents store water in their fleshy
-          leaves, stems, or roots and can thus survive prolonged dry spells.
-          You may notice that some of the plants here resemble cacti. However, cacti are not
-          native to Africa. In fact, these are plants from other families, such as the spurge family.
-          Although they resemble cacti with their succulent stems, they are not closely related
-          to them.
-          As you walk through the exhibit, pay attention to these different adaptations, as they
-          demonstrate just how diverse the strategies of plants are for surviving under extremely
-          dry conditions.
-
+          <p>
+            At this station, our surroundings change significantly.
+            After the humid tropics, you now enter the dry, arid regions of the tropics, the so-called
+            Paleotropics—that is, Africa and Madagascar.
+            The climate here is extreme, as rainfall is rare and irregular. Often, less than 250
+            millimeters falls per year. At the same time, solar radiation is very intense. During the
+            day, temperatures can rise sharply to as high as 50 degrees, while at night they drop
+            significantly, even to freezing temperatures.
+            This aridity is closely linked to climatic processes at the equator. There, warm, humid
+            air rises, cools, and drives the heavy rainfall in the rainforest. The now-dry air moves
+            south and north toward the tropics, where it sinks again and heats up significantly.
+            This creates stable high-pressure systems with dry climatic zones where rainfall is
+            scarce.
+            Plants here therefore face the challenge of getting by with very little water. Various
+            strategies have developed over the course of evolution to cope with this.
+            Some plants try to avoid dry periods. They germinate only after rare rains, grow
+            quickly, flower, and produce seeds before it becomes dry again. Most of the time, they
+            survive as seeds or in underground storage organs. You hardly see such plants here
+            in the greenhouse, because the plants you see here mostly belong to the so-called
+            xerophytes. They endure and tolerate the dryness and remain above ground even
+            during long periods of drought.
+            To conserve water, many of these plants have developed adaptations. These include
+            small or greatly reduced leaves, thick waxy coatings, or dense hairiness that reduces
+            evaporation. In some cases, the leaves have even transformed into thorns.
+            Another strategy is water storage. So-called succulents store water in their fleshy
+            leaves, stems, or roots and can thus survive prolonged dry spells.
+            You may notice that some of the plants here resemble cacti. However, cacti are not
+            native to Africa. In fact, these are plants from other families, such as the spurge family.
+            Although they resemble cacti with their succulent stems, they are not closely related
+            to them.
+            As you walk through the exhibit, pay attention to these different adaptations, as they
+            demonstrate just how diverse the strategies of plants are for surviving under extremely
+            dry conditions.
+          </p>
 
         </div>
       </section>
 
 
-      <style>
-        /* Abstand zwischen Navbar und Überschrift */
-        .station-title {
-          margin-top: 30px;
-          margin-bottom: 20px;
-          padding: 0 16px;
-        }
 
-        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
-        .station-content {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 16px;
-          /* links/rechts Luft */
-        }
-
-        /* Audio-Block */
-        .station-audio {
-          margin: 10px 0 18px;
-        }
-
-        .station-audio audio {
-          width: 100%;
-          display: block;
-        }
-
-        /* Textversion */
-        .station-transcript {
-          background: #f4f6f5;
-          border-radius: 12px;
-          padding: 14px 16px;
-          /* innen Luft */
-        }
-
-        .transcript-title {
-          margin: 0 0 10px;
-          font-size: 1.05rem;
-        }
-
-        .station-transcript p {
-          margin: 0 0 10px;
-          line-height: 1.5;
-        }
-
-        .station-transcript p:last-child {
-          margin-bottom: 0;
-        }
-
-        /* Mobile Feinschliff */
-        @media (max-width: 700px) {
-          .station-title {
-            margin-top: 30px;
-          }
-
-          .station-content {
-            padding: 0 14px;
-          }
-
-          .station-transcript {
-            padding: 12px 14px;
-          }
-        }
-      </style>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -169,33 +107,62 @@
 
 
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * STATIONS-STEUERUNG UND FORTSCHRITTS-HANDLING
+     * 
+     * Hinweis: Dieses Skript interagiert eng mit `../loadProject.js`.
+     * Globale Variablen wie `window.stationsComplete` oder `window.aktuelleStationId`
+     * werden von `loadProject.js` beim Parsen der XML-Konfiguration bereitgestellt.
+     */
+
+    // 1. Bereits gespeicherten Fortschritt (abgeschlossene Stationen) aus dem LocalStorage auslesen.
+    // Falls noch keine Daten vorhanden sind, wird ein leeres Array als Fallback gewählt.
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    /**
+     * Event: 'lehrpfadLoaded'
+     * Wird von loadProject.js abgefeuert, sobald die LehrpfadeConfig.xml vollständig geladen 
+     * und das Stationen-Mapping im Speicher aufgebaut wurde.
+     */
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
-
       if (!btn) return;
-      updateKarteButton(window.location.pathname);
-    })
 
+      // Aktualisiert Sichtbarkeit und Text des Aktions-Buttons ("Station abschließen" / "Zurück zur Karte")
+      // Die Funktion updateKarteButton() stammt aus loadProject.js.
+      updateKarteButton(window.location.pathname);
+    });
+
+    /**
+     * Speichert den aktuellen Stand der abgeschlossenen Stationen dauerhaft im Browser-Cache.
+     */
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    /**
+     * Klick-Event-Handler für den Aktions-Button unten rechts ('karte-button').
+     * Verarbeitet den Abschluss der aktuellen Station und leitet zur Übersichtskarte zurück.
+     */
     const btn = document.getElementById('karte-button');
-    btn.addEventListener('click', () => {
-      if (window.aktuelleStationId) {
-        const stationIndex = window.aktuelleStationId - 1;
-        if (!window.stationsComplete.includes(stationIndex)) {
-          window.stationsComplete.push(stationIndex);
-          updateStationsCompleteStorage();
-        }
-      }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Prüfen, ob eine gültige Station geladen wurde (ID wurde in loadProject.js aus XML gesetzt)
+        if (window.aktuelleStationId) {
+          // 0-basierter Index für das Fortschritts-Array berechnen
+          const stationIndex = window.aktuelleStationId - 1;
 
+          // Station als abgeschlossen markieren, sofern sie es noch nicht war
+          if (!window.stationsComplete.includes(stationIndex)) {
+            window.stationsComplete.push(stationIndex);
+            updateStationsCompleteStorage();
+          }
+        }
+
+        // Nach dem Speichern des Fortschritts den Nutzer zurück zur interaktiven Karte leiten
+        window.location.href = '/Startseite.html';
+      });
+    }
   </script>
 </body>
 

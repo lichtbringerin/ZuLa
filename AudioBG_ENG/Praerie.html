@@ -57,104 +57,41 @@
 
         <div class="station-transcript">
           <h3 class="transcript-title">Textversion</h3>
-
-          On your journey through the world of plants, you have now arrived at the vast grasslands of
-          North America, the prairies.
-          Originally, these treeless steppes stretched from the Rocky Mountains to the Great Lakes,
-          covering around a third of the North American continent. Today, many of these areas have been
-          replaced by agriculture, especially the tallgrass prairies, which have been almost completely
-          converted into farmland.
-          In the Wuerzburg Botanical Garden, you can see representatives of three classic prairie types.
-          The shortgrass prairie, with smaller species adapted to drought. The mixed-grass prairie, as a
-          transitional form, and the tallgrass prairie, with perennials up to three metres in height and rich
-          in flowers.
-          Typical for prairies are significant changes in appearance throughout the course of the year. The
-          first flowers appear in late spring, with the peak following in summer and late summer, often
-          lasting into November.
-          The fact that North America had vast grasslands rather than dense forests, as we have in Central
-          Europe, is only partly due to the climate, but mainly to two factors: regular fires, which were
-          triggered in nature by lightning strikes or by humans. The flames burn quickly across the surface,
-          but cause little damage to the grasses and shrubs that grow underground. The second factor
-          was the presence of huge herds of bison, which roamed the plains and grazed the vegetation
-          bare, keeping it short.
-          This suppressed trees and promoted herbaceous perennials and, above all, grasses. In the
-          Botanical Garden, the natural fire and the grazing herds of bison are imitated by annual mowing
-          in February.
-          Another highlight in this section are the hardy North American cacti that also grow here. They
-          survive even deep frosts by drying out and shrinking in winter. However, some sensitive species
-          must be protected from precipitation in winter with a foil roof.
-          Take your time as you stroll through this often underestimated habitat full of diverse adaptations.
-          Please note that the path is not paved, but leads over stones. A short climb takes you to a small
-          hill from which you can enjoy a view of the North American prairie. If you visit several times
-          throughout the year, you can see how the prairie changes constantly.
-
+          <p>
+            On your journey through the world of plants, you have now arrived at the vast grasslands of
+            North America, the prairies.
+            Originally, these treeless steppes stretched from the Rocky Mountains to the Great Lakes,
+            covering around a third of the North American continent. Today, many of these areas have been
+            replaced by agriculture, especially the tallgrass prairies, which have been almost completely
+            converted into farmland.
+            In the Wuerzburg Botanical Garden, you can see representatives of three classic prairie types.
+            The shortgrass prairie, with smaller species adapted to drought. The mixed-grass prairie, as a
+            transitional form, and the tallgrass prairie, with perennials up to three metres in height and rich
+            in flowers.
+            Typical for prairies are significant changes in appearance throughout the course of the year. The
+            first flowers appear in late spring, with the peak following in summer and late summer, often
+            lasting into November.
+            The fact that North America had vast grasslands rather than dense forests, as we have in Central
+            Europe, is only partly due to the climate, but mainly to two factors: regular fires, which were
+            triggered in nature by lightning strikes or by humans. The flames burn quickly across the surface,
+            but cause little damage to the grasses and shrubs that grow underground. The second factor
+            was the presence of huge herds of bison, which roamed the plains and grazed the vegetation
+            bare, keeping it short.
+            This suppressed trees and promoted herbaceous perennials and, above all, grasses. In the
+            Botanical Garden, the natural fire and the grazing herds of bison are imitated by annual mowing
+            in February.
+            Another highlight in this section are the hardy North American cacti that also grow here. They
+            survive even deep frosts by drying out and shrinking in winter. However, some sensitive species
+            must be protected from precipitation in winter with a foil roof.
+            Take your time as you stroll through this often underestimated habitat full of diverse adaptations.
+            Please note that the path is not paved, but leads over stones. A short climb takes you to a small
+            hill from which you can enjoy a view of the North American prairie. If you visit several times
+            throughout the year, you can see how the prairie changes constantly.
+          </p>
         </div>
       </section>
 
 
-      <style>
-        /* Abstand zwischen Navbar und Überschrift */
-        .station-title {
-          margin-top: 30px;
-          margin-bottom: 20px;
-          padding: 0 16px;
-        }
-
-        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
-        .station-content {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 16px;
-          /* links/rechts Luft */
-        }
-
-        /* Audio-Block */
-        .station-audio {
-          margin: 10px 0 18px;
-        }
-
-        .station-audio audio {
-          width: 100%;
-          display: block;
-        }
-
-        /* Textversion */
-        .station-transcript {
-          background: #f4f6f5;
-          border-radius: 12px;
-          padding: 14px 16px;
-          /* innen Luft */
-        }
-
-        .transcript-title {
-          margin: 0 0 10px;
-          font-size: 1.05rem;
-        }
-
-        .station-transcript p {
-          margin: 0 0 10px;
-          line-height: 1.5;
-        }
-
-        .station-transcript p:last-child {
-          margin-bottom: 0;
-        }
-
-        /* Mobile Feinschliff */
-        @media (max-width: 700px) {
-          .station-title {
-            margin-top: 30px;
-          }
-
-          .station-content {
-            padding: 0 14px;
-          }
-
-          .station-transcript {
-            padding: 12px 14px;
-          }
-        }
-      </style>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -165,33 +102,62 @@
 
 
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * STATIONS-STEUERUNG UND FORTSCHRITTS-HANDLING
+     * 
+     * Hinweis: Dieses Skript interagiert eng mit `../loadProject.js`.
+     * Globale Variablen wie `window.stationsComplete` oder `window.aktuelleStationId`
+     * werden von `loadProject.js` beim Parsen der XML-Konfiguration bereitgestellt.
+     */
+
+    // 1. Bereits gespeicherten Fortschritt (abgeschlossene Stationen) aus dem LocalStorage auslesen.
+    // Falls noch keine Daten vorhanden sind, wird ein leeres Array als Fallback gewählt.
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    /**
+     * Event: 'lehrpfadLoaded'
+     * Wird von loadProject.js abgefeuert, sobald die LehrpfadeConfig.xml vollständig geladen 
+     * und das Stationen-Mapping im Speicher aufgebaut wurde.
+     */
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
-
       if (!btn) return;
-      updateKarteButton(window.location.pathname);
-    })
 
+      // Aktualisiert Sichtbarkeit und Text des Aktions-Buttons ("Station abschließen" / "Zurück zur Karte")
+      // Die Funktion updateKarteButton() stammt aus loadProject.js.
+      updateKarteButton(window.location.pathname);
+    });
+
+    /**
+     * Speichert den aktuellen Stand der abgeschlossenen Stationen dauerhaft im Browser-Cache.
+     */
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    /**
+     * Klick-Event-Handler für den Aktions-Button unten rechts ('karte-button').
+     * Verarbeitet den Abschluss der aktuellen Station und leitet zur Übersichtskarte zurück.
+     */
     const btn = document.getElementById('karte-button');
-    btn.addEventListener('click', () => {
-      if (window.aktuelleStationId) {
-        const stationIndex = window.aktuelleStationId - 1;
-        if (!window.stationsComplete.includes(stationIndex)) {
-          window.stationsComplete.push(stationIndex);
-          updateStationsCompleteStorage();
-        }
-      }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Prüfen, ob eine gültige Station geladen wurde (ID wurde in loadProject.js aus XML gesetzt)
+        if (window.aktuelleStationId) {
+          // 0-basierter Index für das Fortschritts-Array berechnen
+          const stationIndex = window.aktuelleStationId - 1;
 
+          // Station als abgeschlossen markieren, sofern sie es noch nicht war
+          if (!window.stationsComplete.includes(stationIndex)) {
+            window.stationsComplete.push(stationIndex);
+            updateStationsCompleteStorage();
+          }
+        }
+
+        // Nach dem Speichern des Fortschritts den Nutzer zurück zur interaktiven Karte leiten
+        window.location.href = '/Startseite.html';
+      });
+    }
   </script>
 </body>
 

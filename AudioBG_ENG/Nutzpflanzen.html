@@ -57,92 +57,29 @@
 
         <div class="station-transcript">
           <h3 class="transcript-title">Textversion</h3>
-
-          The beds in front of you focus on plants that are essential to our survival, even though we
-          sometimes hardly notice them anymore: native crops.
-          There is a wide variety of crops, and to give you a better overview, the plants on this terrace are
-          divided into different groups. These include spices and herbs, vegetable plants, cereals, oil and
-          protein plants, as well as starch and sugar suppliers. Dye and fibre plants also have their place
-          here.
-          In the past, these were used, for example, to dye fabrics or to make ropes and clothing. A large
-          part of the beds are used to grow global crops such as wheat, barley, rye, millet, oats and maize.
-          These cereals are essential for us humans and are among the staple foods in Germany.
-          You can also discover an example of a native and very diverse crop here: cabbage. This has been
-          further developed into numerous varieties through plant breeding. From white cabbage to
-          Brussels sprouts to kale and broccoli. This diversity shows how intensively humans have used
-          plants and changed them through the cultivation of wild plants. On the one hand, to increase
-          yields, on the other hand to adapt them to the climate, soil and desired taste. You will encounter
-          other useful plants in other areas of the garden, such as the medicinal garden, the cottage
-          garden or the tropical greenhouse.
-
+          <p>
+            The beds in front of you focus on plants that are essential to our survival, even though we
+            sometimes hardly notice them anymore: native crops.
+            There is a wide variety of crops, and to give you a better overview, the plants on this terrace are
+            divided into different groups. These include spices and herbs, vegetable plants, cereals, oil and
+            protein plants, as well as starch and sugar suppliers. Dye and fibre plants also have their place
+            here.
+            In the past, these were used, for example, to dye fabrics or to make ropes and clothing. A large
+            part of the beds are used to grow global crops such as wheat, barley, rye, millet, oats and maize.
+            These cereals are essential for us humans and are among the staple foods in Germany.
+            You can also discover an example of a native and very diverse crop here: cabbage. This has been
+            further developed into numerous varieties through plant breeding. From white cabbage to
+            Brussels sprouts to kale and broccoli. This diversity shows how intensively humans have used
+            plants and changed them through the cultivation of wild plants. On the one hand, to increase
+            yields, on the other hand to adapt them to the climate, soil and desired taste. You will encounter
+            other useful plants in other areas of the garden, such as the medicinal garden, the cottage
+            garden or the tropical greenhouse.
+          </p>
 
         </div>
       </section>
 
 
-      <style>
-        /* Abstand zwischen Navbar und Überschrift */
-        .station-title {
-          margin-top: 30px;
-          margin-bottom: 20px;
-          padding: 0 16px;
-        }
-
-        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
-        .station-content {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 16px;
-          /* links/rechts Luft */
-        }
-
-        /* Audio-Block */
-        .station-audio {
-          margin: 10px 0 18px;
-        }
-
-        .station-audio audio {
-          width: 100%;
-          display: block;
-        }
-
-        /* Textversion */
-        .station-transcript {
-          background: #f4f6f5;
-          border-radius: 12px;
-          padding: 14px 16px;
-          /* innen Luft */
-        }
-
-        .transcript-title {
-          margin: 0 0 10px;
-          font-size: 1.05rem;
-        }
-
-        .station-transcript p {
-          margin: 0 0 10px;
-          line-height: 1.5;
-        }
-
-        .station-transcript p:last-child {
-          margin-bottom: 0;
-        }
-
-        /* Mobile Feinschliff */
-        @media (max-width: 700px) {
-          .station-title {
-            margin-top: 30px;
-          }
-
-          .station-content {
-            padding: 0 14px;
-          }
-
-          .station-transcript {
-            padding: 12px 14px;
-          }
-        }
-      </style>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -153,33 +90,62 @@
 
 
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * STATIONS-STEUERUNG UND FORTSCHRITTS-HANDLING
+     * 
+     * Hinweis: Dieses Skript interagiert eng mit `../loadProject.js`.
+     * Globale Variablen wie `window.stationsComplete` oder `window.aktuelleStationId`
+     * werden von `loadProject.js` beim Parsen der XML-Konfiguration bereitgestellt.
+     */
+
+    // 1. Bereits gespeicherten Fortschritt (abgeschlossene Stationen) aus dem LocalStorage auslesen.
+    // Falls noch keine Daten vorhanden sind, wird ein leeres Array als Fallback gewählt.
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    /**
+     * Event: 'lehrpfadLoaded'
+     * Wird von loadProject.js abgefeuert, sobald die LehrpfadeConfig.xml vollständig geladen 
+     * und das Stationen-Mapping im Speicher aufgebaut wurde.
+     */
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
-
       if (!btn) return;
-      updateKarteButton(window.location.pathname);
-    })
 
+      // Aktualisiert Sichtbarkeit und Text des Aktions-Buttons ("Station abschließen" / "Zurück zur Karte")
+      // Die Funktion updateKarteButton() stammt aus loadProject.js.
+      updateKarteButton(window.location.pathname);
+    });
+
+    /**
+     * Speichert den aktuellen Stand der abgeschlossenen Stationen dauerhaft im Browser-Cache.
+     */
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    /**
+     * Klick-Event-Handler für den Aktions-Button unten rechts ('karte-button').
+     * Verarbeitet den Abschluss der aktuellen Station und leitet zur Übersichtskarte zurück.
+     */
     const btn = document.getElementById('karte-button');
-    btn.addEventListener('click', () => {
-      if (window.aktuelleStationId) {
-        const stationIndex = window.aktuelleStationId - 1;
-        if (!window.stationsComplete.includes(stationIndex)) {
-          window.stationsComplete.push(stationIndex);
-          updateStationsCompleteStorage();
-        }
-      }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Prüfen, ob eine gültige Station geladen wurde (ID wurde in loadProject.js aus XML gesetzt)
+        if (window.aktuelleStationId) {
+          // 0-basierter Index für das Fortschritts-Array berechnen
+          const stationIndex = window.aktuelleStationId - 1;
 
+          // Station als abgeschlossen markieren, sofern sie es noch nicht war
+          if (!window.stationsComplete.includes(stationIndex)) {
+            window.stationsComplete.push(stationIndex);
+            updateStationsCompleteStorage();
+          }
+        }
+
+        // Nach dem Speichern des Fortschritts den Nutzer zurück zur interaktiven Karte leiten
+        window.location.href = '/Startseite.html';
+      });
+    }
   </script>
 </body>
 

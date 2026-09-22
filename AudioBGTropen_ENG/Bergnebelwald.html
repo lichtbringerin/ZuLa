@@ -57,105 +57,43 @@
 
         <div class="station-transcript">
           <h3 class="transcript-title">Textversion</h3>
-
-          In the next section of your journey, you’ll leave the lowland rainforest and enter a
-          significantly cooler climate zone: the mountain cloud forest.
-          These forests are located at elevations between about 1,000 and 3,000 meters. Here,
-          moist air masses encounter the mountains, rise, and cool. As this happens, the water
-          in the air condenses, forming dense clouds and fog that often shroud the forest
-          permanently.
-          The air here is almost constantly saturated with moisture. Even when it isn’t raining,
-          the fog and clouds ensure that there is plenty of water available. As a result, annual
-          precipitation levels are even higher than in the lowland rainforest. At the same time,
-          temperatures are significantly lower, ranging from about 12 to 18 degrees.
-          These climatic conditions also affect the vegetation. The trees remain smaller and are
-          less densely packed, allowing more light to reach the forest floor.
-          In contrast to the lowland rainforest, the forest floor here is much more densely
-          vegetated. Many ferns, mosses, and herbaceous plants form a dense, evergreen
-          layer. The branches of the trees are home to numerous epiphytes such as bromeliads,
-          orchids, and mosses, which thrive in the high humidity.
-          You may have already noticed that there are hardly any palm trees growing here.
-          Instead, tree ferns dominate the landscape. These plants are not seed plants but
-          vascular spore plants and have a very long evolutionary history. That is why they are
-          referred to as living fossils. When you walk beneath a tree fern, take a moment to look
-          at the underside of its fronds. There you will see small brown dots, known as
-          sporangia. This is where the numerous spores are formed and released for
-          reproduction.
-          Mountain cloud forests are among the most sensitive and threatened habitats on
-          Earth, as many monoculture plantations have replaced them. Many of the species
-          found here are endemic, meaning they occur only in very limited regions and are
-          particularly sensitive to changes in their habitat.
-          Take your time on the tour and pay attention to the dense vegetation and the humid,
-          almost misty atmosphere.
-
+          <p>
+            In the next section of your journey, you’ll leave the lowland rainforest and enter a
+            significantly cooler climate zone: the mountain cloud forest.
+            These forests are located at elevations between about 1,000 and 3,000 meters. Here,
+            moist air masses encounter the mountains, rise, and cool. As this happens, the water
+            in the air condenses, forming dense clouds and fog that often shroud the forest
+            permanently.
+            The air here is almost constantly saturated with moisture. Even when it isn’t raining,
+            the fog and clouds ensure that there is plenty of water available. As a result, annual
+            precipitation levels are even higher than in the lowland rainforest. At the same time,
+            temperatures are significantly lower, ranging from about 12 to 18 degrees.
+            These climatic conditions also affect the vegetation. The trees remain smaller and are
+            less densely packed, allowing more light to reach the forest floor.
+            In contrast to the lowland rainforest, the forest floor here is much more densely
+            vegetated. Many ferns, mosses, and herbaceous plants form a dense, evergreen
+            layer. The branches of the trees are home to numerous epiphytes such as bromeliads,
+            orchids, and mosses, which thrive in the high humidity.
+            You may have already noticed that there are hardly any palm trees growing here.
+            Instead, tree ferns dominate the landscape. These plants are not seed plants but
+            vascular spore plants and have a very long evolutionary history. That is why they are
+            referred to as living fossils. When you walk beneath a tree fern, take a moment to look
+            at the underside of its fronds. There you will see small brown dots, known as
+            sporangia. This is where the numerous spores are formed and released for
+            reproduction.
+            Mountain cloud forests are among the most sensitive and threatened habitats on
+            Earth, as many monoculture plantations have replaced them. Many of the species
+            found here are endemic, meaning they occur only in very limited regions and are
+            particularly sensitive to changes in their habitat.
+            Take your time on the tour and pay attention to the dense vegetation and the humid,
+            almost misty atmosphere.
+          </p>
 
         </div>
       </section>
 
 
-      <style>
-        /* Abstand zwischen Navbar und Überschrift */
-        .station-title {
-          margin-top: 30px;
-          margin-bottom: 20px;
-          padding: 0 16px;
-        }
 
-        /* Gemeinsamer Inhaltsblock mit Seitenabstand */
-        .station-content {
-          max-width: 900px;
-          margin: 0 auto;
-          padding: 0 16px;
-          /* links/rechts Luft */
-        }
-
-        /* Audio-Block */
-        .station-audio {
-          margin: 10px 0 18px;
-        }
-
-        .station-audio audio {
-          width: 100%;
-          display: block;
-        }
-
-        /* Textversion */
-        .station-transcript {
-          background: #f4f6f5;
-          border-radius: 12px;
-          padding: 14px 16px;
-          /* innen Luft */
-        }
-
-        .transcript-title {
-          margin: 0 0 10px;
-          font-size: 1.05rem;
-        }
-
-        .station-transcript p {
-          margin: 0 0 10px;
-          line-height: 1.5;
-        }
-
-        .station-transcript p:last-child {
-          margin-bottom: 0;
-        }
-
-        /* Mobile Feinschliff */
-        @media (max-width: 700px) {
-          .station-title {
-            margin-top: 30px;
-          }
-
-          .station-content {
-            padding: 0 14px;
-          }
-
-          .station-transcript {
-            padding: 12px 14px;
-          }
-        }
-      </style>
 
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
       <!-- ----------------------------------------------------------------------------------------------------------------- -->
@@ -166,33 +104,62 @@
 
 
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * STATIONS-STEUERUNG UND FORTSCHRITTS-HANDLING
+     * 
+     * Hinweis: Dieses Skript interagiert eng mit `../loadProject.js`.
+     * Globale Variablen wie `window.stationsComplete` oder `window.aktuelleStationId`
+     * werden von `loadProject.js` beim Parsen der XML-Konfiguration bereitgestellt.
+     */
+
+    // 1. Bereits gespeicherten Fortschritt (abgeschlossene Stationen) aus dem LocalStorage auslesen.
+    // Falls noch keine Daten vorhanden sind, wird ein leeres Array als Fallback gewählt.
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    /**
+     * Event: 'lehrpfadLoaded'
+     * Wird von loadProject.js abgefeuert, sobald die LehrpfadeConfig.xml vollständig geladen 
+     * und das Stationen-Mapping im Speicher aufgebaut wurde.
+     */
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
-
       if (!btn) return;
-      updateKarteButton(window.location.pathname);
-    })
 
+      // Aktualisiert Sichtbarkeit und Text des Aktions-Buttons ("Station abschließen" / "Zurück zur Karte")
+      // Die Funktion updateKarteButton() stammt aus loadProject.js.
+      updateKarteButton(window.location.pathname);
+    });
+
+    /**
+     * Speichert den aktuellen Stand der abgeschlossenen Stationen dauerhaft im Browser-Cache.
+     */
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    /**
+     * Klick-Event-Handler für den Aktions-Button unten rechts ('karte-button').
+     * Verarbeitet den Abschluss der aktuellen Station und leitet zur Übersichtskarte zurück.
+     */
     const btn = document.getElementById('karte-button');
-    btn.addEventListener('click', () => {
-      if (window.aktuelleStationId) {
-        const stationIndex = window.aktuelleStationId - 1;
-        if (!window.stationsComplete.includes(stationIndex)) {
-          window.stationsComplete.push(stationIndex);
-          updateStationsCompleteStorage();
-        }
-      }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
-    });
+    if (btn) {
+      btn.addEventListener('click', () => {
+        // Prüfen, ob eine gültige Station geladen wurde (ID wurde in loadProject.js aus XML gesetzt)
+        if (window.aktuelleStationId) {
+          // 0-basierter Index für das Fortschritts-Array berechnen
+          const stationIndex = window.aktuelleStationId - 1;
 
+          // Station als abgeschlossen markieren, sofern sie es noch nicht war
+          if (!window.stationsComplete.includes(stationIndex)) {
+            window.stationsComplete.push(stationIndex);
+            updateStationsCompleteStorage();
+          }
+        }
+
+        // Nach dem Speichern des Fortschritts den Nutzer zurück zur interaktiven Karte leiten
+        window.location.href = '/Startseite.html';
+      });
+    }
   </script>
 </body>
 
