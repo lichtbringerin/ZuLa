@@ -565,6 +565,22 @@
           display: block;
           margin: 0 auto 5px;
         }
+
+        /* Video-Container zentrieren und in der maximalen Breite begrenzen */
+        .video-container {
+          max-width: 500px;
+          /* Hier gewünschte maximale Breite einstellen (z. B. 400px bis 600px) */
+          margin: 20px auto;
+          /* Zentriert das Video horizontal und gibt Abstand nach oben/unten */
+          text-align: center;
+        }
+
+        .video-container video {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* Optional: Weiche Ecken analog zu den Bildern */
+        }
       </style>
 
 
@@ -667,7 +683,7 @@
             name: "Parakautschukbaum",
             latein: "Hevea brasiliensis",
             info: "Aus seinem Milchsaft wird Gummi gewonnen – ohne ihn gäbe es keine Autoreifen. Ursprung im Amazonas, heute in ganz Südostasien.",
-            
+
             bild: "bilder/Kautschuk.JPG",
             andereNamen: ["Kautschukbaum", "Gummibaum", "Hevea", "Euphorbiaceae"]
           },
@@ -675,7 +691,7 @@
             name: "Kaffee",
             latein: "Coffea liberica",
             info: "Kaffee wirkt wegen Koffein anregend – ursprünglich entdeckten Hirten die Wirkung bei Ziegen. Ursprung Afrika. Heute um den Äquator herum weltweit",
-        
+
             bild: "bilder/Kaffee1.jpg",
             andereNamen: ["Kaffeepflanze", "Coffea", "Rubiaceae", "kafee"]
           },
@@ -706,91 +722,6 @@
             andereNamen: ["Cashewbaum", "Anacardium", "Anacardiaceae", "caschew"]
           }
         ];
-
-
-        /*
-        QUELLEN (verlässlich + direkt verlinkt):
-        
-        KAKAO
-        https://www.britannica.com/plant/cacao
-        https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:320783-2/general-information
-        
-        VANILLE
-        https://en.wikipedia.org/wiki/Vanilla
-        https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:262578-2
-        
-        ZUCKERROHR
-        https://en.wikipedia.org/wiki/Sugarcane
-        https://powo.science.kew.org/results?q=Saccharum%20officinarum
-        
-        BANANE
-        https://en.wikipedia.org/wiki/Banana
-        https://powo.science.kew.org/results?q=Musa
-        
-        MUSKATNUSS
-        https://www.britannica.com/plant/nutmeg
-        https://powo.science.kew.org/results?q=Myristica%20fragrans
-        
-        PFEFFER
-        https://www.britannica.com/plant/black-pepper
-        https://powo.science.kew.org/results?q=Piper%20nigrum
-        
-        ANANAS
-        https://www.britannica.com/plant/pineapple
-        https://powo.science.kew.org/results?q=Ananas%20comosus
-        
-        TEE
-        https://www.britannica.com/plant/tea-plant
-        https://powo.science.kew.org/results?q=Camellia%20sinensis
-        
-        MANGO
-        https://www.britannica.com/plant/mango-fruit-and-tree
-        https://powo.science.kew.org/results?q=Mangifera%20indica
-        
-        STERNFRUCHT
-        https://www.britannica.com/plant/star-fruit
-        https://powo.science.kew.org/results?q=Averrhoa%20carambola
-        
-        ZIMT
-        https://www.britannica.com/plant/cinnamon
-        https://powo.science.kew.org/results?q=Cinnamomum%20zeylanicum
-        
-        CHERIMOYA
-        https://www.britannica.com/plant/cherimoya
-        https://powo.science.kew.org/results?q=Annona%20cherimola
-        
-        BAUMWOLLE
-        https://www.britannica.com/plant/cotton-plant
-        https://powo.science.kew.org/results?q=Gossypium%20hirsutum
-        
-        CHILI
-        https://www.britannica.com/plant/chili-pepper
-        https://powo.science.kew.org/results?q=Capsicum%20frutescens
-        
-        KAUTSCHUKBAUM
-        https://www.britannica.com/plant/rubber-tree
-        https://powo.science.kew.org/results?q=Hevea%20brasiliensis
-        
-        KAFFEE
-        https://www.britannica.com/plant/coffee-plant
-        https://powo.science.kew.org/results?q=Coffea
-        
-        KOKOSPALME
-        https://www.britannica.com/plant/coconut-palm
-        https://powo.science.kew.org/results?q=Cocos%20nucifera
-        
-        PASSIONSFRUCHT
-        https://pmc.ncbi.nlm.nih.gov/articles/PMC11026993/
-        https://www.mdpi.com/2813-2998/4/1/11
-        
-        REIS
-        https://www.britannica.com/plant/rice
-        https://powo.science.kew.org/results?q=Oryza%20sativa
-        
-        CASHEW
-        https://www.britannica.com/plant/cashew
-        https://powo.science.kew.org/results?q=Anacardium%20occidentale
-        */
 
         // Gesammelte Pflanzen, um Duplikate zu vermeiden
         const gefundenePflanzen = [];

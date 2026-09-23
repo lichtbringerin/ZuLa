@@ -1,17 +1,23 @@
-// ein skript welches die informationen zu allen gespeicherten lehrpfäden enthält; 
-// diese werden über die ID in der URL des QR codes bestimmt
-// die entsprechenden variablen werden hier gesetzt.
+/**
+ * ========================================================================
+ * KERN-SKRIPT: ZENTRALE LEHRPFAD-STEUERUNG (loadProject.js)
+ * ========================================================================
+ * Dieses Skript verwaltet das Einlesen der XML-Konfigurationsdatei,
+ * steuert den globalen Fortschritt (LocalStorage), baut dynamisch
+ * die Navigation (Submenü & Statusleiste) auf und berechnet die
+ * interaktiven Pins auf der Karte.
+ */
 
-// im format von: https://meine-seite.de/projekt?id=123
+// 1. URL-Parameter zum Identifizieren des aktiven Lehrpfads auslesen (z.B. ?id=1)
 const urlParams = new URLSearchParams(window.location.search);
 const projektId = urlParams.get("id");
 
-
-// festlegen von globalen variablen
-
+// Speichert das geparste XML-Dokument global im Speicher
 let globalXML = null;
-// XML daten Laden, also die Konfiguration der Pfade
-// MUSS initial asynchron laufen, sonst gibt es später fehler wenn das xml nicht rechtzeitig lädt!!
+/**
+ * Initialisiert das Laden der XML-Konfigurationsdatei.
+ * Muss asynchron (async/await) laufen, um Ladefehler bei abhängigen Funktionen zu vermeiden.
+ */
 async function initialisierung() {
     const res = await fetch('/LehrpfadeConfig.xml');
     const xmlString = await res.text();
@@ -19,7 +25,7 @@ async function initialisierung() {
     const parser = new DOMParser();
     globalXML = parser.parseFromString(xmlString, "application/xml");
 
-    // 🔹 NUR wenn eine ID existiert
+    // Aktive Projekt-ID aus der URL oder als Fallback aus dem LocalStorage beziehen
     const aktiveProjektId =
         urlParams.get("id") || localStorage.getItem("projektId");
 
@@ -27,46 +33,61 @@ async function initialisierung() {
         console.warn("Kein aktiver Lehrpfad");
         return;
     }
+    // Hauptfunktion zum Aufbereiten der Lehrpfad-Daten aufrufen
     loadLehrpfad(aktiveProjektId, globalXML);
 }
 
+// Startet die XML-Initialisierung, sobald die DOM-Struktur bereitsteht
 document.addEventListener("DOMContentLoaded", () => {
     initialisierung();
 });
 
-//hilfefunktion die saubere Rootpaths erlaubt
+/**
+ * Hilfsfunktion zur Bereinigung von Pfad-Strings für absolute Pfadangeben.
+ * @param {string} path - Der einzulesende Relativ- oder Absolutpfad.
+ * @returns {string} Ein sauber formatierter Root-Pfad mit führendem Slash.
+ */
 function rootPath(path) {
     return "/" + path.replace(/^\/+/, "");
 }
 
-// der name der später in der URL angezeigt wird
+/* ========================================================================
+   GLOBALE ZUSTANDSVARIABLEN (Zentral über window-Objekt verfügbar)
+   ======================================================================== */
+
+// Name des aktuellen Lehrpfads (wird im Seitentitel verwendet)
 window.urlName = "";
-// setzt die anzahl der stationen fest (oben in der )
+// Gesamtanzahl der Stationen im aktiven Pfad
 window.stationsCount = 0;
-// anzahl der abgeschlossenen stationen
+// Array der bereits absolvierten Stationen (0-basierter Index) aus dem Browser-Speicher
 window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
-// aktualisiert die stationsComplete variable. Nötig, sonst gehen die infos beim seitenwechsel verloren
+/**
+ * Synchronisiert das Array der abgeschlossenen Stationen dauerhaft mit dem LocalStorage.
+ */
 function updateStationsCompleteStorage() {
     localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
 }
 
-// legt die dateien, namen und koordinaten auf der karte der stationen fest
+// Array für alle Stations-Objekte (Name, URL, Koordinaten) des aktiven Pfads
 window.stations = [];
+// ID der aktuell geöffneten Station
 window.aktuelleStationId = null;
 
-// hier wird die "station abschliessen" button logic geprüft / gesetzt
+/* ========================================================================
+   DYNAMISCHE BUTTON- & SCROLL-STEUERUNG ("Station abschließen" / "Zurück")
+   ======================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("karte-button");
     if (!btn) return;
 
     let hasUserScrolled = false;
-
+    // Hilfsfunktion: Dateiname der aktuell aufgerufenen Seite ermitteln
     function getFileName() {
         const p = window.location.pathname;
         const last = p.split("/").pop();
         return (last || "").toLowerCase();
     }
-
+    // Hilfsfunktion: Prüfen, ob sich der Nutzer aktuell auf der Hauptkartenseite befindet
     function isOnMapPage() {
         const path = window.location.pathname.toLowerCase();
         return (
@@ -76,13 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
             path.endsWith("/startseite.html")
         );
     }
-
+    // Hilfsfunktion: Prüfen, ob Stationsdaten bereits im Speicher geladen sind
     function stationsLoaded() {
         return Array.isArray(window.stations)
             && window.stations.length > 0
             && window.stations.every(s => typeof s.url === "string" && s.url.length > 0);
     }
-
+    // Ermittelt die Stationsnummer anhand des aktuellen Dateinamens
     function getStationNumberIfStationPage() {
         if (!stationsLoaded()) return null;
 
@@ -92,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         return idx >= 0 ? (idx + 1) : null;
     }
-
+    // Prüft, ob eine bestimmte Station bereits absolviert wurde
     function isStationCompleted(nummer) {
         return window.stationsComplete.includes(nummer);
     }
-
+    // Prüft, ob der Nutzer ans Ende der Seite gescrollt hat
     function isAtScrollBottom() {
         const sc = document.scrollingElement || document.documentElement;
         const scrollTop = sc.scrollTop;
@@ -104,15 +125,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const fullH = sc.scrollHeight;
         return (viewportH + scrollTop) >= (fullH - 50);
     }
-
+    /**
+    * Steuert die Sichtbarkeit und den Text des Stationschliessen-Buttons am unteren Bildschirmrand
+    */
     function updateButton() {
-        // 1) Karte: nie Button
+        // 1. Auf der Übersichtskarte wird der Button nicht benötigt
         if (isOnMapPage()) {
             btn.style.display = "none";
             return;
         }
 
-        // 2) Solange Stationsdaten nicht da sind: nichts anzeigen (kein Flicker)
+        // 2. Solange Daten noch laden: Button ausblenden (verhindert UI-Flimmern)
         if (!stationsLoaded()) {
             btn.style.display = "none";
             return;
@@ -120,10 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const stationNr = getStationNumberIfStationPage();
 
-        // 3) Stationsseite
+        // 3. Logik für Stationsseiten
         if (stationNr != null) {
             window.aktuelleStationId = stationNr;
 
+            // Bereits absolvierte Station: Direkt "Zurück zur Karte" anbieten
             if (isStationCompleted(stationNr)) {
                 btn.style.display = "block";
                 btn.textContent = "Zurück zur Karte";
@@ -132,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             btn.textContent = "Station abschließen";
 
-            // Wenn die Seite gar nicht scrollbar ist, sind wir "unten"
+            // Wenn die Seite kurz ist und kein Scrollen erfordert, Button direkt anzeigen
             const sc = document.scrollingElement || document.documentElement;
             const isScrollable = sc.scrollHeight > (window.innerHeight + 5);
 
@@ -141,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // sonst erst nach runterscrollen anzeigen
+            // Bei längeren Seiten Button erst nach Scrollen am Seitenende einblenden
             if (!hasUserScrolled) {
                 btn.style.display = "none";
             } else {
@@ -150,13 +174,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // 4) Alle anderen Seiten: immer zurück
+        // 4. Für sonstige Nebenseiten (z.B. Kontakt/Glossar): Standard-Zurück-Button
         window.aktuelleStationId = null;
         btn.style.display = "block";
         btn.textContent = "Zurück zur Karte";
     }
 
-    // Klick-Handler: EINMAL registrieren (nicht in updateButton!)
+    // Registrierung des Klick-Events auf dem Stationschliessen-Button
     btn.addEventListener("click", () => {
         if (!stationsLoaded()) {
             window.location.href = "/Startseite.html";
@@ -165,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const stationNr = getStationNumberIfStationPage();
 
-        // Nur Stationsseiten abschließen
+        // Absolvieren einer Station im Speicher festhalten
         if (stationNr != null && !isStationCompleted(stationNr)) {
             window.stationsComplete.push(stationNr);
             updateStationsCompleteStorage();
@@ -178,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/Startseite.html";
     });
 
-    // Events: EINMAL registrieren
+    // Event-Listener zur Dynamisierung des Buttons bei Interaktion und Layout-Änderungen
     window.addEventListener("scroll", () => {
         hasUserScrolled = true;
         updateButton();
@@ -196,16 +220,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Nach dem kompletten Laden (Bilder/Fonts/Layout) nochmal bewerten
     window.addEventListener("load", updateButton);
-    // falls sich bildgrößen ändern etc nochmal button aktualisieren
+    // Observer registrieren, um Layout-Verschiebungen (z.B. durch nachladende Bilder) abzufangen
     const ro = new ResizeObserver(() => updateButton());
     ro.observe(document.body);
 });
 
 
+/* ========================================================================
+   XML-DATENVERARBEITUNG & SEITEN-BUILDER
+   ======================================================================== */
 
-
-// alles was nach dem laden der xml gemacht werden muss unten in der funktion aufrufen, sonst bekommt man leere ergebnisse
-// weil die xml noch nicht eingelesen ist
+/**
+ * Liest die detaillierten Pfadinformationen aus der XML aus und baut die UI auf.
+ * @param {string} ID - Die PfadId des gewählten Lehrpfads.
+ * @param {Document} xml - Das geparste XML-Dokument.
+ */
 function loadLehrpfad(ID, xml) {
 
     // schauen ob xml geladen
@@ -227,10 +256,10 @@ function loadLehrpfad(ID, xml) {
         return;
     }
 
-    // speichert die project ID local
+    // Aktive Projekt-ID dauerhaft speichern
     localStorage.setItem("projektId", ID);
 
-    // setzt werte
+    // Globale Daten aus der XML auslesen
     window.urlName = pfad.getElementsByTagName("UrlName")[0].textContent;
     window.ordnerPath = pfad.getElementsByTagName("OrdnerPfad")[0].textContent;
     window.iconName = pfad.getElementsByTagName("IconName")[0].textContent;
@@ -249,7 +278,7 @@ function loadLehrpfad(ID, xml) {
         window.sprache = "de"; // fallback
     }
 
-    // stationen auslesen
+    // Stationen-Array inkl. Koordinaten und URLs strukturieren
     const stationXML = [...pfad.getElementsByTagName("Station")];
 
     // mapping auf die window.stations struktur
@@ -264,7 +293,7 @@ function loadLehrpfad(ID, xml) {
     }));
 
 
-    // HIER ALLES LADEN WAS NACH DEM LADEN DER XML GEMACHT WIRD:
+    // Dynamische Anpassungen der Benutzeroberfläche vornehmen
 
     // setzt den titel der seite
     document.title = window.urlName;
@@ -311,32 +340,38 @@ function loadLehrpfad(ID, xml) {
 
         if (window.sprache === "de") {
             einleitungContainer.innerHTML =
-            `<h2>` + window.urlName + `</h2>` + `<h3>Startseite:</h3>` +
-            ` Aktuell befindest Du dich auf der Startseite. Das Programm auf deinem Smartphone zeigt Dir die Lage der verschiedenen Stationen des Audioguides. Diese findest Du als Symbole auf der nachfolgenden Karte und in der Navigation oben. Die Reihenfolge der Stationen kannst Du selbst wählen. Vor Ort kannst Du die Station über die Navigation auswählen oder Du scannst den QR-Code am Schild in der Station. 
+                `<h2>` + window.urlName + `</h2>` + `<h3>Startseite:</h3>` +
+                ` Aktuell befindest Du dich auf der Startseite. Das Programm auf deinem Smartphone zeigt Dir die Lage der verschiedenen Stationen des Audioguides. Diese findest Du als Symbole auf der nachfolgenden Karte und in der Navigation oben. Die Reihenfolge der Stationen kannst Du selbst wählen. Vor Ort kannst Du die Station über die Navigation auswählen oder Du scannst den QR-Code am Schild in der Station. 
             <br>Viel Spaß auf Deinem Rundgang!
             `;
         }
 
-         if (window.sprache === "en") {
+        if (window.sprache === "en") {
             einleitungContainer.innerHTML =
-            `<h2>` + window.urlName + `</h2>`+ `<h3>Home Page:</h3>` +
-            ` You are currently on the starting page. This programme on your smartphone shows you the locations of the various audio guide stops. These are marked as icons on the map below and in the navigation bar at the top. You can choose the order of the stops yourself. Once you’re there, you can select the stop using the navigation bar or scan the QR-code on site. 
+                `<h2>` + window.urlName + `</h2>` + `<h3>Home Page:</h3>` +
+                ` You are currently on the starting page. This programme on your smartphone shows you the locations of the various audio guide stops. These are marked as icons on the map below and in the navigation bar at the top. You can choose the order of the stops yourself. Once you’re there, you can select the stop using the navigation bar or scan the QR-code on site. 
             <br>Enjoy your tour!
             `;
         }
 
-        
+
     }
 
     setAktuelleStationFromXML();
     document.dispatchEvent(new CustomEvent("lehrpfadLoaded"));
 }
-
+/**
+ * Leitet auf eine neue relativen Sektions-URL weiter.
+ * @param {string} url - Ziel-URL
+ */
 function loadSection(url) {
     window.location.href = rootPath(url);
 }
 
-// setzt die einträge der stationen im submenü
+/**
+ * Baut das Navigations-Submenü im Hamburger-Menü dynamisch auf.
+ * @param {Array} items - Array der verfügbaren Stations-Objekte
+ */
 function submenu(items) {
     const submenu = document.getElementById("karte-submenu");
     submenu.innerHTML = ""; // vorher leeren, nötig bei mehreren Pfaden in der Zukunft?
@@ -375,8 +410,10 @@ menuToggle.addEventListener("change", () => {
     document.body.classList.toggle("menu-open", menuToggle.checked);
 });
 
-// Funktion für den zurück auf die karte button bzw. den station abschliessen button
-// Wird aufgerufen, nachdem eine Section geladen wird
+/**
+ * Aktualisiert die Sichtbarkeit des Stationschliesen-Buttons anhand der aktuellen Seiten-URL.
+ * @param {string} url - Aktuelle Pathname-URL
+ */
 function updateKarteButton(url) {
     const btn = document.getElementById("karte-button");
 
@@ -387,7 +424,10 @@ function updateKarteButton(url) {
     }
 }
 
-// Wird beim Klick auf den Button ausgeführt
+/**
+ * Klick-Handler für den "Station abschließen"-Button.
+ * Speichert den Fortschritt und leitet zur Startseite zurück.
+ */
 function navigationsButtonClick() {
     if (window.aktuelleStationId) {
         const nummer = window.aktuelleStationId;
@@ -409,7 +449,9 @@ function navigationsButtonClick() {
 }
 
 
-// setzt die fortschrittsanzeige
+/**
+ * Rendert die obere Fortschritts-Leiste (Nav-Stationen Icons) in der Navbar.
+ */
 function statusleisteSetzen() {
     // navbar als container bekommen
     const progressContainer = document.getElementById('progress-container');
@@ -433,9 +475,9 @@ function statusleisteSetzen() {
 
         const nummer = i + 1;
 
-        let bildPfad = `/NavStationen.png`;
+        let bildPfad = `Bilder/NavStationen.png`;
         if (window.stationsComplete.includes(nummer)) {
-            bildPfad = `/NavStationenComp.png`;
+            bildPfad = `Bilder/NavStationenComp.png`;
         }
         img.src = bildPfad;
 
@@ -457,7 +499,9 @@ function statusleisteSetzen() {
     }
 }
 
-// hier werden die stationen auf der karte gesetzt
+/**
+ * Platziert die interaktiven Stations-Pins proportional skaliert auf dem Kartenbild.
+ */
 function stationenAufKarteSetzen() {
     // auch hier falls es keine daten gibt zurückgehen
     if (!window.stations || window.stations.length === 0) return;
@@ -506,7 +550,10 @@ function stationenAufKarteSetzen() {
         karte.appendChild(wrapper);
     });
 }
-
+/**
+ * Liest den aktuellen Dateinamen der URL aus und gleicht ihn mit der XML ab,
+ * um 'window.aktuelleStationId' korrekt zu setzen.
+ */
 function setAktuelleStationFromXML() {
     if (!globalXML) {
         console.warn("XML noch nicht geladen");
@@ -536,7 +583,10 @@ function setAktuelleStationFromXML() {
 
     console.warn("Keine Station im XML gefunden für:", fileName);
 }
-
+/**
+ * Setzt das Favicon der Webseite dynamisch aus dem in der XML definierten Dateinamen.
+ * @param {string} iconName - Name der Favicon-Bilddatei
+ */
 function setFavicon(iconName) {
     if (!iconName) return;
 
