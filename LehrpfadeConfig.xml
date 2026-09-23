@@ -3,7 +3,7 @@
     <PfadId>1</PfadId>
     <UrlName>Einfluss des Menschen auf Ökosysteme</UrlName>
     <OrdnerPfad>EinflussMensch</OrdnerPfad>
-    <IconName>EinflussMensch.png</IconName>
+    <IconName>Bilder/EinflussMensch.png</IconName>
     <SprachIcon>Bilder/Deutsch.jpg</SprachIcon>
     <Karte>Bilder/karte.png</Karte>
     <Dauer>ca. 2 Stunden</Dauer>
@@ -71,7 +71,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <UrlName>Audioguide durch das Freiland des Botanischen Gartens</UrlName>
     <OrdnerPfad>AudioBG</OrdnerPfad>
     <Dauer>...</Dauer>
-    <IconName>AudioBG.jpg</IconName>
+    <IconName>Bilder/AudioBG.jpg</IconName>
     <SprachIcon>Bilder/Deutsch.jpg</SprachIcon>
     <Karte>Bilder/karte.png</Karte>
     <Autor>Ein studentisches Projekt von Patricia Rose</Autor>
@@ -207,7 +207,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <UrlName>Audio guide to the outdoor section of the Botanical Gardens (english)</UrlName>
     <OrdnerPfad>AudioBG_ENG</OrdnerPfad>
     <Dauer>...</Dauer>
-    <IconName>AudioBG.jpg</IconName>
+    <IconName>Bilder/AudioBG.jpg</IconName>
     <SprachIcon>Bilder/Englisch.png</SprachIcon>
     <Karte>Bilder/karte.png</Karte>
     <Autor>A student project by Patricia Rose</Autor>
@@ -342,7 +342,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <UrlName>Audioguide durch das Tropenschauhaus</UrlName>
     <OrdnerPfad>AudioBGTropen</OrdnerPfad>
     <Dauer>...</Dauer>
-    <IconName>AudioTropenhausLogo.png</IconName>
+    <IconName>Bilder/AudioTropenhausLogo.png</IconName>
     <SprachIcon>Bilder/Deutsch.jpg</SprachIcon>
     <Karte>Bilder/KarteTropenhausDE.PNG</Karte>
     <Autor>Ein studentisches Projekt von Pia Gsänger und Patricia Rose</Autor>
@@ -429,7 +429,7 @@ kann jedoch auch unabhängig davon besucht werden.</Einfuehrungstext>
     <UrlName>Audio guide through the tropical glasshouse (english)</UrlName>
     <OrdnerPfad>AudioBGTropen_ENG</OrdnerPfad>
     <Dauer>...</Dauer>
-    <IconName>AudioTropenhausLogo.png</IconName>
+    <IconName>Bilder/AudioTropenhausLogo.png</IconName>
     <SprachIcon>Bilder/Englisch.png</SprachIcon>
     <Karte>Bilder/KarteTropenhausENG.PNG</Karte>
     <Autor>A student project by Pia Gsänger and Patricia Rose</Autor>
