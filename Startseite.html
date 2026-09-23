@@ -67,6 +67,13 @@
     function openStation(url) {
       window.location.href = url;
     }
+
+    // Resize-Funktion für Karte und Elemente bleibt
+    window.addEventListener("resize", () => {
+      if (document.getElementById("karte")) {
+        stationenAufKarteSetzen();
+      }
+    });
   </script>
 
 </body>
