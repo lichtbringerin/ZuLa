@@ -421,3 +421,175 @@ AUßERDEM AUCH FÜR DIE NAV ELEMENTE AUF DER KARTE!!
     padding: 12px 14px;
   }
 }
+
+/* =================================================
+   STARTSEITE / LEHRPFAD-ÜBERSICHT (KACHELN & LOGO)
+   ================================================= */
+
+/* Hintergrund & Textfarbe global für das Projekt anpassen */
+body {
+  background: #f4f6f5;
+  color: #333;
+}
+
+/* Spezieller Container-Abstand für die Startseite */
+.startseite-container {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.info-text {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+/* Lehrpfad-Kacheln Grid */
+.lehrpfade-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Eine Spalte */
+  gap: 25px;
+}
+
+.lehrpfad-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lehrpfad-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.lehrpfad-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.lehrpfad-header {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.lehrpfad-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+  margin-left: 8px;
+}
+
+.flaggen-icon {
+  width: 30px !important;
+  height: auto !important;
+  margin-top: -6px;
+  margin-right: -4px;
+  flex-shrink: 0;
+}
+
+.lehrpfad-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+.lehrpfad-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+
+.lehrpfad-left img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.lehrpfad-autor {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.lehrpfad-stationen {
+  font-size: 0.95em;
+  color: #555;
+}
+
+.lehrpfad-dauer {
+  font-size: 0.75em;
+  color: #555;
+  margin-top: 4px;
+}
+
+.lehrpfad-text {
+  font-size: 0.95em;
+  color: #444;
+  line-height: 1.4;
+  position: relative;
+  max-height: 7em; /* ca. 5 Zeilen */
+  overflow: hidden;
+}
+
+.lehrpfad-text.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+/* "… weiterlesen" Overlay */
+.read-more {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 1.2em;
+  text-align: left;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 60%);
+}
+
+.read-more button {
+  border: none;
+  background: none;
+  color: #117964;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+}
+
+.read-more button:hover {
+  text-decoration: underline;
+}
+
+/* Logo oben rechts */
+.logo-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.logo-bild {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .logo-bild {
+    width: 100px;
+  }
+}

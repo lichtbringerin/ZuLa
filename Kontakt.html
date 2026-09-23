@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <!-- Zentrale Layout-Styles -->
   <link rel="stylesheet" href="../style.css">
   <link id="favicon" rel="icon" type="image/png">
+  <!-- Zentrales Projekt-Skript für Navigation und Pfad-Logik -->
   <script src="../loadProject.js" defer></script>
 </head>
 
@@ -30,6 +32,7 @@
         <li><a href="../Kontakt.html">Kontakt</a></li>
       </ul>
 
+      <!-- Dient auf Sonderseiten als "Zurück zur Karte"-Button -->
       <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
         Station abschliessen
       </button>
@@ -38,6 +41,7 @@
     <div id="progress-container"></div>
   </nav>
 
+  <!-- SEITENINHALT -->
   <div class="content-container">
     <div class="content-wrapper">
       <!-- -----------------------Inhalt der Station hier dazwischenschreiben----------------------------------------------- -->
@@ -68,11 +72,17 @@
     </div>
   </div>
 
-
+  !-- JAVASCRIPT STEUERUNG -->
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * KONTAKTSEITEN-STEUERUNG
+     * Bindet den Fortschritts-Speicher ein und steuert den "Zurück zur Karte"-Button via loadProject.js.
+     */
+
+    // 1. Gespeicherten Fortschritt aus dem LocalStorage laden
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    // 2. Button-Status nach dem XML-Ladevorgang durch loadProject.js setzen
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
 
@@ -80,11 +90,12 @@
       updateKarteButton(window.location.pathname);
     })
 
+    // 3. Speichert das Array der absolvierten Stationen im LocalStorage
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    // 4. Klick-Handler für den unteren Station-abschliessen-Button bzw. zurück zur Startseite Button
     const btn = document.getElementById('karte-button');
     btn.addEventListener('click', () => {
       if (window.aktuelleStationId) {
@@ -94,7 +105,8 @@
           updateStationsCompleteStorage();
         }
       }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
+      // Leitet von der Kontaktseite direkt zurück zur Karte
+      window.location.href = '/Startseite.html'; 
     });
 
   </script>

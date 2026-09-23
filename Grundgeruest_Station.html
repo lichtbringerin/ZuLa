@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <!-- Zentrale Stylesheet-Datei für das gesamte Projekt -->
   <link rel="stylesheet" href="../style.css">
   <link id="favicon" rel="icon" type="image/png">
+  <!-- Zentrales Skript für XML-Parsing, Navigation und Fortschritts-Verwaltung -->
   <script src="../loadProject.js" defer></script>
 </head>
 
@@ -14,6 +16,7 @@
   <!-- NAVIGATION -->
   <nav class="navbar">
     <div class="navbar-container container">
+      <!-- Hamburger-Menü Steuerung -->
       <input type="checkbox" id="menu-toggle" />
       <label for="menu-toggle" class="hamburger-lines">
         <span class="line line1"></span>
@@ -21,20 +24,24 @@
         <span class="line line3"></span>
       </label>
 
+      <!-- Menüeinträge -->
       <ul class="menu-items">
         <li><a href="../QRCODE.html">Startseite</a></li>
         <li>
           <a href="../Startseite.html">Karte</a>
+          <!-- Submenü wird automatisch durch loadProject.js aus XML generiert (Werden aus der LehrpfadeConfig.xml ausgelesen)-->
           <ul id="karte-submenu" class="submenu"></ul>
         </li>
         <li><a href="../Kontakt.html">Kontakt</a></li>
       </ul>
 
+      <!-- Fixierter Button am unteren Bildschirmrand ("Station abschließen" / "Zurück zur Karte" Funktion in loadProject.js) -->
       <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
         Station abschließen
       </button>
 
     </div>
+    <!-- Fortschrittsanzeige/Stationsnummern in der Navbar (wird durch loadProject.js befüllt) -->
     <div id="progress-container"></div>
   </nav>
 
@@ -50,11 +57,20 @@
     </div>
   </div>
 
-
+  <!-- ==========================================
+       JAVASCRIPT STEUERUNG (Stationsspezifisch)
+       ========================================== -->
   <script>
-    // gespeicherten Fortschritt laden
+    /**
+     * 1. FORTSCHRITTS-HANDLING & NAVIGATION
+     * SOLLTE BEI JEDER STATION DABEI SEIN DA SIE GRUNDLAGEN FÜR DIE NAVIGATION BILDEN!
+     * Greift auf globale Variablen und Funktionen aus loadProject.js zu.
+     */
+
+    // Gespeicherten Fortschritt (Array der abgeschlossenen Stationen) laden
     window.stationsComplete = JSON.parse(localStorage.getItem('stationsComplete')) || [];
 
+    // Aktualisiert den Button ("Station abschließen"), sobald die XML-Daten via loadProject.js geladen wurden
     document.addEventListener("lehrpfadLoaded", () => {
       const btn = document.getElementById("karte-button");
 
@@ -62,11 +78,12 @@
       updateKarteButton(window.location.pathname);
     })
 
+    // Speichert das Array mit den abgeschlossenen Stationen im LocalStorage
     function updateStationsCompleteStorage() {
       localStorage.setItem('stationsComplete', JSON.stringify(window.stationsComplete));
     }
 
-    // Station abschliessen Funktion
+    // Klick-Handler für den Station-abschliessen-Button unten am Bildschirmrand
     const btn = document.getElementById('karte-button');
     btn.addEventListener('click', () => {
       if (window.aktuelleStationId) {
@@ -76,12 +93,17 @@
           updateStationsCompleteStorage();
         }
       }
-      window.location.href = '/Startseite.html'; // Zurück zur Karte
+      window.location.href = '/Startseite.html'; // Zurück zur Übersichtskarte
     });
 
-    // Eine Hilfsfunktion die die Auflösung, wie z.B. bei der ersten Aufgabe von Station 3 von Lehrpfad 1 
-    // (Einfluss des Menschen auf Ökosysteme - Nutzpflanzenterasse) anzeigt. 
-    // Diese Hilfsfunktion ist optional und kann, wenn nicht genutzt auch weggelassen werden.
+    /**
+     * 2. OPTIONALE HILFSFUNKTIONEN (Bei Bedarf behalten oder löschen)
+     */
+
+    /**
+     * [OPTIONAL] Blendet eine Lösungsbox mit der ID "loesung" ein/aus.
+     * Beispiel-Anwendungsfall: Aufdeckbare Text- oder Bildlösungen.
+     */
     function zeigeLoesung() {
       const box = document.getElementById("loesung");
       if (box.style.display === "none") {
@@ -91,10 +113,15 @@
       }
     }
 
-    //Diese Funktion regelt das Anzeigen der richtigen Lösungen in Grün oder falscher Lösungen in Rot 
-    // bei Single-Choice-Quizformaten wie z.B. der Aufgabe nach dem Video von Station 3 auf Lehrpfad 1 
-    // (Einfluss des Menschen auf Ökosysteme - Nutzpflanzenterasse) oder der ersten Aufgabe von Station 5 desselben Lehrpfades. 
-    // Diese Hilfsfunktion ist optional und kann, wenn nicht genutzt auch weggelassen werden.
+    /**
+     * [OPTIONAL] Logik für Single-Choice-Quizzes (MCQ).
+     * Setzt im HTML voraus: 
+     * - Container mit Klasse `.mcq`
+     * - Antwort-Buttons mit Klasse `.mcq-option` und Attribut `data-correct="true|false"`
+     * - Feedback-Feld mit Klasse `.mcq-feedback`
+     * 
+     * Die Benennung ".mcq" ist ein altes Fragement aus verworfenen Multiple-choice Funktionen
+     */
     document.addEventListener("DOMContentLoaded", () => {
       const quizzes = document.querySelectorAll(".mcq");
 
@@ -109,17 +136,20 @@
           btn.addEventListener("click", () => {
             if (!feedback.hidden) return;
 
+            // Alle Antwortoptionen deaktivieren -> kein Llicken mehr nach Zeigen der Lösung
             options.forEach(b => b.disabled = true);
 
             const isCorrect = btn.dataset.correct === "true";
 
             btn.classList.add(isCorrect ? "correct" : "wrong");
 
+            // Wenn falsch geantwortet wurde, auch die richtige Option grün hervorheben
             if (!isCorrect) {
               const rightBtn = options.find(b => b.dataset.correct === "true");
               if (rightBtn) rightBtn.classList.add("correct");
             }
 
+            // Feedback-Text anzeigen
             feedback.hidden = false;
             feedback.classList.remove("richtig", "falsch");
 

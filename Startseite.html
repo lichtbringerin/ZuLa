@@ -5,16 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lehrpfade - Botanischer Garten Würzburg</title>
+  <!-- Zentrale CSS-Datei für das gesamte Projekt -->
   <link rel="stylesheet" href="style.css" />
   <link id="favicon" rel="icon" type="image/png">
+  <!-- Zentrales Skript: Lädt XML, baut Karte, Pins und Navigation auf -->
   <!-- defer sorgt dafür, dass das Skript nach dem Laden des DOM ausgeführt wird -->
   <script src="loadProject.js" defer></script>
 </head>
 
 <body>
 
+  <!-- HAUPTNAVIGATION -->
   <nav class="navbar">
     <div class="navbar-container container">
+      <!-- Steuerungs-Checkbox für das Hamburger-Menü -->
       <input type="checkbox" id="menu-toggle" />
       <label for="menu-toggle" class="hamburger-lines">
         <span class="line line1"></span>
@@ -22,54 +26,47 @@
         <span class="line line3"></span>
       </label>
 
+      <!-- Menüeinträge -->
       <ul class="menu-items">
         <li><a href="QRCODE.html">Startseite</a></li>
         <li>
           <a href="Startseite.html">Karte</a>
+          <!-- Submenü der Stationen wird dynamisch durch loadProject.js befüllt -->
           <ul id="karte-submenu" class="submenu"></ul>
         </li>
         <li><a href="Kontakt.html">Kontakt</a></li>
       </ul>
 
-      <button id="karte-button" class="bottom-button" style="display:none;" onclick="navigationsButtonClick()">
-        Zurück zur Karte
-      </button>
-
     </div>
+    <!-- Fortschrittsanzeige (Stations-Icons oben in der Navbar) -->
     <div id="progress-container"></div>
 
   </nav>
 
-  <!-- Container für dynamisch geladenen Inhalt -->
+  <!-- HAUPTINHALT (Kartenübersicht & Einleitungstext) -->
   <div id="content-container">
 
+    <!-- Dynamischer Einleitungstext: Wird von loadProject.js nach XML-Ladevorgang mit Pfadtitel/Infos befüllt -->
     <section id="einleitung" class="einleitung-container">
       Willkommen bei den Lehrpfäden des Botanischen Gartens Würzburg.<br>
       Bitte scannen sie einen QR-Code am Eingang oder an einer der Stationen, um einen Lehrpfad zu beginnen.
     </section>
+    <!-- Interaktiver Karten-Container: Das src-Attribut des Bildes wird dynamisch aus der XML gelesen -->
     <section id="karte" class="karte-container">
       <img src="Bilder/karte.png" class="karte-bild" alt="Karte" width="500" height="375" />
     </section>
 
   </div>
 
+  <!-- STARTSEITENSKRIPT -->
   <script>
-    //direkte Seitenlinks für Stationen
+    /**
+     * HILFSFUNKTION FÜR DIREKTNAVIGATIONS-LINKS
+     * Ermöglicht das direkte Anspringen einer Stations-URL.
+     */
     function openStation(url) {
       window.location.href = url;
     }
-
-    // Button "Station abschließen" navigiert zurück zur Karte
-    function navigationsButtonClick() {
-      window.location.href = "karte.html";
-    }
-
-    // Resize-Funktion für Karte und Elemente bleibt
-    window.addEventListener("resize", () => {
-      if (document.getElementById("karte")) {
-        stationenAufKarteSetzen();
-      }
-    });
   </script>
 
 </body>

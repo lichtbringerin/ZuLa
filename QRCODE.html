@@ -6,205 +6,8 @@
 
     <title>Botanischer Garten Würzburg – Lehrpfade</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f6f5;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.4em;
-            margin-bottom: 10px;
-        }
-
-        .info-text {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-
-        /* Lehrpfad-Kacheln */
-        .lehrpfade-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            /* NUR EINE SPALTE */
-            gap: 25px;
-        }
-
-        .lehrpfad-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px 20px;
-            cursor: pointer;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .lehrpfad-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-        }
-
-        .lehrpfad-card img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .lehrpfad-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-align: left;
-            margin-left: 8px;
-        }
-
-        .lehrpfad-autor {
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 6px;
-        }
-
-        .lehrpfad-stationen {
-            font-size: 0.95em;
-            color: #555;
-        }
-
-        .lehrpfad-dauer {
-            font-size: 0.75em;
-            color: #555;
-            margin-top: 4px;
-        }
-
-        .lehrpfad-header {
-            margin-bottom: 12px;
-        }
-
-        .lehrpfad-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            text-align: left;
-        }
-
-        .lehrpfad-left {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 90px;
-        }
-
-        .lehrpfad-left img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin-bottom: 6px;
-        }
-
-        .lehrpfad-text {
-            font-size: 0.95em;
-            color: #444;
-            line-height: 1.4;
-            position: relative;
-            /* nötig für Overlay */
-            max-height: 7em;
-            /* ca. 5 Zeilen: 5 * 1.4em = 7em */
-            overflow: hidden;
-        }
-
-        /* Wenn aufgeklappt */
-        .lehrpfad-text.expanded {
-            max-height: none;
-            overflow: visible;
-        }
-
-        /* "… weiterlesen" Overlay */
-        .read-more {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            padding-top: 1.2em;
-            /* sorgt dafür, dass es auf halber 5. Zeile wirkt */
-            text-align: left;
-
-            /* Verlauf, damit es aussieht wie abgeschnitten */
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 60%);
-        }
-
-        .read-more button {
-            border: none;
-            background: none;
-            color: #117964;
-            font-weight: 600;
-            padding: 0;
-            cursor: pointer;
-        }
-
-        .read-more button:hover {
-            text-decoration: underline;
-        }
-
-        /* Container fix oben rechts */
-        .logo-container {
-            position: fixed;
-            /* bleibt sichtbar */
-            top: 0;
-            right: 0;
-            padding: 10px;
-            /* Abstand zum Rand */
-            z-index: 1000;
-            /* über Inhalt */
-            pointer-events: none;
-            /* klickt nicht im Weg */
-        }
-
-        /* Logo skalieren */
-        .logo-bild {
-            width: 140px;
-            /* Desktop-Größe */
-            height: auto;
-            display: block;
-        }
-
-        /*Sprache flaggen:*/
-        .lehrpfad-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-        }
-
-        .flaggen-icon {
-            width: 30px !important;
-            height: auto !important;
-
-            margin-top: -6px;
-            margin-right: -4px;
-
-            flex-shrink: 0;
-        }
-
-        /* Mobile: kleineres Logo */
-        @media (max-width: 600px) {
-            .logo-bild {
-                width: 100px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -212,7 +15,7 @@
         <img src="Bilder/BGLogo.png" class="logo-bild" alt="Logo" />
     </section>
 
-    <div class="container">
+    <div class="container startseite-container">
         <h2>Herzlich willkommen im Botanischen Garten der Universität Würzburg</h2>
         <p class="info-text">
             Nutzen sie die digitalen Führungen für ihren Rundgang durch den Garten.
@@ -224,17 +27,26 @@
     </div>
 
     <script>
+        /**
+     * LEHRPFAD-ÜBERSICHT LADEN
+     * 
+     * Liest die 'LehrpfadeConfig.xml' aus, sortiert die vorhanden Lehrpfade nach ihrer ID,
+     * rendert für jeden Pfad eine interaktive Kachel (Card) im Grid-Container 
+     * und kümmert sich um die "… weiterlesen"-Logik für lange Einführungstexte.
+     */
         async function ladeLehrpfade() {
             try {
+                // 1. XML-Konfigurationsdatei abrufen und parsen
                 const response = await fetch("LehrpfadeConfig.xml");
                 const xmlText = await response.text();
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(xmlText, "application/xml");
 
+                // Alle <Lehrpfad>-Knoten in ein Array umwandeln
                 const lehrpfade = Array.from(xml.getElementsByTagName("Lehrpfad"));
 
-                // Nach PfadId sortieren
+                // 2. Lehrpfade aufsteigend nach PfadId sortieren
                 lehrpfade.sort((a, b) => {
                     const idA = parseInt(a.getElementsByTagName("PfadId")[0].textContent, 10);
                     const idB = parseInt(b.getElementsByTagName("PfadId")[0].textContent, 10);
@@ -243,6 +55,7 @@
 
                 const container = document.getElementById("lehrpfade");
 
+                // 3. Kacheln dynamisch für jeden Lehrpfad erstellen
                 lehrpfade.forEach(pfad => {
                     const pfadId = pfad.getElementsByTagName("PfadId")[0].textContent;
                     const name = pfad.getElementsByTagName("UrlName")[0].textContent;
@@ -254,10 +67,12 @@
                     const sprachIconNode = pfad.getElementsByTagName("SprachIcon")[0];
                     const sprachIcon = sprachIconNode ? sprachIconNode.textContent : "";
                     const einfuehrungNode = pfad.getElementsByTagName("Einfuehrungstext")[0];
-                    const einfuehrung = einfuehrungNode ? einfuehrungNode.innerHTML : ""; // Falls kein Text enthalten ist bleibt er leer? oder default text
-
+                    // Falls kein Einführungstext in der XML hinterlegt ist, bleibt das Feld leer
+                    const einfuehrung = einfuehrungNode ? einfuehrungNode.innerHTML : "";
+                    // HTML-Kachel erzeugen (wird als "card" benannt und managed)
                     const card = document.createElement("div");
                     card.className = "lehrpfad-card";
+                    // Klick auf die gesamte Kachel/card leitet zur Karte des gewählten Lehrpfads weiter
                     card.addEventListener("click", () => {
                         window.location.href = `Startseite.html?id=${pfadId}`;
                     });
@@ -299,23 +114,27 @@
                     `;
 
                     container.appendChild(card);
-                    // "… weiterlesen" Logik pro Karte
+                    // 4. "… weiterlesen"-Schaltfläche aktivieren, falls der Text die maximale Höhe überschreitet
                     const textEl = card.querySelector(".lehrpfad-text");
                     const moreWrap = card.querySelector(".read-more");
                     const moreBtn = card.querySelector(".read-more-btn");
 
+                    /**
+                    * Prüft, ob der Inhalt der Kachel abgeschnitten wird.
+                    */
                     function needsClamp(el) {
                         // nur anzeigen, wenn wirklich abgeschnitten wird
                         return el.scrollHeight > el.clientHeight + 2;
                     }
 
-                    // erst nach dem Einfügen in DOM messen (sonst manchmal 0)
+                    // Messung erst nach Einfügen in den DOM ausführen
                     requestAnimationFrame(() => {
                         if (needsClamp(textEl)) {
                             moreWrap.hidden = false;
                         }
                     });
 
+                    // Klick-Handler für den "weiterlesen"-Button
                     moreBtn.addEventListener("click", (e) => {
                         e.preventDefault();
                         e.stopPropagation(); // verhindert das Öffnen des Lehrpfads beim Klick!
@@ -331,6 +150,7 @@
             }
         }
 
+        // Skript starten, sobald das DOM vollständig aufgebaut ist
         document.addEventListener("DOMContentLoaded", ladeLehrpfade);
     </script>
 
